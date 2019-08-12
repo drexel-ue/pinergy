@@ -41,7 +41,13 @@ router.post("/register", (req, res) => {
     } else {
       // Else, create a new user.
       const newUser = new User({
-        handle: body.handle,
+        username: body.username,
+        age: body.age,
+        gender: body.gender,
+        language: body.language,
+        country: body.country,
+        location: body.location,
+        interests: body.interests,
         email: body.email,
         password: body.password
       });
@@ -90,7 +96,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then(good => {
       if (good) {
-        const payload = { id: user.id, email: user.email, handle: user.handle };
+        const payload = user;
 
         jwt.sign(
           payload,
@@ -117,14 +123,11 @@ router.post("/login", (req, res) => {
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
-  (req, res) =>
+  (req, res) => {
+    debugger;
     res.json(
-      res.json({
-        id: req.user.id,
-        handle: req.user.handle,
-        email: req.user.email
-      })
-    )
+      res.json(req.user)
+    )}
 );
 
 module.exports = router;
