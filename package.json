@@ -1,0 +1,19 @@
+{
+  "name": "pinergy",
+  "version": "1.0.0",
+  "description": "MERN stack replication of Pinterest...but better",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drexel-ue/pinterest_clone.git"
+  },
+  "author": "Anshu Jain, Clayton Jones, IKesh Pack, Paul Kilwoug Choi <anshuj@gmail.com, ClaytonJones839@hotmail.com, packappsforyou@gmail.com, paulkwchoi92@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drexel-ue/pinterest_clone/issues"
+  },
+  "homepage": "https://github.com/drexel-ue/pinterest_clone#readme"
+}
