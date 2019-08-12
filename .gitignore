@@ -1,0 +1,11 @@
+.DS_Stores
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore npm packages.
+/node_modules
+/frontend/node_modules
+
+# Ignore sensitive keys.
+/config/keys_dev.js
