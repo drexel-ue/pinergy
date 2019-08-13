@@ -20,8 +20,10 @@ function Modal({ modal, closeModal }) {
   //   }
   return (
     <div className="modal-background" onClick={closeModal}>
-      <div className="first_signup_form" onClick={e => e.stopPropagation()}>
-        {/* {component} */}
+      <div className="modal-child">
+        <div className="first_signup_form" onClick={e => e.stopPropagation()}>
+          {/* {component} */}
+        </div>
       </div>
     </div>
   );
