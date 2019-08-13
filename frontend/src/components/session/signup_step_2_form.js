@@ -60,7 +60,7 @@ class SignupForm extends React.Component {
         <div className="sup2email">{this.props.user.email}</div>
 
         <div className="welcome">Welcome to Pinergy,</div>
-        <div className="2ndmsgenc">
+        <div className="sub2msgenc">
           <div className="username">{this.props.user.username}</div>
           <i className="fas fa-pen" />
         </div>
