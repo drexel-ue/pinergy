@@ -22,7 +22,7 @@ mongoose
 const port = process.env.PORT || 5000;
 
 // Sets up a basic route so that we can render some information on our page.
-app.get("/", (req, res) => res.send("Sistine Camels"));
+app.get("/", (req, res) => res.send("Coco Puffs"));
 
 // Sets passport as the bouncer.
 app.use(passport.initialize());
