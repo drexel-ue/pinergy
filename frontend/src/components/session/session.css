@@ -1,0 +1,31 @@
+.signup_step_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 640px;
+  width: 440px;
+}
+.signup_step_1_form {
+  height: 600px;
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup_step_2 {
+  height: 600px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pfimg {
+  height: 104px;
+  width: 104px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}

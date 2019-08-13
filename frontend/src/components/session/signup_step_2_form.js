@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "../modal/modal.css";
+import "./session.css";
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -51,22 +52,19 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    debugger
+    // debugger;
     return (
-      
       <div className="signup_step_2">
-        <img className="pfimg" src={this.props.user.profileImageUrl} />
+        <img className="pfimg" src={this.props.user.profilePhotoUrl} />
+
+        <div>{this.props.user.email}</div>
+        <div>Welcome to Pinergy, {this.props.user.username}</div>
+        <div><i class='fas fa-pencil-alt'></i></div>
         <div>
-          {this.props.user.email}
+          Your answers to the next questions will help us find the right ideas
+          for you
         </div>
-        <div>
-          Welcome to Pinergy, {this.props.user.username}
-        </div>
-        <div>pencilbutton</div>
-        <div>
-          Your answers to the next questions will help us find the right ideas for you
-        </div>
-        <button >Next</button>
+        <button>Next</button>
       </div>
     );
   }
