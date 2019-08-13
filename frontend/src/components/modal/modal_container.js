@@ -1,35 +1,45 @@
 import React from "react";
-import { closeModal } from "../../actions/modal_actions";
+import { closeModal, OPEN_MODAL, CLOSE_MODAL, SHOW_FIRST_SIGN_UP_STEP, MOVE_TO_SECOND_SIGN_UP_STEP  } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
 import SignupStep1Container from "../session/signup_step_1_form_container";
-import SingupStep2Container from "../session/signup_step_2_form_container";
+import SignupStep2Container from "../session/signup_step_2_form_container";
+import { showFirstSignUpStep } from "../../actions/modal_actions";
 
 
 
-
-class Modal extends React.Componenet{
+class Modal extends React.Component{
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+    console.log("Paul is handsome")
+    // debugger
+    this.props.showFirstSignUpStep()
+      // .then( () =>{debugger})  
+    // debugger
+  }
 
 render () {
-  //   if (!modal) {
-  //     return null;
-  //   }
-  //   let component;
-  //   switch (modal.type) {
-  //     case "photoShow":
-  //       component = <PostShowContainer data={modal.data} />;
-  //       break;
-  //     case "commentError":
-  //       component = <CommentErrorModal />;
-  //       break;
-  //     default:
-  //       return null;
-  //   }
+    // if (!modal) {
+    //   return null;
+    // }
+    let component;
+    switch (this.props.modal) {
+      case SHOW_FIRST_SIGN_UP_STEP:
+        component = <SignupStep1Container />;
+        break;
+      case MOVE_TO_SECOND_SIGN_UP_STEP:
+        component = <SignupStep2Container />;
+        break;
+      default:
+        return null;
+  }
+  // debugger 
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child">
-        {/* <SignupStep1Container /> */}
-        <SingupStep2Container/>
+        {component}
       </div>
     </div>
   );
@@ -44,7 +54,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    showFirstSignUpStep: () => dispatch(showFirstSignUpStep())
   };
 };
 

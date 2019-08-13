@@ -5,19 +5,23 @@ import NavBarContainer from "./nav/navbar_container";
 
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
-import SignupFormContainer from "./session/signup_step_1_form_container";
 import ModalContainer from "./modal/modal_container";
 
-const App = () => (
-  <div>
-    <ModalContainer />
-    <NavBarContainer />
-    <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>
-  </div>
-);
+class App extends React.Component {
+
+  render() {
+  return (
+    <div>
+      <ModalContainer />
+      <NavBarContainer />
+      <Switch>
+        <AuthRoute exact path="/" component={MainPage} />
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
+      </Switch>
+    </div>
+  )
+  }
+};
 
 export default App;
