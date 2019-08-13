@@ -13,7 +13,7 @@ class Modal extends React.Component{
     super(props)
   }
   componentDidMount() {
-    console.log("Paul is handsome")
+    // console.log("Paul is handsome")
     // debugger
     this.props.showFirstSignUpStep()
       // .then( () =>{debugger})  
@@ -48,7 +48,7 @@ render () {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal 
   };
 };
 

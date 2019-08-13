@@ -57,14 +57,19 @@ class SignupForm extends React.Component {
       <div className="signup_step_2">
         <img className="pfimg" src={this.props.user.profilePhotoUrl} />
 
-        <div>{this.props.user.email}</div>
-        <div>Welcome to Pinergy, {this.props.user.username}</div>
-        <div><i class='fas fa-pencil-alt'></i></div>
-        <div>
+        <div className="sup2email">{this.props.user.email}</div>
+
+        <div className="welcome">Welcome to Pinergy,</div>
+        <div className="2ndmsgenc">
+          <div className="username">{this.props.user.username}</div>
+          <i className="fas fa-pen" />
+        </div>
+
+        <div className="txt3">
           Your answers to the next questions will help us find the right ideas
           for you
         </div>
-        <button>Next</button>
+        <button className="redbtn btn2">Next</button>
       </div>
     );
   }
