@@ -4,19 +4,19 @@ const validText = require("./valid_text");
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
-  data.handle = validText(data.handle) ? data.handle : "";
+  data.username = validText(data.username) ? data.username : "";
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
   data.password2 = validText(data.password2) ? data.password2 : "";
 
-  // Makes sure handle length is in range.
-  if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
-    errors.handle = "Handle must be between 2 and 30 characters";
+  // Makes sure username length is in range.
+  if (!Validator.isLength(data.username, { min: 2, max: 30 })) {
+    errors.username = "Username must be between 2 and 30 characters";
   }
 
-  // Makes sure handle string is not empty.
-  if (Validator.isEmpty(data.handle)) {
-    errors.handle = "Handle field is required";
+  // Makes sure username string is not empty.
+  if (Validator.isEmpty(data.username)) {
+    errors.username = "Username field is required";
   }
 
   // Makes sure email string is not empty.
