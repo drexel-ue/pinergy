@@ -34,28 +34,52 @@
   margin-bottom: 22px;
 }
 
-
-.welcome{
+.welcome {
   font-size: 36px;
 }
 
-.sub2msgenc{
-      position: relative;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    height: 35px;
-    margin-bottom: 21px;
+.sub2msgenc {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 35px;
+  margin-bottom: 21px;
 }
 
-.username{
-      position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 36px;
+.username {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36px;
 }
 
 .fa-pen {
-      right: 0;
-    position: absolute;
+  right: 0;
+  position: absolute;
+  top: 13px;
+
+  color: #8e8e8e;
+}
+
+.txt3 {
+  font-size: 21px;
+  margin-bottom: 40px;
+  width: 80%;
+  text-align: center;
+}
+
+.redbtn {
+  background-color: #e60023;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  align-content: center;
+  outline: none;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.btn_signup_step2 {
+  width: 80%;
 }

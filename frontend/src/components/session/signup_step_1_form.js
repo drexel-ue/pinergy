@@ -49,10 +49,8 @@ class SignupForm extends React.Component {
       <ul>
         {Object.keys(this.state.errors).map((error, i) => {
           // debugger
-          return(
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
-        )}
-        )}
+          return <li key={`error-${i}`}>{this.state.errors[error]}</li>;
+        })}
       </ul>
     );
   }
@@ -91,7 +89,7 @@ class SignupForm extends React.Component {
               placeholder="Age"
             />
             <br />
-            <button>Continue</button>
+            <button className="redbtn btn_signup_step_1">Continue</button>
             {this.renderErrors()}
           </div>
         </form>

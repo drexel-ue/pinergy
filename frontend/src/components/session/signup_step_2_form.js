@@ -69,7 +69,7 @@ class SignupForm extends React.Component {
           Your answers to the next questions will help us find the right ideas
           for you
         </div>
-        <button className="redbtn btn2">Next</button>
+        <button className="redbtn btn_signup_step2">Next</button>
       </div>
     );
   }
