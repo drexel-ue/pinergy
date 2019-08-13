@@ -7,10 +7,14 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       username: undefined,
-      errors: {}
+      errors: {},
+      showInput: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleInput = this.toggleInput.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    //    this.handleInput = this.handleInput.bind(this);
     this.clearedErrors = false;
   }
 
@@ -32,10 +36,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      email: this.state.email,
-      username: this.state.username,
-      password: this.state.password,
-      password2: this.state.password2
+      username: this.state.username
     };
 
     this.props.signup(user, this.props.history);
@@ -50,7 +51,26 @@ class SignupForm extends React.Component {
       </ul>
     );
   }
-
+  handleInput(e) {
+    e.preventDefault();
+    this.setState({ username: e.target.value });
+  }
+  toggleInput(e) {
+    e.preventDefault();
+    this.setState({ showInput: !this.state.showInput });
+  }
+  renderInput() {
+    return this.state.showInput ? (
+      <input
+        type="text"
+        value={this.state.username}
+        onChange={this.handleInput}
+        placeholder={this.props.user.username}
+      />
+    ) : (
+      <div className="username">{this.props.user.username}</div>
+    );
+  }
   render() {
     // debugger;
     return (
@@ -61,8 +81,8 @@ class SignupForm extends React.Component {
 
         <div className="welcome">Welcome to Pinergy,</div>
         <div className="sub2msgenc">
-          <div className="username">{this.props.user.username}</div>
-          <i className="fas fa-pen" />
+          {this.renderInput()}
+          <i className="fas fa-pen" onClick={this.toggleInput} />
         </div>
 
         <div className="txt3">
