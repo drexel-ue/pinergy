@@ -25,7 +25,7 @@ export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
-
+ 
 // When our user is logged out, we will dispatch this action to set isAuthenticated to false.
 export const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT

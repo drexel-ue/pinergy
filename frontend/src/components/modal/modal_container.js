@@ -3,8 +3,14 @@ import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
 import SignupStep1Container from "../session/signup_step_1_form_container";
+import SingupStep2Container from "../session/signup_step_2_form_container";
 
-function Modal({ modal, closeModal }) {
+
+
+
+class Modal extends React.Componenet{
+
+render () {
   //   if (!modal) {
   //     return null;
   //   }
@@ -22,10 +28,12 @@ function Modal({ modal, closeModal }) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child">
-        <SignupStep1Container/>
+        {/* <SignupStep1Container /> */}
+        <SingupStep2Container/>
       </div>
     </div>
   );
+}
 }
 
 const mapStateToProps = state => {
