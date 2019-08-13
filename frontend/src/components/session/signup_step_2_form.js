@@ -54,13 +54,11 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    debugger
     return (
-      <div className="signup_step_1">
-        <form onSubmit={this.handleSubmit}>
-          
-            {this.renderErrors()}
       
-        </form>
+      <div className="signup_step_2">
+        
       </div>
     );
   }
