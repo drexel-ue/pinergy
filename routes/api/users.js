@@ -27,6 +27,7 @@ router.post("/register", (req, res) => {
 
   if (!isValid) {
     // Returns errors if any.
+    debugger;
     return res.status(400).json(errors);
   }
 
@@ -40,9 +41,9 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
     } else {
       // Else, create a new user.
-  
-      let index = body.email.trim().indexOf("@")
-      let usernamedef = body.email.trim().slice(0, index )
+
+      let index = body.email.trim().indexOf("@");
+      let usernamedef = body.email.trim().slice(0, index);
       const newUser = new User({
         age: body.age,
         email: body.email,
@@ -71,8 +72,6 @@ router.post("/register", (req, res) => {
     }
   });
 });
-
-
 
 // Handles logging in.
 router.post("/login", (req, res) => {

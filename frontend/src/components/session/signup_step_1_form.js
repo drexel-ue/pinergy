@@ -7,7 +7,7 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       email: "",
-      username: "",
+      age: "",
       password: "",
       password2: "",
       errors: {}
@@ -36,20 +36,23 @@ class SignupForm extends React.Component {
     e.preventDefault();
     let user = {
       email: this.state.email,
-      username: this.state.username,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      age: this.state.age
     };
 
-    this.props.signup(user, this.props.history);
+    this.props.signup(user);
   }
 
   renderErrors() {
     return (
       <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
-        ))}
+        {Object.keys(this.state.errors).map((error, i) => {
+          debugger
+          return(
+          <li key={`error-${i}`}>{this.state.errors[i]}</li>
+        )}
+        )}
       </ul>
     );
   }
@@ -88,7 +91,7 @@ class SignupForm extends React.Component {
               placeholder="Age"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <button>Continue</button>
             {this.renderErrors()}
           </div>
         </form>
