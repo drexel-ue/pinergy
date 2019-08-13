@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import SignupForm from "./signup_step_2_form";
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ session, errors }) => {
   return {
-    errors: state.errors.session
+    user: session.user,
+    errors: errors.session
   };
 };
 
