@@ -5,10 +5,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      username: "",
-      password: "",
-      password2: "",
+      username: undefined,
       errors: {}
     };
 
@@ -58,7 +55,18 @@ class SignupForm extends React.Component {
     return (
       
       <div className="signup_step_2">
-        
+        <img className="pfimg" src={this.props.user.profileImageUrl} />
+        <div>
+          {this.props.user.email}
+        </div>
+        <div>
+          Welcome to Pinergy, {this.props.user.username}
+        </div>
+        <div>pencilbutton</div>
+        <div>
+          Your answers to the next questions will help us find the right ideas for you
+        </div>
+        <button >Next</button>
       </div>
     );
   }
