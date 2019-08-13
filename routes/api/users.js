@@ -123,11 +123,7 @@ router.post("/login", (req, res) => {
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    debugger;
-    res.json(
-      res.json(req.user)
-    )}
+  (req, res) => res.json(req.user)
 );
 
 module.exports = router;
