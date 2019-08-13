@@ -2,6 +2,7 @@ import React from "react";
 import { closeModal } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
+import SignupStep1Container from "../session/signup_step_1_form_container";
 
 function Modal({ modal, closeModal }) {
   //   if (!modal) {
@@ -21,9 +22,7 @@ function Modal({ modal, closeModal }) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child">
-        <div className="first_signup_form" onClick={e => e.stopPropagation()}>
-          {/* {component} */}
-        </div>
+        <SignupStep1Container/>
       </div>
     </div>
   );

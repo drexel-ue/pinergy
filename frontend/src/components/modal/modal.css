@@ -15,7 +15,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.first_signup_form {
+.signup_step_1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 640px;
   width: 440px;
 }

@@ -55,7 +55,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
+      <div className="signup_step_1">
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
             <br />
@@ -64,13 +64,6 @@ class SignupForm extends React.Component {
               value={this.state.email}
               onChange={this.update("email")}
               placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update("username")}
-              placeholder="Username"
             />
             <br />
             <input
@@ -85,6 +78,13 @@ class SignupForm extends React.Component {
               value={this.state.password2}
               onChange={this.update("password2")}
               placeholder="Confirm Password"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.age}
+              onChange={this.update("age")}
+              placeholder="Age"
             />
             <br />
             <input type="submit" value="Submit" />
