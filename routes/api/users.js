@@ -27,7 +27,7 @@ router.post("/register", (req, res) => {
 
   if (!isValid) {
     // Returns errors if any.
-    debugger;
+    // debugger;
     return res.status(400).json(errors);
   }
 
