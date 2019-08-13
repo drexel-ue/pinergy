@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // If this is a first time user, start with an empty store.
     store = configureStore({});
   }
+
+  // TODO: REMOVE!!!!
+  window.getState = store.getState;
+
   // Grab onto root element.
   const root = document.getElementById("root");
   // Render our root component and pass in the store as a prop.
