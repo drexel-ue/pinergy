@@ -22,3 +22,15 @@
   height: 640px;
   width: 440px;
 }
+.signup_step_1_form {
+  height: 600px;
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-background input {
+  height: 40px;
+  width: 70%;
+}

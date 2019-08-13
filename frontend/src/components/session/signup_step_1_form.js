@@ -57,7 +57,7 @@ class SignupForm extends React.Component {
     return (
       <div className="signup_step_1">
         <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
+          <div className="signup_step_1_form">
             <br />
             <input
               type="text"
