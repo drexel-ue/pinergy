@@ -1,19 +1,24 @@
 const puppeteer = require("puppeteer");
 
 exports.scrape = async keyWords => {
+  debugger;
   const browser = await puppeteer.launch();
+  debugger;
 
   const page = await browser.newPage();
+  debugger;
 
   page.goTo("https://unsplash.com");
-
+  debugger;
   let data;
 
-  if (keyWords.length === 0) {
+  if (!keyWords) {
+    debugger;
     await page.waitForSelector("img", { visible: true });
 
     data = await page.evaluate(() => {
       const images = document.querySelectorAll("img");
+      debugger;
       return Array.from(images.map(image => image.src));
     });
   } else {
@@ -29,6 +34,8 @@ exports.scrape = async keyWords => {
   }
 
   browser.close();
+
+  debugger;
 
   return data;
 };

@@ -5,6 +5,7 @@ const app = express();
 const db = require("./config/keys").mongoURI;
 // Imports created routes.
 const users = require("./routes/api/users");
+const pins = require("./routes/api/pins");
 // Allows us to parse the json sent to the front end.
 const bodyParser = require("body-parser");
 // Verifies incoming request tokens to project routes.
@@ -34,6 +35,7 @@ app.use(bodyParser.json());
 
 // We must tell Express to use imported routes.
 app.use("/api/users", users);
+app.use("/api/pins", pins);
 
 // Tells Express to start a socket and listen for connections on the path.
 app.listen(port, () => console.log(`Server is running on port ${port}`));
