@@ -203,6 +203,11 @@ input.gender_option {
   height: 800px;
 }
 
+.btn_signup_step_4 {
+  margin-top: 100px;
+  width: 75%;
+}
+
 .hide {
   display: none;
 }

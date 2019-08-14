@@ -86,6 +86,7 @@ class SignupForm extends React.Component {
             ))}
           </div>
         </div>
+        <button className="redbtn btn_signup_step_4">Next</button>
         {this.renderErrors()}
       </div>
     );
