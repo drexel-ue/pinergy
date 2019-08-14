@@ -12,7 +12,7 @@ import "./modal.css";
 import SignupStep1Container from "../session/signup_step_1_form_container";
 import SignupStep2Container from "../session/signup_step_2_form_container";
 import { showFirstSignUpStep } from "../../actions/modal_actions";
-import SignupStep3Container from "../session/signup_step_3_container";
+import SignupStep3Container from "../session/signup_step_3_form_container";
 
 class Modal extends React.Component {
   constructor(props) {
