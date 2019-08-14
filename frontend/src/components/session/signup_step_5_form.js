@@ -32,10 +32,11 @@ class SignupForm extends React.Component {
 
   selectInterest(interest) {
     return event => {
-      console.log("dnsljnbdkjs");
       event.preventDefault();
       event.stopPropagation();
-      const interests = [...this.state.interests, interest];
+      const interests = this.state.interests.includes(interest)
+        ? this.state.interests.filter(inArr => inArr !== interest)
+        : [...this.state.interests, interest];
       this.setState({ interests });
       document.getElementById(interest).classList.toggle("selected_interest");
     };
