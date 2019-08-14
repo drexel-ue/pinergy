@@ -125,4 +125,25 @@ router.get(
   (req, res) => res.json(req.user)
 );
 
+router.patch("/update/:id", (req, res) => {
+  let errors = {};
+  const user = User.findById(req.params.id, function(err, user) {
+    if (!user) {
+      errors.userId = `Couldn't find any user with id ${req.params.id}`;
+      return res.json(errors);
+    } else {
+      // do your updates here
+      user = new User(lodash.merge({}, user, req.body));
+      user.save(function(err, user) {
+        if (err) {
+          errors.userId = `Couldn't update username of user: ${req.params.id}`;
+          return res.json(errors);
+        } else return res.json(user);
+      });
+    }
+  });
+  debugger;
+  2+3;
+});
+
 module.exports = router;
