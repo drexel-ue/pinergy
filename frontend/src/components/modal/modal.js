@@ -6,7 +6,8 @@ import {
   SHOW_FIRST_SIGN_UP_STEP,
   MOVE_TO_SECOND_SIGN_UP_STEP,
   MOVE_TO_THIRD_SIGN_UP_STEP,
-  MOVE_TO_FOURTH_SIGN_UP_STEP
+  MOVE_TO_FOURTH_SIGN_UP_STEP,
+  MOVE_TO_FIFTH_SIGN_UP_STEP
 } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
@@ -43,15 +44,15 @@ class Modal extends React.Component {
       case MOVE_TO_FOURTH_SIGN_UP_STEP:
         component = <SignupStep4Container />;
         break;
+      case MOVE_TO_FIFTH_SIGN_UP_STEP:
+        component = <SignupStep5Container />;
+        break;
       default:
         return null;
     }
     return (
       <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child">
-          {/* {component} */}
-          <SignupStep5Container />
-        </div>
+        <div className="modal-child">{component}</div>
       </div>
     );
   }

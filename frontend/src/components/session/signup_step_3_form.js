@@ -76,8 +76,9 @@ class SignupForm extends React.Component {
       if (gender !== this.state.gender) {
         this.setState({ gender: "", customEntered: false, showInput: false });
       } else if (this.state.gender.length > 0) {
-        this.props.updateGender({ gender }, this.props.user._id);
-        //   .then(() => this.props.toNext());
+        this.props
+          .updateGender({ gender }, this.props.user._id)
+          .then(() => this.props.toNext());
       }
     };
   }

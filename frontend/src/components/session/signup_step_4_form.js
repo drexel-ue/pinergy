@@ -55,7 +55,9 @@ class SignupForm extends React.Component {
       language: this.state.language,
       country: this.state.country
     };
-    this.props.updateLocale(locale, this.props.user._id);
+    this.props
+      .updateLocale(locale, this.props.user._id)
+      .then(() => this.props.toNext());
   }
 
   render() {
@@ -96,7 +98,7 @@ class SignupForm extends React.Component {
             ))}
           </div>
         </div>
-        <button className="redbtn btn_signup_step_4">Next</button>
+        <button className="redbtn btn_signup_step_4" onClick={this.updateLocale}>Next</button>
         {this.renderErrors()}
       </div>
     );
