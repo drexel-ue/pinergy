@@ -66,7 +66,23 @@ router.post("/register", (req, res) => {
             // Save the new user document to the database.
             .save()
             // Return a json object representing the new user document as processed by the databse.
-            .then(user => res.json(user))
+            .then(user => {
+              const payload = { id: user.id };
+
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                // Tell the key to expire in one hour
+                { expiresIn: 3600 },
+                (err, token) => {
+                  res.json({
+                    user: user,
+                    success: true,
+                    token: "Bearer " + token
+                  });
+                }
+              );
+            })
             // Log any errors.
             .catch(error => console.log(error));
         });
