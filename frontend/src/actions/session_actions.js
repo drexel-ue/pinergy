@@ -1,7 +1,6 @@
 import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
-import { moveToSecondStep } from './modal_actions'
-
+import { moveToSecondStep } from "./modal_actions";
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -27,7 +26,7 @@ export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
- 
+
 // When our user is logged out, we will dispatch this action to set isAuthenticated to false.
 export const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT
@@ -38,10 +37,11 @@ export const logoutUser = () => ({
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend.
 export const signup = user => dispatch =>
   APIUtil.signup(user).then(
-    (response) => {
-     dispatch(receiveCurrentUser(response.data))
-      dispatch(receiveUserSignIn())
-      dispatch(moveToSecondStep())
+    response => {
+      APIUtil.setAuthToken(response.data.token);
+      dispatch(receiveCurrentUser(response.data.user));
+      dispatch(receiveUserSignIn());
+      dispatch(moveToSecondStep());
     },
     err => dispatch(receiveErrors(err.response.data))
   );
