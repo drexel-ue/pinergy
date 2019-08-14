@@ -9,10 +9,11 @@ import {
 } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
+import { showFirstSignUpStep } from "../../actions/modal_actions";
 import SignupStep1Container from "../session/signup_step_1_form_container";
 import SignupStep2Container from "../session/signup_step_2_form_container";
-import { showFirstSignUpStep } from "../../actions/modal_actions";
 import SignupStep3Container from "../session/signup_step_3_form_container";
+import SignupStep4Container from "../session/signup_step_4_form_container";
 
 class Modal extends React.Component {
   constructor(props) {
@@ -42,7 +43,10 @@ class Modal extends React.Component {
     }
     return (
       <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child">{component}</div>
+        <div className="modal-child">
+          {/* {component} */}
+          <SignupStep4Container />
+        </div>
       </div>
     );
   }
