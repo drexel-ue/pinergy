@@ -13,6 +13,7 @@ class SignupForm extends React.Component {
       errors: {}
     };
 
+    this.selectLocale = this.selectLocale.bind(this);
     this.clearedErrors = false;
   }
 
@@ -32,10 +33,18 @@ class SignupForm extends React.Component {
 
   toggleDropdown(className) {
     return event => {
-      console.log("sslinlkns");
       event.preventDefault();
       event.stopPropagation();
       document.getElementsByClassName(className)[0].classList.toggle("hide");
+    };
+  }
+
+  selectLocale(field, className) {
+    return event => {
+      event.preventDefault();
+      event.stopPropagation();
+      document.getElementsByClassName(className)[0].classList.toggle("hide");
+      this.setState({ [field]: event.target.firstChild.data });
     };
   }
 
@@ -47,11 +56,14 @@ class SignupForm extends React.Component {
           onClick={this.toggleDropdown("languages")}
           className="locale_select"
         >
-          <div className="local_select_text">Language</div>
+          <div className="local_select_text">{this.state.language}</div>
           <i className="fas fa-chevron-down" />
           <div className="languages hide">
             {languages.map(lang => (
-              <div key={lang} onClick={this.toggleDropdown("languages")}>
+              <div
+                key={lang}
+                onClick={this.selectLocale("language", "languages")}
+              >
                 {lang}
               </div>
             ))}
@@ -61,11 +73,14 @@ class SignupForm extends React.Component {
           onClick={this.toggleDropdown("countries")}
           className="locale_select"
         >
-          <div className="local_select_text">Country</div>
+          <div className="local_select_text">{this.state.country}</div>
           <i className="fas fa-chevron-down" />
           <div className="countries hide">
             {countries.map(country => (
-              <div key={country} onClick={this.toggleDropdown("countries")}>
+              <div
+                key={country}
+                onClick={this.selectLocale("country", "countries")}
+              >
                 {country}
               </div>
             ))}
