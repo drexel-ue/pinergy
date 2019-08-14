@@ -130,3 +130,40 @@ input.gender_option {
   position: absolute;
   right: 10px;
 }
+
+.signup_step_4 {
+  height: 640px;
+  width: 544px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.locale_ask {
+  font-size: 36px;
+  width: 340px;
+  text-align: center;
+  margin-top: 64px;
+  margin-bottom: 100px;
+}
+
+.locale_select {
+  display: flex;
+  width: 80%;
+  border: solid 1px black;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.local_select_text {
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.fa-chevron-down {
+  padding-right: 20px;
+  font-size: 20px;
+}
