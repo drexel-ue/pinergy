@@ -52,7 +52,10 @@ class Modal extends React.Component {
     }
     return (
       <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child">{component}</div>
+        <div className="modal-child">
+          {/* {component} */}
+          <SignupStep5Container />
+        </div>
       </div>
     );
   }
