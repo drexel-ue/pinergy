@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import SignupForm from "./signup_step_2_form";
+import { updateUser } from "../../actions/user_actions";
 
 const mapStateToProps = ({ session, errors }) => {
   return {
@@ -9,7 +10,9 @@ const mapStateToProps = ({ session, errors }) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    updateUsername: username => dispatch(updateUser(username))
+  };
 };
 
 export default connect(
