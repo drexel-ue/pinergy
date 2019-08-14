@@ -84,11 +84,40 @@
   width: 80%;
 }
 
-.sign_up_step_3 {
+.signup_step_3 {
+  height: 640px;
+  width: 544px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.gender_label {
+#gender_label_1,
+#gender_label_2,
+#gender_label_3 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 36px;
 }
 
-.gender_option {
+#gender_label_1 > input,
+#gender_label_2 > input,
+#gender_label_3 > input {
+  width: 40px;
+  margin: 20px 0px 20px 20px;
+}
+
+input.gender_option {
+  transform: scale(1.5);
+}
+
+.identity_ask {
+  font-size: 36px;
+  margin: 64px 0 54px 0;
+}
+
+#gender_label_3 .custom_gender_input {
+  width: 100%;
 }

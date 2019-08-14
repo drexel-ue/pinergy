@@ -53,6 +53,7 @@ class SignupForm extends React.Component {
     return this.state.showInput ? (
       <input
         type="text"
+        className="custom_gender_input"
         value={this.state.gender}
         onChange={this.handleInput}
         placeholder={this.props.user.username}
@@ -64,16 +65,16 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_step_3">
-        <div className="welcome">How do you identify?</div>
-        <label className="gender_label">
+        <div className="identity_ask">How do you identify?</div>
+        <label id="gender_label_1">
           <input className="gender_option" type="checkbox" />
           Female
         </label>
-        <label className="gender_label">
+        <label id="gender_label_3">
           <input className="gender_option" type="checkbox" />
           Male
         </label>
-        <label className="gender_label">
+        <label id="gender_label_3">
           <input
             className="gender_option"
             type="checkbox"
