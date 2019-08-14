@@ -50,6 +50,12 @@ class SignupForm extends React.Component {
     this.props.updateInterests(interests, this.props.user._id);
   }
 
+  renderButtonText() {
+    return this.state.interests.length < 5
+      ? `Pick ${5 - this.state.interests.length} more`
+      : "Done";
+  }
+
   render() {
     return (
       <div className="signup_step_5">
@@ -66,7 +72,9 @@ class SignupForm extends React.Component {
             </div>
           ))}
         </div>
-        <button className="redbtn btn_signup_step_5">Next</button>
+        <button className="redbtn btn_signup_step_5">
+          {this.renderButtonText()}
+        </button>
         {this.renderErrors()}
       </div>
     );
