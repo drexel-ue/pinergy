@@ -1,18 +1,16 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
-import languages from "../../util/language_util";
-import countries from "../../util/country_util";
+import interests from "../../util/interest_util";
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      interests = [],
+      interests: [],
       errors: {}
     };
 
-    
     this.updateInterests = this.updateInterests.bind(this);
     this.clearedErrors = false;
   }
@@ -31,19 +29,19 @@ class SignupForm extends React.Component {
     );
   }
 
-  selectInterest(interest, key) {
+  selectInterest(interest) {
     return event => {
       event.preventDefault();
       event.stopPropagation();
-      const interests = [...this.state.interests, interest]
-      this.setState({ interests});
+      const interests = [...this.state.interests, interest];
+      this.setState({ interests });
     };
   }
 
   updateInterests(event) {
     event.preventDefault();
     const interests = {
-     interests:this.state.interests
+      interests: this.state.interests
     };
     this.props.updateInterests(interests, this.props.user._id);
   }
@@ -51,7 +49,15 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_step_5">
-        
+        <div className="last_step">Last Step! Tell us what you're into!</div>
+        <div className="interests">
+          <div />
+          {interests.map((interest, index) => (
+            <div id={interest} key={index}>
+              {interest}
+            </div>
+          ))}
+        </div>
         <button className="redbtn btn_signup_step_5">Next</button>
         {this.renderErrors()}
       </div>
