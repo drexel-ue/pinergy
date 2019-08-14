@@ -73,7 +73,9 @@ class SignupForm extends React.Component {
 
   updateGender(gender) {
     return _ => {
-      this.props.updateGender({ gender }, this.props.user._id);
+      this.props
+        .updateGender({ gender }, this.props.user._id)
+        .then(() => this.props.toNext());
     };
   }
 

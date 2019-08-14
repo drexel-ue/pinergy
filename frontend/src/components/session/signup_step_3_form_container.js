@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SignupForm from "./signup_step_3_form";
 import { updateUser } from "../../actions/user_actions";
+import { moveToFourthSignupStep } from "../../actions/modal_actions";
 
 const mapStateToProps = ({ session, errors }) => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = ({ session, errors }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateGender: (gender, id) => dispatch(updateUser(gender, id))
+    updateGender: (gender, id) => dispatch(updateUser(gender, id)),
+    toNext: () => dispatch(moveToFourthSignupStep())
   };
 };
 

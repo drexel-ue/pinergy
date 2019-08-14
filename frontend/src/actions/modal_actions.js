@@ -3,6 +3,7 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 export const SHOW_FIRST_SIGN_UP_STEP = "SHOW_FIRST_SIGN_UP_STEP";
 export const MOVE_TO_SECOND_SIGN_UP_STEP = "MOVE_TO_SECOND_SIGN_UP_STEP";
 export const MOVE_TO_THIRD_SIGN_UP_STEP = "MOVE_TO_THIRD_SIGN_UP_STEP";
+export const MOVE_TO_FOURTH_SIGN_UP_STEP = "MOVE_TO_FOURTH_SIGN_UP_STEP";
 
 export const openModal = (type, data) => {
   return {
@@ -29,6 +30,10 @@ export const moveToSecondSignupStep = formData => {
 
 export const moveToThirdSignupStep = () => ({
   type: MOVE_TO_THIRD_SIGN_UP_STEP
+});
+
+export const moveToFourthSignupStep = () => ({
+  type: MOVE_TO_FOURTH_SIGN_UP_STEP
 });
 
 export const closeModal = () => {
