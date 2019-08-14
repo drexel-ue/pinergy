@@ -15,7 +15,7 @@ exports.scrape = async keyWords => {
       const images = document.querySelectorAll("img");
       const initUrls = [...images].map(image => image.src);
 
-      return initUrls.filter(url => url.includes("http"))
+      return initUrls.filter(url => url.includes("images") && !url.includes("profile") && !url.includes("placeholder"))
     });
   } else {
     await page.type("[name=searchKeyword]", keyWords.join(" "));
