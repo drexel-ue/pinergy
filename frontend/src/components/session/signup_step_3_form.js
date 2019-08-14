@@ -73,9 +73,12 @@ class SignupForm extends React.Component {
 
   updateGender(gender) {
     return _ => {
-      this.props
-        .updateGender({ gender }, this.props.user._id)
-        .then(() => this.props.toNext());
+      if (gender != this.state.gender) {
+        this.setState({ gender: "", customEntered: false, showInput: false });
+      } else if (this.state.customEntered) {
+        this.props.updateGender({ gender }, this.props.user._id);
+        //   .then(() => this.props.toNext());
+      }
     };
   }
 
@@ -87,7 +90,7 @@ class SignupForm extends React.Component {
           <input className="gender_option" type="checkbox" />
           Female
         </label>
-        <label id="gender_label_3" onClick={this.updateGender("female")}>
+        <label id="gender_label_3" onClick={this.updateGender("male")}>
           <input className="gender_option" type="checkbox" />
           Male
         </label>
