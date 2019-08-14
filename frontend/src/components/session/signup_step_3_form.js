@@ -12,23 +12,14 @@ class SignupForm extends React.Component {
       errors: {}
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.showInput = this.showInput.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.updateGender = this.updateGender.bind(this);
     this.clearedErrors = false;
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({ errors: nextProps.errors });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    let user = {
-      gender: this.state.gender
-    };
-
-    this.props.updateUsername(user, this.props.user._id);
   }
 
   renderErrors() {
@@ -69,21 +60,32 @@ class SignupForm extends React.Component {
 
   renderDone() {
     return this.state.customEntered ? (
-      <button className="redbtn gender_selected">Done</button>
+      <button
+        className="redbtn gender_selected"
+        onClick={this.updateGender(this.state.gender)}
+      >
+        Done
+      </button>
     ) : (
       <div />
     );
+  }
+
+  updateGender(gender) {
+    return _ => {
+      this.props.updateGender({ gender }, this.props.user._id);
+    };
   }
 
   render() {
     return (
       <div className="signup_step_3">
         <div className="identity_ask">How do you identify?</div>
-        <label id="gender_label_1">
+        <label id="gender_label_1" onClick={this.updateGender("female")}>
           <input className="gender_option" type="checkbox" />
           Female
         </label>
-        <label id="gender_label_3">
+        <label id="gender_label_3" onClick={this.updateGender("female")}>
           <input className="gender_option" type="checkbox" />
           Male
         </label>
