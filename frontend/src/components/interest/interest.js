@@ -9,7 +9,7 @@ export default class Interest extends React.Component {
     };
   }
   componentDidMount() {
-    this.props.scrapeImage(this.props.interest).then(res => {
+    this.props.scrapeImage({ keyWords: [this.props.interest] }).then(res => {
       debugger;
       this.setState({});
     });
