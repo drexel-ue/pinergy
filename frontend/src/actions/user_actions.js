@@ -11,8 +11,8 @@ export const receiveErrors = errors => ({
 
 export const updateUser = (userData, id) => dispatch =>
   ApiUtil.updateUser(userData, id)
-    .then(user => {
-      dispatch(receiveCurrentUser(user));
+    .then(response => {
+      dispatch(receiveCurrentUser(response.data));
     })
     .catch(err => {
       dispatch(receiveErrors(err.response.data));
