@@ -121,3 +121,12 @@ input.gender_option {
 #gender_label_3 .custom_gender_input {
   width: 100%;
 }
+
+#gender_label_3 {
+  position: relative;
+}
+
+.gender_selected {
+  position: absolute;
+  right: 10px;
+}
