@@ -1,13 +1,13 @@
 const Validator = require("validator");
 const validText = require("./valid_text");
 const User = require("../models/User");
-import { merge } from "lodash";
+const lodash = require("lodash");
 
-module.exports = function validateUpdate(oldUserData, newUserData) {
+module.exports = async function validateUpdate(oldUserData, newUserData) {
   let errors = {};
 
-  const emailTest = User.findOne({ email: newUserData.email });
-  const usernameTest = User.findOne({ username: newUserData.username });
+  const emailTest = await User.findOne({ email: newUserData.email });
+  const usernameTest = await User.findOne({ username: newUserData.username });
 
   // Check if email is in use.
   if (emailTest) {
@@ -19,7 +19,7 @@ module.exports = function validateUpdate(oldUserData, newUserData) {
     errors.username = `${newUserData.username} is already taken.`;
   }
 
-  const mergedUserData = merge({}, oldUserData, newUserData);
+  const mergedUserData = lodash.merge(oldUserData, newUserData);
 
   mergedUserData.email = validText(mergedUserData.email)
     ? mergedUserData.email

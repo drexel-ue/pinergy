@@ -16,6 +16,8 @@ const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 // Validates login form.
 const validateLoginInput = require("../../validation/login");
+// Validates updates.
+const validateUpdate = require("../../validation/update_user");
 
 // NB: The callback for every Express route requires a request and response as arguments.
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
@@ -125,25 +127,24 @@ router.get(
   (req, res) => res.json(req.user)
 );
 
-router.patch("/update/:id", (req, res) => {
-  let errors = {};
-  const user = User.findById(req.params.id, function(err, user) {
-    if (!user) {
-      errors.userId = `Couldn't find any user with id ${req.params.id}`;
-      return res.json(errors);
+router.patch("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  // Grab user to be updated.
+  User.findById(id, async (err, user) => {
+    if (err) {
+      return res.status(400).json(err);
+    }
+
+    // Run validation.
+    const validation = await validateUpdate(user, req.body);
+
+    if (validation.isValid) {
+      await User.findByIdAndUpdate(id, req.body);
+      return res.json(validation.mergedUserData);
     } else {
-      // do your updates here
-      user = new User(lodash.merge({}, user, req.body));
-      user.save(function(err, user) {
-        if (err) {
-          errors.userId = `Couldn't update username of user: ${req.params.id}`;
-          return res.json(errors);
-        } else return res.json(user);
-      });
+      return res.status(400).json(validation.errors);
     }
   });
-  debugger;
-  2 + 3;
 });
 
 module.exports = router;
