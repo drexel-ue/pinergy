@@ -5,7 +5,7 @@ import NavBarContainer from "./nav/navbar_container";
 
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
-import ModalContainer from "./modal/modal_container";
+import ModalContainer from "./modal/modal";
 
 class App extends React.Component {
 
