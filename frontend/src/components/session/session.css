@@ -167,3 +167,19 @@ input.gender_option {
   padding-right: 20px;
   font-size: 20px;
 }
+
+.languages,
+.countries {
+  position: absolute;
+  z-index: 1;
+  height: 500px;
+  width: 77%;
+  border: 1px solid black;
+  border-radius: 8px;
+  background: rgb(0, 0, 0, 0.9);
+  overflow-y: auto;
+}
+
+.hide {
+  display: none;
+}

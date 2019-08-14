@@ -35,10 +35,12 @@ class SignupForm extends React.Component {
         <div className="locale_select">
           <div className="local_select_text">Language</div>
           <i class="fas fa-chevron-down" />
+          <div className="languages">{/* {Languages} */}</div>
         </div>
         <div className="locale_select">
           <div className="local_select_text">Country</div>
           <i class="fas fa-chevron-down" />
+          <div className="countries">{/* {countries} */}</div>
         </div>
         {this.renderErrors()}
       </div>
