@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
     };
 
     this.selectLocale = this.selectLocale.bind(this);
+    this.updateLocale = this.updateLocale.bind(this);
     this.clearedErrors = false;
   }
 
@@ -46,6 +47,15 @@ class SignupForm extends React.Component {
       document.getElementsByClassName(className)[0].classList.toggle("hide");
       this.setState({ [field]: event.target.firstChild.data });
     };
+  }
+
+  updateLocale(event) {
+    event.preventDefault();
+    const locale = {
+      language: this.state.language,
+      country: this.state.country
+    };
+    this.props.updateLocale(locale, this.props.user._id);
   }
 
   render() {
