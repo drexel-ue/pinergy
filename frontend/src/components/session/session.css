@@ -245,7 +245,7 @@ input.gender_option {
   border: 1px solid black;
   border-radius: 8px;
   position: relative;
-  background: black;
+  background: grey;
 }
 
 .interest_text {
@@ -253,6 +253,11 @@ input.gender_option {
   bottom: 10px;
   left: 10px;
   color: white;
+}
+
+.selected_interest {
+  border: 1px solid blue;
+  filter: brightness(0.3);
 }
 
 .btn_signup_step_5 {
