@@ -56,6 +56,13 @@ class SignupForm extends React.Component {
       : "Done";
   }
 
+  buttonStyling() {
+    return {
+      background: this.state.interests.length < 5 ? "#efefef" : "red",
+      color: this.state.interests.length < 5 ? "#8e8e8e" : "white"
+    };
+  }
+
   render() {
     return (
       <div className="signup_step_5">
@@ -72,7 +79,10 @@ class SignupForm extends React.Component {
             </div>
           ))}
         </div>
-        <button className="redbtn btn_signup_step_5">
+        <button
+          className="redbtn btn_signup_step_5"
+          style={this.buttonStyling()}
+        >
           {this.renderButtonText()}
         </button>
         {this.renderErrors()}
