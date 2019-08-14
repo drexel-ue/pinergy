@@ -8,6 +8,7 @@ class SignupForm extends React.Component {
     this.state = {
       gender: undefined,
       showInput: false,
+      customEntered: false,
       errors: {}
     };
 
@@ -42,7 +43,10 @@ class SignupForm extends React.Component {
 
   handleInput(e) {
     e.preventDefault();
-    this.setState({ gender: e.target.value });
+    this.setState({
+      gender: e.target.value,
+      customEntered: e.target.value.length > 0
+    });
   }
 
   showInput() {
@@ -62,6 +66,15 @@ class SignupForm extends React.Component {
       <div className="gender_option">Custom</div>
     );
   }
+
+  renderDone() {
+    return this.state.customEntered ? (
+      <button className="redbtn gender_selected">Done</button>
+    ) : (
+      <div />
+    );
+  }
+
   render() {
     return (
       <div className="signup_step_3">
@@ -81,6 +94,7 @@ class SignupForm extends React.Component {
             onClick={this.showInput}
           />
           {this.renderInput()}
+          {this.renderDone()}
         </label>
         {this.renderErrors()}
       </div>
