@@ -143,7 +143,7 @@ router.patch("/update/:id", (req, res) => {
     }
   });
   debugger;
-  2+3;
+  2 + 3;
 });
 
 module.exports = router;
