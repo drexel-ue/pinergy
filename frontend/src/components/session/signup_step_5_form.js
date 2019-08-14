@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
       errors: {}
     };
 
+    this.selectInterest = this.selectInterest.bind(this);
     this.updateInterests = this.updateInterests.bind(this);
     this.clearedErrors = false;
   }
@@ -31,10 +32,12 @@ class SignupForm extends React.Component {
 
   selectInterest(interest) {
     return event => {
+      console.log("dnsljnbdkjs");
       event.preventDefault();
       event.stopPropagation();
       const interests = [...this.state.interests, interest];
       this.setState({ interests });
+      document.getElementById(interest).classList.toggle("selected_interest");
     };
   }
 
@@ -52,7 +55,12 @@ class SignupForm extends React.Component {
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
           {interests.map((interest, index) => (
-            <div id={interest} key={index} className="interest">
+            <div
+              id={interest}
+              key={index}
+              className="interest"
+              onClick={this.selectInterest(interest)}
+            >
               <div className="interest_text">{interest}</div>
             </div>
           ))}
