@@ -53,7 +53,7 @@ class SignupForm extends React.Component {
         <div className="interests">
           {interests.map((interest, index) => (
             <div id={interest} key={index} className="interest">
-              {interest}
+              <div className="interest_text">{interest}</div>
             </div>
           ))}
         </div>

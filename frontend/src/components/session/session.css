@@ -244,6 +244,15 @@ input.gender_option {
   width: 136px;
   border: 1px solid black;
   border-radius: 8px;
+  position: relative;
+  background: black;
+}
+
+.interest_text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
 }
 
 .btn_signup_step_5 {
