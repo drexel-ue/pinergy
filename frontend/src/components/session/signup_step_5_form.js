@@ -51,9 +51,8 @@ class SignupForm extends React.Component {
       <div className="signup_step_5">
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
-          <div />
           {interests.map((interest, index) => (
-            <div id={interest} key={index}>
+            <div id={interest} key={index} className="interest">
               {interest}
             </div>
           ))}
