@@ -30,25 +30,44 @@ class SignupForm extends React.Component {
     );
   }
 
+  toggleDropdown(className) {
+    return event => {
+      console.log("sslinlkns");
+      event.preventDefault();
+      event.stopPropagation();
+      document.getElementsByClassName(className)[0].classList.toggle("hide");
+    };
+  }
+
   render() {
     return (
       <div className="signup_step_4">
         <div className="locale_ask">Pick your language and country</div>
-        <div className="locale_select">
+        <div
+          onClick={this.toggleDropdown("languages")}
+          className="locale_select"
+        >
           <div className="local_select_text">Language</div>
-          <i class="fas fa-chevron-down" />
+          <i className="fas fa-chevron-down" />
           <div className="languages hide">
             {languages.map(lang => (
-              <div>{lang}</div>
+              <div key={lang} onClick={this.toggleDropdown("languages")}>
+                {lang}
+              </div>
             ))}
           </div>
         </div>
-        <div className="locale_select">
+        <div
+          onClick={this.toggleDropdown("countries")}
+          className="locale_select"
+        >
           <div className="local_select_text">Country</div>
-          <i class="fas fa-chevron-down" />
+          <i className="fas fa-chevron-down" />
           <div className="countries hide">
             {countries.map(country => (
-              <div>{country}</div>
+              <div key={country} onClick={this.toggleDropdown("countries")}>
+                {country}
+              </div>
             ))}
           </div>
         </div>
