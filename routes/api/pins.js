@@ -22,7 +22,8 @@ const validateUpdate = require("../../validation/update_user");
 const scraper = require("../../util/scrape");
 
 router.post("/query", async (req, res) => {
-  return res.json(scraper.scrape(req.body.keyWords));
+  return res.json(
+    await scraper.scrape(req.body.keyWords));
 });
 
 module.exports = router;

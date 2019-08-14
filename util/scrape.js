@@ -1,26 +1,27 @@
 const puppeteer = require("puppeteer");
 
 exports.scrape = async keyWords => {
-  debugger;
+  // debugger;
   const browser = await puppeteer.launch();
-  debugger;
+  // debugger;
 
   const page = await browser.newPage();
-  debugger;
+  // debugger;
 
-  page.goTo("https://unsplash.com");
-  debugger;
+  page.goto("https://unsplash.com");
+  // debugger;
   let data;
 
   if (!keyWords) {
-    debugger;
+    // debugger;
     await page.waitForSelector("img", { visible: true });
 
     data = await page.evaluate(() => {
       const images = document.querySelectorAll("img");
-      debugger;
-      return Array.from(images.map(image => image.src));
+      // debugger;
+      return [...images].map(image => image.src);
     });
+    debugger
   } else {
     await page.type("[name=searchKeyword]", keyWords.join(" "));
     await page.click("[type=sumbit]");
