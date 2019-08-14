@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
-import { moveToSecondStep } from "./modal_actions";
+import { moveToSecondSignupStep } from "./modal_actions";
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -41,7 +41,7 @@ export const signup = user => dispatch =>
       APIUtil.setAuthToken(response.data.token);
       dispatch(receiveCurrentUser(response.data.user));
       dispatch(receiveUserSignIn());
-      dispatch(moveToSecondStep());
+      dispatch(moveToSecondSignupStep());
     },
     err => dispatch(receiveErrors(err.response.data))
   );

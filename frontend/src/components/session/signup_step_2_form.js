@@ -27,7 +27,10 @@ class SignupForm extends React.Component {
       username: this.state.username
     };
 
-    this.props.updateUsername(user, this.props.user._id);
+    if (this.state.username) {
+      this.props.updateUsername(user, this.props.user._id);
+    }
+    this.props.nextStep();
   }
 
   renderErrors() {
