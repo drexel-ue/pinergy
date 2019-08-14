@@ -84,6 +84,7 @@ class SignupForm extends React.Component {
         <button
           className="redbtn btn_signup_step_5"
           style={this.buttonStyling()}
+          onClick={this.updateInterests}
         >
           {this.renderButtonText()}
         </button>
