@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
 import interests from "../../util/interest_util";
+import InterestContainer from "../interest/interest_container"
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -71,13 +72,8 @@ class SignupForm extends React.Component {
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
           {interests.map((interest, index) => (
-            <div
-              id={interest}
-              key={index}
-              className="interest"
-              onClick={this.selectInterest(interest)}
-            >
-              <div className="interest_text">{interest}</div>
+            <div onClick={this.selectInterest(interest)}>
+              <InterestContainer interest={interest} key={index} />
             </div>
           ))}
         </div>
