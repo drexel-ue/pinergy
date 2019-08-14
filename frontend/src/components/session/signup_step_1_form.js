@@ -18,10 +18,6 @@ class SignupForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
-    }
-
     this.setState({ errors: nextProps.errors });
   }
 
@@ -48,7 +44,6 @@ class SignupForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => {
-          // debugger
           return <li key={`error-${i}`}>{this.state.errors[error]}</li>;
         })}
       </ul>

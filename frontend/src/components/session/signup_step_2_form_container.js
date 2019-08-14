@@ -5,13 +5,13 @@ import { updateUser } from "../../actions/user_actions";
 const mapStateToProps = ({ session, errors }) => {
   return {
     user: session.user,
-    errors: errors.session
+    errors: errors.userUpdate
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUsername: username => dispatch(updateUser(username))
+    updateUsername: (username, id) => dispatch(updateUser(username, id))
   };
 };
 

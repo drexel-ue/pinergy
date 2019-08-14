@@ -1,26 +1,26 @@
 import React from "react";
-import { closeModal, OPEN_MODAL, CLOSE_MODAL, SHOW_FIRST_SIGN_UP_STEP, MOVE_TO_SECOND_SIGN_UP_STEP  } from "../../actions/modal_actions";
+import {
+  closeModal,
+  OPEN_MODAL,
+  CLOSE_MODAL,
+  SHOW_FIRST_SIGN_UP_STEP,
+  MOVE_TO_SECOND_SIGN_UP_STEP
+} from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
 import SignupStep1Container from "../session/signup_step_1_form_container";
 import SignupStep2Container from "../session/signup_step_2_form_container";
 import { showFirstSignUpStep } from "../../actions/modal_actions";
 
-
-
-class Modal extends React.Component{
+class Modal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   componentDidMount() {
-    // console.log("Paul is handsome")
-    // debugger
-    this.props.showFirstSignUpStep()
-      // .then( () =>{debugger})  
-    // debugger
+    this.props.showFirstSignUpStep();
   }
 
-render () {
+  render() {
     // if (!modal) {
     //   return null;
     // }
@@ -34,21 +34,18 @@ render () {
         break;
       default:
         return null;
-  }
-  // debugger 
-  return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child">
-        {component}
+    }
+    return (
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child">{component}</div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal 
+    modal: state.ui.modal
   };
 };
 

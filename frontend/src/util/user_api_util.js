@@ -1,5 +1,5 @@
 import Axios from "axios";
 
-export const updateUser = userData => {
-  return Axios.patch("/api/users/update", userData);
+export const updateUser = (userData, id) => {
+  return Axios.patch(`/api/users/update/${id}`, userData);
 };
