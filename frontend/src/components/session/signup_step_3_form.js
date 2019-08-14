@@ -6,7 +6,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gender: undefined,
+      gender: "",
       showInput: false,
       customEntered: false,
       errors: {}
@@ -73,9 +73,15 @@ class SignupForm extends React.Component {
 
   updateGender(gender) {
     return _ => {
-      if (gender !== this.state.gender) {
-        this.setState({ gender: "", customEntered: false, showInput: false });
-      } else if (this.state.gender.length > 0) {
+      if (
+        this.state.gender !== "female" &&
+        this.state.gender !== "male" &&
+        this.state.gender.length > 0
+      ) {
+        this.props
+          .updateGender({ gender }, this.props.user._id)
+          .then(() => this.props.toNext());
+      } else if (gender === "female" || gender === "male") {
         this.props
           .updateGender({ gender }, this.props.user._id)
           .then(() => this.props.toNext());
