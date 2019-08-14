@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
+import languages from "../../util/language_util";
+import countries from "../../util/country_util";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -35,12 +37,20 @@ class SignupForm extends React.Component {
         <div className="locale_select">
           <div className="local_select_text">Language</div>
           <i class="fas fa-chevron-down" />
-          <div className="languages">{/* {Languages} */}</div>
+          <div className="languages hide">
+            {languages.map(lang => (
+              <div>{lang}</div>
+            ))}
+          </div>
         </div>
         <div className="locale_select">
           <div className="local_select_text">Country</div>
           <i class="fas fa-chevron-down" />
-          <div className="countries">{/* {countries} */}</div>
+          <div className="countries hide">
+            {countries.map(country => (
+              <div>{country}</div>
+            ))}
+          </div>
         </div>
         {this.renderErrors()}
       </div>

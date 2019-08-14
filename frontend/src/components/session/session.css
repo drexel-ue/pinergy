@@ -180,6 +180,29 @@ input.gender_option {
   overflow-y: auto;
 }
 
+.languages div,
+.countries div {
+  display: flex;
+  font-size: 20px;
+  color: white;
+  padding: 4px 0 4px 20px;
+}
+
+.languages div:hover,
+.countries div:hover {
+  border: 1px solid blue;
+  padding: 3px 0 3px 19px;
+  background: grey;
+}
+
+.languages {
+  top: 150px;
+}
+
+.countries {
+  height: 800px;
+}
+
 .hide {
   display: none;
 }
