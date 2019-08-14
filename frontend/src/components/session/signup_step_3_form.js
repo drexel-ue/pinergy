@@ -6,13 +6,13 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: undefined,
-      errors: {},
-      showInput: false
+      gender: undefined,
+      showInput: false,
+      errors: {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleInput = this.toggleInput.bind(this);
+    this.toggleInput = this.showInput.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.clearedErrors = false;
   }
@@ -24,7 +24,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      username: this.state.username
+      gender: this.state.gender
     };
 
     this.props.updateUsername(user, this.props.user._id);
@@ -42,46 +42,42 @@ class SignupForm extends React.Component {
 
   handleInput(e) {
     e.preventDefault();
-    this.setState({ username: e.target.value });
+    this.setState({ gender: e.target.value });
   }
 
-  toggleInput(e) {
-    e.preventDefault();
-    this.setState({ showInput: !this.state.showInput });
+  showInput() {
+    this.setState({ showInput: true });
   }
 
   renderInput() {
     return this.state.showInput ? (
       <input
         type="text"
-        value={this.state.username}
+        value={this.state.gender}
         onChange={this.handleInput}
         placeholder={this.props.user.username}
       />
     ) : (
-      <div className="username">{this.props.user.username}</div>
+      <div className="gender_option">{this.props.user.username}</div>
     );
   }
   render() {
     return (
-      <div className="signup_step_2">
-        <img className="pfimg" src={this.props.user.profilePhotoUrl} />
-
-        <div className="sup2email">{this.props.user.email}</div>
-
-        <div className="welcome">Welcome to Pinergy,</div>
-        <div className="sub2msgenc">
+      <div className="signup_step_3">
+        <div className="welcome">How do you identify?</div>
+        <input className="gender_option" type="checkbox">
+          Female
+        </input>
+        <input className="gender_option" type="checkbox">
+          Male
+        </input>
+        <input
+          className="gender_option"
+          type="checkbox"
+          onClick={this.showInput}
+        >
           {this.renderInput()}
-          <i className="fas fa-pen" onClick={this.toggleInput} />
-        </div>
-
-        <div className="txt3">
-          Your answers to the next questions will help us find the right ideas
-          for you
-        </div>
-        <button className="redbtn btn_signup_step2" onClick={this.handleSubmit}>
-          Next
-        </button>
+        </input>
         {this.renderErrors()}
       </div>
     );
