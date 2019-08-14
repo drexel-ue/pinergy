@@ -44,10 +44,12 @@ class SignupForm extends React.Component {
 
   updateInterests(event) {
     event.preventDefault();
-    const interests = {
-      interests: this.state.interests
-    };
-    this.props.updateInterests(interests, this.props.user._id);
+    if (this.state.interests.length > 5) {
+      const interests = {
+        interests: this.state.interests
+      };
+      this.props.updateInterests(interests, this.props.user._id);
+    }
   }
 
   renderButtonText() {
