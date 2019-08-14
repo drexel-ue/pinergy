@@ -236,6 +236,7 @@ input.gender_option {
   overflow-y: auto;
   grid-gap: 6px;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .interest {
@@ -243,4 +244,8 @@ input.gender_option {
   width: 136px;
   border: 1px solid black;
   border-radius: 8px;
+}
+
+.btn_signup_step_5 {
+  width: 90%;
 }
