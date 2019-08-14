@@ -12,7 +12,7 @@ class SignupForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.toggleInput = this.showInput.bind(this);
+    this.showInput = this.showInput.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.clearedErrors = false;
   }
@@ -58,26 +58,29 @@ class SignupForm extends React.Component {
         placeholder={this.props.user.username}
       />
     ) : (
-      <div className="gender_option">{this.props.user.username}</div>
+      <div className="gender_option">Custom</div>
     );
   }
   render() {
     return (
       <div className="signup_step_3">
         <div className="welcome">How do you identify?</div>
-        <input className="gender_option" type="checkbox">
+        <label className="gender_label">
+          <input className="gender_option" type="checkbox" />
           Female
-        </input>
-        <input className="gender_option" type="checkbox">
+        </label>
+        <label className="gender_label">
+          <input className="gender_option" type="checkbox" />
           Male
-        </input>
-        <input
-          className="gender_option"
-          type="checkbox"
-          onClick={this.showInput}
-        >
+        </label>
+        <label className="gender_label">
+          <input
+            className="gender_option"
+            type="checkbox"
+            onClick={this.showInput}
+          />
           {this.renderInput()}
-        </input>
+        </label>
         {this.renderErrors()}
       </div>
     );
