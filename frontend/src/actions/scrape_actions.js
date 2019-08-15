@@ -9,7 +9,7 @@ const receiveInterests = interests => ({
 });
 
 export const scrapeInterests = () => dispatch => {
-  return Axios.post("/api/pins/query", interest)
+  return 
     .then(({ data }) => {
       dispatch(receiveInterests(data));
     })
