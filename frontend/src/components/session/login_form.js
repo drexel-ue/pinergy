@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
       <div className="login-form-container">
         <div className="pinergy-logo">P</div>
         <div className="login-welcome">
-        Welcome to Pinterest
+        Welcome to Pinergy
         </div>
         <form onSubmit={this.handleSubmit}>
           <div className="login-input">
@@ -87,11 +87,13 @@ class LoginForm extends React.Component {
             />
             <Link className="forgot-password" to="">Forgot your password?</Link>
             <br />
-            <button className="redbtn login">Log in</button>
+            <button className="redbtn login-btn">Log in</button>
+            <div className="log-or-dem">OR</div>
+            <button className='redbtn demolog'>Demo Login</button>
+            <div className="login-terms">By continuing, you agree to Pinergy's</div>
+            <div className="login-terms bold">Terms of Service, Privacy Policy</div>
+            <div className="login-to-signin" onClick={this.gotoSignup}>Not on Pinergy yet? Sign up</div>
             {this.renderErrors()}
-            Or 
-            <button className='redbtn demolog'></button>
-            <div className="login-to-signin" onClick={this.gotoSignup}>Not on Pinterest yet? Sign up</div>
           </div>
         </form>
       </div>
