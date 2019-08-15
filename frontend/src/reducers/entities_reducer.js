@@ -1,3 +1,6 @@
 import { combineReducers } from "redux";
+import interests from "./interests_reducer";
 
-export default combineReducers({});
+export default combineReducers({
+  interests
+});
