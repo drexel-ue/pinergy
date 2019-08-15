@@ -1,34 +1,30 @@
 const puppeteer = require("puppeteer");
 
-exports.scrape = async keyWords => {
+exports.scrape = async keyWord => {
   const browser = await puppeteer.launch();
-  debugger;
 
-  let data = {};
+  const page = await browser.newPage();
 
-  keyWords.forEach(async keyword => {
-    const page = await browser.newPage();
+  await page.goto("https://unsplash.com");
 
-    page.goto("https://unsplash.com");
+  await page.type("[name=searchKeyword]", keyWord);
+  await page.click("[type=submit]");
 
-    await page.waitForSelector("img", { visible: true });
+  await page.waitForSelector("img", { visible: true });
+  await page.screenshot({ path: `${keyWord}.png` });
 
-    await page.type("[name=searchKeyword]", keyword);
-    await page.click("[type=submit]");
+  const data = await page.evaluate(() => {
+    const images = document.querySelectorAll("img");
+    const initUrls = [...images].map(image => image.src);
+    debugger;
+    const filtered = initUrls.filter(
+      url =>
+        url.includes("images") &&
+        !url.includes("profile") &&
+        !url.includes("placeholder")
+    );
 
-    await page.evaluate(() => {
-      const images = document.querySelectorAll("img");
-      const initUrls = [...images].map(image => image.src);
-
-      const filtered = initUrls.filter(
-        url =>
-          url.includes("images") &&
-          !url.includes("profile") &&
-          !url.includes("placeholder")
-      );
-
-      data[keyword] = filtered[Math.floor(Math.random() * filtered.length)];
-    });
+    return filtered[Math.floor(Math.random() * filtered.length)];
   });
 
   browser.close();
