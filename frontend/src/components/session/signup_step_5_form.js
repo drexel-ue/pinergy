@@ -2,7 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
 import interests from "../../util/interest_util";
-import InterestContainer from "../interest/interest_container"
+import InterestContainer from "../interest/interest_container";
+import { scrapeImage } from "../../util/image_util";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -15,6 +16,16 @@ class SignupForm extends React.Component {
     this.selectInterest = this.selectInterest.bind(this);
     this.updateInterests = this.updateInterests.bind(this);
     this.clearedErrors = false;
+  }
+
+  componentDidMount() {
+    scrapeImage({ keyWords: interests })
+      .then(res => {
+        debugger;
+      })
+      .catch(res => {
+        debugger;
+      });
   }
 
   componentWillReceiveProps(nextProps) {
