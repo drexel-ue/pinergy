@@ -277,9 +277,13 @@ input.gender_option {
     height: 34px;
     width: 122px;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
+    background-color: #efefef;
+    font-weight: bolder;
     border-radius: 8px;
     font-size: 16px;
     font-family: inherit;
+    outline: none;
 }
 
 .login-form-container {
@@ -381,7 +385,9 @@ input.gender_option {
   margin-bottom: 5px;
 }
 
-.demolog:hover, .login-btn:hover {
+.demolog:hover, 
+.login-btn:hover,
+.sxybutton:hover {
   filter: brightness(0.8);
   cursor: pointer;
 }
