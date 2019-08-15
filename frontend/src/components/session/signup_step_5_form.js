@@ -51,7 +51,8 @@ class SignupForm extends React.Component {
       const interests = {
         interests: this.state.interests
       };
-      this.props.updateInterests(interests, this.props.user._id);
+      this.props.updateInterests(interests, this.props.user._id)
+        .then(() => this.props.closeModal());
     }
   }
 

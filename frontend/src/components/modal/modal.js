@@ -8,7 +8,8 @@ import {
   MOVE_TO_THIRD_SIGN_UP_STEP,
   MOVE_TO_FOURTH_SIGN_UP_STEP,
   MOVE_TO_FIFTH_SIGN_UP_STEP,
-  MOVE_TO_LOGIN
+  MOVE_TO_LOGIN,
+  CLOSE_MODAL
 } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
@@ -18,7 +19,7 @@ import SignupStep2Container from "../session/signup_step_2_form_container";
 import SignupStep3Container from "../session/signup_step_3_form_container";
 import SignupStep4Container from "../session/signup_step_4_form_container";
 import SignupStep5Container from "../session/signup_step_5_form_container";
-import LoginFormContainer from "../session/login_form_container"
+import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 class Modal extends React.Component {
   componentDidMount() {
@@ -49,25 +50,31 @@ class Modal extends React.Component {
       case MOVE_TO_LOGIN:
         component = <LoginFormContainer />;
         break;
+      case CLOSE_MODAL:
+        return (component = <div />);
       default:
-        return null;
+        return (component = <div />);
     }
-    return (
-      <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child">
-          {component}
-          {/* <SignupStep5Container /> */}
+    if (this.props.currentUser === null) {
+      return (
+        <div className="modal-background" onClick={closeModal}>
+          <div className="modal-child">
+            {component}
+            {/* <SignupStep5Container /> */}
+          </div>
+          <SessionButtonContainer modal={this.props.modal} />
         </div>
-        <SessionButtonContainer modal={this.props.modal} />
-
-      </div>
+      )
+    } else return (
+      <div></div>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    currentUser: state.session.user
   };
 };
 
