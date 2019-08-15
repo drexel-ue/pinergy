@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
-import { moveToSecondSignupStep, closeModal } from "./modal_actions";
+import { moveToSecondSignupStep, closeModal, showFirstSignUpStep } from "./modal_actions";
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -58,7 +58,6 @@ export const login = user => dispatch =>
       dispatch(closeModal())
     })
     .catch(err => {
-      // debugger
       dispatch(receiveErrors(err.response.data));
     });
 
@@ -69,4 +68,5 @@ export const logout = () => dispatch => {
   APIUtil.setAuthToken(false);
   // Dispatch a logout action
   dispatch(logoutUser());
+  dispatch(showFirstSignUpStep());
 };
