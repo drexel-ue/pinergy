@@ -1,6 +1,7 @@
 import Axios from "axios";
+import interests from "";
 
-export const scrapeImage = interest => {
+export const scrapeInterests = () => dispatch => {
   return Axios.post("/api/pins/query", interest)
     .then(res => {
       debugger;
