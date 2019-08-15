@@ -17,7 +17,7 @@ class App extends React.Component {
       <NavBarContainer />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
-        <ProtectedRoute exact path="profile" component={ProfileContainer} />
+        <ProtectedRoute exact path="/profile" component={ProfileContainer} />
         {/* <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
         {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
       </Switch>
