@@ -18,16 +18,6 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
-  componentDidMount() {
-    scrapeImage({ keyWords: interests });
-    // .then(res => {
-    //   debugger;
-    // })
-    // .catch(res => {
-    //   debugger;
-    // });
-  }
-
   componentWillReceiveProps(nextProps) {
     this.setState({ errors: nextProps.errors });
   }
