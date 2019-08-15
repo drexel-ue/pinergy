@@ -269,3 +269,15 @@ input.gender_option {
   height: 100% !important;
   width: auto !important;
 }
+
+.sxybutton{
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    height: 34px;
+    width: 122px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+}
