@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
-import { moveToSecondSignupStep } from "./modal_actions";
+import { moveToSecondSignupStep, closeModal } from "./modal_actions";
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -55,8 +55,10 @@ export const login = user => dispatch =>
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
+      dispatch(closeModal())
     })
     .catch(err => {
+      // debugger
       dispatch(receiveErrors(err.response.data));
     });
 

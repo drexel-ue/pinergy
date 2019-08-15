@@ -47,7 +47,7 @@ class SignupForm extends React.Component {
 
   updateInterests(event) {
     event.preventDefault();
-    if (this.state.interests.length > 5) {
+    if (this.state.interests.length > 4) {
       const interests = {
         interests: this.state.interests
       };
