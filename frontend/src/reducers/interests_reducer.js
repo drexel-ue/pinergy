@@ -4,7 +4,7 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_INTERESTS:
-      return action.type;
+      return action.interests;
     default:
       return state;
   }

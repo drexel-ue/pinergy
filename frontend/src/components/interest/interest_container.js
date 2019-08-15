@@ -1,15 +1,16 @@
-import { scrapeImage } from '../../util/image_util'
-import Interest from './interest'
-import { connect } from 'react-redux'
-const mapStateToProps = (state, ownProps) => ({ 
-  interest: ownProps.interest
-} )
+import Interest from "./interest";
+import { connect } from "react-redux";
+import { scrapeInterests } from "../../actions/scrape_actions";
 
-const mapDispatchToProps = () => ({
-  scrapeImage: interest => scrapeImage(interest)
-})
+const mapStateToProps = (state, ownProps) => ({
+  interest: ownProps.interest
+});
+
+const mapDispatchToProps = dispatch => ({
+  scrape: interest => dispatch(scrapeInterests(interest))
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Interest)
+)(Interest);

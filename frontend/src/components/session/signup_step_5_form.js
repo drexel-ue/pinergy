@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import "./session.css";
 import interests from "../../util/interest_util";
 import InterestContainer from "../interest/interest_container";
-import { scrapeImage } from "../../util/image_util";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -40,7 +39,9 @@ class SignupForm extends React.Component {
         ? this.state.interests.filter(inArr => inArr !== interest)
         : [...this.state.interests, interest];
       this.setState({ interests });
-      document.getElementById(interest).classList.toggle("selected_interest");
+      document
+        .getElementById(`${interest}_img`)
+        .classList.toggle("selected_interest");
     };
   }
 

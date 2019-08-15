@@ -8,8 +8,10 @@ const receiveInterests = interests => ({
 });
 
 export const scrapeInterests = () => dispatch => {
+  console.time("scrape request");
   return ScrapeUtil.scrapeInterests()
     .then(({ data }) => {
+      console.timeEnd("scrape request");
       dispatch(receiveInterests(data));
     })
     .catch(res => {

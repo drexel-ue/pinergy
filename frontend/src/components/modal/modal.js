@@ -19,9 +19,6 @@ import SignupStep4Container from "../session/signup_step_4_form_container";
 import SignupStep5Container from "../session/signup_step_5_form_container";
 
 class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.showFirstSignUpStep();
   }
