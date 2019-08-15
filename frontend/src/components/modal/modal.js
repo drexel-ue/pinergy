@@ -19,6 +19,7 @@ import SignupStep3Container from "../session/signup_step_3_form_container";
 import SignupStep4Container from "../session/signup_step_4_form_container";
 import SignupStep5Container from "../session/signup_step_5_form_container";
 import LoginFormContainer from "../session/login_form_container"
+import SessionButtonContainer from "../session/session_button_container";
 class Modal extends React.Component {
   componentDidMount() {
     this.props.showFirstSignUpStep();
@@ -55,6 +56,7 @@ class Modal extends React.Component {
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child">
           {component}
+          <SessionButtonContainer modal={this.props.modal} />
           {/* <SignupStep5Container /> */}
         </div>
       </div>
