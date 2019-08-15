@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import "./session.css";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -63,7 +64,8 @@ class LoginForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="login-form-container">
+        <div className="pinergy-logo">P</div>
         Welcome to Pinterest
         <form onSubmit={this.handleSubmit}>
           <div>
