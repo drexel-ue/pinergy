@@ -37,7 +37,7 @@ class SignupForm extends React.Component {
       age: this.state.age
     };
 
-    this.props.signup(user);
+    this.props.signup(user)
   }
 
   renderErrors() {

@@ -8,8 +8,8 @@ import {
   MOVE_TO_FIFTH_SIGN_UP_STEP,
   MOVE_TO_LOGIN
 } from "../actions/modal_actions";
-
-export default function modalReducer(state = null, action) {
+const defaultState = SHOW_FIRST_SIGN_UP_STEP
+export default function modalReducer(state = defaultState, action) {
   switch (action.type) {
     case OPEN_MODAL:
       return action.modal;
@@ -26,7 +26,7 @@ export default function modalReducer(state = null, action) {
     case MOVE_TO_LOGIN:
       return action.type;
     case CLOSE_MODAL:
-      return null;
+      return action.type;
     default:
       return state;
   }

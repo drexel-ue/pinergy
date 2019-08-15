@@ -6,6 +6,7 @@ import NavBarContainer from "./nav/navbar_container";
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import ModalContainer from "./modal/modal";
+import ProfileContainer from "./profile/profile_container"
 
 class App extends React.Component {
 
@@ -16,7 +17,8 @@ class App extends React.Component {
       <NavBarContainer />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <ProtectedRoute exact path="profile" component={ProfileContainer} />
+        {/* <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
         {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
       </Switch>
     </div>
