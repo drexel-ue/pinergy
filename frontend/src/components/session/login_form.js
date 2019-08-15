@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.gotoSignup = this.gotoSignup.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -56,7 +57,10 @@ class LoginForm extends React.Component {
       </ul>
     );
   }
-
+  gotoSignup(e) {
+    e.preventDefault();
+    this.props.gotoSignUp();
+  }
   render() {
     return (
       <div>
@@ -82,7 +86,7 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
             Or 
             <button className='redbtn demolog'></button>
-            <Link to="">Not on Pinterest yet? Sign up</Link>
+            <div onClick={this.gotoSignup}>Not on Pinterest yet? Sign up</div>
           </div>
         </form>
       </div>
