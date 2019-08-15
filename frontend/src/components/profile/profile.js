@@ -1,5 +1,5 @@
 import React from "react";
-import TweetBox from "../tweets/tweet_box";
+import ProfileHeader from './profile_head'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -21,11 +21,10 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.state.boards.length === 0) {
-      return <div>This user has no Boards</div>;
-    } else {
+    debugger 
       return (
         <div>
+            <ProfileHeader/>
           <h2>All of This User's Board</h2>
           {this.state.boards.map(board => (
             <div>To Be a Bard</div>
@@ -34,6 +33,6 @@ class Profile extends React.Component {
       );
     }
   }
-}
+
 
 export default Profile;

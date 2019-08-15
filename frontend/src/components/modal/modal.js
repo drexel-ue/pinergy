@@ -23,13 +23,16 @@ import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 class Modal extends React.Component {
   componentDidMount() {
-    this.props.showFirstSignUpStep();
+    if (this.props.currentUser.interests) {
+      this.props.closeModal();
+    } else { this.props.showFirstSignUpStep();}
   }
 
   render() {
     // if (!modal) {
     //   return null;
-    // }
+    // }]
+    
     let component;
     switch (this.props.modal) {
       case SHOW_FIRST_SIGN_UP_STEP:
@@ -55,18 +58,15 @@ class Modal extends React.Component {
       default:
         return (component = <div />);
     }
-    if (this.props.currentUser === null) {
-      return (
-        <div className="modal-background" onClick={closeModal}>
-          <div className="modal-child">
-            {component}
-            {/* <SignupStep5Container /> */}
-          </div>
-          <SessionButtonContainer modal={this.props.modal} />
+
+    return (
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child">
+          {component}
+          {/* <SignupStep5Container /> */}
         </div>
-      )
-    } else return (
-      <div></div>
+        <SessionButtonContainer modal={this.props.modal} />
+      </div>
     );
   }
 }
@@ -74,7 +74,8 @@ class Modal extends React.Component {
 const mapStateToProps = state => {
   return {
     modal: state.ui.modal,
-    currentUser: state.session.user
+    currentUser: state.session.user,
+    isAuthenticated: state.session.isAuthenticated
   };
 };
 
