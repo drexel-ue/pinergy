@@ -1,5 +1,4 @@
-import Axios from "axios";
-import interests from "../util/interest_util";
+import * as ScrapeUtil from "../util/scrape_util";
 
 export const RECEIVE_INTERESTS = "RECEIVE_INTERESTS";
 
@@ -9,7 +8,7 @@ const receiveInterests = interests => ({
 });
 
 export const scrapeInterests = () => dispatch => {
-  return 
+  return ScrapeUtil.scrapeInterests()
     .then(({ data }) => {
       dispatch(receiveInterests(data));
     })
