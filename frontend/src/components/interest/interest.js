@@ -2,23 +2,6 @@ import React from "react";
 import { scrape } from "../../util/scrape_util";
 
 export default class Interest extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imgUrl:
-        "https://cdn2.iconfinder.com/data/icons/bold-ui/100/questionmark-2-512.png"
-    };
-  }
-
-  componentDidMount() {
-    scrape({ keyWords: [this.props.interest] })
-      .then(res => {
-        this.setState({ imgUrl: res.data[this.props.interest] });
-      })
-      .catch(res => {
-        console.log(res);
-      });
-  }
 
   render() {
     const imgStyle = {
@@ -29,7 +12,7 @@ export default class Interest extends React.Component {
     return (
       <div id={this.props.interest} className="interest">
         <img
-          src={this.state.imgUrl}
+          src={this.props.url}
           id={`${this.props.interest}_img`}
           style={imgStyle}
         />

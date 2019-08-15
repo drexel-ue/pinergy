@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { scrapeInterests } from "../../actions/scrape_actions";
 
 const mapStateToProps = (state, ownProps) => ({
-  interest: ownProps.interest
+  interest: ownProps.interest,
+  url: ownProps.url
 });
 
 const mapDispatchToProps = dispatch => ({
