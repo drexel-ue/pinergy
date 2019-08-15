@@ -9,7 +9,7 @@ class SignupForm extends React.Component {
     super(props);
     this.state = {
       interests: [],
-      errors: {}
+      errors: {},
     };
 
     this.selectInterest = this.selectInterest.bind(this);
@@ -69,13 +69,15 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    const urlKeysArray = Object.keys(interests)
+    const urlValuesArray = Object.values(interests)
     return (
       <div className="signup_step_5">
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
-          {interests.map((interest, index) => (
+          {urlKeysArray.map((interest, index) => (
             <div onClick={this.selectInterest(interest)}>
-              <InterestContainer interest={interest} key={index} />
+              <InterestContainer interest={interest} url={urlValuesArray[index]} key={index} />
             </div>
           ))}
         </div>
