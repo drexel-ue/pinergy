@@ -56,9 +56,10 @@ class Modal extends React.Component {
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child">
           {component}
-          <SessionButtonContainer modal={this.props.modal} />
           {/* <SignupStep5Container /> */}
         </div>
+        <SessionButtonContainer modal={this.props.modal} />
+
       </div>
     );
   }

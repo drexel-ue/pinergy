@@ -263,3 +263,15 @@ input.gender_option {
 .btn_signup_step_5 {
   width: 90%;
 }
+
+.sxybutton{
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    height: 34px;
+    width: 122px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+}

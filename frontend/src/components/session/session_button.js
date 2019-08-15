@@ -16,7 +16,7 @@ class SessionButton extends React.Component {
   render() {
     const text = this.props.modal !== MOVE_TO_LOGIN ? "Log In" : "Sign Up"
     return (
-      <button onClick={this.handleClick}>{text}</button>
+      <button className="sxybutton" onClick={this.handleClick}>{text}</button>
     )
     
   }
