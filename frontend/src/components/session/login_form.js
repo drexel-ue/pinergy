@@ -66,9 +66,9 @@ class LoginForm extends React.Component {
     return (
       <div className="login-form-container">
         <div className="pinergy-logo">P</div>
-        <div className="login-welcome">
-        Welcome to Pinergy
-        </div>
+          <div className="login-welcome">
+            Welcome to Pinergy
+          </div>
         <form onSubmit={this.handleSubmit}>
           <div className="login-input">
             <input

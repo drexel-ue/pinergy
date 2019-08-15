@@ -1,17 +1,30 @@
 .signup_step_1 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 640px;
+  height: 600px;
   width: 440px;
+  flex-direction: column;
 }
 .signup_step_1_form {
-  height: 600px;
-  width: 215px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+.logo-s1 {
+  margin-top: 50px !important;
+}
+
+.signup-btn {
+  width: 268px;
+  margin-bottom: 25px;
+}
+
+.ideas-text {
+  text-align: center;
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+  font-weight: normal;
+  margin: -15px 0 30px;
 }
 
 .signup_step_2 {
@@ -353,10 +366,11 @@ input.gender_option {
   cursor: pointer;
 }
 
-.login-btn {
+.login-btn, {
   width: 268px;
   margin-bottom: 5px;
 }
+
 
 .demolog {
   width: 268px;
