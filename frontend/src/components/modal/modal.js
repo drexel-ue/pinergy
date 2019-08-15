@@ -7,7 +7,8 @@ import {
   MOVE_TO_SECOND_SIGN_UP_STEP,
   MOVE_TO_THIRD_SIGN_UP_STEP,
   MOVE_TO_FOURTH_SIGN_UP_STEP,
-  MOVE_TO_FIFTH_SIGN_UP_STEP
+  MOVE_TO_FIFTH_SIGN_UP_STEP,
+  MOVE_TO_LOGIN
 } from "../../actions/modal_actions";
 import { connect } from "react-redux";
 import "./modal.css";
@@ -17,7 +18,7 @@ import SignupStep2Container from "../session/signup_step_2_form_container";
 import SignupStep3Container from "../session/signup_step_3_form_container";
 import SignupStep4Container from "../session/signup_step_4_form_container";
 import SignupStep5Container from "../session/signup_step_5_form_container";
-
+import LoginFormContainer from "../session/login_form_container"
 class Modal extends React.Component {
   componentDidMount() {
     this.props.showFirstSignUpStep();
@@ -44,14 +45,17 @@ class Modal extends React.Component {
       case MOVE_TO_FIFTH_SIGN_UP_STEP:
         component = <SignupStep5Container />;
         break;
+      case MOVE_TO_LOGIN:
+        component = <LoginFormContainer />;
+        break;
       default:
         return null;
     }
     return (
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child">
-          {/* {component} */}
-          <SignupStep5Container />
+          {component}
+          {/* <SignupStep5Container /> */}
         </div>
       </div>
     );
