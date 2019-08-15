@@ -2,35 +2,36 @@ const puppeteer = require("puppeteer");
 
 exports.scrape = async keyWords => {
   const browser = await puppeteer.launch();
+  debugger;
 
-  const page = await browser.newPage();
+  let data = {};
 
-  page.goto("https://unsplash.com");
-  let data;
+  keyWords.forEach(async keyword => {
+    const page = await browser.newPage();
 
-  if (!keyWords) {
+    page.goto("https://unsplash.com");
+
     await page.waitForSelector("img", { visible: true });
 
-    data = await page.evaluate(() => {
+    await page.type("[name=searchKeyword]", keyword);
+    await page.click("[type=submit]");
+
+    await page.evaluate(() => {
       const images = document.querySelectorAll("img");
       const initUrls = [...images].map(image => image.src);
 
-      return initUrls.filter(url => url.includes("images") && !url.includes("profile") && !url.includes("placeholder"))
-    });
-  } else {
-    await page.type("[name=searchKeyword]", keyWords.join(" "));
-    await page.click("[type=sumbit]");
+      const filtered = initUrls.filter(
+        url =>
+          url.includes("images") &&
+          !url.includes("profile") &&
+          !url.includes("placeholder")
+      );
 
-    await page.waitForSelector("img", { visible: true });
-
-    data = await page.evaluate(() => {
-      const images = document.querySelectorAll("img");
-      return Array.from(images.map(image => image.src));
+      data[keyword] = filtered[Math.floor(Math.random() * filtered.length)];
     });
-  }
+  });
 
   browser.close();
-
 
   return data;
 };

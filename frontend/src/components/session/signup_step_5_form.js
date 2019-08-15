@@ -19,13 +19,13 @@ class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    scrapeImage({ keyWords: interests })
-      .then(res => {
-        debugger;
-      })
-      .catch(res => {
-        debugger;
-      });
+    scrapeImage({ keyWords: interests });
+    // .then(res => {
+    //   debugger;
+    // })
+    // .catch(res => {
+    //   debugger;
+    // });
   }
 
   componentWillReceiveProps(nextProps) {
