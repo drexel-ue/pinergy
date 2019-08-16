@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
+import "./status-bar.css";
 import languages from "../../util/language_util";
 import countries from "../../util/country_util";
 
@@ -63,6 +64,15 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_step_4">
+        <div className="signup-status-container">
+          <div className="sign-status-bar">
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            <div className="black-circle"></div>
+          </div>
+          </div>
+
         <div className="locale_ask">Pick your language and country</div>
         <div
           onClick={this.toggleDropdown("languages")}

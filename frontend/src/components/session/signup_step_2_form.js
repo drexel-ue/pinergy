@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
+import "./status-bar.css";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class SignupForm extends React.Component {
   renderInput() {
     return this.state.showInput ? (
       <input
+        className="step2-input"
         type="text"
         value={this.state.username}
         onChange={this.handleInput}
@@ -68,6 +70,15 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_step_2">
+        <div className="signup-status-container">
+          <div className="sign-status-bar">
+            <div className="red-circle"></div>
+            <div className="black-circle"></div>
+            <div className="black-circle"></div>
+            <div className="black-circle"></div>
+          </div>
+
+        </div>
         <img className="pfimg" src={this.props.user.profilePhotoUrl} />
 
         <div className="sup2email">{this.props.user.email}</div>

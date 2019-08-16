@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import SignupForm from "./signup_step_1_form";
 import { signup } from "../../actions/session_actions";
-import { moveToSecondSignupStep, closeModal } from "../../actions/modal_actions";
+import { moveToSecondSignupStep, closeModal, moveToLogIn } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signup: userData => dispatch(signup(userData))
-   
+    signup: userData => dispatch(signup(userData)),
+    gotoLogIn: () => dispatch(moveToLogIn())
   };
 };
 

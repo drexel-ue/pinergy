@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
+import "./status-bar.css";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class SignupForm extends React.Component {
     return this.state.showInput ? (
       <input
         type="text"
-        className="custom_gender_input"
+        className="step2-input"
         value={this.state.gender}
         onChange={this.handleInput}
         placeholder={this.props.user.username}
@@ -92,13 +93,22 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup_step_3">
+        <div className="signup-status-container">
+          <div className="sign-status-bar">
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            <div className="black-circle"></div>
+            <div className="black-circle"></div>
+          </div>
+          </div>
+
         <div className="identity_ask">How do you identify?</div>
         <label id="gender_label_1" onClick={this.updateGender("female")}>
-          <input className="gender_option" type="checkbox" />
+          <input className="gender_option checkbox-circle" type="checkbox" />
           Female
         </label>
         <label id="gender_label_3" onClick={this.updateGender("male")}>
-          <input className="gender_option" type="checkbox" />
+          <input className="gender_option checkbox-circle" type="checkbox" />
           Male
         </label>
         <label id="gender_label_3">
