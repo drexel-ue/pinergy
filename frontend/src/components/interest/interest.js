@@ -11,7 +11,7 @@ export default class Interest extends React.Component {
 
     return (
         <div id={`${this.props.interest}_img`} className="interest">
-          <i class='fas fa-check-circle'></i>
+          <i className='fas fa-check-circle'></i>
           <img
             src={this.props.url}
             style={imgStyle}

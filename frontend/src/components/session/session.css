@@ -297,6 +297,7 @@ input.gender_option {
   bottom: 10px;
   left: 10px;
   color: white;
+  font-weight: 900;
 }
 
 .selected-interest-div .fa-check-circle {
