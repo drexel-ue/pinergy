@@ -10,6 +10,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 // User model.
 const User = require("../../models/User");
+const Pin = require("../../models/Pin");
 // For validating tokens.
 const passport = require("passport");
 // Validates registration form.
@@ -31,6 +32,15 @@ router.post("/query", async (req, res) => {
   }
 
   return res.json(data);
+});
+
+router.post("/get", async (req, res) => {
+  const tags = req.body.tags;
+  if (tags.length === 0) {
+    const pins = await Pin.find();
+
+    res.json(pins);
+  }
 });
 
 module.exports = router;

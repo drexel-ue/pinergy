@@ -22,6 +22,10 @@ const PinSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "images"
   },
+  url: {
+    type: String,
+    required: true
+  },
   title: {
     type: String,
     required: false

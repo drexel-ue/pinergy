@@ -16,7 +16,12 @@
     "redux-thunk": "^2.3.0",
     "webpack-dev-server": "3.2.1"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5000",
+      "secure": false
+    } 
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

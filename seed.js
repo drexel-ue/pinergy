@@ -146,6 +146,44 @@ mongoose
             newUser
               // Save the new user document to the database.
               .save()
+              .then(user => {
+                for (let boardIndex = 0; boardIndex < 10; boardIndex++) {
+                  const board = new Board({
+                    user: user.id,
+                    title:
+                      boardTitles[
+                        Math.round(Math.random() * (boardTitles.length - 1))
+                      ]
+                  });
+                  board.save().then(board => {
+                    for (
+                      let pinImageIndex = 0;
+                      pinImageIndex < 30;
+                      pinImageIndex++
+                    ) {
+                      const index = Math.round(
+                        Math.random() * (fakeImageUrls.length - 1)
+                      );
+                      const image = new Image({
+                        url: fakeImageUrls[index]
+                      });
+                      image.save().then(image => {
+                        const pin = new Pin({
+                          user: user.id,
+                          board: board.id,
+                          image: image.id,
+                          url: image.url,
+                          title: faker.lorem.words(3),
+                          description: faker.lorem.paragraph(3),
+                          destinationLink: image.url,
+                          tags: [board.title]
+                        });
+                        pin.save();
+                      });
+                    }
+                  });
+                }
+              })
               // Log any errors.
               .catch(error => console.log(error));
           });
@@ -198,6 +236,7 @@ mongoose
                         user: user.id,
                         board: board.id,
                         image: image.id,
+                        url: image.url,
                         title: faker.lorem.words(3),
                         description: faker.lorem.paragraph(3),
                         destinationLink: image.url,

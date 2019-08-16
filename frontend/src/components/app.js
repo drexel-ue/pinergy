@@ -4,9 +4,9 @@ import { Switch } from "react-router-dom";
 import NavBarContainer from "./nav/navbar_container";
 
 import MainPage from "./main/main_page";
-import LoginFormContainer from "./session/login_form_container";
 import ModalContainer from "./modal/modal";
 import ProfileHeadContainer from "./profile/profile_head_container";
+import HomeContainer from "./home/home_container";
 
 class App extends React.Component {
   render() {
@@ -37,9 +37,8 @@ class App extends React.Component {
             path="/profile/topics"
             component={ProfileHeadContainer}
           />
-          {/* <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
-          {/* <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
         </Switch>
+        <HomeContainer />
       </div>
     );
   }
