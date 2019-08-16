@@ -148,3 +148,23 @@
   width: 328px;
   height: 42px;
 }
+
+.ProfileDropdown {
+  position: absolute;
+  z-index: 1;
+  height: 300px;
+  width: 322px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  outline: none;
+  background: white;
+  overflow-y: auto;
+  top: 12px;
+  left: 1047px;
+}
+
+.ProfileIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
