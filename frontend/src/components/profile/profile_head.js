@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./profile.css";
 export default class ProfileHead extends React.Component {
   constructor(props) {
     super(props);
@@ -49,32 +50,54 @@ export default class ProfileHead extends React.Component {
 
   findDisplayName() {
     const user = this.props.currentUser;
-    return user.firstName ? `${user.firstName} ${user.lastName} `
+    return user.firstName
+      ? `${user.firstName} ${user.lastName} `
       : user.username;
   }
   render() {
     const user = this.props.currentUser;
     return this.props.currentUser ? (
       <div>
-        <div>
-          <i className="fas fa-plus" onClick={this.toggleDropdown} />
-          {this.renderDropdown()}
-          <Link to="/profile/settings">
-            <i className="fas fa-pen" />
-          </Link>
-          <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
-          {this.renderShareDropdown()}
-        </div>
-        <div className="dispname">{this.findDisplayName()}</div>
-        <div className="follownums">
-          {user.followers.length} followers {user.following.length} following
-        </div>
-        <img src={user.profilPhotoUrl} className="prfprfpho"/>
         <div className="prfnav">
-          <Link to="/profile/boards">Baords</Link>
-          <Link to="/profile/pins">Pins</Link>
-          <Link to="/profile/tries">Tries</Link>
-          <Link to="/profile/topics">Topics</Link>
+          <div className="prftopnav">
+            <i className="fas fa-plus" onClick={this.toggleDropdown} />
+            {this.renderDropdown()}
+            <Link to="/profile/settings">
+              <i className="fas fa-pencil-alt prficon" />
+            </Link>
+            <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
+            {this.renderShareDropdown()}
+          </div>
+        </div>
+        <div className="prfbox">
+          <div className="prfinnerbox">
+            <div className="prfsmlbox">
+              <div className="nnfbox">
+                <div className="dispname">{this.findDisplayName()}</div>
+                <div className="follownums">
+                  {user.followers.length} followers {user.following.length}{" "}
+                  following
+                </div>
+              </div>
+              <img src={user.profilePhotoUrl} className="prfprfpho" />
+            </div>
+            <div className="prfnavv2">
+              <div className="prfnavv2lft">
+                <Link className="links" to="/profile/boards">
+                  Baords
+                </Link>
+                <Link className="links" to="/profile/pins">
+                  Pins
+                </Link>
+                <Link className="links" to="/profile/tries">
+                  Tries
+                </Link>
+                <Link className="links" to="/profile/topics">
+                  Topics
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     ) : (
