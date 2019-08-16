@@ -35,6 +35,18 @@
   align-items: center;
 }
 
+.step2-input {
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 8px 14px;
+  font-size: 16px;
+  width: 335px !important;
+  height: 22px !important;
+  border-color: #8e8e8e;
+  margin: 8px 0 8px 31px;
+}
+
 .pfimg {
   height: 104px;
   width: 104px;
@@ -48,7 +60,10 @@
 }
 
 .welcome {
-  font-size: 36px;
+    color: rgb(51, 51, 51);
+    font-size: 36px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bolder;
 }
 
 .sub2msgenc {
@@ -57,7 +72,7 @@
   flex-direction: row;
   width: 80%;
   height: 35px;
-  margin-bottom: 21px;
+  margin-bottom: 30px;
 }
 
 .username {
@@ -113,6 +128,15 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 36px;
+  border-bottom: 1px solid #efefef;
+  height: 100px;
+}
+
+#gender_label_1:hover,
+#gender_label_2:hover,
+#gender_label_3:hover {
+  cursor: pointer;
+  background-color: #efefef;
 }
 
 #gender_label_1 > input,
@@ -120,6 +144,8 @@
 #gender_label_3 > input {
   width: 40px;
   margin: 20px 0px 20px 20px;
+
+
 }
 
 input.gender_option {
@@ -128,7 +154,12 @@ input.gender_option {
 
 .identity_ask {
   font-size: 36px;
-  margin: 64px 0 54px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  border-bottom: 1px solid #efefef;
 }
 
 #gender_label_3 .custom_gender_input {
@@ -158,6 +189,7 @@ input.gender_option {
   text-align: center;
   margin-top: 64px;
   margin-bottom: 100px;
+  font-weight: bolder;
 }
 
 .locale_select {

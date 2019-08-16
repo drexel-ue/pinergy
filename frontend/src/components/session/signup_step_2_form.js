@@ -57,6 +57,7 @@ class SignupForm extends React.Component {
   renderInput() {
     return this.state.showInput ? (
       <input
+        className="step2-input"
         type="text"
         value={this.state.username}
         onChange={this.handleInput}
