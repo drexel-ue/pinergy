@@ -7,14 +7,16 @@ export default class Home extends React.Component {
   }
 
   render() {
-    return (
+    return Object.values(this.props.pins).length > 0 ? (
       <div className="home">
         {Object.values(this.props.pins).map(pin => (
           <div key={pin.id}>
-            <PinContainer />
+            <PinContainer pin={pin} />
           </div>
         ))}
       </div>
+    ) : (
+      <div>Loading...</div>
     );
   }
 }
