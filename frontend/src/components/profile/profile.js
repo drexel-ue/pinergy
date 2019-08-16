@@ -4,7 +4,7 @@ import ProfileHeader from './profile_head'
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
+    // debugger
     this.state = {
       boards: [],
       sections: []

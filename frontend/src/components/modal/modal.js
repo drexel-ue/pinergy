@@ -34,7 +34,7 @@ class Modal extends React.Component {
     // if (!modal) {
     //   return null;
     // }]
-    debugger
+    // debugger
     let component;
     switch (this.props.modal) {
       case SHOW_FIRST_SIGN_UP_STEP:
