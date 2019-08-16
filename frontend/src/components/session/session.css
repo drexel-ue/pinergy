@@ -255,11 +255,9 @@ input.gender_option {
 .interest {
     height: 136px;
       width: 136px;
-      border: 1px solid black;
       border-radius: 8px;
       position: relative;
       overflow: hidden;
-      background: grey;
 }
 
 .interest_text {
@@ -270,8 +268,11 @@ input.gender_option {
 }
 
 .selected_interest {
-  border: 1px solid blue;
   filter: brightness(0.3);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  transition: .5s;
 }
 
 .btn_signup_step_5 {
@@ -429,4 +430,10 @@ input.gender_option {
   outline: none;
   font-weight: 500;
   font-size: 16px;
+}
+
+.rotate {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
