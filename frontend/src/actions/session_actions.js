@@ -2,6 +2,7 @@ import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
 import { moveToSecondSignupStep, closeModal, showFirstSignUpStep } from "./modal_actions";
 import { receiveUser } from "./user_actions";
+import { fetchPins } from "./pin_actions"
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -46,7 +47,6 @@ export const signup = user => dispatch =>
       dispatch(receiveCurrentUser(decoded));
       dispatch(receiveUserSignIn());
       dispatch(moveToSecondSignupStep());
-
     },
     err => dispatch(receiveErrors(err.response.data))
   );
@@ -61,7 +61,8 @@ export const login = user => dispatch =>
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
       dispatch(closeModal());
-      dispatch(receiveUser(user))
+      dispatch(receiveUser(user));
+      dispatch(fetchPins([]));
     })
     .catch(err => {
       dispatch(receiveErrors(err.response.data));
