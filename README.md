@@ -1,4 +1,4 @@
-# Pin-tourist
+# Pinergy
 
 #### Members
 
@@ -9,19 +9,19 @@
 
 #### The Gist
 
-Pin-tourist will be a MERN stack clone of [Pinterest](https://pinterest.com)...with a twist. This site will follow along the same operation as Pinterest, but with a focus on locations. Users will be able to discover new locations and save them to boards with custom categories. Users may also follow the travels of other users to gain inspiration and new travel ideas.
+Pinergy will be a MERN stack clone of [Pinterest](https://pinterest.com)...with a twist. This site will follow along the same operation as Pinterest, but with a focus on locations. Users will be able to discover new locations and save them to boards with custom categories. Users may also follow the travels of other users to gain inspiration and new travel ideas.
 
 #### Background and Overview
-Pin-tourist lets users curate their feed with images leading to articles 
-Pinterest is a visual discovery engine for finding ideas like recipes, home and style inspiration, and more.
+Pinergy lets users curate their feed with images leading to articles 
+Pintergy is a visual discovery engine for finding ideas like recipes, home and style inspiration, and more.
 
-Home feed is the center of Pinterest. It's where you'll find ideas, or Pins, with recommendations based on user's interests, as well as what people user follows on Pinterest are saving.
+Home feed is the center of Pinergy. It's where you'll find ideas, or Pins, with recommendations based on user's interests, as well as what people user follows on Pinergy are saving.
 
 
 #### Features/Core Functionalities
 
 * Pins
-Pins are ideas that people on Pin-tourist find and save from around the web. Each Pin links back to the website it was saved from. If the user's clicks through the Pin, user can learn how to make it or where to buy it.
+Pins are ideas that people on Pinergy find and save from around the web. Each Pin links back to the website it was saved from. If the user's clicks through the Pin, user can learn how to make it or where to buy it.
 
 * Boards
 The Pins users saves live on your boards. Users can name boards and arrange them on their profile however they want. They can invite other people on Pinterest to collaborate on their boards to find even more ideas.
@@ -46,11 +46,11 @@ Users can find all the Pins they saves, boards they creates, along with who’s 
 
 #### Group Members and Work Breakdown
 August 12 - August 13
-* Build skeleton React site - Anshu/IKesh
+* Build skeleton React site - IKesh
 * User Auth - Clayton/Paul
 
 August 14
-* Scrape upsplash for images - Anshu/IKesh
+* Scrape unsplash for images - IKesh
 * Build the basic homepage with styling - Clayton/Paul
 
 August 15
