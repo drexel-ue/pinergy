@@ -1,21 +1,22 @@
 import { connect } from "react-redux";
 import ProfileHead from "./profile_head";
+import { fetchUser } from "../../actions/user_actions";
 
-const mapStateToProps = ({ entities, session }) => {
-  // debugger
+const mapStateToProps = ({ session, entities}) => {
+
   return {
-    // boards: Object.values(entities.boards),
-    // sections: Object.values(entities.sections),
-    currentUser: entities.user
+    currentUser: entities.users[session.user.id],
+    id: session.user.id 
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {};
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCurrentUser: (id) => dispatch(fetchUser(id))
+  };
+};
 
 export default connect(
   mapStateToProps,
-  null
-  // mapDispatchToProps
+  mapDispatchToProps
 )(ProfileHead);

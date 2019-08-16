@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileHeader from './profile_head'
+import ProfileHeaderContainer from './profile_head_container'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -11,20 +11,12 @@ class Profile extends React.Component {
     };
   }
 
-  componentWillMount() {
-    console.log(this.props.currentUser.id);
-    // Fetch boards, sections, and pins here.
-  }
-
-  componentWillReceiveProps(newState) {
-    // Set state here.
-  }
 
   render() {
-    debugger 
+    // debugger 
       return (
         <div>
-            <ProfileHeader/>
+            <ProfileHeaderContainer/>
           <h2>All of This User's Board</h2>
           {this.state.boards.map(board => (
             <div>To Be a Bardsdsdfsfsd</div>

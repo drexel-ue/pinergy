@@ -136,11 +136,14 @@ router.post("/login", (req, res) => {
   });
 });
 
-// Serves current user.
+// Serves specific user.
 router.get(
-  "/current",
+  "/:id",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => res.json(req.user)
+  (req, res) => {
+    return User.findById(req.params.id)
+    .then(user => res.json(user));
+  }
 );
 
 router.patch("/update/:id", async (req, res) => {
