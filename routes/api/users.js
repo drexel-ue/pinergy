@@ -1,3 +1,4 @@
+const faker = require("faker");
 // Used to sign source of truth tokens for session and protected routes.
 const jwt = require("jsonwebtoken");
 // Provides access to secret.
