@@ -86,7 +86,7 @@ class SignupForm extends React.Component {
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
           {urlKeysArray.map((interest, index) => (
-            <div onClick={this.selectInterest(interest)}>
+            <div key={`${interest}_div`}onClick={this.selectInterest(interest)}>
               <InterestContainer interest={interest} url={urlValuesArray[index]} key={index} />
             </div>
           ))}

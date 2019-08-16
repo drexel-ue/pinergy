@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this)
     this.renderErrors = this.renderErrors.bind(this);
     this.gotoSignup = this.gotoSignup.bind(this);
   }
@@ -48,6 +49,17 @@ class LoginForm extends React.Component {
     this.props.login(user);
 
       
+  }
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    let user = {
+      email: "DemoUser@Pinergy.com",
+      password: "test123"
+    };
+
+    this.props.login(user);
   }
 
   // Render the session errors if there are any
@@ -91,7 +103,7 @@ class LoginForm extends React.Component {
             <br />
             <button className="redbtn login-btn">Log in</button>
             <div className="log-or-dem">OR</div>
-            <button className='redbtn demolog'>Demo Login</button>
+            <button className='redbtn demolog' onClick={this.handleDemoLogin}>Demo Login</button>
             <div className="login-terms">By continuing, you agree to Pinergy's</div>
             <div className="login-terms bold">Terms of Service, Privacy Policy</div>
             <div className="login-to-signin" onClick={this.gotoSignup}>Not on Pinergy yet? Sign up</div>

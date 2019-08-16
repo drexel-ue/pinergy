@@ -6,7 +6,8 @@ const mapStateToProps = ({ entities, session }) => {
   return {
     // boards: Object.values(entities.boards),
     // sections: Object.values(entities.sections),
-    currentUser: session.user
+    currentUser: session.user,
+    entities: entities
   };
 };
 

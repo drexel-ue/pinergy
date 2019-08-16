@@ -27,3 +27,14 @@ export const updateUser = (userData, id) => dispatch =>
     .catch(err => {
       dispatch(receiveErrors(err.response.data));
     });
+
+
+export const fetchUser = ( id) => dispatch =>
+  ApiUtil.fetchUser( id)
+    .then(res => {
+      dispatch(receiveUser(res.data))
+    })
+    .catch(err => {
+      dispatch(receiveErrors(err.response.data));
+    });
+  

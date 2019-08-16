@@ -42,10 +42,11 @@ export const signup = user => dispatch =>
       const { token, user } = res.data;
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
+      dispatch(receiveUser(user));
       dispatch(receiveCurrentUser(decoded));
       dispatch(receiveUserSignIn());
       dispatch(moveToSecondSignupStep());
-      dispatch(receiveUser(user));
+
     },
     err => dispatch(receiveErrors(err.response.data))
   );
