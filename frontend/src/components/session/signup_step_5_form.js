@@ -91,6 +91,7 @@ class SignupForm extends React.Component {
             </div>
           ))}
         </div>
+        <div className="signup-fading"></div>
         <button
           className="redbtn btn_signup_step_5"
           style={this.buttonStyling()}

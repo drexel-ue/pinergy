@@ -241,7 +241,7 @@ input.gender_option {
 
 .interests {
   width: 92%;
-  height: 70%;
+  height: 59%;
   display: grid;
   grid-template-columns: 136px 136px 136px 136px 136px;
   grid-template-rows: 136px;
@@ -249,7 +249,7 @@ input.gender_option {
   overflow-y: auto;
   grid-gap: 6px;
   justify-content: center;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .interest {
@@ -275,7 +275,13 @@ input.gender_option {
 }
 
 .btn_signup_step_5 {
-  width: 90%;
+  z-index: 14;
+  padding: 12px;
+  border: none;
+  font-weight: 600;
+  margin-top: 16px;
+  width: 89%;
+  height: 45px;
 }
 
 .interest > img {
@@ -401,7 +407,26 @@ input.gender_option {
 
 .demolog:hover, 
 .login-btn:hover,
-.sxybutton:hover {
+.sxybutton:hover,
+.interests-btn:hover {
   filter: brightness(0.8);
   cursor: pointer;
+}
+
+.signup-fading {
+  height: 40px;
+  width: 100%;
+  margin-top: -39px;
+  z-index: 15;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+}
+
+.interests-btn {
+  padding: 12px 12px;
+  height: 45px;
+  border-radius: 8px;
+  align-content: center;
+  outline: none;
+  font-weight: 500;
+  font-size: 16px;
 }
