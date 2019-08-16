@@ -14,6 +14,10 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
+  componentDidMount() {
+    //debugger;
+    if (this.props.loggedIn) this.props.fetchCurrentUser(this.props.userId);
+  }
   toggleDropdown(className) {
     return event => {
       event.preventDefault();
