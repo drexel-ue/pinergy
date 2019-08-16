@@ -7,7 +7,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         {Object.values(this.props.pins).map(pin => (
           <div key={pin.id}>
             <PinContainer />
