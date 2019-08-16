@@ -88,7 +88,6 @@ class NavBar extends React.Component {
     return (
       <div>
         {this.getLinks()}
-        <h1>Pinergy</h1>
       </div>
     );
   }
