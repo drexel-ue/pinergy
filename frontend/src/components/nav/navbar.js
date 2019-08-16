@@ -39,7 +39,7 @@ class NavBar extends React.Component {
           <Link to={"/home"} className="Links1">
             Following
           </Link>
-          <Link to={"/"} className="Links1">
+          <Link to={"/profile"} className="Links1">
             Profile
           </Link>
           <div className="RightIcons">
