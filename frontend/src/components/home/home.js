@@ -1,4 +1,5 @@
 import React from "react";
+import PinContainer from "../pin/pin_container";
 
 export default class Home extends React.Component {
   componentDidMount() {
