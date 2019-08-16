@@ -7,6 +7,14 @@ const bcrypt = require("bcryptjs");
 const db = require("./config/keys").mongoURI;
 const mongoose = require("mongoose");
 
+const demoUser = {
+  email: "DemoUser@Pinergy.com",
+  password: "test123",
+  password2: "test123",
+  username: "DemoUser",
+  age: 09380298
+};
+
 const boardTitles = [
   "Home Decor",
   "Food and Drink",
@@ -123,6 +131,15 @@ mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
     console.log("Connected to MongoDB successfully");
+
+    User.find({ email: "DemoUser@Pinergy.com" }).then(user => {
+      if (!user) {
+        const newUser = User(demoUser);
+
+        newUser.save();
+      }
+    });
+
     for (let userIndex = 0; userIndex < 5; userIndex++) {
       let newUser = new User({
         firstName: faker.name.firstName(),
@@ -173,7 +190,6 @@ mongoose
                         destinationLink: image.url,
                         tags: [board.title]
                       });
-
                       pin.save().then(pin => {
                         if (userIndex === 4) mongoose.connection.close();
                       });
