@@ -6,10 +6,14 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const style = {
+      height: "50px",
+      width: "50px"
+    };
     return (
       <div>
         {Object.values(this.props.pins).map(pin => (
-          <div>{pin.title}</div>
+          <img src={pin.url} style={style} />
         ))}
       </div>
     );
