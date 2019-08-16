@@ -28,7 +28,7 @@
 }
 
 .signup_step_2 {
-  height: 640px;
+  height: 600px;
   width: 544px;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@
 }
 
 .signup_step_3 {
-  height: 640px;
+  height: 600px;
   width: 544px;
   display: flex;
   flex-direction: column;
@@ -145,7 +145,7 @@ input.gender_option {
 }
 
 .signup_step_4 {
-  height: 640px;
+  height: 600px;
   width: 544px;
   display: flex;
   flex-direction: column;
@@ -226,7 +226,7 @@ input.gender_option {
 }
 
 .signup_step_5 {
-  height: 640px;
+  height: 600px;
   width: 800px;
   display: flex;
   flex-direction: column;

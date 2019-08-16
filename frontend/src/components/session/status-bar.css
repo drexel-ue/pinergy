@@ -1,0 +1,30 @@
+.signup-status-container {
+    width: 512px;
+    height: 30px;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #efefef;
+}
+
+.sign-status-bar {
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+    margin-top: 8px
+}
+
+.red-circle {
+    height: 15px;
+    width: 15px;
+    background-color: #e60023;
+    border-radius: 50%;
+}
+
+.black-circle {
+    margin-top: 3px;
+    height: 10px;
+    width: 10px;
+    background-color: #333;
+    border-radius: 50%;
+}

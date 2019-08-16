@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import "./session.css";
+import "./status-bar.css";
 import interests from "../../util/interest_util";
 import InterestContainer from "../interest/interest_container";
 
@@ -74,6 +75,14 @@ class SignupForm extends React.Component {
     const urlValuesArray = Object.values(interests)
     return (
       <div className="signup_step_5">
+        <div className="signup-status-container">
+          <div className="sign-status-bar">
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            <div className="red-circle"></div>
+            </div>
+          </div>
         <div className="last_step">Last Step! Tell us what you're into!</div>
         <div className="interests">
           {urlKeysArray.map((interest, index) => (
