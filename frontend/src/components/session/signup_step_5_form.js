@@ -42,9 +42,9 @@ class SignupForm extends React.Component {
       this.setState({ interests });
       document
         .getElementById(`${interest}_img`)
-        .classList.toggle("selected_interest");
-    };
-  }
+        .classList.toggle("selected-interest-div")
+    }
+  };
 
   updateInterests(event) {
     event.preventDefault();

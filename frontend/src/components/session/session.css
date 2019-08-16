@@ -267,13 +267,31 @@ input.gender_option {
   color: white;
 }
 
-.selected_interest {
+.selected-interest-div .fa-check-circle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  width: 24px;
+  height: 24px;
+  font-size: 27px;
+  border-radius: 50%;
+  z-index: 14;
+  display: flex;
+}
+
+.fa-check-circle {
+  display: none;
+}
+
+.selected-interest-div img {
   filter: brightness(0.3);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
   transition: .5s;
 }
+
 
 .btn_signup_step_5 {
   z-index: 14;

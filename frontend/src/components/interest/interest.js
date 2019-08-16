@@ -10,14 +10,14 @@ export default class Interest extends React.Component {
     };
 
     return (
-      <div id={this.props.interest} className="interest">
-        <img
-          src={this.props.url}
-          id={`${this.props.interest}_img`}
-          style={imgStyle}
-        />
-        <div className="interest_text">{this.props.interest}</div>
-      </div>
+        <div id={`${this.props.interest}_img`} className="interest">
+          <i class='fas fa-check-circle'></i>
+          <img
+            src={this.props.url}
+            style={imgStyle}
+          />
+          <div className="interest_text">{this.props.interest}</div>
+        </div>
     );
   }
 }
