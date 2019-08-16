@@ -8,12 +8,11 @@
 .prftopnav {
     display: flex;
     width: 740px;
-    padding-top: 7x;
- 
+    top: 100px;
     position:fixed;;
 }
 .prfbox{
-     width: 100%;
+    width: 100%;
     height: 170px;
     display: flex;
     justify-content: center;
@@ -26,7 +25,7 @@
 .prfprfpho{
   width: 106px;
   height: 106px;
-  border-radius: 48px;
+  border-radius: 50%;
 }
 
 .prftopnav > .fas, .prficon{
@@ -89,7 +88,7 @@ display:flex
     align-items: center;
 }
 .links:hover {
-    border-radius: 16%;
+    border-radius: 999px;
     background-color: #efefef;
     color: black;
     text-decoration: underline;
