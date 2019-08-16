@@ -4,7 +4,7 @@
   justify-content: space-between;
   text-decoration: none;
   border-bottom: 1px solid #efefef;
-  width: 1415px;
+  width: 100%;
   height: 56px;
   padding-left: 12px;
   padding-right: 12px;
@@ -33,28 +33,35 @@
   /* align-self: center; */
 }
 .Navbar-icon-halo:hover {
+  background: rgb(0, 0, 9, 0.1);
+}
+.Navbar-icon-halo {
   display: flex;
   border-radius: 50%;
   height: 48px;
   width: 48px;
   padding: 4px 4px;
-  background: rgb(0, 0, 9, 0.1);
-  display: flex;
+  /* background: rgb(0, 0, 0, 0); */
   justify-content: center;
   /* align-items: center; */
   margin: 0px 0px;
   text-decoration: none;
   align-items: center;
+  text-align: center;
   /* align-self: center; */
 }
 .Links1 {
-  width: 100px;
+  width: 60%;
   display: flex;
   /* justify-content: space-between; */
   text-decoration: none;
   color: #8e8e8e;
-  font-family: "Roboto", "Verdana";
-  text-align: center;
+  font-weight: bold;
+  border-radius: 999px;
+  align-items: center;
+  padding: 10px;
+  /* align-content: center; */
+  justify-content: center;
 }
 
 .Links2 {
@@ -71,17 +78,30 @@
   background: transparent;
   outline: none;
 }
-
+.fa-search {
+  background: #efefef;
+  padding: 13px 8px;
+  color: #8e8e8e;
+  border-bottom-left-radius: 999px;
+  border-top-left-radius: 999px;
+  justify-content: right;
+  /* padding-right: 16px; */
+}
 .Searchbar {
-  width: 523px;
   height: 40px;
   background: #efefef;
   padding-left: 16px;
   padding-right: 16px;
-  border-radius: 8px;
   border: none;
+  border-bottom-right-radius: 999px;
+  border-top-right-radius: 999px;
 }
-
+.SearchGrp {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  width: 50%;
+}
 .PlusSign {
   border-radius: 50%;
   height: 24px;
@@ -100,12 +120,12 @@
 }
 
 .Ellipses {
-  font-weight: 500px;
+  font-weight: bold;
 }
 
 .RightIcons {
   display: flex;
-  width: 200px;
+  width: 220px;
   height: 56px;
   flex-direction: row;
   justify-content: space-between;
@@ -174,15 +194,10 @@
 
 .Links1:hover {
   background-color: rgba(0, 0, 0, 0.06);
-  border-radius: 999px;
-  align-items: center;
-  padding: 10px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
 }
 .Profile {
   display: flex;
-  width: 50px;
+  width: 100px;
   align-items: center;
+  justify-content: space-between;
 }

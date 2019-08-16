@@ -36,7 +36,10 @@ class NavBar extends React.Component {
               P
             </Link>
           </div>
-          <input type="text" className="Searchbar" />
+          <div className="SearchGrp">
+          <i class="fas fa-search" />
+            <input type="text" className="Searchbar" />
+          </div>
           <Link to={"/"} className="Links1 Home">
             Home
           </Link>
@@ -66,14 +69,13 @@ class NavBar extends React.Component {
               </Link>
             </div>
             <div className="Navbar-icon-halo">
-
-            <Link
-              to={"/"}
-              className=" Links2 Ellipses"
-              onClick={this.toggleDropdown("UserTasks")}
-            >
-              ...
-            </Link>
+              <Link
+                to={"/"}
+                className=" Links2 Ellipses"
+                onClick={this.toggleDropdown("UserTasks")}
+              >
+                ...
+              </Link>
             </div>
             <div className="UserTasks hide">
               {user_tasks.map(task => (
