@@ -19,7 +19,6 @@ const receivePinError = () => ({
 export const fetchPins = tags => dispatch =>
   ApiUtil.getPins(tags)
     .then(res => {
-      debugger;
       const pins = Object.values(res.data);
 
       if (pins.length === 1) {
@@ -28,4 +27,6 @@ export const fetchPins = tags => dispatch =>
         dispatch(receivePins(pins));
       }
     })
-    .catch(error => dispatch(receivePinError()));
+    .catch(error => {
+      dispatch(receivePinError());
+    });
