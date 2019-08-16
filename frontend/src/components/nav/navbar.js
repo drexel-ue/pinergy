@@ -39,11 +39,7 @@ class NavBar extends React.Component {
           <Link to={"/home"} className="Links1">
             Following
           </Link>
-          <Link
-            to={"/"}
-            className="Links1"
-            onClick={this.toggleDropdown("ProfileDropdown")}
-          >
+          <Link to={"/profile"} className="Links1">
             <div>
               {this.props.user ? this.props.user.username : ""}
               <img
