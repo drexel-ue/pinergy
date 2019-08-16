@@ -125,10 +125,10 @@
   position: absolute;
   z-index: 1;
   height: 100px;
-  width: 30%; 
+  width: 30%;
   border: 1px solid black;
   border-radius: 8px;
-  background: white);
+  background: white;
   overflow-y: auto;
-  margin-top:40px;
+  margin-top: 40px;
 }
