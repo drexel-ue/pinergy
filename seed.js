@@ -7,14 +7,6 @@ const bcrypt = require("bcryptjs");
 const db = require("./config/keys").mongoURI;
 const mongoose = require("mongoose");
 
-const demoUser = {
-  email: "DemoUser@Pinergy.com",
-  password: "test123",
-  password2: "test123",
-  username: "DemoUser",
-  age: 09380298
-};
-
 const boardTitles = [
   "Home Decor",
   "Food and Drink",
@@ -132,11 +124,32 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB successfully");
 
-    User.find({ email: "DemoUser@Pinergy.com" }).then(user => {
-      if (!user) {
-        const newUser = User(demoUser);
+    const demoUser = {
+      email: "DemoUser@Pinergy.com",
+      password: "test123",
+      password2: "test123",
+      username: "DemoUser",
+      age: 09380298
+    };
 
-        newUser.save();
+    User.findOne({ email: "DemoUser@Pinergy.com" }).then(user => {
+      if (!user) {
+        const newUser = new User(demoUser);
+        bcrypt.genSalt(10, (error, salt) => {
+          // Throw an error if there is one.
+          if (error) throw error;
+          bcrypt.hash(newUser.password, salt, (error, hash) => {
+            // Throw an error if there is one.
+            if (error) throw error;
+            // Set the newUser object's password to the salted password (hash).
+            newUser.password = hash;
+            newUser
+              // Save the new user document to the database.
+              .save()
+              // Log any errors.
+              .catch(error => console.log(error));
+          });
+        });
       }
     });
 
