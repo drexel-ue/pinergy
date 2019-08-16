@@ -198,6 +198,7 @@ mongoose
                         user: user.id,
                         board: board.id,
                         image: image.id,
+                        url: image.url,
                         title: faker.lorem.words(3),
                         description: faker.lorem.paragraph(3),
                         destinationLink: image.url,
