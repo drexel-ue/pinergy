@@ -4,7 +4,7 @@ import ProfileHeader from './profile_head'
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
+    // debugger
     this.state = {
       boards: [],
       sections: []
@@ -27,7 +27,7 @@ class Profile extends React.Component {
             <ProfileHeader/>
           <h2>All of This User's Board</h2>
           {this.state.boards.map(board => (
-            <div>To Be a Bard</div>
+            <div>To Be a Bardsdsdfsfsd</div>
           ))}
         </div>
       );
