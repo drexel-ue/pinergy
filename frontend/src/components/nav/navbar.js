@@ -31,34 +31,42 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="NavBar">
-          <div className="Navbar-logo-wrapper">
+          <div className="Navbar-icon-halo">
             <Link to={"/home"} className="Navbar-logo">
               P
             </Link>
           </div>
           <input type="text" className="Searchbar" />
-          <Link to={"/"} className="Links1">
+          <Link to={"/"} className="Links1 Home">
             Home
           </Link>
           <Link to={"/home"} className="Links1">
             Following
           </Link>
           <Link to={"/profile"} className="Links1">
-            <div>
-              {this.props.user ? this.props.user.username : ""}
+            <div className="Profile">
               <img
                 className="ProfileIcon"
                 src={this.props.user ? this.props.user.profilePhotoUrl : ""}
               />
+              {this.props.user ? this.props.user.username : ""}
             </div>
           </Link>
 
           <div className="RightIcons">
-            <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
-            <Link to={"/"} className="fas fa-bell fa-2x Links2" />
-            <Link to={"/"} className="Links2 PlusSign">
-              +{" "}
-            </Link>
+            <div className="Navbar-icon-halo">
+              <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
+            </div>
+            <div className="Navbar-icon-halo">
+              <Link to={"/"} className="fas fa-bell fa-2x Links2" />
+            </div>
+            <div className="Navbar-icon-halo">
+              <Link to={"/"} className="Links2 PlusSign">
+                +{" "}
+              </Link>
+            </div>
+            <div className="Navbar-icon-halo">
+
             <Link
               to={"/"}
               className=" Links2 Ellipses"
@@ -66,6 +74,7 @@ class NavBar extends React.Component {
             >
               ...
             </Link>
+            </div>
             <div className="UserTasks hide">
               {user_tasks.map(task => (
                 <div key={task} className="UserTasksItems">
