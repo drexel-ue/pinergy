@@ -21,7 +21,7 @@ export const receiveUser = user => ({
 export const updateUser = (userData, id) => dispatch =>
   ApiUtil.updateUser(userData, id)
     .then(response => {
-      dispatch(receiveCurrentUser(response.data));
+      dispatch(receiveUser(response.data));
       dispatch(userUpdated());
     })
     .catch(err => {
