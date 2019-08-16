@@ -34,6 +34,10 @@ const PinSchema = new Schema({
     type: String,
     required: false
   },
+  tags: {
+    type: Array,
+    default: []
+  },
   repins: {
     type: Number,
     default: 0
@@ -45,4 +49,4 @@ const PinSchema = new Schema({
 });
 
 // Let's not forget to export our model.
-module.exports = Board = mongoose.model("boards", PinSchema);
+module.exports = Board = mongoose.model("pins", PinSchema);

@@ -23,4 +23,4 @@ const SectionSchema = new Schema({
 });
 
 // Let's not forget to export our model.
-module.exports = Section = mongoose.model("boards", SectionSchema);
+module.exports = Section = mongoose.model("sections", SectionSchema);

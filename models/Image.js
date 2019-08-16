@@ -15,4 +15,4 @@ const ImageSchema = new Schema({
 });
 
 // Let's not forget to export our model.
-module.exports = Section = mongoose.model("boards", ImageSchema);
+module.exports = Section = mongoose.model("images", ImageSchema);
