@@ -55,8 +55,8 @@
 }
 
 .Links2 {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   text-decoration: none;
@@ -96,6 +96,10 @@
   text-decoration: none;
 }
 
+.Ellipses {
+  font-weight: 500px;
+}
+
 .RightIcons {
   display: flex;
   width: 200px;
@@ -124,11 +128,23 @@
 .UserTasks {
   position: absolute;
   z-index: 1;
-  height: 100px;
-  width: 30%;
-  border: 1px solid black;
+  height: 300px;
+  width: 322px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   border-radius: 8px;
+  outline: none;
   background: white;
   overflow-y: auto;
-  margin-top: 40px;
+  top: 12px;
+  left: 1047px;
+}
+
+.UserTasksItems {
+  padding: 8px 16px;
+  margin: -4px;
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+  width: 328px;
+  height: 42px;
 }
