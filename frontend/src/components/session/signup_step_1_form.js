@@ -47,7 +47,7 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="signup-errors">
         {Object.keys(this.state.errors).map((error, i) => {
           return <li key={`error-${i}`}>{this.state.errors[error]}</li>;
         })}
@@ -57,51 +57,53 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className="signup_step_1">
-        <div className="pinergy-logo logo-s1">P</div>
-        <div className="login-welcome">
-          Welcome to Pinergy
-        </div>
-        <div className="ideas-text">
-          Find new ideas to try
-        </div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup_step_1_form">
-            <input
-              className="login-input-text"
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <input
-              className="login-input-text"
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <input
-              className="login-input-text"
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <input
-              className="login-input-text"
-              type="text"
-              value={this.state.age}
-              onChange={this.update("age")}
-              placeholder="Age"
-            />
-            <button className="redbtn signup-btn">Continue</button>
-            <div className="login-terms">By continuing, you agree to Pinergy's</div>
-            <div className="login-terms bold">Terms of Service, Privacy Policy</div>
-            <div className="login-to-signin" onClick={this.gotoLogIn}>Already a member? Log in</div>
-            {this.renderErrors()}
+    <div>
+        <div className="signup_step_1">
+          <div className="pinergy-logo logo-s1">P</div>
+          <div className="login-welcome">
+            Welcome to Pinergy
           </div>
-        </form>
+          <div className="ideas-text">
+            Find new ideas to try
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            <div className="signup_step_1_form">
+              <input
+                className="login-input-text"
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <input
+                className="login-input-text"
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+              <input
+                className="login-input-text"
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+              />
+              <input
+                className="login-input-text"
+                type="text"
+                value={this.state.age}
+                onChange={this.update("age")}
+                placeholder="Age"
+              />
+              <button className="redbtn signup-btn">Continue</button>
+              <div className="login-terms">By continuing, you agree to Pinergy's</div>
+              <div className="login-terms bold">Terms of Service, Privacy Policy</div>
+              <div className="login-to-signin" onClick={this.gotoLogIn}>Already a member? Log in</div>
+            </div>
+          </form>
+        </div>
+        {this.renderErrors()}
       </div>
     );
   }

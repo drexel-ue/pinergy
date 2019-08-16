@@ -16,7 +16,7 @@
 
 .signup-btn {
   width: 268px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 
 .ideas-text {
@@ -410,10 +410,10 @@ input.gender_option {
 }
 
 .bold {
-    font-size: 12px;
+  font-size: 12px;
   font-weight: bolder;
   -webkit-font-smoothing: antialiased;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .log-or-dem {
@@ -454,4 +454,11 @@ input.gender_option {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+.signup-errors {
+  position: absolute;
+  top: 514px;
+  left: 46px;
+  color: red;
 }
