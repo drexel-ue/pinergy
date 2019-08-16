@@ -1,4 +1,5 @@
 import React from "react";
+import "../home/home.css";
 
 export default class Pin extends React.Component {
   render() {

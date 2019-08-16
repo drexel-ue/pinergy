@@ -10,7 +10,7 @@ export default (state = {}, action) => {
       return merge(
         {},
         state,
-        action.pins.slice(0, 5).reduce((pojo, pin) => {
+        action.pins.slice(0, 15).reduce((pojo, pin) => {
           pojo[pin._id] = pin;
           return pojo;
         }, {})
