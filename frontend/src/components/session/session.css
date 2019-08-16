@@ -495,3 +495,7 @@ input.gender_option {
   left: 46px;
   color: red;
 }
+
+input[type=checkbox] {
+  border-radius: 20px;
+}
