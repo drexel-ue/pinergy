@@ -46,8 +46,6 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user);
-
-      
   }
 
   // Render the session errors if there are any

@@ -23,18 +23,16 @@ import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 class Modal extends React.Component {
   componentDidMount() {
-    if (this.props.currentUser.interests || this.props.currentUser.id ) {
+    if (this.props.currentUser.interests) {
       this.props.closeModal();
-    } else {
-      this.props.showFirstSignUpStep();
-    }
+    } else { this.props.showFirstSignUpStep();}
   }
 
   render() {
     // if (!modal) {
     //   return null;
     // }]
-    // debugger
+    
     let component;
     switch (this.props.modal) {
       case SHOW_FIRST_SIGN_UP_STEP:

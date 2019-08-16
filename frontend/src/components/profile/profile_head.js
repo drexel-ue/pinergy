@@ -3,13 +3,7 @@ import { Link } from 'react-router-dom'
 export default class ProfileHead extends React.Component{ 
   constructor(props) {
     super(props);
-    debugger
-    this.state = {
-      showDropdown: false,
-      showShareDropdown: false
-    }
     this.toggleDropdown = this.toggleDropdown.bind(this);
-    this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -28,7 +22,7 @@ export default class ProfileHead extends React.Component{
     ) : ( <div></div>)
   }
   renderShareDropdown() {
-    return this.state.showShareDropdown ? (
+    return this.state.showDropdown ? (
       <div className="sharedrpdwnenc">
         <p className="sharedrpdwnenchdr">Share this profile </p>
         <i className="fab fa-whatsapp des"></i>
@@ -41,10 +35,10 @@ export default class ProfileHead extends React.Component{
     return ( 
       <div>
         <div>
-          <i className="fas fa-plus" onClick={this.toggleDropdown}></i>
+          <i className="fas fa-plus" onClick={this.toggleDropdown()}></i>
           {this.renderDropdown()}
           <Link to='/profile/settings'><i className="fas fa-pen" /></Link>
-          <i className="fas fa-upload" onClick={this.toggleShareDropdown}></i>
+          <i className="fas fa-upload" onClick={this.toggleShareDropdown()}></i>
           {this.renderShareDropdown()}
         </div>
         <div></div>

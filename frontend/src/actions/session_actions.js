@@ -1,7 +1,6 @@
 import * as APIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
 import { moveToSecondSignupStep, closeModal, showFirstSignUpStep } from "./modal_actions";
-import { receiveUser } from "./user_actions";
 
 // Action types.
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -38,14 +37,11 @@ export const logoutUser = () => ({
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend.
 export const signup = user => dispatch =>
   APIUtil.signup(user).then(
-    res => {
-      const { token, user } = res.data;
-      APIUtil.setAuthToken(token);
-      const decoded = jwt_decode(token);
-      dispatch(receiveCurrentUser(decoded));
+    response => {
+      APIUtil.setAuthToken(response.data.token);
+      dispatch(receiveCurrentUser(response.data.user));
       dispatch(receiveUserSignIn());
       dispatch(moveToSecondSignupStep());
-      dispatch(receiveUser(user));
     },
     err => dispatch(receiveErrors(err.response.data))
   );
@@ -54,13 +50,12 @@ export const signup = user => dispatch =>
 export const login = user => dispatch =>
   APIUtil.login(user)
     .then(res => {
-      const { token, user } = res.data;
+      const { token } = res.data;
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
-      dispatch(closeModal());
-      dispatch(receiveUser(user))
+      dispatch(closeModal())
     })
     .catch(err => {
       dispatch(receiveErrors(err.response.data));
