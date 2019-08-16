@@ -9,6 +9,7 @@ export default (state = {}, action) => {
     case RECEIVE_PINS:
       return merge(
         {},
+        state,
         action.pins.reduce((pojo, pin) => {
           pojo[pin._id] = pin;
           return pojo;

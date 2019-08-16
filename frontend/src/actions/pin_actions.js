@@ -10,7 +10,7 @@ const receivePins = pins => ({
 });
 const receivePin = pin => ({
   type: RECEIVE_PIN,
-  pins
+  pin
 });
 const receivePinError = () => ({
   type: RECEIVE_PIN_ERROR
@@ -19,11 +19,10 @@ const receivePinError = () => ({
 export const fetchPins = tags => dispatch =>
   ApiUtil.getPins(tags)
     .then(res => {
+      debugger;
       const pins = Object.values(res.data);
 
-      if (pins.length === 0) {
-        dispatch(receiveNoPins());
-      } else if (pins.length === 1) {
+      if (pins.length === 1) {
         dispatch(receivePin(pins[0]));
       } else {
         dispatch(receivePins(pins));
