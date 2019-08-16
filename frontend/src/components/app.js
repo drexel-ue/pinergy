@@ -6,7 +6,7 @@ import NavBarContainer from "./nav/navbar_container";
 import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import ModalContainer from "./modal/modal";
-import ProfileContainer from "./profile/profile_container"
+import ProfileHeadContainer from "./profile/profile_head_container"
 
 class App extends React.Component {
 
@@ -17,7 +17,7 @@ class App extends React.Component {
       <NavBarContainer />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
-        <ProtectedRoute path="/profile" component={ProfileContainer} />
+        <ProtectedRoute path="/profile" component={ProfileHeadContainer} />
         <ProtectedRoute exact path="/profile/boards" component={ProfileContainer} />
         <ProtectedRoute exact path="/profile/pins" component={ProfileContainer} />
         <ProtectedRoute exact path="/profile/tries" component={ProfileContainer} />
