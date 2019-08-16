@@ -39,8 +39,22 @@ class NavBar extends React.Component {
           <Link to={"/home"} className="Links1">
             Following
           </Link>
-          <Link to={"/"} className="Links1">
-            Profile
+          <Link
+            to={"/"}
+            className="Links1"
+            onClick={this.toggleDropdown("ProfileDropdown")}
+          >
+            <div>
+              {this.props.user ? this.props.user.username : ""}
+              <img className="ProfileIcon"
+                src={this.props.user ? this.props.user.profilePhotoUrl : ""}
+              />
+            </div>
+            {/* <div>{this.props.profilePhotoUrl}</div> */}
+            {/* <div> */}
+
+            {/* </div>{" "}
+              </div> */}
           </Link>
           <div className="RightIcons">
             <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
@@ -52,7 +66,9 @@ class NavBar extends React.Component {
               to={"/"}
               className=" Links2 Ellipses"
               onClick={this.toggleDropdown("UserTasks")}
-            >...</Link>
+            >
+              ...
+            </Link>
             <div className="UserTasks hide">
               {user_tasks.map(task => (
                 <div key={task} className="UserTasksItems">
