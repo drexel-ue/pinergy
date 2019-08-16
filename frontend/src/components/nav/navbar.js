@@ -14,34 +14,85 @@ class NavBar extends React.Component {
     this.props.logout();
   }
 
+  toggleDropdown(className) {
+    return event => {
+      event.preventDefault();
+      event.stopPropagation();
+      document.getElementsByClassName(className)[0].classList.toggle("hide");
+    };
+  }
+
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
-          <Link to={"/home"}>Home</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className="NavBar">
+          <div className="Navbar-logo-wrapper">
+            <Link to={"/home"} className="Navbar-logo">
+              P
+            </Link>
+          </div>
+          <input type="text" className="Searchbar" />
+          <Link to={"/"} className="Links1">
+            Home
+          </Link>
+          <Link to={"/home"} className="Links1">
+            Following
+          </Link>
+          <Link to={"/"} className="Links1">
+            Profile
+          </Link>
+          <div className="RightIcons">
+            <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
+            <Link to={"/"} className="fas fa-bell fa-2x Links2" />
+            <Link to={"/"} className="Links2 PlusSign">
+              +{" "}
+            </Link>
+            <Link
+              to={"/"}
+              className=" Links2 Ellipses"
+              onClick={this.toggleDropdown("UserTasks")}
+            >...</Link>
+            <div className="UserTasks hide">
+              {user_tasks.map(task => (
+                <div key={task} className="UserTasksItems">
+                  {task}{" "}
+                </div>
+              ))}
+              <div
+                key="logout"
+                className="UserTasksItems"
+                onClick={this.logoutUser}
+              >
+                Logout{" "}
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {
-      return (
-        <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
-        </div>
-      );
+      return <div />;
     }
   }
 
   render() {
     return (
       <div>
-        <h1>Pinergy</h1>
         {this.getLinks()}
+        <h1>Pinergy</h1>
       </div>
     );
   }
 }
+
+const user_tasks = [
+  "Tune your home feed",
+  "Edit settings",
+  "Ads support",
+  "Request a feature",
+  "Get help",
+  "See terms and privacy",
+  "Add account"
+];
 
 export default NavBar;
