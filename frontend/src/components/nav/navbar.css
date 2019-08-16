@@ -2,20 +2,133 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-decoration: none;
+  border-bottom: 1px solid #efefef;
+  width: 1415px;
+  height: 56px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  align-items: center;
 }
 
 .NavBar button {
   height: 20px;
 }
-
+.Navbar-logo {
+  border-radius: 50%;
+  height: 28px;
+  width: 28px;
+  background: rgb(240, 9, 9);
+  color: white;
+  display: flex;
+  /* align-items: center; */
+  font-size: 25px;
+  justify-content: center;
+  font-family: "Lobster Two", cursive;
+  margin: 0px 0px;
+  text-decoration: none;
+  z-index: 1;
+  /* align-self: center; */
+}
+.Navbar-logo-wrapper:hover {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  padding: 4px 4px;
+  background: rgb(0, 0, 9, 0.1);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 0px 0px;
+  text-decoration: none;
+  /* align-self: center; */
+}
 .Links1 {
   width: 100px;
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color: #8e8e8e;
+  font-family: "Roboto", "Verdana";
 }
 
 .Links2 {
-  width: 400px;
+  width: 24px;
+  height: 24px;
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+  color: #8e8e8e;
+  display: block;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+}
+
+.Searchbar {
+  width: 523px;
+  height: 40px;
+  background: #efefef;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.PlusSign {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  background: rgb(240, 9, 9);
+  color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  /* align-self: center; */
+  font-size: 35px;
+  justify-content: center;
+  /* font-family: "Lobster Two", cursive; */
+  /* margin: 10px 0px; */
+  text-decoration: none;
+}
+
+.RightIcons {
+  display: flex;
+  width: 200px;
+  height: 56px;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  align-items: center;
+}
+
+.task_select {
+  display: flex;
+  width: 30%;
+  border: solid 1px black;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.UserTasks {
+  position: absolute;
+  z-index: 1;
+  height: 100px;
+  width: 30%; 
+  border: 1px solid black;
+  border-radius: 8px;
+  background: white);
+  overflow-y: auto;
+  margin-top:40px;
 }

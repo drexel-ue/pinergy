@@ -18,30 +18,63 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div>
-          <Link to={"/home"}>Home</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className="NavBar">
+          <div className="Navbar-logo-wrapper">
+            <Link to={"/home"} className="Navbar-logo">
+              P
+            </Link>
+          </div>
+          <input type="text" className="Searchbar" />
+          <Link to={"/"} className="Links1">
+            Home
+          </Link>
+          <Link to={"/home"} className="Links1">
+            Following
+          </Link>
+          <Link to={"/"} className="Links1">
+            Profile
+          </Link>
+          <div className="RightIcons">
+            <Link to={"/"} className="far fa-comment-dots Links2" />
+            <Link to={"/"} className="fas fa-bell Links2" />
+            <Link to={"/"} className="Links2 PlusSign">
+              +{" "}
+            </Link>
+
+            <Link to={"/"} className="fas fa-ellipsis-h Links2" />
+            <div className="UserTasks">
+              {user_tasks.map(task => (
+                <div key={task}>{task}</div>
+              ))}
+            </div>
+            <button onClick={this.logoutUser}>Logout</button>
+          </div>
         </div>
       );
     } else {
-      return (
-        <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
-        </div>
-      );
+      return <div />;
     }
   }
 
   render() {
     return (
       <div>
-        <h1>Pinergy</h1>
         {this.getLinks()}
+        <h1>Pinergy</h1>
       </div>
     );
   }
 }
+
+const user_tasks = [
+  "Tune your home feed",
+  "Edit settings",
+  "Ads support",
+  "Request a feature",
+  "Get help",
+  "See terms and privacy",
+  "Add account",
+  "Log out"
+];
 
 export default NavBar;
