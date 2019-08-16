@@ -6,6 +6,12 @@ export default class Home extends React.Component {
   }
 
   render() {
-    return <div>home to come..</div>;
+    return (
+      <div>
+        {Object.values(this.props.pins).map(pin => (
+          <div>{pin.title}</div>
+        ))}
+      </div>
+    );
   }
 }
