@@ -69,6 +69,7 @@ export default class ProfileHead extends React.Component {
         <div className="follownums">
           {user.followers.length} followers {user.following.length} following
         </div>
+        <img src={user.profilPhotoUrl} className="prfprfpho"/>
         <div className="prfnav">
           <Link to="/profile/boards">Baords</Link>
           <Link to="/profile/pins">Pins</Link>
