@@ -104,21 +104,6 @@ const boardTitles = [
   "Urban Gardening"
 ];
 
-const fakeImageUrls = [
-  faker.image.abstract(),
-  faker.image.animals(),
-  faker.image.business(),
-  faker.image.cats(),
-  faker.image.city(),
-  faker.image.food(),
-  faker.image.nightlife(),
-  faker.image.fashion(),
-  faker.image.people(),
-  faker.image.nature(),
-  faker.image.sports(),
-  faker.image.transport()
-];
-
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
@@ -161,11 +146,9 @@ mongoose
                       pinImageIndex < 30;
                       pinImageIndex++
                     ) {
-                      const index = Math.round(
-                        Math.random() * (fakeImageUrls.length - 1)
-                      );
+                      const height = Math.round((Math.random() * 400) + 100)
                       const image = new Image({
-                        url: fakeImageUrls[index]
+                        url: `https://picsum.photos/240/${height}?random=1`
                       });
                       image.save().then(image => {
                         const pin = new Pin({
@@ -225,11 +208,9 @@ mongoose
                     pinImageIndex < 30;
                     pinImageIndex++
                   ) {
-                    const index = Math.round(
-                      Math.random() * (fakeImageUrls.length - 1)
-                    );
+                    const height = Math.round((Math.random() * 400) + 100)
                     const image = new Image({
-                      url: fakeImageUrls[index]
+                      url: `https://picsum.photos/240/${height}?random=1`
                     });
                     image.save().then(image => {
                       const pin = new Pin({
