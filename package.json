@@ -36,6 +36,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "puppeteer": "^1.19.0",
+    "react-masonry-component": "^6.2.1",
     "validator": "^11.1.0",
     "webpack-dev-server": "3.2.1"
   },

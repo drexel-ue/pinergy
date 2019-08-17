@@ -1,8 +1,40 @@
-.home {
+/* home-grid (div around grid) */
+    /* home-masonry  (masonry component) */
+        /* home-pin-wrap  (pin container) */
+            /* home-pin-img  (pin img) */
+            /* home-pin-content  (TBA) */
+            /* home-pin-button  (TBA) */
+
+.home-grid {
+    /* display: flex;
+    justify-content: center; */
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    margin-top: 15px;
 }
 
-.home_pin_wrapper {
+.home-pin-wrap {
+    width: 240px;
+    border-radius: 30px;
+    padding: 5px 15px;
 }
 
-.home_pin {
+.home-pin-wrap {
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .3));
+    transition: filter .25s ease-in-out;
 }
+.home-pin-wrap:hover {
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
+}
+
+.home-pin-img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.home-pin-img:hover {
+    filter: brightness(0.6);
+    cursor: zoom-in;
+}
+
