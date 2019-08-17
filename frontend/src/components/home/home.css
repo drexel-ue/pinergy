@@ -8,8 +8,12 @@
 .home-grid {
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
-    margin-top: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.home-masonry {
+    margin: 0 auto;
 }
 
 .home-pin-wrap {
