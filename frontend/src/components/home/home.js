@@ -10,7 +10,7 @@ export default class Home extends React.Component {
 
   render() {
     return Object.values(this.props.pins).length > 0 ? (
-      <div className="home-grid">
+      <div className="home-masonry">
         <Masonry
             className="home-masonry"
             elementType="div"
