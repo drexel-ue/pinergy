@@ -11,7 +11,6 @@ export default class Pin extends React.Component {
   parseDestinationLink() {
     let hostDomain;
     let { destinationLink } = this.props.pin
-    // debugger;
     if (destinationLink.indexOf("//") > -1) {
       hostDomain = destinationLink.split('/')[2];
     }
@@ -20,7 +19,6 @@ export default class Pin extends React.Component {
     }
     hostDomain = hostDomain.split(':')[0];
     hostDomain = hostDomain.split('?')[0];
-    // debugger;
     return hostDomain;
   }
 
