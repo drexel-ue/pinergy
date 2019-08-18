@@ -1,4 +1,5 @@
-import { connect, withRouter } from "react-redux";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PinShow from "./pin_show";
 
 const msp = ({ entities }, ownProps) => {
