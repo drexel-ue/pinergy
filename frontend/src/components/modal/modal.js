@@ -21,6 +21,7 @@ import SignupStep5Container from "../session/signup_step_5_form_container";
 import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 import PinShowContainer from "../show/pin_show_container";
+import { relative } from "path";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
@@ -72,9 +73,23 @@ class Modal extends React.Component {
         return (component = <div />);
     }
 
+
+
+
+    // debugger;
+    const modalChildStyle = this.props.modal === "SHOW_PIN" ? {
+      top: "365px",
+      height: "550px",
+      width: "600px"
+    } : {}
     return (
-      <div className="modal-background" onClick={this.dismissModal}>
-        <div className="modal-child">{component}</div>
+      <div className="modal-background" 
+          onClick={this.dismissModal}>
+        <div 
+          className="modal-child"
+          style={modalChildStyle}>
+          {component}
+        </div>
         <SessionButtonContainer modal={this.props.modal} />
       </div>
     );
