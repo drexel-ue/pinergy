@@ -1,0 +1,26 @@
+.pin_show {
+  height: 592px;
+  width: 912px;
+}
+
+.pin_show_image_wrapper {
+  width: 496px;
+  margin-left: 30px;
+  top: 30px;
+  position: relative;
+}
+
+.pin_show_image_overlay {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pin_show_image {
+  width: -webkit-fill-available;
+}
