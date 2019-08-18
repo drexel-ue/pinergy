@@ -11,6 +11,10 @@
   padding-bottom: 4px;
   padding-top: 4px;
   align-items: center;
+  position: fixed;
+  z-index: 10;
+  background: white;
+  top: 0;
 }
 
 .NavBar button {
