@@ -14,13 +14,26 @@
   align-items: center;
 }
 
+.pin_show_image_wrapper:hover .pin_show_image_overlay {
+    display: inline-block;
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pin_show_image_wrapper:hover .pin_show_image {
+  filter: brightness(0.6);
+}
+
 .pin_show_image_overlay {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  color: white;
-  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  /* position: absolute; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* color: white; */
+  /* background: rgba(0, 0, 0, 0.7); */
 }
 
 .pin_show_image {
