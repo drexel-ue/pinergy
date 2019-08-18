@@ -5,7 +5,9 @@ export const MOVE_TO_SECOND_SIGN_UP_STEP = "MOVE_TO_SECOND_SIGN_UP_STEP";
 export const MOVE_TO_THIRD_SIGN_UP_STEP = "MOVE_TO_THIRD_SIGN_UP_STEP";
 export const MOVE_TO_FOURTH_SIGN_UP_STEP = "MOVE_TO_FOURTH_SIGN_UP_STEP";
 export const MOVE_TO_FIFTH_SIGN_UP_STEP = "MOVE_TO_FIFTH_SIGN_UP_STEP";
-export const MOVE_TO_LOGIN = "MOVE_TO_LOGIN"
+export const MOVE_TO_LOGIN = "MOVE_TO_LOGIN";
+export const SHOW_PIN = "SHOW_PIN";
+
 export const openModal = (type, data) => {
   return {
     type: OPEN_MODAL,
@@ -28,22 +30,22 @@ export const moveToSecondSignupStep = formData => {
     }
   };
 };
-
 export const moveToThirdSignupStep = () => ({
   type: MOVE_TO_THIRD_SIGN_UP_STEP
 });
-
 export const moveToFourthSignupStep = () => ({
   type: MOVE_TO_FOURTH_SIGN_UP_STEP
 });
-
 export const moveToFifthSignupStep = () => ({
   type: MOVE_TO_FIFTH_SIGN_UP_STEP
 });
-
 export const moveToLogIn = () => ({
   type: MOVE_TO_LOGIN
-})
+});
+export const showPin = id => ({
+  type: SHOW_PIN,
+  id
+});
 export const closeModal = () => {
   return {
     type: CLOSE_MODAL

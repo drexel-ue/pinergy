@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PinShow from "./pin_show";
 
-const msp = ({ entities }, ownProps) => {
+const msp = ({ entities, ui }) => {
   return {
-    pin: entities.pins[ownProps.match.params.id]
+    pin: entities.pins[ui.modal.id]
   };
 };
 const mdp = dispatch => ({});
