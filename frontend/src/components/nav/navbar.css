@@ -51,7 +51,7 @@
   /* align-self: center; */
 }
 .Links1 {
-  width: 60%;
+  width: 10%;
   display: flex;
   /* justify-content: space-between; */
   text-decoration: none;
@@ -89,6 +89,7 @@
 }
 .Searchbar {
   height: 40px;
+  width: 90%;
   background: #efefef;
   padding-left: 16px;
   padding-right: 16px;
@@ -119,8 +120,11 @@
   text-decoration: none;
 }
 
-.Ellipses {
+/* .Ellipses {
   font-weight: bold;
+} */
+.fa-ellipsis {
+  color: red;
 }
 
 .RightIcons {
@@ -198,6 +202,13 @@
 .Profile {
   display: flex;
   width: 100px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LeftLinks {
+  display: flex;
+  width: 80%;
   align-items: center;
   justify-content: space-between;
 }
