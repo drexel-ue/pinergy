@@ -31,31 +31,32 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="NavBar">
-          <div className="Navbar-icon-halo">
-            <Link to={"/home"} className="Navbar-logo">
-              P
+          <div className="LeftLinks">
+            <div className="Navbar-icon-halo">
+              <Link to={"/home"} className="Navbar-logo">
+                P
+              </Link>
+            </div>
+            <div className="SearchGrp">
+              <i class="fas fa-search" />
+              <input type="text" className="Searchbar" />
+            </div>
+            <Link to={"/"} className="Links1 Home">
+              Home
+            </Link>
+            <Link to={"/home"} className="Links1">
+              Following
+            </Link>
+            <Link to={"/profile"} className="Links1">
+              <div className="Profile">
+                <img
+                  className="ProfileIcon"
+                  src={this.props.user ? this.props.user.profilePhotoUrl : ""}
+                />
+                {this.props.user ? this.props.user.username : ""}
+              </div>
             </Link>
           </div>
-          <div className="SearchGrp">
-          <i class="fas fa-search" />
-            <input type="text" className="Searchbar" />
-          </div>
-          <Link to={"/"} className="Links1 Home">
-            Home
-          </Link>
-          <Link to={"/home"} className="Links1">
-            Following
-          </Link>
-          <Link to={"/profile"} className="Links1">
-            <div className="Profile">
-              <img
-                className="ProfileIcon"
-                src={this.props.user ? this.props.user.profilePhotoUrl : ""}
-              />
-              {this.props.user ? this.props.user.username : ""}
-            </div>
-          </Link>
-
           <div className="RightIcons">
             <div className="Navbar-icon-halo">
               <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
@@ -71,11 +72,11 @@ class NavBar extends React.Component {
             <div className="Navbar-icon-halo">
               <Link
                 to={"/"}
-                className=" Links2 Ellipses"
+                className="fas fa-ellipsis fa-2x Links2"
                 onClick={this.toggleDropdown("UserTasks")}
-              >
-                ...
-              </Link>
+              />
+              {/* <Link to={"/"} className="far fa-ellipsis-h Links2 fa-2x" /> */}
+              {/*  */}
             </div>
             <div className="UserTasks hide">
               {user_tasks.map(task => (
@@ -100,11 +101,7 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.getLinks()}
-      </div>
-    );
+    return <div>{this.getLinks()}</div>;
   }
 }
 
