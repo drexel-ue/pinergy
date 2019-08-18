@@ -1,8 +1,6 @@
 import React from "react";
 import {
   closeModal,
-  // OPEN_MODAL,
-  // CLOSE_MODAL,
   SHOW_FIRST_SIGN_UP_STEP,
   MOVE_TO_SECOND_SIGN_UP_STEP,
   MOVE_TO_THIRD_SIGN_UP_STEP,
@@ -24,6 +22,11 @@ import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 import PinShowContainer from "../show/pin_show_container";
 class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.dismissModal = this.dismissModal.bind(this);
+  }
+
   componentDidMount() {
     if (this.props.currentUser.interests || this.props.currentUser.id) {
       this.props.closeModal();
@@ -32,11 +35,14 @@ class Modal extends React.Component {
     }
   }
 
+  dismissModal(event) {
+    event.preventDefault();
+    if ([SHOW_PIN].includes(this.props.modal)) {
+      this.props.closeModal();
+    }
+  }
+
   render() {
-    // if (!modal) {
-    //   return null;
-    // }]
-    // debugger
     let component;
     switch (this.props.modal) {
       case SHOW_FIRST_SIGN_UP_STEP:
@@ -67,7 +73,7 @@ class Modal extends React.Component {
     }
 
     return (
-      <div className="modal-background" onClick={closeModal}>
+      <div className="modal-background" onClick={this.dismissModal}>
         <div className="modal-child">{component}</div>
         <SessionButtonContainer modal={this.props.modal} />
       </div>
