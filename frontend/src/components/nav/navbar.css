@@ -16,6 +16,7 @@
 .NavBar button {
   height: 20px;
 }
+
 .Navbar-logo {
   border-radius: 50%;
   height: 28px;
@@ -194,6 +195,7 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 
 .Links1:hover {
