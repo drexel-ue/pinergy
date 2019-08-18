@@ -1,38 +1,102 @@
-/* home-grid (div around grid) */
-    /* home-masonry  (masonry component) */
-        /* home-pin-wrap  (pin container) */
-            /* home-pin-img  (pin img) */
-            /* home-pin-content  (TBA) */
-            /* home-pin-button  (TBA) */
-
 .home-grid {
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
-    margin-top: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.home-masonry {
+    margin: 0 auto;
 }
 
 .home-pin-wrap {
-    width: 240px;
+    /* width: 240px; */
     border-radius: 30px;
-    padding: 5px 15px;
+    margin: 8px 15px;
 }
 
 .home-pin-wrap {
-    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, .3));
+    filter: drop-shadow(4px 4px 7px rgba(0, 0, 0, .4));
     transition: filter .25s ease-in-out;
 }
+
 .home-pin-wrap:hover {
-    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
+    filter: drop-shadow(10px 10px 7px rgba(0, 0, 0, .6));
 }
 
 .home-pin-img {
-    width: 100%;
+    /* width: 100%; */
     border-radius: 30px;
 }
 
-.home-pin-img:hover {
+.home-pin-wrap:hover > .home-pin-img {
     filter: brightness(0.6);
     cursor: zoom-in;
 }
 
+.pin-button {
+    display: none;
+}
+
+.pin-button:hover {
+    filter: brightness(0.6);
+    cursor: pointer;
+}
+
+.home-pin-wrap:hover > .pin-button {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.home-pin-wrap:hover > .home-save {
+    align-items: center;
+    top: 20px;
+    right: 20px;
+    height: 40px;
+    width: 80px;
+    padding: 10px 14px;
+    background-color: #e60023;
+}
+
+.home-pin-wrap:hover > a.home-link {
+    bottom: 20px;
+    left: 20px;
+    max-width: 150px;
+    padding: 3px;
+    background-color: rgba(51, 51, 51, .8);
+}
+
+a .home-link-left {
+    width: 80%;
+    display: block;    
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a .home-link-right {
+    width: 20%;
+}
+
+a.home-save:visited, a.home-link {
+    color: white;
+    text-decoration: none;
+}
+
+.fa-arrow-right {
+    transform: rotate(-45deg);
+    margin-left: 3px;
+    font-size: 22px;
+    margin-top: -1px;
+}
+
+.fa-thumbtack {
+    font-size: 100%;
+    transform: scaleY(1.3);
+}

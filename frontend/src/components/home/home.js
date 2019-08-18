@@ -3,6 +3,13 @@ import PinContainer from "../pin/pin_container";
 import Masonry from 'react-masonry-component';
 import './home.css'
 
+const masonryOptions = {
+  transitionDuration: 650,
+  itemSelector: ".home-pin-wrap",
+  columnWidth: 270,
+  fitWidth: true
+};
+
 export default class Home extends React.Component {
   componentDidMount() {
     this.props.getAll();
@@ -10,11 +17,12 @@ export default class Home extends React.Component {
 
   render() {
     return Object.values(this.props.pins).length > 0 ? (
-      <div className="home-masonry">
+      <div className="home-grid">
         <Masonry
-            className="home-masonry"
-            elementType="div"
-            updateOnEachImageLoad={true}
+          className="home-masonry"
+          elementType="div"
+          updateOnEachImageLoad={true}
+          options={masonryOptions}
         >
           {Object.values(this.props.pins).map(pin => (
             <PinContainer key={pin.id} pin={pin} />
