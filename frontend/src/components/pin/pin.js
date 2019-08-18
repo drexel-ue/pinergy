@@ -38,9 +38,10 @@ export default class Pin extends React.Component {
           target="_blank"
           className="pin-button home-link"
         >
-          <i class='fas fa-arrow-right'></i>
-          &nbsp;&nbsp;
-          <div className="pin-destination-link">
+          <div className="home-link-right">
+            <i class='fas fa-arrow-right'></i>
+          </div>
+          <div className="home-link-left">
             {this.parseDestinationLink()}
           </div>
         </a>
