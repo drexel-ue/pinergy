@@ -19,17 +19,16 @@
 .home-pin-wrap {
     width: 240px;
     border-radius: 30px;
-    padding: 5px 15px;
+    padding: 8px 15px;
 }
 
 .home-pin-wrap {
-    filter: drop-shadow(2px 8px 10px rgba(0, 0, 0, .3));
-    transition: filter .3s ease-in-out;
-    z-index: 1
+    filter: drop-shadow(4px 4px 7px rgba(0, 0, 0, .4));
+    transition: filter .25s ease-in-out;
 }
+
 .home-pin-wrap:hover {
-    filter: drop-shadow(10px 20px 10px rgba(0, 0, 0, .5));
-    z-index: 0;
+    filter: drop-shadow(10px 10px 7px rgba(0, 0, 0, .6));
 }
 
 .home-pin-img {
