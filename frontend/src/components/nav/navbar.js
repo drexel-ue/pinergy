@@ -34,11 +34,12 @@ class NavBar extends React.Component {
 
   handleInput(event) {
     event.preventDefault();
-    this.props.searchUsers(this.props.users, event.target.value).then(res => {
-      debugger;
-      this.setState({
+    const that = this;
+    const string = event.target.value;
+    this.props.searchUsers(this.props.users, string).then(res => {
+      that.setState({
         users: Object.values(res.users),
-        queryString: event.target.value
+        queryString: string
       });
     });
   }

@@ -46,8 +46,8 @@ export const fetchUser = id => dispatch =>
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 
-export const peopleSearch = (users, queryString) => dispatch =>
-  // users
+export const peopleSearch = (users, queryString) => dispatch => {
+  // const matches = users
   //   .filter(user => {
   //     debugger;
   //     new RegExp("^" + queryString.toLowerCase()).test(
@@ -60,13 +60,16 @@ export const peopleSearch = (users, queryString) => dispatch =>
   //         user.username.toLowerCase()
   //       );
   //   })
-  //   .slice(0, 3) ||
-  ApiUtil.peopleSearch(queryString)
+  //   .slice(0, 3);
+
+  // return matches.length > 0
+  //   ? matches
+  //   :
+  return ApiUtil.peopleSearch(queryString)
     .then(({ data }) => {
-      debugger;
-      dispatch(receiveUsers(data));
+      return dispatch(receiveUsers(data));
     })
     .catch(err => {
-      debugger;
-      dispatch(receiveUserUpdateErrors(err.response.data));
+      return dispatch(receiveUserUpdateErrors(err.response.data));
     });
+};
