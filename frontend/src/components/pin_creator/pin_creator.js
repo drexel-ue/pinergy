@@ -79,6 +79,7 @@ export default class PinCreator extends React.Component {
 
   removeAllLoadedFile() {
     this.setState({ loadedFiles: [] })
+    //should be calle
   }
 
   turnOffInputUrl(e) { //will be used to toggel off input url
@@ -103,6 +104,13 @@ export default class PinCreator extends React.Component {
     ) : (
         <div className="beforeurlbtn" onClick={this.toggleInputUrl}>Save from site</div>
     );
+  }
+
+  hanldeUpload() {
+    const { loadedFile } = this.state;
+    loadedFile.map((file, idx) => {
+      
+    })
   }
   render() {
     const { loadedFile } = this.state;
