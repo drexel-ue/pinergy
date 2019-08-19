@@ -40,10 +40,11 @@ export default class PinCreator extends React.Component {
     fileReader.onload = () => {
       console.log("IMAGE LOADED: ", fileReader.Result)
       const file = {
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        data: fileReader.result
+        // name: file.name,
+        // size: file.size,
+        // type: file.type,
+        data: fileReader.result,
+        isUploading: false
       }
       this.addLoadedFile(file)
     }
@@ -80,11 +81,19 @@ export default class PinCreator extends React.Component {
     this.setState({ loadedFiles: [] })
   }
 
-  turnOffInputUrl() {
+  turnOffInputUrl() { //will be used to toggel off input url
     e.preventDefault();
     this.setState({ inputUrl: false});
   }
 
+  renderRemovebtn() {
+    if (loadedFile.length === 1)
+      return (<Icon
+        icon={remove}
+        className='rmvicon'
+        onClick={this.removeAllLoadedFile}
+      />)
+  }
 
   renderInput() {
     return this.state.inputUrl ? (
@@ -120,13 +129,9 @@ export default class PinCreator extends React.Component {
                       <span className="prgrssbar">
                         {file.isUploading && <ProgressBar />}
                       </span>
-                      <span className="rmvbtn">
-                      <Icon
-                        icon={remove}
-                        className='rmvicon'
-                        onClick={this.removeAllLoadedFile}
-                      />
-                      </span>
+                    <span className="rmvbtn">
+                      {this.renderRemovebtn}
+                    </span>
                     </div>
                   </div>
               })}
