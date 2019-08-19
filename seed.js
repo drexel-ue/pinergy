@@ -174,7 +174,7 @@ mongoose
       }
     });
 
-    for (let userIndex = 0; userIndex < 30; userIndex++) {
+    for (let userIndex = 0; userIndex < 20; userIndex++) {
       let newUser = new User({
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
@@ -182,7 +182,6 @@ mongoose
         password: "test123",
         email: faker.internet.email(),
         age: Math.round(Math.random() * 999999999999),
-        location: faker.locale(),
         profilePhotoUrl: faker.internet.avatar()
       });
 
@@ -224,7 +223,8 @@ mongoose
                         tags: [board.title]
                       });
                       pin.save().then(pin => {
-                        if (userIndex === 4) mongoose.connection.close();
+                        if (userIndex === 4 && pinImageIndex == 29)
+                          console.log('CLOSE CONNECTION')
                       });
                     });
                   }
