@@ -13,7 +13,7 @@ export default class PinCreator extends React.Component {
       destination_link: "",
       showDropDown: false,
       inputUrl: false,
-      loadedFile =[]
+      loadedFile: []
     };
     this.onFileLoad = this.FileLoad.bind(this)
   }
@@ -81,13 +81,13 @@ export default class PinCreator extends React.Component {
     this.setState({ loadedFiles: [] })
   }
 
-  turnOffInputUrl() { //will be used to toggel off input url
+  turnOffInputUrl(e) { //will be used to toggel off input url
     e.preventDefault();
     this.setState({ inputUrl: false});
   }
 
   renderRemovebtn() {
-    if (loadedFile.length === 1)
+    if (this.state.loadedFile.length === 1)
       return (<Icon
         icon={remove}
         className='rmvicon'
