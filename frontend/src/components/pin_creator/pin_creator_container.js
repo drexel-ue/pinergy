@@ -8,9 +8,11 @@ const mapStateToProps = ({ session, entities }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchUser: id => dispatch(fetchUser(id))
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCurrentUser: (id) => dispatch(fetchUser(id))
+  };
+};
 
 export default connect(
   mapStateToProps,
