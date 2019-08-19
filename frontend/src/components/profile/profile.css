@@ -2,20 +2,26 @@
     width: 100%;
     height: 72px;
     display: flex;
+    top: 65px;
     justify-content: center;
+    position: fixed;
 }
 
+.pencil-link:visited {
+  color: #8e8e8e;
+}
 .prftopnav {
     display: flex;
-    width: 740px;
-    top: 100px;
-    position:fixed;;
+    align-items: center;
+    width: 780px;
+    position: relative;
 }
 .prfbox{
     width: 100%;
     height: 170px;
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 .prfinnerbox{
     width: 740px;

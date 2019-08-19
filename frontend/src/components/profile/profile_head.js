@@ -61,7 +61,7 @@ export default class ProfileHead extends React.Component {
           <div className="prftopnav">
             <i className="fas fa-plus" onClick={this.toggleDropdown} />
             {this.renderDropdown()}
-            <Link to="/profile/settings">
+            <Link className="pencil-link" to="/profile/settings">
               <i className="fas fa-pencil-alt prficon" />
             </Link>
             <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
@@ -83,7 +83,7 @@ export default class ProfileHead extends React.Component {
             <div className="prfnavv2">
               <div className="prfnavv2lft">
                 <Link className="links" to="/profile/boards">
-                  Baords
+                  Boards
                 </Link>
                 <Link className="links" to="/profile/pins">
                   Pins
