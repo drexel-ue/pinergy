@@ -174,7 +174,7 @@ mongoose
       }
     });
 
-    for (let userIndex = 0; userIndex < 5; userIndex++) {
+    for (let userIndex = 0; userIndex < 30; userIndex++) {
       let newUser = new User({
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
