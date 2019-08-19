@@ -106,11 +106,9 @@ export default class PinCreator extends React.Component {
   }
   render() {
     const { loadedFile } = this.state;
-    debugger
     const user = this.props.currentUser
-    return (
+    return this.props.currentUser ? (
       <div className="">
-
         <form>
           <div className="fileuplder">
             <div className="subhdr">Drag and image</div>
@@ -156,6 +154,8 @@ export default class PinCreator extends React.Component {
           <input type="text" className="destlnkbox" />
         </form>
       </div>
-    );
+        ) : (
+        <div />
+      );
   }
 }
