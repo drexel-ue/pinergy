@@ -10,7 +10,17 @@
     height: 500px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     background-color: #efefef;
     border-radius: 8px;
+}
+
+.pin-create-left {
+    width: 50%;
+    height: 100%;
+}
+
+.pin-create-right {
+    width: 50%;
+    height: 100%;
 }
