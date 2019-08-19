@@ -224,6 +224,7 @@
   background: white;
   width: 100%;
   z-index: 1;
+  padding: 10px;
 }
 .people_label {
   color: #333;

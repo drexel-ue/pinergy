@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import UserSearchResultContainer from "../search/user_search_result_container";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -65,7 +66,9 @@ class NavBar extends React.Component {
               <div id="search_bar_results" className="">
                 <div className="people_label">People</div>
                 {this.state.users.map(user => (
-                  <div key={user._id}>{user.username}</div>
+                  <div key={this.user._id}>
+                    <UserSearchResultContainer user={user} />
+                  </div>
                 ))}
                 <div className="full_user_search_link">
                   Pinners named "{this.state.queryString}"
