@@ -37,16 +37,22 @@ class NavBar extends React.Component {
     event.preventDefault();
     const that = this;
     const string = event.target.value;
-    this.props.searchUsers(this.props.users, string).then(res => {
-      that.setState({
-        users: Object.values(res.users),
-        queryString: string
+    if (string.length > 0) {
+      this.props.searchUsers(this.props.users, string).then(res => {
+        that.setState({
+          users: Object.values(res.users),
+          queryString: string
+        });
       });
-    });
+    } else {
+      that.setState({ queryString: string });
+    }
   }
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+    const show = this.state.queryString.length > 0 ? "" : "hide";
+
     if (this.props.loggedIn) {
       return (
         <div className="NavBar">
@@ -63,7 +69,7 @@ class NavBar extends React.Component {
                 type="text"
                 className="Searchbar"
               />
-              <div id="search_bar_results" className="">
+              <div id="search_bar_results" className={show}>
                 <div className="people_label">People</div>
                 {this.state.users.map(user => (
                   <div key={user._id}>
