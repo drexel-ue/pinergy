@@ -4,7 +4,6 @@ import ProfileHeaderContainer from './profile_head_container'
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
     this.state = {
       boards: [],
       sections: []
@@ -13,7 +12,6 @@ class Profile extends React.Component {
 
 
   render() {
-    // debugger 
       return (
         <div>
             <ProfileHeaderContainer/>

@@ -1,26 +1,74 @@
 .pin_show {
-  height: 592px;
-  width: 912px;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #efefef;
+  z-index: 500;
 }
 
 .pin_show_image_wrapper {
-  width: 496px;
-  margin-left: 30px;
-  top: 30px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+}
+
+.pin_show_image_wrapper:hover a.pin-show-link {
+    display: flex;
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 40px;
+}
+
+.pin-show-top {
+  width: 100%;
+  height: 40px;
   position: relative;
 }
 
-.pin_show_image_overlay {
-  height: -webkit-fill-available;
-  width: -webkit-fill-available;
+.pin-show-save {
   position: absolute;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  top: -15px;
+  right: 0;
   color: white;
-  background: rgba(0, 0, 0, 0.7);
+  height: 40px;
+  width: 80px;
+  padding: 10px 14px;
+  background-color: #e60023;
+  font-size: 16px;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+}
+
+.pin_show_image_wrapper:hover .pin_show_image {
+  filter: brightness(0.6);
+}
+
+.pin-show-link {
+  display: none;
 }
 
 .pin_show_image {
-  width: -webkit-fill-available;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.pin-show-save:hover {
+    filter: brightness(0.6);
+    cursor: pointer;  
+    z-index: 100;
 }

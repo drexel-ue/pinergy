@@ -4,7 +4,6 @@ import "./profile.css";
 export default class ProfileHead extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
     this.state = {
       showDropdown: false,
       showShareDropdown: false
