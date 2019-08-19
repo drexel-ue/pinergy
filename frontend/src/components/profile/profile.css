@@ -11,6 +11,27 @@
   color: #8e8e8e;
 }
 
+.create-dropdown {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100px;
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  z-index: 100;
+  overflow: hidden;
+}
+.create-btn:hover {
+  background-color: #efefef;
+  color: black;
+  cursor: pointer;
+}
+
+.create-btn {
+  padding: 3px;
+}
+
 .profile-head-link{
   text-decoration: none;
 }
@@ -61,7 +82,7 @@
     height: 170px;
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 85px;
 }
 .prfinnerbox{
     width: 740px;
@@ -86,8 +107,8 @@
 }
 
 .prftopnav > .fas:hover, .prficon:hover {
- background-color: #efefef;
- border-radius: 50%
+  background-color: #efefef;
+  border-radius: 50%
 
 }
 

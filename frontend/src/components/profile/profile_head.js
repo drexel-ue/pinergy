@@ -26,9 +26,9 @@ export default class ProfileHead extends React.Component {
   }
   renderDropdown() {
     return this.state.showDropdown ? (
-      <div className="drpdwnenc">
-        <div className="cboard">Create Board</div>
-        <div className="Pin"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
+      <div className="drpdwnenc create-dropdown">
+        <div className="create-btn">Create Board</div>
+        <div className="create-btn"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
       </div>
     ) : (
       <div />
