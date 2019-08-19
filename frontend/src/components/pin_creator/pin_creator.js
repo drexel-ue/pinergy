@@ -149,18 +149,14 @@ export default class PinCreator extends React.Component {
             </div>
             </div>
               <div className="pin-create-left">
-            <div className="filebrowsbutton">
-              <AnchorButton
-                text="Browse"
-                intent={Intent.PRIMARY}
-                minimal={true}
-                onClick={() => this.fileInput.click()} />
-
-          </div>
-          <div className="urlform">
-
-          </div>
-          <input type="text" className="ttlipbx" />
+                {/* <div className="urlform"> </div> */}
+              <div className="pin-create-board-dropdown">
+                Select a board -> Save
+              </div>
+              <input 
+                type="text" 
+                className="pin-title-input" 
+                placeHolder="Add your title" />
           <div>{user.username}</div>
           <img src={user.profilePhotoUrl} className="prfprfpho" />
           <input type="text" className="dscipbx" />

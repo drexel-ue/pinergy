@@ -21,7 +21,16 @@
     border-radius: 12px;
 }
 
-
+.pin-title-input {
+    width: 80%;
+    height: 43px;
+    border: none;
+    cursor: text;
+    font-size: 36px;
+    font-weight: bolder;
+    outline: none;
+    border-bottom: 1px solid #858585;
+}
 
 .fileuplder {
     height: 100%;
@@ -70,8 +79,17 @@
     position: relative;
 }
 
+.pin-create-board-dropdown {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .pin-create-left {
     width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
