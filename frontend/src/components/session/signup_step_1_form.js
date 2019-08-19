@@ -31,6 +31,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log("handleSumbit")
     let user = {
       email: this.state.email,
       password: this.state.password,
@@ -96,7 +97,7 @@ class SignupForm extends React.Component {
                 onChange={this.update("age")}
                 placeholder="Age"
               />
-              <button className="redbtn signup-btn">Continue</button>
+              <button className="redbtn signup-btn" onClick={this.handleSubmit}>Continue</button>
               <div className="login-terms">By continuing, you agree to Pinergy's</div>
               <div className="login-terms bold">Terms of Service, Privacy Policy</div>
               <div className="login-to-signin" onClick={this.gotoLogIn}>Already a member? Log in</div>
