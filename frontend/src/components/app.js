@@ -7,6 +7,7 @@ import MainPage from "./main/main_page";
 import ModalContainer from "./modal/modal";
 import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
+import PinCreatorContainer from "./pin_creator/pin_creator_container"
 import PinShowContainer from "./show/pin_show_container";
 
 class App extends React.Component {
@@ -37,6 +38,11 @@ class App extends React.Component {
             exact
             path="/profile/topics"
             component={ProfileHeadContainer}
+          />
+          <ProtectedRoute
+            exact
+            path="/pin_creator"
+            component={PinCreatorContainer}
           />
         </Switch>
         <Route path="/home" component={HomeContainer} />
