@@ -7,6 +7,11 @@ class NavBar extends React.Component {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+
+    this.state = {
+      users: []
+    };
   }
 
   logoutUser(e) {
@@ -26,6 +31,13 @@ class NavBar extends React.Component {
     };
   }
 
+  handleInput(event) {
+    event.preventDefault();
+    this.props.searchUsers(this.props.users, event.target.value).then(res => {
+      this.setState({ users: Object.values(res.users) });
+    });
+  }
+
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
     if (this.props.loggedIn) {
@@ -39,7 +51,11 @@ class NavBar extends React.Component {
             </div>
             <div className="SearchGrp">
               <i class="fas fa-search" />
-              <input type="text" className="Searchbar" />
+              <input
+                onChange={this.handleInput}
+                type="text"
+                className="Searchbar"
+              />
             </div>
             <Link to={"/"} className="Links1 Home">
               Home
