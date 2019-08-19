@@ -101,6 +101,12 @@
   border: none;
   border-bottom-right-radius: 999px;
   border-top-right-radius: 999px;
+  font-size: 16px;
+
+  
+}
+.Searchbar:focus {
+  border: none;
 }
 .SearchGrp {
   display: flex;
