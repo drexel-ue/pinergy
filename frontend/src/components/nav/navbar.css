@@ -11,11 +11,16 @@
   padding-bottom: 4px;
   padding-top: 4px;
   align-items: center;
+  position: fixed;
+  z-index: 9;
+  background: white;
+  top: 0;
 }
 
 .NavBar button {
   height: 20px;
 }
+
 .Navbar-logo {
   border-radius: 50%;
   height: 28px;
@@ -162,8 +167,8 @@
   outline: none;
   background: white;
   overflow-y: auto;
-  top: 12px;
-  left: 1047px;
+  top: 65px;
+  right: 40px;
 }
 
 .UserTasksItems {
@@ -194,6 +199,7 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 
 .Links1:hover {

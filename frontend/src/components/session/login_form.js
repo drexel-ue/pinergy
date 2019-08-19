@@ -101,7 +101,7 @@ class LoginForm extends React.Component {
             />
             <Link className="forgot-password" to="">Forgot your password?</Link>
             <br />
-            <button className="redbtn login-btn">Log in</button>
+            <button className="redbtn login-btn" onClick={this.handleSubmit}>Log in</button>
             <div className="log-or-dem">OR</div>
             <button className='redbtn demolog' onClick={this.handleDemoLogin}>Demo Login</button>
             <div className="login-terms">By continuing, you agree to Pinergy's</div>

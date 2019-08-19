@@ -3,8 +3,9 @@ import "../home/home.css";
 
 export default class Pin extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
+    this.showPin = this.showPin.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this)
   }
 
@@ -22,11 +23,17 @@ export default class Pin extends React.Component {
     return hostDomain;
   }
 
-  render() {
+  showPin(event) {
+    event.preventDefault();
+    this.props.showPin(this.props.pin._id);
+  }
 
+  render() {
     return (
-      <div className="home-pin-wrap">
-        <img className="home-pin-img" src={this.props.pin.url} />
+      <div className="home-pin-wrap" >
+        <img className="home-pin-img" 
+          onClick={this.showPin} 
+          src={this.props.pin.url} />
         <div className="pin-button home-save">
           <i class='fas fa-thumbtack'></i>
           &nbsp;&nbsp;Save
