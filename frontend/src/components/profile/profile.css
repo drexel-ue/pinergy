@@ -7,9 +7,49 @@
     position: fixed;
 }
 
-.pencil-link:visited {
+.profile-head-link:visited {
   color: #8e8e8e;
 }
+
+.profile-head-link{
+  text-decoration: none;
+}
+.social-icon-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fab {
+  padding: 10px;
+}
+
+.fab:hover {
+  cursor: pointer;
+}
+
+.fa-facebook {
+  color: #4267b2;
+  font-size: 32px;
+}
+
+.fa-twitter {
+  color: #1DA1F2;
+  font-size: 32px;
+}
+
+.fa-whatsapp {
+  text-align: center;
+  background-color: #4FCE5D;
+  border-radius: 50%;
+  font-size: 26px;
+  color: white;
+  width: 26px;
+  padding: 5px;
+  margin-right: 5px;
+}
+
 .prftopnav {
     display: flex;
     align-items: center;
