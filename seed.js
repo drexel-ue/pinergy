@@ -182,7 +182,7 @@ mongoose
         password: "test123",
         email: faker.internet.email(),
         age: Math.round(Math.random() * 999999999999),
-        location: faker.locale,
+        location: faker.locale(),
         profilePhotoUrl: faker.internet.avatar()
       });
 
