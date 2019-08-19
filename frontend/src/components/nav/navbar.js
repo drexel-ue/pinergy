@@ -10,7 +10,8 @@ class NavBar extends React.Component {
     this.handleInput = this.handleInput.bind(this);
 
     this.state = {
-      users: []
+      users: [],
+      queryString: ""
     };
   }
 
@@ -34,7 +35,11 @@ class NavBar extends React.Component {
   handleInput(event) {
     event.preventDefault();
     this.props.searchUsers(this.props.users, event.target.value).then(res => {
-      this.setState({ users: Object.values(res.users) });
+      debugger;
+      this.setState({
+        users: Object.values(res.users),
+        queryString: event.target.value
+      });
     });
   }
 
@@ -57,9 +62,13 @@ class NavBar extends React.Component {
                 className="Searchbar"
               />
               <div id="search_bar_results" className="">
+                <div className="people_label">People</div>
                 {this.state.users.map(user => (
                   <div key={user._id}>{user.username}</div>
                 ))}
+                <div className="full_user_search_link">
+                  Pinners named "{this.state.queryString}"
+                </div>
               </div>
             </div>
             <Link to={"/"} className="Links1 Home">
