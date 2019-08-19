@@ -225,6 +225,8 @@
   width: 100%;
   z-index: 1;
   padding: 10px;
+  overflow: auto;
+  height: 150px;
 }
 .people_label {
   color: #333;

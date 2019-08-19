@@ -146,7 +146,7 @@ mongoose
                       pinImageIndex < 30;
                       pinImageIndex++
                     ) {
-                      const height = Math.round((Math.random() * 400) + 100)
+                      const height = Math.round(Math.random() * 400 + 100);
                       const image = new Image({
                         url: `https://picsum.photos/240/${height}?random=1`
                       });
@@ -178,7 +178,7 @@ mongoose
       let newUser = new User({
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
-        username: faker.name.jobDescriptor(),
+        username: faker.internet.userName(),
         password: "test123",
         email: faker.internet.email(),
         age: Math.round(Math.random() * 999999999999),
@@ -208,7 +208,7 @@ mongoose
                     pinImageIndex < 30;
                     pinImageIndex++
                   ) {
-                    const height = Math.round((Math.random() * 400) + 100)
+                    const height = Math.round(Math.random() * 400 + 100);
                     const image = new Image({
                       url: `https://picsum.photos/240/${height}?random=1`
                     });
