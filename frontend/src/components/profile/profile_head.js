@@ -26,9 +26,9 @@ export default class ProfileHead extends React.Component {
   }
   renderDropdown() {
     return this.state.showDropdown ? (
-      <div className="drpdwnenc">
-        <div className="cboard">Create Board</div>
-        <div className="Pin"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
+      <div className="drpdwnenc create-dropdown">
+        <div className="create-btn">Create Board</div>
+        <div className="create-btn"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
       </div>
     ) : (
       <div />
@@ -37,11 +37,15 @@ export default class ProfileHead extends React.Component {
   renderShareDropdown() {
     return this.state.showShareDropdown ? (
       <div className="sharedrpdwnenc">
-        <p className="sharedrpdwnenchdr">Share this profile </p>
         <div className="social-icon-wrap">
-          <i className="fab fa-whatsapp des" />
-          <i className="fab fa-facebook des" />
-          <i className="fab fa-twitter des" />
+          <div className="social-icon-text">
+            <p className="sharedrpdwnenchdr">Share this profile </p>
+          </div>
+          <div className="social-icons">
+            <i className="fab fa-whatsapp des" />
+            <i className="fab fa-facebook des" />
+            <i className="fab fa-twitter des" />
+          </div>
         </div>
       </div>
     ) : (
