@@ -65,7 +65,7 @@ class NavBar extends React.Component {
               <Link to={"/"} className="fas fa-bell fa-2x Links2" />
             </div>
             <div className="Navbar-icon-halo">
-              <Link to={"/"} className="Links2 PlusSign">
+              <Link to={"/pin_creator"} className="Links2 PlusSign">
                 +{" "}
               </Link>
             </div>
