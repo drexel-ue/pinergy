@@ -3,6 +3,7 @@ import { AnchorButton, Intent, ProgressBar } from "@blueprintjs/core"
 import lodash from 'lodash'
 import { Icon } from 'react-icons-kit'
 import { remove } from 'react-icons-kit/fa/remove'
+import "./pin_creator.css";
 export default class PinCreator extends React.Component {
   constructor(props) {
     super(props);
@@ -108,7 +109,8 @@ export default class PinCreator extends React.Component {
     const { loadedFile } = this.state;
     const user = this.props.currentUser
     return this.props.currentUser ? (
-      <div className="">
+      <div className="pin-create-container">
+        <div className="pin-create-inner">
         <form>
           <div className="fileuplder">
             <div className="subhdr">Drag and image</div>
@@ -153,6 +155,7 @@ export default class PinCreator extends React.Component {
           <input type="text" className="dscipbx" />
           <input type="text" className="destlnkbox" />
         </form>
+        </div>
       </div>
         ) : (
         <div />
