@@ -9,4 +9,4 @@ export const fetchUser = id => {
 };
 
 export const peopleSearch = queryString =>
-  Axios.post("/api/users/search", { queryString });
+  Axios.post(`/api/users/search/${queryString}`);
