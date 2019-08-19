@@ -36,7 +36,7 @@ export default class PinCreator extends React.Component {
 
   }
   onFileLoad(e) {
-    const file = e.currentTarge.files[0]
+    const file = e.currentTarget.files[0]
     let fileReader = new FileReader();
     fileReader.onload = () => {
       console.log("IMAGE LOADED: ", fileReader.Result)
@@ -110,10 +110,10 @@ export default class PinCreator extends React.Component {
     const user = this.props.currentUser
     return this.props.currentUser ? (
       <div className="pin-create-container">
-        <div className="pin-create-inner">
-        <form>
+          <form className="pin-create-inner">
+            <div className="pin-create-right">
           <div className="fileuplder">
-            <div className="subhdr">Drag and image</div>
+            {/* <div className="subhdr">Drag and image</div> */}
             <div className="fileuplder">
               <input
                 type="file"
@@ -138,13 +138,16 @@ export default class PinCreator extends React.Component {
               })}
             </div>
             <div className="hlpertxt">Drag and Drop image here</div>
+            </div>
+            </div>
+              <div className="pin-create-left">
             <div className="filebrowsbutton">
               <AnchorButton
                 text="Browse"
                 intent={Intent.PRIMARY}
                 minimal={true}
                 onClick={() => this.fileInput.click()} />
-            </div>
+
           </div>
           <div className="urlform">
 
@@ -154,8 +157,8 @@ export default class PinCreator extends React.Component {
           <img src={user.profilePhotoUrl} className="prfprfpho" />
           <input type="text" className="dscipbx" />
           <input type="text" className="destlnkbox" />
+          </div>
         </form>
-        </div>
       </div>
         ) : (
         <div />

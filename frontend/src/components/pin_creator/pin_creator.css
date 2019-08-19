@@ -1,17 +1,24 @@
 .pin-create-container {
-    margin-top: 75px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
+    position: relative;
+    background-color: #efefef;
+    height: 800px;
+    width: 100%;
 }
 
 .pin-create-inner {
-    padding: 50px;
-    width: 700px;
-    height: 500px;
+    padding: 20px 50px;
+    width: 775px;
+    height: 610px;
     display: flex;
+    position: absolute;
+    left: 0 auto;
+    right: 0 auto;
+    top: 50px;
     justify-content: center;
-    /* flex-direction: column; */
-    background-color: #efefef;
+    background-color: white;
     border-radius: 8px;
 }
 
@@ -20,7 +27,19 @@
     height: 100%;
 }
 
+.filebrserip {
+    cursor: pointer;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    font-size: 0px;
+}
+
 .pin-create-right {
     width: 50%;
     height: 100%;
+    position: relative;
 }
