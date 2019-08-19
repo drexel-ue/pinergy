@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import UserSearchResultContainer from "../search/user_search_result_container";
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+
+    this.state = {
+      users: [],
+      queryString: ""
+    };
   }
 
   logoutUser(e) {
@@ -25,8 +32,26 @@ class NavBar extends React.Component {
     };
   }
 
+  handleInput(event) {
+    event.preventDefault();
+    const that = this;
+    const string = event.target.value;
+    if (string.length > 0) {
+      this.props.searchUsers(this.props.users, string).then(res => {
+        that.setState({
+          users: Object.values(res.users),
+          queryString: string
+        });
+      });
+    } else {
+      that.setState({ queryString: string });
+    }
+  }
+
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+    const show = this.state.queryString.length > 0 ? "" : "hide";
+
     if (this.props.loggedIn) {
       return (
         <div className="NavBar">
@@ -38,7 +63,25 @@ class NavBar extends React.Component {
             </div>
             <div className="SearchGrp">
               <i class="fas fa-search" />
-              <input type="text" className="Searchbar" />
+              <input
+                onChange={this.handleInput}
+                type="text"
+                className="Searchbar"
+              />
+              <div id="search_bar_results" className={show}>
+                <div className="people_label">People</div>
+                {this.state.users.map(user => (
+                  <div key={user._id}>
+                    <UserSearchResultContainer
+                      user={user}
+                      queryString={this.state.queryString}
+                    />
+                  </div>
+                ))}
+                <div className="full_user_search_link">
+                  Pinners named "{this.state.queryString}"
+                </div>
+              </div>
             </div>
             <Link to={"/"} className="Links1 Home">
               Home

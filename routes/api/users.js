@@ -142,8 +142,7 @@ router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findById(req.params.id)
-    .then(user => res.json(user));
+    return User.findById(req.params.id).then(user => res.json(user));
   }
 );
 
@@ -165,6 +164,24 @@ router.patch("/update/:id", async (req, res) => {
       return res.status(400).json(validation.errors);
     }
   });
+});
+
+// To serve users matching a query string.
+router.get("/search/:queryString", (req, res) => {
+  const queryString = req.params.queryString;
+
+  User.find({
+    $or: [
+      { username: { $regex: "^" + queryString, $options: "i" } },
+      { firstName: { $regex: "^" + queryString, $options: "i" } },
+      { lastName: { $regex: "^" + queryString, $options: "i" } }
+    ]
+  })
+    .limit(3)
+    .exec((err, users) => {
+      if (err) return res.status(400).json(err);
+      res.json(users);
+    });
 });
 
 module.exports = router;
