@@ -21,7 +21,6 @@ import SignupStep5Container from "../session/signup_step_5_form_container";
 import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 import PinShowContainer from "../show/pin_show_container";
-import { relative } from "path";
 class Modal extends React.Component {
   constructor(props) {
     super(props);

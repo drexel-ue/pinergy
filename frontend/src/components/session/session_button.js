@@ -7,7 +7,6 @@ class SessionButton extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
-    // debugger
     this.props.modal === MOVE_TO_LOGIN
       ? this.props.showFirstSignUpStep()
       : this.props.showLogin();
