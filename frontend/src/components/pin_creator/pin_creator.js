@@ -113,10 +113,19 @@ export default class PinCreator extends React.Component {
           <form className="pin-create-inner">
             <div className="pin-create-right">
           <div className="fileuplder">
-            {/* <div className="subhdr">Drag and image</div> */}
-            <div className="fileuplder">
+            <div className="upload-border">
+              <label for="fileUploadId" class="file-label"> 
+                <div> 
+                <i class='fas fa-arrow-circle-up'></i>
+                </div>      
+                <br />                     
+                <div> 
+                Drag and drop or click to upload
+                </div>
+              </label>
               <input
                 type="file"
+                id="fileUploadId"
                 className="filebrserip"
                 onDrag={this.onDragHandler}
                 onDrop={this.onFileLoad}
@@ -137,7 +146,6 @@ export default class PinCreator extends React.Component {
                   </div>
               })}
             </div>
-            <div className="hlpertxt">Drag and Drop image here</div>
             </div>
             </div>
               <div className="pin-create-left">
