@@ -26,22 +26,30 @@ export default class PinShow extends React.Component {
     return (
       <div className="pin_show">
         <div className="pin_show_image_wrapper">
-          {/* <a
-            href={this.props.pin.url}
-            target="_blank"
-            className="pin-show-link"
-          > */}
+          <div className="pin-show-top"> 
+            <div className="pin-show-save">
+            <i class='fas fa-thumbtack'></i>
+            &nbsp;&nbsp;Save
+            </div>
+          </div>
             <img
               className="pin_show_image"
               src={this.props.pin.url}
               alt={this.props.pin.title}
             />
-            <div className="pin_show_image_overlay">
-              <i class='fas fa-arrow-right'></i>
-              &nbsp;
-              {this.parseDestinationLink()}
-            </div>
-          {/* </a> */}
+              <a
+                href={this.props.pin.url}
+                target="_blank"
+                className="pin-show-link"
+              >
+                <div className="show-link-right">
+                  <i class='fas fa-arrow-right'></i>
+                </div>
+                <div className="show-link-left">
+                  {this.parseDestinationLink()}
+                </div>
+              </a>
+            {/* </div> */}
         </div>
       </div>
     );
