@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/drexel-ue/pinterest_clone#readme",
   "dependencies": {
+    "@blueprintjs/core": "^3.18.0",
+    "@blueprintjs/icons": "^3.10.0",
     "@types/faker": "^4.1.5",
     "@types/puppeteer": "^1.19.1",
     "bcryptjs": "^2.4.3",
