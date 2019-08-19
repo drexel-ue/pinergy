@@ -1,5 +1,4 @@
 import * as ApiUtil from "../util/user_api_util";
-import { receiveCurrentUser } from "./session_actions";
 
 export const RECEIVE_USER_UPDATE_ERRORS = "RECEIVE_USER_UPDATE_ERRORS";
 export const RECEIVE_USER_SEARCH_ERRORS = "RECEIVE_USER_SEARCH_ERRORS";

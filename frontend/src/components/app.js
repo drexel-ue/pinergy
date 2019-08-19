@@ -9,6 +9,7 @@ import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
 import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
+import ProfileContainer from "./profile/profile_container";
 
 class App extends React.Component {
   render() {
@@ -20,7 +21,7 @@ class App extends React.Component {
           <AuthRoute exact path="/" component={MainPage} />
           <ProtectedRoute
             path="/profile/:username"
-            component={ProfileHeadContainer}
+            component={ProfileContainer}
           />
           <ProtectedRoute
             exact
