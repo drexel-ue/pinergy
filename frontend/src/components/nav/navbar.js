@@ -62,7 +62,7 @@ class NavBar extends React.Component {
               </Link>
             </div>
             <div className="SearchGrp">
-              <i class="fas fa-search" />
+              <i className="fas fa-search" />
               <input
                 onChange={this.handleInput}
                 type="text"
