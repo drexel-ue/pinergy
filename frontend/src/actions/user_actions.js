@@ -64,6 +64,5 @@ export const peopleSearch = (users, queryString) => dispatch =>
   ApiUtil.peopleSearch(queryString)
     .then(({ data }) => dispatch(receiveUsers(data)))
     .catch(err => {
-      debugger;
       dispatch(receiveUserUpdateErrors(err.response.data));
     });

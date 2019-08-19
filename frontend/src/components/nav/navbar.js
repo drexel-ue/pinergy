@@ -56,6 +56,11 @@ class NavBar extends React.Component {
                 type="text"
                 className="Searchbar"
               />
+              <div id="search_bar_results" className="">
+                {this.state.users.map(user => (
+                  <div key={user._id}>{user.username}</div>
+                ))}
+              </div>
             </div>
             <Link to={"/"} className="Links1 Home">
               Home
