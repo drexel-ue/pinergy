@@ -28,7 +28,7 @@ export default class ProfileHead extends React.Component {
     return this.state.showDropdown ? (
       <div className="drpdwnenc">
         <div className="cboard">Create Board</div>
-        <div className="Pin"><Link to="/pinbuilder">Create Pin</Link></div>
+        <div className="Pin"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
       </div>
     ) : (
       <div />
@@ -38,9 +38,11 @@ export default class ProfileHead extends React.Component {
     return this.state.showShareDropdown ? (
       <div className="sharedrpdwnenc">
         <p className="sharedrpdwnenchdr">Share this profile </p>
-        <i className="fab fa-whatsapp des" />
-        <i className="fab fa-facebook des" />
-        <i className="fab fa-twitter des" />
+        <div className="social-icon-wrap">
+          <i className="fab fa-whatsapp des" />
+          <i className="fab fa-facebook des" />
+          <i className="fab fa-twitter des" />
+        </div>
       </div>
     ) : (
       <div />
@@ -61,7 +63,7 @@ export default class ProfileHead extends React.Component {
           <div className="prftopnav">
             <i className="fas fa-plus" onClick={this.toggleDropdown} />
             {this.renderDropdown()}
-            <Link to="/profile/settings">
+            <Link className="profile-head-link" to="/profile/settings">
               <i className="fas fa-pencil-alt prficon" />
             </Link>
             <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
@@ -83,7 +85,7 @@ export default class ProfileHead extends React.Component {
             <div className="prfnavv2">
               <div className="prfnavv2lft">
                 <Link className="links" to="/profile/boards">
-                  Baords
+                  Boards
                 </Link>
                 <Link className="links" to="/profile/pins">
                   Pins
