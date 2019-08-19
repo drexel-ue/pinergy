@@ -10,6 +10,7 @@ export default class ProfileHead extends React.Component {
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
+    debugger;
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -17,7 +18,7 @@ export default class ProfileHead extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentUser(this.props.id);
+    this.props.fetchUser(this.props.id);
   }
 
   toggleShareDropdown(e) {
@@ -28,7 +29,11 @@ export default class ProfileHead extends React.Component {
     return this.state.showDropdown ? (
       <div className="drpdwnenc create-dropdown">
         <div className="create-btn">Create Board</div>
-        <div className="create-btn"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
+        <div className="create-btn">
+          <Link className="profile-head-link" to="/pin_creator">
+            Create Pin
+          </Link>
+        </div>
       </div>
     ) : (
       <div />
