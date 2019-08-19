@@ -23,11 +23,30 @@
 
 .pin-title-input {
     width: 80%;
+    -webkit-font-smoothing: antialiased;
     height: 43px;
     border: none;
     cursor: text;
     font-size: 36px;
     font-weight: bolder;
+    outline: none;
+    border-bottom: 1px solid #858585;
+}
+.create-right-break {
+    width: 100%;
+    height: 200px;
+}
+
+.pin-desc-input {
+    width: 90%;
+    -webkit-font-smoothing: antialiased;
+    height: 43px;
+    border: none;
+    cursor: text;
+    font-size: 21px;
+    max-height: 280px;
+    min-height: 40px;
+    resize: none;
     outline: none;
     border-bottom: 1px solid #858585;
 }
@@ -56,6 +75,7 @@
     flex-direction: column;
     border: 2px dashed rgb(218, 218, 218);
     border-radius: 6px;
+    -webkit-font-smoothing: antialiased;
 }
 
 .upload-border {
@@ -93,3 +113,33 @@
     flex-direction: column;
 }
 
+.create-pin-user-info {
+    display: flex;
+    align-items: center;
+}
+
+.create-prof-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.create-prof-name {
+    color: #211922;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 10px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pin-link-input {
+    margin-bottom: 25px;
+    width: 90%;
+    -webkit-font-smoothing: antialiased;
+    height: 35px;
+    border: none;
+    cursor: text;
+    font-size: 21px;
+    outline: none;
+    border-bottom: 1px solid #858585;
+}

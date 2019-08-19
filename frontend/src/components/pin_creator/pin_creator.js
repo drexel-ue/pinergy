@@ -157,10 +157,20 @@ export default class PinCreator extends React.Component {
                 type="text" 
                 className="pin-title-input" 
                 placeHolder="Add your title" />
-          <div>{user.username}</div>
-          <img src={user.profilePhotoUrl} className="prfprfpho" />
-          <input type="text" className="dscipbx" />
-          <input type="text" className="destlnkbox" />
+            <div className="create-pin-user-info">
+              <img src={user.profilePhotoUrl} className="create-prof-img" />
+              <div className="create-prof-name">{user.username}</div>
+            </div>
+            <textarea 
+              type="text" 
+              className="pin-desc-input" 
+              placeHolder="Tell everyone what your Pin is about">
+            </textarea>
+            <div className="create-right-break"></div> 
+          <input 
+            type="text" 
+            className="pin-link-input"
+            placeHolder="Add a destination link" />
           </div>
         </form>
       </div>
