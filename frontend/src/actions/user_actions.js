@@ -46,6 +46,7 @@ export const fetchUser = id => dispatch =>
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
+      // debugger;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 export const peopleSearch = (users, queryString) => dispatch => {

@@ -58,7 +58,10 @@
     align-items: center;
     justify-content: center;
 }
-
+.imgprvw{
+    width:90%;
+    height:90%;
+}
 .filebrserip {
     display:none;
 }
