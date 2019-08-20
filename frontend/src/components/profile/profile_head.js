@@ -20,6 +20,7 @@ export default class ProfileHead extends React.Component {
     this.props.fetchUser(this.props.id);
   }
 
+  
   toggleShareDropdown(e) {
     e.preventDefault();
     this.setState({ showShareDropdown: !this.state.showShareDropdown });
