@@ -142,7 +142,7 @@ router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findById(req.params.id).then(user => res.json(user));
+    return User.findById(req.params.id).then(user => res.json(user)).catch(err => {debugger });
   }
 );
 

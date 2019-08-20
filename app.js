@@ -7,12 +7,20 @@ const db = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const pins = require("./routes/api/pins");
 const boards = require("./routes/api/boards");
+const images = require("./routes/api/images")
 // Allows us to parse the json sent to the front end.
 const bodyParser = require("body-parser");
 // Verifies incoming request tokens to project routes.
 const passport = require("passport");
 require("./config/passport")(passport);
 const path = require("path");
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 // Sets up connection to MondoDB.
 mongoose
@@ -38,14 +46,10 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/pins", pins);
 app.use("/api/boards", boards);
+app.use("/api/images", images)
 
 // Tells Express to start a socket and listen for connections on the path.
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 // Tells our server to load the static build folder in production.
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
+

@@ -9,7 +9,7 @@
     "server:debug": "nodemon --inspect app.js",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server:debug\" \"npm run frontend\"",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "@blueprintjs/icons": "^3.10.0",
     "@types/faker": "^4.1.5",
     "@types/puppeteer": "^1.19.1",
+    "aws-sdk": "^2.513.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.1",
@@ -35,9 +36,12 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mongoose": "^5.6.9",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "puppeteer": "^1.19.0",
+    "react-dropzone": "^10.1.7",
     "react-masonry-component": "^6.2.1",
     "validator": "^11.1.0",
     "webpack-dev-server": "3.2.1"

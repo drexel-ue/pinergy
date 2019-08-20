@@ -29,14 +29,13 @@ class SignupForm extends React.Component {
     };
 
     if (this.state.username) {
-      this.props.updateUsername(user, this.props.user._id)
-        .then(() => {
-          if (Object.keys(this.state.errors).length === 0) {
-            this.props.nextStep()
-          }
-        })
+      this.props.updateUsername(user, this.props.user._id).then(() => {
+        if (Object.keys(this.state.errors).length === 0) {
+          this.props.nextStep();
+        }
+      });
     } else {
-      this.props.nextStep()
+      this.props.nextStep();
     }
   }
 
@@ -78,12 +77,11 @@ class SignupForm extends React.Component {
       <div className="signup_step_2">
         <div className="signup-status-container">
           <div className="sign-status-bar">
-            <div className="red-circle"></div>
-            <div className="black-circle"></div>
-            <div className="black-circle"></div>
-            <div className="black-circle"></div>
+            <div className="red-circle" />
+            <div className="black-circle" />
+            <div className="black-circle" />
+            <div className="black-circle" />
           </div>
-
         </div>
         <img className="pfimg" src={this.props.user.profilePhotoUrl} />
 
@@ -104,7 +102,9 @@ class SignupForm extends React.Component {
         </button>
         {this.renderErrors()}
       </div>
-    ) : <div></div>
+    ) : (
+      <div />
+    );
   }
 }
 

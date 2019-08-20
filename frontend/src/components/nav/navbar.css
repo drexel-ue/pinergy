@@ -28,14 +28,12 @@
   background: rgb(240, 9, 9);
   color: white;
   display: flex;
-  /* align-items: center; */
   font-size: 25px;
   justify-content: center;
   font-family: "Lobster Two", cursive;
   margin: 0px 0px;
   text-decoration: none;
   z-index: 1;
-  /* align-self: center; */
 }
 .Navbar-icon-halo:hover {
   background: rgb(0, 0, 9, 0.1);
@@ -46,26 +44,21 @@
   height: 48px;
   width: 48px;
   padding: 4px 4px;
-  /* background: rgb(0, 0, 0, 0); */
   justify-content: center;
-  /* align-items: center; */
   margin: 0px 0px;
   text-decoration: none;
   align-items: center;
   text-align: center;
-  /* align-self: center; */
 }
 .Links1 {
-  width: 10%;
+  /* width: 10%; */
   display: flex;
-  /* justify-content: space-between; */
   text-decoration: none;
   color: #8e8e8e;
   font-weight: bold;
   border-radius: 999px;
   align-items: center;
   padding: 10px;
-  /* align-content: center; */
   justify-content: center;
 }
 
@@ -90,7 +83,6 @@
   border-bottom-left-radius: 999px;
   border-top-left-radius: 999px;
   justify-content: right;
-  /* padding-right: 16px; */
 }
 .Searchbar {
   height: 40px;
@@ -103,7 +95,6 @@
   border-top-right-radius: 999px;
   font-size: 16px;
 
-  
 }
 .Searchbar:focus {
   border: none;
@@ -127,17 +118,11 @@
   display: flex;
   align-items: center;
   text-align: center;
-  /* align-self: center; */
   font-size: 35px;
   justify-content: center;
-  /* font-family: "Lobster Two", cursive; */
-  /* margin: 10px 0px; */
   text-decoration: none;
 }
 
-/* .Ellipses {
-  font-weight: bold;
-} */
 .fa-ellipsis {
   color: red;
 }
@@ -153,6 +138,7 @@
   padding-right: 12px;
   padding-bottom: 4px;
   padding-top: 4px;
+  margin-right: 8px;
   align-items: center;
 }
 
@@ -206,10 +192,10 @@
 }
 
 .ProfileIcon {
-  height: 30px;
-  width: 30px;
+  height: 40px !important;
+  width: 40px !important;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 5px;
 }
 
 .Links1:hover {
@@ -220,6 +206,7 @@
   width: 100px;
   align-items: center;
   justify-content: space-between;
+  padding-right: 6px;
 }
 
 .LeftLinks {
@@ -232,16 +219,23 @@
 #search_bar_results {
   position: absolute;
   border-radius: 8px;
-  top: 41px;
+  top: 45px;
   background: white;
   width: 100%;
   z-index: 1;
   padding: 10px;
   overflow: auto;
-  height: 150px;
+  height: 155px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  outline: none;
 }
 .people_label {
   color: #333;
   font-size: 12px;
   margin-bottom: 10px;
+}
+
+.fa-ellipsis-h {
+  font-size: 24px;
+  align-items: center;
 }
