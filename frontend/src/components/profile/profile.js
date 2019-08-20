@@ -11,8 +11,9 @@ class Profile extends React.Component {
   }
 
   pickPath() {
+    debugger;
     switch (this.props.location.pathname) {
-      case "/profile/DemoUser":
+      case `/${this.props.currentUser.id}/boards`:
         return <BoardsContainer />;
       default:
         return <div />;
@@ -22,9 +23,10 @@ class Profile extends React.Component {
     return (
       <div>
         <ProfileHeaderContainer />
-        {this.pickPath()}
+        {/* {this.pickPath()} */}
 
         <h2>All of This User's Board</h2>
+        <BoardsContainer />
       </div>
     );
   }

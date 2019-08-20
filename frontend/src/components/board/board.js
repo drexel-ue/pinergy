@@ -1,21 +1,18 @@
 import React from "react";
 import "../home/home.css";
+import { withRouter } from "react-router-dom";
 
-export default class Board extends React.Component {
+class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       boards: []
     };
-    // this.showPin = this.showPin.bind(this);
-    // this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
+  //
   componentDidMount() {
-    //console.log(this.props.currentUser._id)
-    //   debugger;
-    if (this.props.currentUser)
-      this.props.fetchUserBoards(this.props.currentUser.id);
+    this.props.fetchUserBoards(this.props.match.params.user_id);
   }
 
   componentWillReceiveProps(newState) {
@@ -28,16 +25,23 @@ export default class Board extends React.Component {
   // }
 
   render() {
-    //debugger;
-    return (
-      <div>
-        <div> These are my boards</div>
-        {/* <ul>
-          {this.props.boards.map(b => (
-            <li>{b}</li>
-          ))}
-        </ul> */}
-      </div>
-    );
+    debugger;
+    if (this.props.boards.length > 0) {
+      return (
+        <div>
+          <div> These are my boards</div>
+
+          <ul>
+            {this.props.boards.map(b => (
+              <li>{b.title}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    } else {
+      return <div>{this.props.currentUser.username} has no boards yet! </div>;
+    }
   }
 }
+
+export default withRouter(Board);

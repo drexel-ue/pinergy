@@ -27,12 +27,8 @@ router.get("/test", (req, res) => res.json({ msg: "boards route" }));
 
 router.get("/:user_id/boards", (req, res) => {
   Board.find({ user: req.params.user_id })
-    .then(boards => {
-      res.json(boards.map(b => b.title));
-    })
+    .then(boards => res.json(boards))
     .catch(err => res.status(404).json({ noBoardsFound: "No Boards Found" }));
 });
-router.post("/new", (req, res) => {
-
- })
+router.post("/new", (req, res) => {});
 module.exports = router;
