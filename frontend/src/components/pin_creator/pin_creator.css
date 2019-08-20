@@ -22,7 +22,7 @@
 }
 
 .pin-title-input {
-    width: 80%;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     height: 43px;
     border: none;
@@ -38,7 +38,7 @@
 }
 
 .pin-desc-input {
-    width: 90%;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     height: 43px;
     border: none;
@@ -78,6 +78,12 @@
     -webkit-font-smoothing: antialiased;
 }
 
+.board-down {
+    padding-left: 5px;
+    font-size: 18px;
+    color: black;
+}
+
 .upload-border {
     height: 484px;
     position: absolute;
@@ -99,10 +105,78 @@
     position: relative;
 }
 
-.pin-create-board-dropdown {
+.create-right-top {
     width: 100%;
     display: flex;
+    height: 40px;
     justify-content: flex-end;
+}
+
+.pin-create-board-dropdown {
+    width: 230px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #efefef;
+    align-items: center;
+    position: relative;
+    padding-left: 20px;
+    border-radius: 12px;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+
+.board-select-text{
+    width: 80%;
+}
+
+.board-save-btn {
+    display: flex;
+    width: 60px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: red;
+    font-weight: bolder;
+}
+
+.board-drop-down {
+    position: absolute;
+    top: 70px;
+    right: 48px;
+    max-height: 300px;
+    width: 300px;
+    border-radius: 8px;
+    z-index: 100;
+    overflow: auto;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+    outline: none;
+}
+
+.board-drop-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bolder;
+    color: black;
+    padding: 5px;
+    text-align: left;
+}
+
+.board-drop-item:hover {
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+.board-item-image {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+    background-color: #efefef;
 }
 
 .pin-create-left {
@@ -134,7 +208,7 @@
 
 .pin-link-input {
     margin-bottom: 25px;
-    width: 90%;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     height: 35px;
     border: none;

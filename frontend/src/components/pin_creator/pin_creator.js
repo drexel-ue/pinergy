@@ -17,14 +17,12 @@ export default class PinCreator extends React.Component {
       loadedFile: []
     };
     this.onFileLoad = this.onFileLoad.bind(this)
+    this.toggleDropDown = this.toggleDropDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
   }
-  toggleDropDown(e) {
-    e.preventDefault();
-    this.setState({ showDropDown: !this.state.showDropDown });
-  }
+
 
   toggleInputUrl(e) {
     e.preventDefault();
@@ -105,6 +103,46 @@ export default class PinCreator extends React.Component {
         <div className="beforeurlbtn" onClick={this.toggleInputUrl}>Save from site</div>
     );
   }
+
+  toggleDropDown(e) {
+    e.preventDefault();
+    this.setState({ showDropDown: !this.state.showDropDown });
+  }
+
+  renderSaveBtn() {
+    return this.state.showDropDown ? (
+        <div className="hide-div"></div>
+      ) : ( 
+        <div className="board-save-btn">
+          Save
+        </div>
+      );
+  }
+  renderBoardMenu() {
+    return this.state.showDropDown ? (
+      <div className="board-drop-down">
+        <div className="board-drop-item">
+          <div className="board-item-image"></div> 
+          &nbsp;&nbsp;Example User Board1
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image"></div>
+          &nbsp;&nbsp;Example User Board2
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image"></div>
+          &nbsp;&nbsp;Example User Board3
+        </div>
+                <div className="board-drop-item">
+          <div className="board-item-image"></div> 
+          &nbsp;&nbsp;Example User Board4
+        </div>
+      </div>
+    ) : (
+        <div className="hide-div"></div>
+      );
+  }
+
   render() {
     const { loadedFile } = this.state;
     const user = this.props.currentUser
@@ -149,10 +187,15 @@ export default class PinCreator extends React.Component {
             </div>
             </div>
               <div className="pin-create-left">
-                {/* <div className="urlform"> </div> */}
-              <div className="pin-create-board-dropdown">
-                Select a board -> Save
+            <div className="create-right-top"> 
+              <div className="pin-create-board-dropdown"
+                  onClick={this.toggleDropDown}>
+                <div className="board-select-text">Select</div>
+                <div><i class='fas fa-chevron-down board-down'></i></div>
+                {this.renderSaveBtn()}
               </div>
+                {this.renderBoardMenu()}
+            </div>
               <input 
                 type="text" 
                 className="pin-title-input" 
