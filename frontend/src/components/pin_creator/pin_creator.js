@@ -13,7 +13,8 @@ export default class PinCreator extends React.Component {
       destination_link: "",
       showDropDown: false,
       inputUrl: false,
-      loadedFile: []
+      loadedFile: [],
+      url: ""
     };
     this.onFileLoad = this.onFileLoad.bind(this)
   }
