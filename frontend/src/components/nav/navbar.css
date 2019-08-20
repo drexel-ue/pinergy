@@ -192,8 +192,8 @@
 }
 
 .ProfileIcon {
-  height: 30px;
-  width: 30px;
+  height: 40px !important;
+  width: 40px !important;
   border-radius: 50%;
   margin-right: 5px;
 }
