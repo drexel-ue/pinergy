@@ -1,8 +1,8 @@
 import * as ApiUtil from "../util/user_api_util";
-import { receiveCurrentUser } from "./session_actions";
 
 export const RECEIVE_USER_UPDATE_ERRORS = "RECEIVE_USER_UPDATE_ERRORS";
 export const RECEIVE_USER_SEARCH_ERRORS = "RECEIVE_USER_SEARCH_ERRORS";
+export const RECEIVE_USER_FOLLOW_ERRORS = "RECEIVE_USER_FOLLOW_ERRORS";
 export const USER_UPDATED = "USER_UPDATED";
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USERS = "RECEIVE_USERS";
@@ -13,6 +13,10 @@ const receiveUserUpdateErrors = errors => ({
 });
 const receiveUserSearchErrors = errors => ({
   type: RECEIVE_USER_SEARCH_ERRORS,
+  errors
+});
+const receiveUserFollowErrors = errors => ({
+  type: RECEIVE_USER_FOLLOW_ERRORS,
   errors
 });
 const userUpdated = () => ({
@@ -36,7 +40,6 @@ export const updateUser = (userData, id) => dispatch =>
     .catch(err => {
       dispatch(receiveUserUpdateErrors(err.response.data));
     });
-
 export const fetchUser = id => dispatch =>
   ApiUtil.fetchUser(id)
     .then(res => {
@@ -45,7 +48,6 @@ export const fetchUser = id => dispatch =>
     .catch(err => {
       dispatch(receiveUserSearchErrors(err.response.data));
     });
-
 export const peopleSearch = (users, queryString) => dispatch => {
   // const matches = users
   //   .filter(user => {
@@ -73,3 +75,11 @@ export const peopleSearch = (users, queryString) => dispatch => {
       return dispatch(receiveUserUpdateErrors(err.response.data));
     });
 };
+export const followUser = (followerId, followeeId) => dispatch =>
+  ApiUtil.followUser(followerId, followeeId)
+    .then(({ data }) => {
+      dispatch(updateUser(data));
+    })
+    .catch(err => {
+      dispatch(receiveUserFollowErrors(err.response.data));
+    });

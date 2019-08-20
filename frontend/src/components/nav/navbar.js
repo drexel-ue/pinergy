@@ -62,7 +62,7 @@ class NavBar extends React.Component {
               </Link>
             </div>
             <div className="SearchGrp">
-              <i class="fas fa-search" />
+              <i className="fas fa-search" />
               <input
                 onChange={this.handleInput}
                 type="text"
@@ -89,7 +89,10 @@ class NavBar extends React.Component {
             <Link to={"/home"} className="Links1">
               Following
             </Link>
-            <Link to={"/profile"} className="Links1">
+            <Link
+              to={`/profile/${this.props.user ? this.props.user.username : ""}`}
+              className="Links1"
+            >
               <div className="Profile">
                 <img
                   className="ProfileIcon"

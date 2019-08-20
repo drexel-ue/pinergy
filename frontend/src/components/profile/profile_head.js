@@ -17,7 +17,7 @@ export default class ProfileHead extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchCurrentUser(this.props.id);
+    this.props.fetchUser(this.props.id);
   }
 
   toggleShareDropdown(e) {
@@ -28,7 +28,11 @@ export default class ProfileHead extends React.Component {
     return this.state.showDropdown ? (
       <div className="drpdwnenc create-dropdown">
         <div className="create-btn">Create Board</div>
-        <div className="create-btn"><Link className="profile-head-link" to="/pin_creator">Create Pin</Link></div>
+        <div className="create-btn">
+          <Link className="profile-head-link" to="/pin_creator">
+            Create Pin
+          </Link>
+        </div>
       </div>
     ) : (
       <div />
@@ -54,14 +58,26 @@ export default class ProfileHead extends React.Component {
   }
 
   findDisplayName() {
-    const user = this.props.currentUser;
+    const user = this.props.user;
     return user.firstName
       ? `${user.firstName} ${user.lastName} `
       : user.username;
   }
+
+  showMessageFollow() {
+    return this.props.user._id != this.props.id ? (
+      <div className="message_and_follow_buttons">
+        <button className="message_button">Message</button>
+        <button className="follow_button redbtn">Following</button>
+      </div>
+    ) : (
+      <div />
+    );
+  }
+
   render() {
-    const user = this.props.currentUser;
-    return this.props.currentUser ? (
+    const user = this.props.user;
+    return this.props.user ? (
       <div>
         <div className="prfnav">
           <div className="prftopnav">
@@ -84,7 +100,10 @@ export default class ProfileHead extends React.Component {
                   following
                 </div>
               </div>
-              <img src={user.profilePhotoUrl} className="prfprfpho" />
+              <div className="message_follow_image">
+                {this.showMessageFollow()}
+                <img src={user.profilePhotoUrl} className="prfprfpho" />
+              </div>
             </div>
             <div className="prfnavv2">
               <div className="prfnavv2lft">

@@ -224,7 +224,7 @@ mongoose
                       });
                       pin.save().then(pin => {
                         if (userIndex === 4 && pinImageIndex == 29)
-                          console.log('CLOSE CONNECTION')
+                          console.log("CLOSE CONNECTION");
                       });
                     });
                   }

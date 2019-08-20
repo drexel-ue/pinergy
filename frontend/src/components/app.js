@@ -7,8 +7,9 @@ import MainPage from "./main/main_page";
 import ModalContainer from "./modal/modal";
 import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
-import PinCreatorContainer from "./pin_creator/pin_creator_container"
+import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
+import ProfileContainer from "./profile/profile_container";
 
 class App extends React.Component {
   render() {
@@ -18,26 +19,9 @@ class App extends React.Component {
         <NavBarContainer />
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
-          <ProtectedRoute path="/profile" component={ProfileHeadContainer} />
           <ProtectedRoute
-            exact={true}
-            path="/profile/boards"
-            component={ProfileHeadContainer}
-          />
-          <ProtectedRoute
-            exact={true}
-            path="/profile/pins"
-            component={ProfileHeadContainer}
-          />
-          <ProtectedRoute
-            exact={true}
-            path="/profile/tries"
-            component={ProfileHeadContainer}
-          />
-          <ProtectedRoute
-            exact
-            path="/profile/topics"
-            component={ProfileHeadContainer}
+            path="/profile/:username"
+            component={ProfileContainer}
           />
           <ProtectedRoute
             exact
