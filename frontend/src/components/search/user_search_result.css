@@ -1,0 +1,14 @@
+.user_search_result {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+.user_search_result_photo {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.full_user_search_link {
+  margin-top: 10px;
+}

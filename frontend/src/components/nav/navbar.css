@@ -101,12 +101,22 @@
   border: none;
   border-bottom-right-radius: 999px;
   border-top-right-radius: 999px;
+  font-size: 16px;
+
+  
+}
+.Searchbar:focus {
+  border: none;
+}
+.Searchbar:focus {
+  outline: none;
 }
 .SearchGrp {
   display: flex;
   align-content: center;
   align-items: center;
   width: 50%;
+  position: relative;
 }
 .PlusSign {
   border-radius: 50%;
@@ -217,4 +227,21 @@
   width: 80%;
   align-items: center;
   justify-content: space-between;
+}
+
+#search_bar_results {
+  position: absolute;
+  border-radius: 8px;
+  top: 41px;
+  background: white;
+  width: 100%;
+  z-index: 1;
+  padding: 10px;
+  overflow: auto;
+  height: 150px;
+}
+.people_label {
+  color: #333;
+  font-size: 12px;
+  margin-bottom: 10px;
 }

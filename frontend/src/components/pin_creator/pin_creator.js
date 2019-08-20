@@ -1,9 +1,11 @@
 import React from "react";
-import { AnchorButton, Intent, ProgressBar } from "@blueprintjs/core";
-import lodash from "lodash";
 import { Icon } from "react-icons-kit";
 import { remove } from "react-icons-kit/fa/remove";
+import "./pin_creator.css";
 import { getAwsUrl } from "../../util/image_util";
+import PinDropzone from "./dropzone";
+import Dropzone from "react-dropzone";
+
 export default class PinCreator extends React.Component {
   constructor(props) {
     super(props);
@@ -16,71 +18,81 @@ export default class PinCreator extends React.Component {
       showDropDown: false,
       inputUrl: false,
       image: undefined,
-      url: ""
+      url: "",
+      imgSrc: null
     };
-    this.onFileLoad = this.onFileLoad.bind(this);
+    // this.handleOnDrop = this.handleOnDrop.bind(this);
+    this.toggleDropDown = this.toggleDropDown.bind(this);
+    this.removeAllLoadedFile = this.removeAllLoadedFile.bind(this);
+    this.toggleInputUrl = this.toggleInputUrl.bind(this);
+    this.toggleOffUrlInput = this.toggleOffUrlInput.bind(this);
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
+    
+      window.addEventListener("click", this.toggleOffUrlInput)
+    
   }
-  toggleDropDown(e) {
-    e.preventDefault();
-    this.setState({ showDropDown: !this.state.showDropDown });
+  componentWillUnmount() {
+    window.removeEventListener("click", this.toggleOffUrlInput)
+    // removes eventlistner when mounting different component
   }
 
   toggleInputUrl(e) {
+    
     e.preventDefault();
+    e.stopPropagation(); // stops bubbling up, something trigger in the child will bubble up to top which is window in this case
     this.setState({ inputUrl: !this.state.inputUrl });
   }
-  onDragHandler(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-  onFileLoad(e) {
-    const file = e.currentTarge.files[0];
-    let fileReader = new FileReader();
-    fileReader.onload = () => {
-      console.log("IMAGE LOADED: ", fileReader.Result);
-      const file = {
-        // name: file.name,
-        // size: file.size,
-        // type: file.type,
-        data: fileReader.result,
-        isUploading: false
-      };
-      this.addLoadedFile(file);
-    };
-
-    fileReader.onabort = () => {
-      alert("Reading Aborted!");
-    };
-
-    fileReader.onerror = () => {
-      alert("Reading Error!");
-    };
-
-    fileReader.readAsDataURL(file);
-  }
-  addLoadedFile(file) {
-    // this.setState((prevState) => ({ loadedFiles: [...prevState.loadedFiles, file]}))
-    // above code will be used to add multiple files to the loading dock
-    this.setState(file => ({ image: getAwsUrl(file) }));
-  } // splat operator is used to concat new file and old file togeter
-
-  removeLoadedFile(file) {
-    //onlyneeded if we're uploading images, left infor educational purpose
-    //remove file from the state
-    this.setState(prevState => {
-      let loadedFiles = prevState.loadedFiles;
-      let newLoadedFiles = lodash.filert(loadedFiles, ldFiles => {
-        return ldFiles != file; //takes preloaded state and only returns ldFile that equals to file passedin
-      });
-      return { loadedFiles: newLoadedFiles };
+  verifyFile(file) {
+    // debugger
+    const maxImgSize = 10000000;
+    const acceptedFileTypes =
+      "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
+    const acceptedFileTypesArr = acceptedFileTypes.split(",").map(item => {
+      return item.trim();
     });
+    if (file && file.length > 0) {
+      const currentFile = file[0];
+      // debugger
+      const currentFileType = currentFile.type;
+      const currentFileSize = currentFile.size;
+      if (currentFileSize > maxImgSize) {
+        alert("File too big");
+        return false;
+      }
+      if (!acceptedFileTypesArr.includes(currentFileType)) {
+        alert("File type not allowed");
+        return false;
+      }
+    }
+    return true;
   }
+  handleOnDrop = (files, rejectedFiles) => {
+    // debugger
+    if (rejectedFiles && rejectedFiles.length > 0) {
+      this.verifyFile(rejectedFiles);
+    }
+    if (files && files.length > 0) {
+      const isVerified = this.verifyFile(files);
+      if (isVerified) {
+        const currentFile = files[0];
+        const myFileItemReader = new FileReader();
+        myFileItemReader.onloadend = () => {
+          // debugger
+          this.setState({
+            imgSrc: myFileItemReader.result
+            // url: url
+          });
+        };
+
+        myFileItemReader.readAsDataURL(currentFile);
+      }
+    }
+  };
 
   removeAllLoadedFile() {
-    this.setState({ loadedFiles: [] });
+    this.setState({ imgSrc: null });
     //should be calle
   }
 
@@ -91,14 +103,15 @@ export default class PinCreator extends React.Component {
   }
 
   renderRemovebtn() {
-    if (this.state.loadedFile.length === 1)
-      return (
-        <Icon
-          icon={remove}
-          className="rmvicon"
-          onClick={this.removeAllLoadedFile}
-        />
-      );
+    return this.state.imgSrc !== null ? (
+      <Icon
+        icon={remove}
+        className="rmvicon"
+        onClick={this.removeAllLoadedFile}
+      />
+    ) : (
+      <div />
+    );
   }
 
   renderInput() {
@@ -113,58 +126,138 @@ export default class PinCreator extends React.Component {
     );
   }
 
-  hanldeUpload() {
-    const { loadedFile } = this.state;
-    loadedFile.map((file, idx) => {});
+  toggleDropDown(e) {
+    e.preventDefault();
+    this.setState({ showDropDown: !this.state.showDropDown });
   }
+
+  toggleOffUrlInput(e) {
+    e.preventDefault();
+    if (this.state.inputUrl) {
+      // debugger
+      this.setState({ inputUrl: false })
+    }
+  }
+
+  renderSaveBtn() {
+    return this.state.showDropDown ? (
+      <div className="hide-div" />
+    ) : (
+      <div className="board-save-btn">Save</div>
+    );
+  }
+  renderBoardMenu() {
+    return this.state.showDropDown ? (
+      <div className="board-drop-down">
+        <div className="board-drop-item">
+          <div className="board-item-image" />
+          &nbsp;&nbsp;Example User Board1
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image" />
+          &nbsp;&nbsp;Example User Board2
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image" />
+          &nbsp;&nbsp;Example User Board3
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image" />
+          &nbsp;&nbsp;Example User Board4
+        </div>
+      </div>
+    ) : (
+      <div className="hide-div" />
+    );
+  }
+
   render() {
-    const { loadedFile } = this.state;
+    const maxImgSize = 10000000;
+    const { image } = this.state;
     const user = this.props.currentUser;
+    const acceptedFileTypes =
+      "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
+    const { imgSrc } = this.state;
     return this.props.currentUser ? (
-      <div className="">
-        <form>
-          <div className="fileuplder">
-            <div className="subhdr">Drag and image</div>
-            <div className="fileuplder">
-              <input
-                type="file"
-                className="filebrserip"
-                onDrag={this.onDragHandler}
-                onDrop={this.onFileLoad}
-                onChange={this.onFileLoad}
-              />
+      <div className="pin-create-container"  >
+        <form className="pin-create-inner">
+          <div className="pin-create-right">
+            <div>
+              <div>
+                {/* <label for="fileUploadId" class="file-label">
+            <div>
+              <i className="fas fa-arrow-circle-up" />
             </div>
-            <div className="filepreview">
-              {loadedFile.map((file, idx) => {
-                return (
-                  <div clasName="ldedimg" key={idx}>
-                    <img src={file.data} />
-                    <div className="ldingcontainer">
-                      <span className="prgrssbar">
-                        {file.isUploading && <ProgressBar />}
-                      </span>
-                      <span className="rmvbtn">{this.renderRemovebtn}</span>
+            <br />
+          </label> */}
+                <div>
+                  {imgSrc !== null ? (
+                    <img src={imgSrc} className="imgprvw" />
+                  ) : (
+                    <div>
+                      <div className="file-label">
+                        <Dropzone
+                          onDrop={this.handleOnDrop}
+                          maxSize={maxImgSize}
+                          multiple={false}
+                        >
+                          {({ getRootProps, getInputProps }) => (
+                            <section>
+                              <div {...getRootProps()}>
+                                <input {...getInputProps()} />
+                                <div>
+                                  Click Here or Drop Images Here
+                                  <i className="fas fa-arrow-circle-up" />
+                                </div>
+                              </div>
+                            </section>
+                          )}
+                        </Dropzone>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="hlpertxt">Drag and Drop image here</div>
-            <div className="filebrowsbutton">
-              <AnchorButton
-                text="Browse"
-                intent={Intent.PRIMARY}
-                minimal={true}
-                onClick={() => this.fileInput.click()}
-              />
+                  )}
+                  {this.renderRemovebtn()}
+                </div>
+              </div>
             </div>
           </div>
-          <div className="urlform" />
-          <input type="text" className="ttlipbx" />
-          <div>{user.username}</div>
-          <img src={user.profilePhotoUrl} className="prfprfpho" />
-          <input type="text" className="dscipbx" />
-          <input type="text" className="destlnkbox" />
+
+          <div className="pin-create-left">
+            <div className="create-right-top">
+              <div
+                className="pin-create-board-dropdown"
+                onClick={this.toggleDropDown}
+              >
+                <div className="board-select-text">Select</div>
+                <div>
+                  <i className="fas fa-chevron-down board-down" />
+                </div>
+                {this.renderSaveBtn()}
+              </div>
+              {this.renderBoardMenu()}
+            </div>
+            <input
+              type="text"
+              className="pin-title-input"
+              placeholder="Add your title"
+            />
+            <div className="create-pin-user-info">
+              <img src={user.profilePhotoUrl} className="create-prof-img" />
+              <div className="create-prof-name">{user.username}</div>
+            </div>
+            <textarea
+              type="text"
+              className="pin-desc-input"
+              placeholder="Tell everyone what your Pin is about"
+            />
+            <div className="create-right-break" />
+            <input
+              type="text"
+              className="pin-link-input"
+              placeholder="Add a destination link"
+            />
+            {this.renderInput()}
+          </div>
         </form>
       </div>
     ) : (
