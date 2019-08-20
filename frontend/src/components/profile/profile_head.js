@@ -24,6 +24,7 @@ export default class ProfileHead extends React.Component {
     e.preventDefault();
     this.setState({ showShareDropdown: !this.state.showShareDropdown });
   }
+  
   renderDropdown() {
     return this.state.showDropdown ? (
       <div className="drpdwnenc create-dropdown">
