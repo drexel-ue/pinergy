@@ -51,7 +51,7 @@
   text-align: center;
 }
 .Links1 {
-  width: 10%;
+  /* width: 10%; */
   display: flex;
   text-decoration: none;
   color: #8e8e8e;
