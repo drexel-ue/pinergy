@@ -75,7 +75,7 @@ class Modal extends React.Component {
     const modalChildStyle = this.props.modal === "SHOW_PIN" ? {
       top: "55%",
       bottom: "45%",
-      height: "90%",
+      height: "75%",
       width: "75%"
     } : {}
     return (

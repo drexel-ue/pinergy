@@ -24,34 +24,39 @@ export default class PinShow extends React.Component {
 
   render() {
     return (
-      <div className="pin_show">
         <div className="pin_show_image_wrapper">
-          <div className="pin-show-top"> 
-            <div className="pin-show-save">
-            <i class='fas fa-thumbtack'></i>
-            &nbsp;&nbsp;Save
-            </div>
-          </div>
-            <img
-              className="pin_show_image"
-              src={this.props.pin.url}
-              alt={this.props.pin.title}
-            />
+            <div className="pin-show-left">
               <a
                 href={this.props.pin.url}
                 target="_blank"
-                className="pin-show-link"
+                className="pin-atag"
               >
-                <div className="show-link-right">
-                  <i class='fas fa-arrow-right'></i>
-                </div>
-                <div className="show-link-left">
-                  {this.parseDestinationLink()}
-                </div>
+              <img
+                className="pin-show-image"
+                src={this.props.pin.url}
+                alt={this.props.pin.title}
+              />
+            <div className="pin-show-link">
+                <i class='fas fa-arrow-right'></i>
+                {this.parseDestinationLink()}
+              </div>
               </a>
-            {/* </div> */}
+            </div>
+            <div className="pin-show-right" >
+              <div className="pin-show-save">
+                <i class='fas fa-thumbtack'></i>
+                  &nbsp;&nbsp;Save
+              </div>
+              <div className="pin-show-info">
+                <div className="pin-show-title">
+                  {this.props.pin.title}
+                </div>
+                <div className="pin-show-desc">
+                  {this.props.pin.description}
+                </div>  
+              </div>
+            </div>
         </div>
-      </div>
     );
   }
 }

@@ -25,7 +25,7 @@ export default class Home extends React.Component {
           options={masonryOptions}
         >
           {Object.values(this.props.pins).map(pin => (
-            <PinContainer key={pin.id} pin={pin} />
+            <PinContainer key={pin._id} pin={pin} />
           ))}
         </Masonry>
       </div>
