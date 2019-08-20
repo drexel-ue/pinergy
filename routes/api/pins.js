@@ -19,6 +19,9 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Validates updates.
 const validateUpdate = require("../../validation/update_user");
+const upload = require('../../util/aws-upload');
+const singleUpload = upload.single('image');
+const Image = require('../../models/Image')
 
 const scraper = require("../../util/scrape");
 
@@ -34,6 +37,46 @@ router.post("/query", async (req, res) => {
   return res.json(data);
 });
 
+router.post("/createpin", async function (req, res) {
+  // debugger
+  let imageUrl;
+  if (req.params.type === 'image') {
+   imagUrl = await singleUpload(req, res, function (err) {
+      if (err) {
+        return res.status(422).send({ errors: [{ title: "File type error", detail: err.message }] })
+      }
+        debugger
+     return req.file.location
+      // debugger
+    // res.json(imageUrl)
+    });
+  } else {
+    // debugger
+    imageUrl = req.body.inputUrl
+  }
+  const img = new Image({
+    url: imageUrl
+  })
+  debugger
+  img.save().then(img => {
+    debugger
+    const pin = new Pin({
+      user: req.body.id,
+      board: req.body.board,
+      image: img.id,
+      url: img.url,
+      title: req.body.title,
+      description: req.body.description,
+      destinationLink: req.body.destinationLink
+      // tags: [board.title]
+    })
+    pin.save().then(pin => {
+      debugger
+      res.json(pin)
+    })
+  });
+});
+
 router.post("/get", async (req, res) => {
   const tags = req.body.tags;
   if (tags.length === 0) {
@@ -43,4 +86,4 @@ router.post("/get", async (req, res) => {
   }
 });
 
-module.exports = router;
+  module.exports = router

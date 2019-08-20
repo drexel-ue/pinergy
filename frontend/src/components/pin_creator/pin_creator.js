@@ -1,22 +1,24 @@
 import React from "react";
-import { AnchorButton, Intent, ProgressBar } from "@blueprintjs/core"
-import lodash from 'lodash'
-import { Icon } from 'react-icons-kit'
-import { remove } from 'react-icons-kit/fa/remove'
+import { AnchorButton, Intent, ProgressBar } from "@blueprintjs/core";
+import lodash from "lodash";
+import { Icon } from "react-icons-kit";
+import { remove } from "react-icons-kit/fa/remove";
+import { getAwsUrl } from "../../util/image_util";
 export default class PinCreator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       title: "",
       description: "",
       board: "",
       destination_link: "",
       showDropDown: false,
       inputUrl: false,
-      loadedFile: [],
+      image: undefined,
       url: ""
     };
-    this.onFileLoad = this.onFileLoad.bind(this)
+    this.onFileLoad = this.onFileLoad.bind(this);
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
@@ -33,68 +35,70 @@ export default class PinCreator extends React.Component {
   onDragHandler(e) {
     e.preventDefault();
     e.stopPropagation();
-
   }
   onFileLoad(e) {
-    const file = e.currentTarge.files[0]
+    const file = e.currentTarge.files[0];
     let fileReader = new FileReader();
     fileReader.onload = () => {
-      console.log("IMAGE LOADED: ", fileReader.Result)
+      console.log("IMAGE LOADED: ", fileReader.Result);
       const file = {
         // name: file.name,
         // size: file.size,
         // type: file.type,
         data: fileReader.result,
         isUploading: false
-      }
-      this.addLoadedFile(file)
-    }
+      };
+      this.addLoadedFile(file);
+    };
 
     fileReader.onabort = () => {
       alert("Reading Aborted!");
-    }
+    };
 
     fileReader.onerror = () => {
-      alert("Reading Error!")
-    }
-    
-    fileReader.readAsDataURL(file)
+      alert("Reading Error!");
+    };
+
+    fileReader.readAsDataURL(file);
   }
   addLoadedFile(file) {
     // this.setState((prevState) => ({ loadedFiles: [...prevState.loadedFiles, file]}))
     // above code will be used to add multiple files to the loading dock
-    this.setState((prevState) => ({ loadedFiles: [...prevState.loadedFiles, file] }))
-    
+    this.setState(file => ({ image: getAwsUrl(file) }));
   } // splat operator is used to concat new file and old file togeter
 
-  removeLoadedFile(file) { //onlyneeded if we're uploading images, left infor educational purpose
+  removeLoadedFile(file) {
+    //onlyneeded if we're uploading images, left infor educational purpose
     //remove file from the state
-    this.setState((prevState) => {
+    this.setState(prevState => {
       let loadedFiles = prevState.loadedFiles;
-      let newLoadedFiles = lodash.filert(loadedFiles, (ldFiles) => {
+      let newLoadedFiles = lodash.filert(loadedFiles, ldFiles => {
         return ldFiles != file; //takes preloaded state and only returns ldFile that equals to file passedin
-      })
-      return { loadedFiles: newLoadedFiles }
-    })
+      });
+      return { loadedFiles: newLoadedFiles };
+    });
   }
 
   removeAllLoadedFile() {
-    this.setState({ loadedFiles: [] })
+    this.setState({ loadedFiles: [] });
     //should be calle
   }
 
-  turnOffInputUrl(e) { //will be used to toggel off input url
+  turnOffInputUrl(e) {
+    //will be used to toggel off input url
     e.preventDefault();
-    this.setState({ inputUrl: false});
+    this.setState({ inputUrl: false });
   }
 
   renderRemovebtn() {
     if (this.state.loadedFile.length === 1)
-      return (<Icon
-        icon={remove}
-        className='rmvicon'
-        onClick={this.removeAllLoadedFile}
-      />)
+      return (
+        <Icon
+          icon={remove}
+          className="rmvicon"
+          onClick={this.removeAllLoadedFile}
+        />
+      );
   }
 
   renderInput() {
@@ -103,19 +107,19 @@ export default class PinCreator extends React.Component {
         <input type="text" className="urlinp" />
       </div>
     ) : (
-        <div className="beforeurlbtn" onClick={this.toggleInputUrl}>Save from site</div>
+      <div className="beforeurlbtn" onClick={this.toggleInputUrl}>
+        Save from site
+      </div>
     );
   }
 
   hanldeUpload() {
     const { loadedFile } = this.state;
-    loadedFile.map((file, idx) => {
-      
-    })
+    loadedFile.map((file, idx) => {});
   }
   render() {
     const { loadedFile } = this.state;
-    const user = this.props.currentUser
+    const user = this.props.currentUser;
     return this.props.currentUser ? (
       <div className="">
         <form>
@@ -127,21 +131,22 @@ export default class PinCreator extends React.Component {
                 className="filebrserip"
                 onDrag={this.onDragHandler}
                 onDrop={this.onFileLoad}
-                onChange={this.onFileLoad} />
+                onChange={this.onFileLoad}
+              />
             </div>
             <div className="filepreview">
               {loadedFile.map((file, idx) => {
-                return <div clasName='ldedimg' key={idx}>
-                  <img src={file.data} />
+                return (
+                  <div clasName="ldedimg" key={idx}>
+                    <img src={file.data} />
                     <div className="ldingcontainer">
                       <span className="prgrssbar">
                         {file.isUploading && <ProgressBar />}
                       </span>
-                    <span className="rmvbtn">
-                      {this.renderRemovebtn}
-                    </span>
+                      <span className="rmvbtn">{this.renderRemovebtn}</span>
                     </div>
                   </div>
+                );
               })}
             </div>
             <div className="hlpertxt">Drag and Drop image here</div>
@@ -150,12 +155,11 @@ export default class PinCreator extends React.Component {
                 text="Browse"
                 intent={Intent.PRIMARY}
                 minimal={true}
-                onClick={() => this.fileInput.click()} />
+                onClick={() => this.fileInput.click()}
+              />
             </div>
           </div>
-          <div className="urlform">
-
-          </div>
+          <div className="urlform" />
           <input type="text" className="ttlipbx" />
           <div>{user.username}</div>
           <img src={user.profilePhotoUrl} className="prfprfpho" />
@@ -163,8 +167,8 @@ export default class PinCreator extends React.Component {
           <input type="text" className="destlnkbox" />
         </form>
       </div>
-        ) : (
-        <div />
-      );
+    ) : (
+      <div />
+    );
   }
 }
