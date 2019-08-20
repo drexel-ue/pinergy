@@ -23,8 +23,16 @@ const validateUpdate = require("../../validation/update_user");
 
 const scraper = require("../../util/scrape");
 
-router.get("/boards", async (req, res) => {
-  //    user= User.findById(req.params.id)
-  const boards = await Board.find();
-  res.json(boards);
+router.get("/test", (req, res) => res.json({ msg: "boards route" }));
+
+router.get("/:user_id/boards", (req, res) => {
+  Board.find({ user: req.params.user_id })
+    .then(boards => {
+      res.json(boards.map(b => b.title));
+    })
+    .catch(err => res.status(404).json({ noBoardsFound: "No Boards Found" }));
 });
+router.post("/new", (req, res) => {
+
+ })
+module.exports = router;
