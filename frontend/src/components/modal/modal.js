@@ -76,7 +76,7 @@ class Modal extends React.Component {
       top: "55%",
       bottom: "45%",
       height: "75%",
-      width: "75%"
+      width: "65%"
     } : {}
     return (
       <div className="modal-background" 
