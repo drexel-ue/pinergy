@@ -10,7 +10,6 @@ export default class ProfileHead extends React.Component {
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
-    debugger;
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -59,14 +58,26 @@ export default class ProfileHead extends React.Component {
   }
 
   findDisplayName() {
-    const user = this.props.currentUser;
+    const user = this.props.user;
     return user.firstName
       ? `${user.firstName} ${user.lastName} `
       : user.username;
   }
+
+  showMessageFollow() {
+    return this.props.user._id != this.props.id ? (
+      <div className="message_and_follow_buttons">
+        <button className="message_button">Message</button>
+        <button className="follow_button redbtn">Following</button>
+      </div>
+    ) : (
+      <div />
+    );
+  }
+
   render() {
-    const user = this.props.currentUser;
-    return this.props.currentUser ? (
+    const user = this.props.user;
+    return this.props.user ? (
       <div>
         <div className="prfnav">
           <div className="prftopnav">
@@ -89,7 +100,10 @@ export default class ProfileHead extends React.Component {
                   following
                 </div>
               </div>
-              <img src={user.profilePhotoUrl} className="prfprfpho" />
+              <div className="message_follow_image">
+                {this.showMessageFollow()}
+                <img src={user.profilePhotoUrl} className="prfprfpho" />
+              </div>
             </div>
             <div className="prfnavv2">
               <div className="prfnavv2lft">

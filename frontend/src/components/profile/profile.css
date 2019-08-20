@@ -1,10 +1,10 @@
 .prfnav {
-    width: 100%;
-    height: 72px;
-    display: flex;
-    top: 65px;
-    justify-content: center;
-    position: fixed;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  top: 65px;
+  justify-content: center;
+  position: fixed;
 }
 
 .profile-head-link:visited {
@@ -24,7 +24,7 @@
   z-index: 100;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   outline: none;
 }
 .create-btn:hover {
@@ -46,7 +46,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.profile-head-link{
+.profile-head-link {
   text-decoration: none;
 }
 .social-icon-wrap {
@@ -62,7 +62,7 @@
   z-index: 100;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   outline: none;
 }
 .social-icon-text {
@@ -90,13 +90,13 @@
 }
 
 .fa-twitter {
-  color: #1DA1F2;
+  color: #1da1f2;
   font-size: 32px;
 }
 
 .fa-whatsapp {
   text-align: center;
-  background-color: #4FCE5D;
+  background-color: #4fce5d;
   border-radius: 50%;
   font-size: 26px;
   color: white;
@@ -106,90 +106,107 @@
 }
 
 .prftopnav {
-    display: flex;
-    align-items: center;
-    width: 780px;
-    position: relative;
+  display: flex;
+  align-items: center;
+  width: 780px;
+  position: relative;
 }
-.prfbox{
-    width: 100%;
-    height: 170px;
-    display: flex;
-    justify-content: center;
-    margin-top: 85px;
+.prfbox {
+  width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  margin-top: 85px;
 }
-.prfinnerbox{
-    width: 740px;
-    height:170px;
+.prfinnerbox {
+  width: 740px;
+  height: 170px;
 }
 
-.prfprfpho{
+.prfprfpho {
+  margin-left: 46px;
   width: 106px;
   height: 106px;
   border-radius: 50%;
 }
 
-.prftopnav > .fas, .prficon{
+.prftopnav > .fas,
+.prficon {
   width: 45px;
   height: 45px;
   color: #8e8e8e;
   padding: 3px;
-  display:flex;
+  display: flex;
   justify-content: center;
-  align-items:center;
-  font-size:24px;
+  align-items: center;
+  font-size: 24px;
 }
 
-.prftopnav > .fas:hover, .prficon:hover {
+.prftopnav > .fas:hover,
+.prficon:hover {
   background-color: #efefef;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
-.prfsmlbox{
-  display:flex;
-  justify-content:space-between;
-  align-items:center; 
+.prfsmlbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 130px;
 }
 
-.dispname{
-  font-size:36px;
+.dispname {
+  font-size: 36px;
   font-weight: 900;
 }
 
-.follownums{
-  font-size:14px;
+.follownums {
+  font-size: 14px;
   font-weight: 900;
   padding-left: 8px;
 }
-.prfnavv2{
-height:40px;
-align-items:center;
-display:flex
+.prfnavv2 {
+  height: 40px;
+  align-items: center;
+  display: flex;
 }
-.prfnavv2lft{
+.prfnavv2lft {
   width: 50%;
   display: flex;
   align-items: center;
-  justify-content:space-between;
-
+  justify-content: space-between;
 }
 .links {
-    color: #8e8e8e;
-    font-size: 16px;
-    width: 48px;
-    text-decoration: none;
-    font-weight: 1200;
-    margin-left: 8px;
-    height: 24px;
-    padding: 8px 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: #8e8e8e;
+  font-size: 16px;
+  width: 48px;
+  text-decoration: none;
+  font-weight: 1200;
+  margin-left: 8px;
+  height: 24px;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .links:hover {
-    border-radius: 999px;
-    background-color: #efefef;
-    color: black;
-    text-decoration: underline;
+  border-radius: 999px;
+  background-color: #efefef;
+  color: black;
+  text-decoration: underline;
+}
+
+.message_and_follow_buttons {
+  margin-bottom: 10px;
+}
+.message_button {
+  margin-right: 13px;
+  background-color: #333;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  align-content: center;
+  outline: none;
+  font-weight: 500;
+  font-size: 16px;
 }
