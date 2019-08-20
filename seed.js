@@ -202,12 +202,22 @@ mongoose
                     ]
                 });
                 board.save().then(board => {
+                  let usedHeights = [];
+
+                  determineHeight = () => {
+                    let height = Math.round(Math.random() * 400 + 100);
+                    if (usedHeights.includes(height)) {
+                      height = determineHeight();
+                    }
+                    usedHeights.push(height);
+                    return height;
+                  };
                   for (
                     let pinImageIndex = 0;
                     pinImageIndex < 30;
                     pinImageIndex++
                   ) {
-                    const height = Math.round(Math.random() * 400 + 100);
+                    const height = determineHeight();
                     const image = new Image({
                       url: `https://picsum.photos/240/${height}?random=1`
                     });

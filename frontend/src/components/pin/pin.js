@@ -34,7 +34,7 @@ export default class Pin extends React.Component {
           onClick={this.showPin} 
           src={this.props.pin.url} />
         <div className="pin-button home-save">
-          <i class="fas fa-thumbtack" />
+          <i className="fas fa-thumbtack" />
           &nbsp;&nbsp;Save
         </div>
         <a
@@ -43,7 +43,7 @@ export default class Pin extends React.Component {
           className="pin-button home-link"
         >
           <div className="home-link-right">
-            <i class="fas fa-arrow-right" />
+            <i className="fas fa-arrow-right" />
           </div>
           <div className="home-link-left">{this.parseDestinationLink()}</div>
         </a>

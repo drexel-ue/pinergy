@@ -154,7 +154,7 @@ export default class PinCreator extends React.Component {
             <div className="upload-border">
               <label for="fileUploadId" class="file-label"> 
                 <div> 
-                <i class='fas fa-arrow-circle-up'></i>
+                <i className='fas fa-arrow-circle-up'></i>
                 </div>      
                 <br />                     
                 <div> 
@@ -191,7 +191,7 @@ export default class PinCreator extends React.Component {
               <div className="pin-create-board-dropdown"
                   onClick={this.toggleDropDown}>
                 <div className="board-select-text">Select</div>
-                <div><i class='fas fa-chevron-down board-down'></i></div>
+                <div><i className='fas fa-chevron-down board-down'></i></div>
                 {this.renderSaveBtn()}
               </div>
                 {this.renderBoardMenu()}
@@ -199,7 +199,7 @@ export default class PinCreator extends React.Component {
               <input 
                 type="text" 
                 className="pin-title-input" 
-                placeHolder="Add your title" />
+                placeholder="Add your title" />
             <div className="create-pin-user-info">
               <img src={user.profilePhotoUrl} className="create-prof-img" />
               <div className="create-prof-name">{user.username}</div>
@@ -207,13 +207,13 @@ export default class PinCreator extends React.Component {
             <textarea 
               type="text" 
               className="pin-desc-input" 
-              placeHolder="Tell everyone what your Pin is about">
+              placeholder="Tell everyone what your Pin is about">
             </textarea>
             <div className="create-right-break"></div> 
           <input 
             type="text" 
             className="pin-link-input"
-            placeHolder="Add a destination link" />
+            placeholder="Add a destination link" />
           </div>
         </form>
       </div>
