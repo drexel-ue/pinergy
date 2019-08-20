@@ -15,6 +15,5 @@ export const scrapeInterests = () => dispatch => {
       dispatch(receiveInterests(data));
     })
     .catch(res => {
-      // debugger;
     });
 };

@@ -142,8 +142,7 @@ router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findById(req.params.id)
-    .then(user => res.json(user));
+    return User.findById(req.params.id).then(user => res.json(user));
   }
 );
 
@@ -165,6 +164,49 @@ router.patch("/update/:id", async (req, res) => {
       return res.status(400).json(validation.errors);
     }
   });
+});
+
+// To serve users matching a query string.
+router.get("/search/:queryString", (req, res) => {
+  const queryString = req.params.queryString;
+
+  User.find({
+    $or: [
+      { username: { $regex: "^" + queryString, $options: "i" } },
+      { firstName: { $regex: "^" + queryString, $options: "i" } },
+      { lastName: { $regex: "^" + queryString, $options: "i" } }
+    ]
+  })
+    .limit(3)
+    .exec((err, users) => {
+      if (err) return res.status(400).json(err);
+      res.json(users);
+    });
+});
+
+router.post("/follow", async (req, res) => {
+  const errors = [];
+
+  const followeeId = req.body.followeeId;
+  const followerId = req.body.followerId;
+
+  const followee = await User.findById(followeeId);
+  const follower = await User.findById(followerId);
+
+  followee.followers.push(followerId);
+  follower.following.push(followeeId);
+
+  await followee.save().catch(err => errors.push(err.toString()));
+  await follower.save().catch(err => errors.push(err.toString()));
+
+  if (errors.length > 0) {
+    return res.status(400).json(errors);
+  } else {
+    return res.json({
+      followee,
+      follower
+    });
+  }
 });
 
 module.exports = router;

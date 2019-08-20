@@ -14,7 +14,7 @@ const PinSchema = new Schema({
     required: false
   },
   section: {
-    type: Schema.Types.ObjectId,
+ type: Schema.Types.ObjectId,
     ref: "section",
     required: false
   },

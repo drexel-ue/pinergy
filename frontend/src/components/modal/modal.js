@@ -72,9 +72,20 @@ class Modal extends React.Component {
         return (component = <div />);
     }
 
+    const modalChildStyle = this.props.modal === "SHOW_PIN" ? {
+      top: "55%",
+      bottom: "45%",
+      height: "90%",
+      width: "75%"
+    } : {}
     return (
-      <div className="modal-background" onClick={this.dismissModal}>
-        <div className="modal-child">{component}</div>
+      <div className="modal-background" 
+          onClick={this.dismissModal}>
+        <div 
+          className="modal-child"
+          style={modalChildStyle}>
+          {component}
+        </div>
         <SessionButtonContainer modal={this.props.modal} />
       </div>
     );

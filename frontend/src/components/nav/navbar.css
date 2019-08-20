@@ -11,11 +11,16 @@
   padding-bottom: 4px;
   padding-top: 4px;
   align-items: center;
+  position: fixed;
+  z-index: 9;
+  background: white;
+  top: 0;
 }
 
 .NavBar button {
   height: 20px;
 }
+
 .Navbar-logo {
   border-radius: 50%;
   height: 28px;
@@ -103,11 +108,15 @@
 .Searchbar:focus {
   border: none;
 }
+.Searchbar:focus {
+  outline: none;
+}
 .SearchGrp {
   display: flex;
   align-content: center;
   align-items: center;
   width: 50%;
+  position: relative;
 }
 .PlusSign {
   border-radius: 50%;
@@ -168,8 +177,8 @@
   outline: none;
   background: white;
   overflow-y: auto;
-  top: 12px;
-  left: 1047px;
+  top: 65px;
+  right: 40px;
 }
 
 .UserTasksItems {
@@ -200,6 +209,7 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
+  margin-right: 5px;
 }
 
 .Links1:hover {
@@ -217,4 +227,21 @@
   width: 80%;
   align-items: center;
   justify-content: space-between;
+}
+
+#search_bar_results {
+  position: absolute;
+  border-radius: 8px;
+  top: 41px;
+  background: white;
+  width: 100%;
+  z-index: 1;
+  padding: 10px;
+  overflow: auto;
+  height: 150px;
+}
+.people_label {
+  color: #333;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
