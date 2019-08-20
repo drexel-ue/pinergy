@@ -46,12 +46,14 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(this.props.history.push('/home'));;
 
       
   }
 
   handleDemoLogin(e) {
+    // debugger
     e.preventDefault();
 
     let user = {
@@ -59,7 +61,8 @@ class LoginForm extends React.Component {
       password: "test123"
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(this.props.history.push('/home'));
   }
 
   // Render the session errors if there are any
