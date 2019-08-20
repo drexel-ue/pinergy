@@ -122,11 +122,7 @@ class NavBar extends React.Component {
                 to={"/"}
                 className="fas fa-ellipsis-h fa-2x Links2"
                 onClick={this.toggleDropdown("UserTasks")}
-
-                // <i class="fas fa-ellipsis-h"></i>
               />
-              {/* <Link to={"/"} className="far fa-ellipsis-h Links2 fa-2x" /> */}
-              {/*  */}
             </div>
             <div className="UserTasks hide">
               {user_tasks.map(task => (
