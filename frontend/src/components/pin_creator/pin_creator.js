@@ -17,14 +17,12 @@ export default class PinCreator extends React.Component {
       loadedFile: []
     };
     this.onFileLoad = this.onFileLoad.bind(this)
+    this.toggleDropDown = this.toggleDropDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
   }
-  toggleDropDown(e) {
-    e.preventDefault();
-    this.setState({ showDropDown: !this.state.showDropDown });
-  }
+
 
   toggleInputUrl(e) {
     e.preventDefault();
@@ -36,7 +34,7 @@ export default class PinCreator extends React.Component {
 
   }
   onFileLoad(e) {
-    const file = e.currentTarge.files[0]
+    const file = e.currentTarget.files[0]
     let fileReader = new FileReader();
     fileReader.onload = () => {
       console.log("IMAGE LOADED: ", fileReader.Result)
@@ -105,18 +103,67 @@ export default class PinCreator extends React.Component {
         <div className="beforeurlbtn" onClick={this.toggleInputUrl}>Save from site</div>
     );
   }
+
+  toggleDropDown(e) {
+    e.preventDefault();
+    this.setState({ showDropDown: !this.state.showDropDown });
+  }
+
+  renderSaveBtn() {
+    return this.state.showDropDown ? (
+        <div className="hide-div"></div>
+      ) : ( 
+        <div className="board-save-btn">
+          Save
+        </div>
+      );
+  }
+  renderBoardMenu() {
+    return this.state.showDropDown ? (
+      <div className="board-drop-down">
+        <div className="board-drop-item">
+          <div className="board-item-image"></div> 
+          &nbsp;&nbsp;Example User Board1
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image"></div>
+          &nbsp;&nbsp;Example User Board2
+        </div>
+        <div className="board-drop-item">
+          <div className="board-item-image"></div>
+          &nbsp;&nbsp;Example User Board3
+        </div>
+                <div className="board-drop-item">
+          <div className="board-item-image"></div> 
+          &nbsp;&nbsp;Example User Board4
+        </div>
+      </div>
+    ) : (
+        <div className="hide-div"></div>
+      );
+  }
+
   render() {
     const { loadedFile } = this.state;
     const user = this.props.currentUser
     return this.props.currentUser ? (
       <div className="pin-create-container">
-        <div className="pin-create-inner">
-        <form>
+          <form className="pin-create-inner">
+            <div className="pin-create-right">
           <div className="fileuplder">
-            <div className="subhdr">Drag and image</div>
-            <div className="fileuplder">
+            <div className="upload-border">
+              <label for="fileUploadId" class="file-label"> 
+                <div> 
+                <i class='fas fa-arrow-circle-up'></i>
+                </div>      
+                <br />                     
+                <div> 
+                Drag and drop or click to upload
+                </div>
+              </label>
               <input
                 type="file"
+                id="fileUploadId"
                 className="filebrserip"
                 onDrag={this.onDragHandler}
                 onDrop={this.onFileLoad}
@@ -137,25 +184,38 @@ export default class PinCreator extends React.Component {
                   </div>
               })}
             </div>
-            <div className="hlpertxt">Drag and Drop image here</div>
-            <div className="filebrowsbutton">
-              <AnchorButton
-                text="Browse"
-                intent={Intent.PRIMARY}
-                minimal={true}
-                onClick={() => this.fileInput.click()} />
             </div>
+            </div>
+              <div className="pin-create-left">
+            <div className="create-right-top"> 
+              <div className="pin-create-board-dropdown"
+                  onClick={this.toggleDropDown}>
+                <div className="board-select-text">Select</div>
+                <div><i class='fas fa-chevron-down board-down'></i></div>
+                {this.renderSaveBtn()}
+              </div>
+                {this.renderBoardMenu()}
+            </div>
+              <input 
+                type="text" 
+                className="pin-title-input" 
+                placeHolder="Add your title" />
+            <div className="create-pin-user-info">
+              <img src={user.profilePhotoUrl} className="create-prof-img" />
+              <div className="create-prof-name">{user.username}</div>
+            </div>
+            <textarea 
+              type="text" 
+              className="pin-desc-input" 
+              placeHolder="Tell everyone what your Pin is about">
+            </textarea>
+            <div className="create-right-break"></div> 
+          <input 
+            type="text" 
+            className="pin-link-input"
+            placeHolder="Add a destination link" />
           </div>
-          <div className="urlform">
-
-          </div>
-          <input type="text" className="ttlipbx" />
-          <div>{user.username}</div>
-          <img src={user.profilePhotoUrl} className="prfprfpho" />
-          <input type="text" className="dscipbx" />
-          <input type="text" className="destlnkbox" />
         </form>
-        </div>
       </div>
         ) : (
         <div />
