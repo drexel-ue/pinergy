@@ -84,7 +84,7 @@ export default class ProfileHead extends React.Component {
             <div className="prfnavv2">
               <div className="prfnavv2lft">
                 <Link className="links" to="/profile/boards">
-                  Baords
+                  Boards
                 </Link>
                 <Link className="links" to="/profile/pins">
                   Pins

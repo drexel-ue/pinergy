@@ -3,7 +3,7 @@ import "./pin_show.css";
 
 export default class PinShow extends React.Component {
   render() {
-    debugger;
+    // debugger;
     return (
       <div className="pin_show">
         <div className="pin_show_image_wapper">

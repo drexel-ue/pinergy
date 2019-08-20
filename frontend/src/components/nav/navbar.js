@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BoardsContainer from "../board/board_container";
 import "./navbar.css";
 
 class NavBar extends React.Component {
@@ -38,7 +39,6 @@ class NavBar extends React.Component {
               </Link>
             </div>
             <div className="SearchGrp">
-              <i class="fas fa-search" />
               <input type="text" className="Searchbar" />
             </div>
             <Link to={"/"} className="Links1 Home">
@@ -56,6 +56,8 @@ class NavBar extends React.Component {
                 {this.props.user ? this.props.user.username : ""}
               </div>
             </Link>
+
+            <BoardsContainer />
           </div>
           <div className="RightIcons">
             <div className="Navbar-icon-halo">

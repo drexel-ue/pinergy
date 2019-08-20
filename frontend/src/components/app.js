@@ -8,6 +8,7 @@ import ModalContainer from "./modal/modal";
 import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
 import PinShowContainer from "./show/pin_show_container";
+import BoardContainer from "./board/board_container";
 
 class App extends React.Component {
   render() {
@@ -21,7 +22,7 @@ class App extends React.Component {
           <ProtectedRoute
             exact={true}
             path="/profile/boards"
-            component={ProfileHeadContainer}
+            component={BoardContainer}
           />
           <ProtectedRoute
             exact={true}
