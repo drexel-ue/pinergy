@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import "./profile.css";
 
+
+
 class ProfileHead extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,7 @@ class ProfileHead extends React.Component {
     };
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
+    this.myScrollFunc = this.myScrollFunc.bind(this)
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -19,10 +22,23 @@ class ProfileHead extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchUserByUserName(this.props.match.params.username);
+    window.addEventListener("scroll", this.myScrollFunc);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.myScrollFunc);
+  }
+
+  myScrollFunc() {
+    let scrollY = window.scrollY;
+    let usernameScroll = document.getElementById("username-scroll");
+    if (scrollY  >= 145) {
+      usernameScroll.className = "username-animate show"
+    } else {
+      usernameScroll.className = "username-animate hide"
+    }
+  };
   
   toggleShareDropdown(e) {
     e.preventDefault();
@@ -93,6 +109,11 @@ class ProfileHead extends React.Component {
             </Link>
             <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
             {this.renderShareDropdown()}
+            <div 
+              id="username-scroll"
+              className="username-animate hide">
+              {this.props.user.username}
+            </div>
           </div>
         </div>
         <div className="prfbox">
