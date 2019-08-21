@@ -21,7 +21,7 @@ Home feed is the center of Pinergy. It's where you'll find ideas, or Pins, with 
 ### Features/Core Functionalities
 
 #### * Sign Up and Login
-The user can signup for Pinergy using email and signup. They are also asked to input their country, language and at least 5 interests after they sign up.
+The user can signup for Pinergy using email, password(entered twice) and age. They are also asked to input their country, language and at least 5 interests after they sign up.
 ![Pinergy Signup Page](https://github.com/drexel-ue/pinergy/blob/master/signup1.png)
 
 #### * Discover feed on home page
