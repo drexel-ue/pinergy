@@ -10,6 +10,11 @@ class Profile extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // debugger;
+    this.props.fetchUserByUserName(this.props.match.params.username);
+  }
+
 //   pickPath() {
 //     switch (this.props.location.pathname) {
         
@@ -22,7 +27,7 @@ class Profile extends React.Component {
 //     }
 //   }
   render() {
-    return (
+    return this.props.user ? (
       <div className="test-dive">
         <ProfileHeaderContainer />
         {/* {this.pickPath()} */}
@@ -30,6 +35,8 @@ class Profile extends React.Component {
         <h2>All of This User's Board</h2>
         <BoardsContainer user={this.props.user}/>
       </div>
+    ) : (
+    <div />
     );
   }
 }

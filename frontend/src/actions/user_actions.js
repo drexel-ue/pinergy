@@ -56,7 +56,7 @@ export const fetchUserByUserName = username => dispatch =>
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
-      debugger;
+      // debugger;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 

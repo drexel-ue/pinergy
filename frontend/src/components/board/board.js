@@ -3,13 +3,6 @@ import "../home/home.css";
 import { withRouter } from "react-router-dom";
 import "./board.css"
 
-const masonryOptions = {
-  transitionDuration: 650,
-  itemSelector: ".board-item-wrap",
-  columnWidth: 270,
-  fitWidth: true
-};
-
 
 class Board extends React.Component {
   constructor(props) {
@@ -21,26 +14,26 @@ class Board extends React.Component {
 
   //
   componentDidMount() {
-    // debugger
-    // this.props.fetchUser(this.ownProps.user.id);
-    this.props.fetchUserBoards(this.props.match.params.user_id);
+    if (this.props.user) {
+      this.props.fetchUserBoards(this.props.user._id);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.fetchUserBoards(this.props.user._id)
+    }
   }
 
   componentWillReceiveProps(newState) {
     this.setState({ boards: newState.boards });
   }
 
-  // showP(event) {
-  //     event.preventDefault();
-  //     this.props.showPin(this.props.pin._id);
-  // }
-
   render() {
-
     if (this.props.boards.length > 0) {
       return (
         <div>
-          <div> These are my boards</div>
+          <div>These are my boards</div>
 
           <ul>
             {this.props.boards.map(b => (
@@ -50,7 +43,7 @@ class Board extends React.Component {
         </div>
       );
     } else {
-      return <div>has no boards yet! </div>;
+      return <div> {this.props.user.username} has no boards yet! </div>;
     }
 
 //     return (

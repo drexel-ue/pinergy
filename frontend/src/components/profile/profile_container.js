@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Profile from "./profile";
 import { withRouter } from "react-router-dom";
+import { fetchUserByUserName } from "../../actions/user_actions";
 
 const mapStateToProps = ({ entities, session }, ownProps) => {
   return {
@@ -15,7 +16,9 @@ const mapStateToProps = ({ entities, session }, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    fetchUserByUserName: username => dispatch(fetchUserByUserName(username))
+  };
 };
 
 export default withRouter(
