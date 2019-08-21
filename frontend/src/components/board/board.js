@@ -40,7 +40,7 @@ class Board extends React.Component {
         </div>
       );
     } else {
-      return <div> {this.props.user.username} has no boards yet! </div>;
+      return <div className="user-no-boards"> {this.props.user.username} has no boards yet! </div>;
     }
 
   }
