@@ -1,13 +1,7 @@
 import React from "react";
 import "../home/home.css";
-
 import { withRouter } from "react-router-dom";
-
 import "./board.css"
-
-
-
-import Masonry from 'react-masonry-component';
 
 const masonryOptions = {
   transitionDuration: 650,
@@ -27,6 +21,8 @@ class Board extends React.Component {
 
   //
   componentDidMount() {
+    // debugger
+    // this.props.fetchUser(this.ownProps.user.id);
     this.props.fetchUserBoards(this.props.match.params.user_id);
   }
 
@@ -54,7 +50,7 @@ class Board extends React.Component {
         </div>
       );
     } else {
-      return <div>{this.props.currentUser.username} has no boards yet! </div>;
+      return <div>has no boards yet! </div>;
     }
 
 //     return (

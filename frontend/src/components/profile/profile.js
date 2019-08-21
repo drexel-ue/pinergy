@@ -10,17 +10,17 @@ class Profile extends React.Component {
     };
   }
 
-  pickPath() {
-    switch (this.props.location.pathname) {
+//   pickPath() {
+//     switch (this.props.location.pathname) {
         
-      case `/${this.props.currentUser.id}/boards`:
+//       case `/${this.props.currentUser.id}/boards`:
         
-//       case "/profile/boards":
-        return <BoardsContainer />;
-      default:
-        return <div />;
-    }
-  }
+// //       case "/profile/boards":
+//         return <BoardsContainer />;
+//       default:
+//         return <div />;
+//     }
+//   }
   render() {
     return (
       <div className="test-dive">
@@ -28,7 +28,7 @@ class Profile extends React.Component {
         {/* {this.pickPath()} */}
 
         <h2>All of This User's Board</h2>
-        <BoardsContainer />
+        <BoardsContainer user={this.props.user}/>
       </div>
     );
   }

@@ -49,6 +49,17 @@ export const fetchUser = id => dispatch =>
       // debugger;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
+
+export const fetchUserByUserName = username => dispatch =>
+  ApiUtil.fetchUserByUserName(username)
+    .then(res => {
+      dispatch(receiveUser(res.data));
+    })
+    .catch(err => {
+      debugger;
+      dispatch(receiveUserSearchErrors(err.response.data));
+    });
+
 export const peopleSearch = (users, queryString) => dispatch => {
   // const matches = users
   //   .filter(user => {
