@@ -146,6 +146,14 @@ router.get(
   }
 );
 
+router.get(
+  "/profile/:username",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    return User.findOne({ username: req.params.username }).then(user => res.json(user)).catch(err => { debugger });
+  }
+);
+
 router.patch("/update/:id", async (req, res) => {
   const id = req.params.id;
   // Grab user to be updated.

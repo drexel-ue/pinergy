@@ -24,7 +24,6 @@ import PinShowContainer from "../show/pin_show_container";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.dismissModal = this.dismissModal.bind(this);
   }
 
   componentDidMount() {
@@ -32,13 +31,6 @@ class Modal extends React.Component {
       this.props.closeModal();
     } else {
       this.props.showFirstSignUpStep();
-    }
-  }
-
-  dismissModal(event) {
-    event.preventDefault();
-    if ([SHOW_PIN].includes(this.props.modal)) {
-      this.props.closeModal();
     }
   }
 
@@ -75,20 +67,28 @@ class Modal extends React.Component {
     const modalChildStyle = this.props.modal === "SHOW_PIN" ? {
       top: "55%",
       bottom: "45%",
-      height: "75%",
-      width: "75%"
+      height: "600px",
+      width: "65%"
     } : {}
-    return (
-      <div className="modal-background" 
-          onClick={this.dismissModal}>
+    return this.props.modal === "SHOW_PIN" ? (
+      <div className="modal-background" onClick={this.props.closeModal}>
         <div 
-          className="modal-child"
-          style={modalChildStyle}>
+          className="modal-child" 
+          style={modalChildStyle}
+          onClick={e => e.stopPropagation()}>
           {component}
         </div>
-        <SessionButtonContainer modal={this.props.modal} />
       </div>
-    );
+    ) : (
+        <div className="modal-background">
+          <div
+            className="modal-child"
+            style={modalChildStyle}>
+            {component}
+          </div>
+          <SessionButtonContainer modal={this.props.modal} />
+        </div>
+    )
   }
 }
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./profile.css";
-export default class ProfileHead extends React.Component {
+
+class ProfileHead extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +19,8 @@ export default class ProfileHead extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.id);
+    // debugger;
+    this.props.fetchUserByUserName(this.props.match.params.username);
   }
 
   
@@ -131,3 +134,5 @@ export default class ProfileHead extends React.Component {
     );
   }
 }
+
+export default withRouter(ProfileHead);

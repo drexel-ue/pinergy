@@ -8,6 +8,10 @@ export const fetchUser = id => {
   return Axios.get(`/api/users/${id}`);
 };
 
+export const fetchUserByUserName = username => {
+  return Axios.get(`/api/users/profile/${username}`);
+};
+
 export const peopleSearch = queryString =>
   Axios.get(`/api/users/search/${queryString}`);
 

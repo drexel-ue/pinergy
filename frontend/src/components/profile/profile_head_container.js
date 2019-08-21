@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ProfileHead from "./profile_head";
-import { fetchUser } from "../../actions/user_actions";
+import { fetchUser, fetchUserByUserName } from "../../actions/user_actions";
 
 const mapStateToProps = ({ session, entities }, ownProps) => {
+  // debugger
   return {
     currentUser: entities.users[session.user.id],
     user: Object.values(entities.users).find(
@@ -15,7 +16,7 @@ const mapStateToProps = ({ session, entities }, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: id => dispatch(fetchUser(id))
+    fetchUserByUserName: username => dispatch(fetchUserByUserName(username))
   };
 };
 

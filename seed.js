@@ -132,7 +132,7 @@ mongoose
               // Save the new user document to the database.
               .save()
               .then(user => {
-                for (let boardIndex = 0; boardIndex < 10; boardIndex++) {
+                for (let boardIndex = 0; boardIndex < 12; boardIndex++) {
                   const board = new Board({
                     user: user.id,
                     title:
@@ -193,7 +193,7 @@ mongoose
           newUser
             .save()
             .then(user => {
-              for (let boardIndex = 0; boardIndex < 10; boardIndex++) {
+              for (let boardIndex = 0; boardIndex < 12; boardIndex++) {
                 const board = new Board({
                   user: user.id,
                   title:

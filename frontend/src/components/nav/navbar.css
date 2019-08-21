@@ -51,7 +51,6 @@
   text-align: center;
 }
 .Links1 {
-  /* width: 10%; */
   display: flex;
   text-decoration: none;
   color: #8e8e8e;
@@ -94,8 +93,8 @@
   border-bottom-right-radius: 999px;
   border-top-right-radius: 999px;
   font-size: 16px;
-
 }
+
 .Searchbar:focus {
   border: none;
 }
@@ -203,7 +202,6 @@
 }
 .Profile {
   display: flex;
-  width: 100px;
   align-items: center;
   justify-content: space-between;
   padding-right: 6px;
@@ -221,9 +219,9 @@
   border-radius: 8px;
   top: 45px;
   background: white;
-  width: 100%;
+  width: 478px;
   z-index: 1;
-  padding: 10px;
+  padding: 10px 0;
   overflow: auto;
   height: 155px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
@@ -233,6 +231,7 @@
   color: #333;
   font-size: 12px;
   margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .fa-ellipsis-h {
