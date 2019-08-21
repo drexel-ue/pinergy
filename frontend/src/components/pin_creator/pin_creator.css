@@ -21,6 +21,34 @@
     border-radius: 12px;
 }
 
+.file-border-wrap {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.dropzone {
+    width: 340px;
+    height: 450px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.file-border {
+    height: 474px;
+    width: 364px;
+    background-color:#efefef;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
 .pin-title-input {
     width: 100%;
     -webkit-font-smoothing: antialiased;

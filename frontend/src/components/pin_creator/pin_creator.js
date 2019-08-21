@@ -21,31 +21,37 @@ export default class PinCreator extends React.Component {
       url: "",
       imgSrc: null
     };
-    // this.handleOnDrop = this.handleOnDrop.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.removeAllLoadedFile = this.removeAllLoadedFile.bind(this);
     this.toggleInputUrl = this.toggleInputUrl.bind(this);
     this.toggleOffUrlInput = this.toggleOffUrlInput.bind(this);
+    this.toggleOffDropDown = this.toggleOffDropDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
     
-      window.addEventListener("click", this.toggleOffUrlInput)
-    
+    window.addEventListener("click", this.toggleOffUrlInput)
+    window.addEventListener("click", this.toggleOffDropDown)
+
   }
   componentWillUnmount() {
     window.removeEventListener("click", this.toggleOffUrlInput)
+    window.removeEventListener("click", this.toggleOffDropDown)
     // removes eventlistner when mounting different component
   }
 
   toggleInputUrl(e) {
-    
     e.preventDefault();
     e.stopPropagation(); // stops bubbling up, something trigger in the child will bubble up to top which is window in this case
     this.setState({ inputUrl: !this.state.inputUrl });
   }
+
+  toggleDropDown(e) {
+    e.preventDefault();
+    e.stopPropagation(); 
+    this.setState({ showDropDown: !this.state.showDropDown });
+  }
   verifyFile(file) {
-    // debugger
     const maxImgSize = 10000000;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
@@ -54,7 +60,6 @@ export default class PinCreator extends React.Component {
     });
     if (file && file.length > 0) {
       const currentFile = file[0];
-      // debugger
       const currentFileType = currentFile.type;
       const currentFileSize = currentFile.size;
       if (currentFileSize > maxImgSize) {
@@ -69,7 +74,6 @@ export default class PinCreator extends React.Component {
     return true;
   }
   handleOnDrop = (files, rejectedFiles) => {
-    // debugger
     if (rejectedFiles && rejectedFiles.length > 0) {
       this.verifyFile(rejectedFiles);
     }
@@ -79,10 +83,8 @@ export default class PinCreator extends React.Component {
         const currentFile = files[0];
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
-          // debugger
           this.setState({
             imgSrc: myFileItemReader.result
-            // url: url
           });
         };
 
@@ -93,14 +95,9 @@ export default class PinCreator extends React.Component {
 
   removeAllLoadedFile() {
     this.setState({ imgSrc: null });
-    //should be calle
   }
 
-  turnOffInputUrl(e) {
-    //will be used to toggel off input url
-    e.preventDefault();
-    this.setState({ inputUrl: false });
-  }
+
 
   renderRemovebtn() {
     return this.state.imgSrc !== null ? (
@@ -126,18 +123,27 @@ export default class PinCreator extends React.Component {
     );
   }
 
-  toggleDropDown(e) {
-    e.preventDefault();
-    this.setState({ showDropDown: !this.state.showDropDown });
-  }
+
 
   toggleOffUrlInput(e) {
     e.preventDefault();
     if (this.state.inputUrl) {
-      // debugger
       this.setState({ inputUrl: false })
     }
   }
+
+  toggleOffDropDown(e) {
+    e.preventDefault();
+    if (this.state.showDropDown) {
+      this.setState({ showDropDown: false })
+    }
+  }
+
+  // turnOffInputUrl(e) {
+  //   e.preventDefault();
+  //   this.setState({ inputUrl: false });
+  // }
+
 
   renderSaveBtn() {
     return this.state.showDropDown ? (
@@ -182,19 +188,12 @@ export default class PinCreator extends React.Component {
       <div className="pin-create-container"  >
         <form className="pin-create-inner">
           <div className="pin-create-right">
-            <div>
-              <div>
-                {/* <label for="fileUploadId" class="file-label">
-            <div>
-              <i className="fas fa-arrow-circle-up" />
-            </div>
-            <br />
-          </label> */}
-                <div>
+
                   {imgSrc !== null ? (
                     <img src={imgSrc} className="imgprvw" />
                   ) : (
-                    <div>
+                    <div className="file-border-wrap">
+                      <div className="file-border">
                       <div className="file-label">
                         <Dropzone
                           onDrop={this.handleOnDrop}
@@ -205,21 +204,20 @@ export default class PinCreator extends React.Component {
                             <section>
                               <div {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                <div>
+                                <div className="dropzone">
+                                <i className="fas fa-arrow-circle-up" />
+                                <br />
                                   Click Here or Drop Images Here
-                                  <i className="fas fa-arrow-circle-up" />
                                 </div>
                               </div>
                             </section>
                           )}
                         </Dropzone>
                       </div>
+                      </div>
                     </div>
                   )}
                   {this.renderRemovebtn()}
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="pin-create-left">
