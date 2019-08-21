@@ -25,7 +25,13 @@
     flex-wrap: wrap;
     margin-top: 70px;
     justify-content: center;
+}
 
+.user-no-boards {
+    margin-top: 150px;
+    margin-left: 40%;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .board-item-top {
