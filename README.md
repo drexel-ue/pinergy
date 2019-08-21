@@ -26,6 +26,7 @@ Home page shows a number of images(pins) based on user's areas of interests ( Us
 
 * Pins
 Pins are ideas that people on Pinergy find and save from around the web. Each Pin links back to the website it was saved from. If the user's clicks through the Pin, user can learn how to make it or where to buy it.
+[Pin Page](https://github.com/drexel-ue/pinergy/blob/master/pin.png)
 
 * Boards
 The Pins users save live on your boards. Users can name boards and arrange them on their profile however they want. They can invite other people on Pinterest to collaborate on their boards to find even more ideas.
