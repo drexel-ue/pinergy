@@ -141,6 +141,7 @@ mongoose
                       ]
                   });
                   board.save().then(board => {
+                    let pins = [];
                     for (
                       let pinImageIndex = 0;
                       pinImageIndex < 30;
@@ -161,7 +162,14 @@ mongoose
                           destinationLink: image.url,
                           tags: [board.title]
                         });
-                        pin.save();
+                        pin.save().then(async pin => {
+                          pins.push(pin.id);
+                          if (pinImageIndex == 29) {
+                            board.pins = pins;
+                            await board.save();
+                            console.log("DEMO USER SEEDED");
+                          }
+                        });
                       });
                     }
                   });
@@ -203,6 +211,7 @@ mongoose
                 });
                 board.save().then(board => {
                   let usedHeights = [];
+                  let pins = [];
 
                   determineHeight = () => {
                     let height = Math.round(Math.random() * 400 + 100);
@@ -232,9 +241,14 @@ mongoose
                         destinationLink: image.url,
                         tags: [board.title]
                       });
-                      pin.save().then(pin => {
-                        if (userIndex === 4 && pinImageIndex == 29)
+                      pin.save().then(async pin => {
+                        pins.push(pin.id);
+                        if (userIndex === 4 && pinImageIndex == 29) {
                           console.log("CLOSE CONNECTION");
+                        } else if (pinImageIndex == 29) {
+                          board.pins = pins;
+                          await board.save();
+                        }
                       });
                     });
                   }
