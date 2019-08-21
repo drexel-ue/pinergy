@@ -51,7 +51,6 @@
   text-align: center;
 }
 .Links1 {
-  /* width: 10%; */
   display: flex;
   text-decoration: none;
   color: #8e8e8e;
@@ -94,8 +93,8 @@
   border-bottom-right-radius: 999px;
   border-top-right-radius: 999px;
   font-size: 16px;
-
 }
+
 .Searchbar:focus {
   border: none;
 }
@@ -203,7 +202,6 @@
 }
 .Profile {
   display: flex;
-  width: 100px;
   align-items: center;
   justify-content: space-between;
   padding-right: 6px;

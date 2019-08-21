@@ -38,6 +38,52 @@
     align-items: center;
     flex-direction: column;
 }
+
+.url-unselected, .url-selected {
+    width: 364px;
+    height: 48px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    background-color: #efefef;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    bottom: 13px;
+    border-radius: 12px;
+}
+
+.url-selected {
+
+}
+
+.url-unselected {
+    padding: 12px 14px;
+    font-weight: bold;
+}
+
+
+.url-selected-input {
+    width: 85%;
+    height: 36px;
+    background-color: white;
+    border: 6px solid lightskyblue;
+    padding: none;
+    border-radius: 12px;
+    outline: none;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.url-selected-btn {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
 .file-border {
     height: 474px;
     width: 364px;

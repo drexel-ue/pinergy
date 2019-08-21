@@ -2,8 +2,6 @@ import React from "react";
 import { Icon } from "react-icons-kit";
 import { remove } from "react-icons-kit/fa/remove";
 import "./pin_creator.css";
-import { getAwsUrl } from "../../util/image_util";
-import PinDropzone from "./dropzone";
 import Dropzone from "react-dropzone";
 
 export default class PinCreator extends React.Component {
@@ -29,15 +27,13 @@ export default class PinCreator extends React.Component {
   }
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.id);
-    
     window.addEventListener("click", this.toggleOffUrlInput)
     window.addEventListener("click", this.toggleOffDropDown)
-
   }
+
   componentWillUnmount() {
     window.removeEventListener("click", this.toggleOffUrlInput)
     window.removeEventListener("click", this.toggleOffDropDown)
-    // removes eventlistner when mounting different component
   }
 
   toggleInputUrl(e) {
@@ -97,8 +93,6 @@ export default class PinCreator extends React.Component {
     this.setState({ imgSrc: null });
   }
 
-
-
   renderRemovebtn() {
     return this.state.imgSrc !== null ? (
       <Icon
@@ -113,17 +107,22 @@ export default class PinCreator extends React.Component {
 
   renderInput() {
     return this.state.inputUrl ? (
-      <div>
-        <input type="text" className="urlinp" />
+      <div className="url-selected">
+        <input 
+          type="text" 
+          className="url-selected-input" 
+          placeholder="Enter website"
+        />
+        <div className="url-selected-btn">
+          <i class="fa fa-angle-right"></i>
+        </div>
       </div>
     ) : (
-      <div className="beforeurlbtn" onClick={this.toggleInputUrl}>
+      <div className="url-unselected" onClick={this.toggleInputUrl}>
         Save from site
       </div>
     );
   }
-
-
 
   toggleOffUrlInput(e) {
     e.preventDefault();
@@ -138,12 +137,6 @@ export default class PinCreator extends React.Component {
       this.setState({ showDropDown: false })
     }
   }
-
-  // turnOffInputUrl(e) {
-  //   e.preventDefault();
-  //   this.setState({ inputUrl: false });
-  // }
-
 
   renderSaveBtn() {
     return this.state.showDropDown ? (
@@ -217,7 +210,8 @@ export default class PinCreator extends React.Component {
                       </div>
                     </div>
                   )}
-                  {this.renderRemovebtn()}
+              {this.renderRemovebtn()}
+              {this.renderInput()}
           </div>
 
           <div className="pin-create-left">
@@ -254,7 +248,6 @@ export default class PinCreator extends React.Component {
               className="pin-link-input"
               placeholder="Add a destination link"
             />
-            {this.renderInput()}
           </div>
         </form>
       </div>
