@@ -1,7 +1,13 @@
 .user_search_result {
   height: 70px;
   display: flex;
+  width: 478px;
   align-items: center;
+  padding-left: 10px;
+}
+.user_search_result:hover {
+  background-color: #efefef;
+  cursor: pointer;
 }
 .user_search_result_photo {
   height: 60px;

@@ -221,7 +221,7 @@
   background: white;
   width: 100%;
   z-index: 1;
-  padding: 10px;
+  padding: 10px 0;
   overflow: auto;
   height: 155px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .18);
@@ -231,6 +231,7 @@
   color: #333;
   font-size: 12px;
   margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .fa-ellipsis-h {
