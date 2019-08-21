@@ -22,7 +22,7 @@ Home feed is the center of Pinergy. It's where you'll find ideas, or Pins, with 
 
 * Discover feed on home page
 Home page shows a number of images(pins) based on user's areas of interests ( User inputs at least 5 interests during sign-up).
-![Pinergy Home Page](/Desktop/php)
+![Pinergy Home Page](https://github.com/drexel-ue/pinergy/blob/master/php.png)
 
 * Pins
 Pins are ideas that people on Pinergy find and save from around the web. Each Pin links back to the website it was saved from. If the user's clicks through the Pin, user can learn how to make it or where to buy it.
