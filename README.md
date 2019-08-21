@@ -83,12 +83,6 @@ August 19 - 20
 
 
 
-###### Backup Ideas
-
-* [Hipcamp](https://hipcamp.com)
-* [Spotify](https://spotify.com)
-
-
 Background and Overview
 Functionality and MVP
 Technologies and Technical Challenges
