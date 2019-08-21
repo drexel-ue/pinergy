@@ -57,14 +57,28 @@ Users can find all the Pins they saves, boards they creates, along with who’s 
 #### Group Members and Work Breakdown
 August 12 - August 13
 * Build skeleton React site - IKesh
-* User Auth - Clayton/Paul
+* User Auth - Ikesh/Paul/Clayton/Anshu
+* Add styling to Auth modals - Clayton
 
 August 14
 * Scrape unsplash for images - IKesh
-* Build the basic homepage with styling - Clayton/Paul
+* Build the basic homepage with styling - Clayton
 
 August 15
-* Meet to decide duties for next three days 
+* Populate pins for Home Feed - IKesh
+* Show Pins Page - Paul
+* Style Pins Page - Clayton
+* Navban - Anshu
+
+August 16
+* Add Faker and seed db - IKesh
+* Create Pin Page - Paul
+
+August 19 - 20
+* Add Boards - Clayton/Anshu
+* Add Followers logic - IKesh
+* Add uploading capability to create pins - Paul
+
 
 
 ###### Backup Ideas
