@@ -14,7 +14,6 @@ class BoardItem extends React.Component {
     }
 
     render() {
-
         return (
             <div className="board-item-wrap">
                 <div className="board-item-top"></div>
@@ -27,6 +26,17 @@ class BoardItem extends React.Component {
 
     }
 }
+
+// let boardPins = this.props.pins.map(pin => (
+//     <div className="board-item-wrap">
+//         <div className="board-item-top">
+//         </div>
+//         <div className="board-item-bottom">
+//             <div className="board-item-title">{this.props.board.title} </div>
+//             <div className="board-item-stats"> 10 Pins</div>
+//         </div>
+//     </div>
+// ))
 
 
 export default withRouter(BoardItem);
