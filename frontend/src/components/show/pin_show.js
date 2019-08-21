@@ -5,7 +5,12 @@ export default class PinShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.parseDestinationLink = this.parseDestinationLink.bind(this)
+    this.parseDestinationLink = this.parseDestinationLink.bind(this);
+    this.openLink = this.openLink.bind(this)
+  }
+
+  openLink() {
+    window.open(`${this.props.pin.url}`, '_blank');
   }
 
   parseDestinationLink() {
@@ -36,9 +41,11 @@ export default class PinShow extends React.Component {
                 src={this.props.pin.url}
                 alt={this.props.pin.title}
               />
-            <div className="pin-show-link">
+            <div 
+                className="pin-show-link"
+                onClick={this.openLink}>
                 <i class='fas fa-arrow-right'></i>
-                {this.parseDestinationLink()}
+                  &nbsp;{this.parseDestinationLink()}
               </div>
               </a>
             </div>
