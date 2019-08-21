@@ -44,7 +44,7 @@ export default class PinShow extends React.Component {
             <div 
                 className="pin-show-link"
                 onClick={this.openLink}>
-                <i class='fas fa-arrow-right'></i>
+                <i className='fas fa-arrow-right'></i>
                   &nbsp;{this.parseDestinationLink()}
               </div>
               </a>

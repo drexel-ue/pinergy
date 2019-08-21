@@ -11,28 +11,13 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // debugger;
     this.props.fetchUserByUserName(this.props.match.params.username);
   }
 
-//   pickPath() {
-//     switch (this.props.location.pathname) {
-        
-//       case `/${this.props.currentUser.id}/boards`:
-        
-// //       case "/profile/boards":
-//         return <BoardsContainer />;
-//       default:
-//         return <div />;
-//     }
-//   }
   render() {
     return this.props.user ? (
-      <div className="test-dive">
+      <div >
         <ProfileHeaderContainer />
-        {/* {this.pickPath()} */}
-
-        <h2>All of This User's Board</h2>
         <BoardsContainer user={this.props.user}/>
       </div>
     ) : (

@@ -1,10 +1,3 @@
-.boards-container-wrap {
-    width: 1200px;
-    height: 1000px;
-    display: flex;
-    justify-content: center;
-    margin-top: 150px;
-}
 
 .board-item-wrap {
     box-sizing: border-box;
@@ -16,14 +9,23 @@
 }
 
 .board-item-wrap:hover {
-    background-color: #faf8f8;
+    background-color: #efefef;
     cursor: pointer;
 }
 
-.board-item-container{
-    width: 80%;
+.board-item-wrap:hover .board-item-top {
+    background-color: rgb(232, 232, 232);
+    cursor: pointer;
+}
+
+.profile-boards-cover {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 70px;
+    justify-content: center;
+
 }
 
 .board-item-top {
