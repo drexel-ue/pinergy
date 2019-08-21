@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./navbar.css";
 import UserSearchResultContainer from "../search/user_search_result_container";
 
@@ -24,6 +25,16 @@ class NavBar extends React.Component {
   componentDidMount() {
     if (this.props.loggedIn) this.props.fetchCurrentUser(this.props.userId);
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        users: [],
+        queryString: ""
+      });
+    }
+  }
+
   toggleDropdown(className) {
     return event => {
       event.preventDefault();
@@ -67,6 +78,7 @@ class NavBar extends React.Component {
                 onChange={this.handleInput}
                 type="text"
                 className="Searchbar"
+                value={this.state.queryString}
               />
               <div id="search_bar_results" className={show}>
                 <div className="people_label">People</div>
@@ -158,4 +170,4 @@ const user_tasks = [
   "Add account"
 ];
 
-export default NavBar;
+export default withRouter(NavBar);

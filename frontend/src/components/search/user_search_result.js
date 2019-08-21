@@ -1,10 +1,13 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import "./user_search_result.css";
 
-export default class UserSearchResult extends React.Component {
+class UserSearchResult extends React.Component {
   constructor(props) {
     super(props);
     this.user = this.props.user;
+
+    this.goToUserProfile = this.goToUserProfile.bind(this)
   }
 
   renderName() {
@@ -23,9 +26,16 @@ export default class UserSearchResult extends React.Component {
     );
   }
 
+  goToUserProfile() {
+    this.props.history.push(`/profile/${this.props.user.username}`)
+  }
+
   render() {
     return (
-      <div className="user_search_result">
+      <div 
+        className="user_search_result"
+        onClick={this.goToUserProfile}
+      >
         <img
           src={this.user.profilePhotoUrl}
           alt="prof_Photo"
@@ -39,3 +49,5 @@ export default class UserSearchResult extends React.Component {
     );
   }
 }
+
+export default withRouter(UserSearchResult);
