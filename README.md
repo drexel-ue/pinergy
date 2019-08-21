@@ -24,6 +24,8 @@ Home feed is the center of Pinergy. It's where you'll find ideas, or Pins, with 
 The user can signup for Pinergy using email, password(entered twice) and age. They are also asked to input their country, language and at least 5 interests after they sign up.
 ![Pinergy Signup Page](https://github.com/drexel-ue/pinergy/blob/master/signup1.png)
 
+![Pinergy Signup Page2](https://github.com/drexel-ue/pinergy/blob/master/signup2.png)
+
 #### * Discover feed on home page
 Home page shows a number of images(pins) based on user's areas of interests ( User inputs at least 5 interests during sign-up).
 ![Pinergy Home Page](https://github.com/drexel-ue/pinergy/blob/master/php.png)
