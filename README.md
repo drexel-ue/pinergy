@@ -8,6 +8,14 @@
 * [IKesh Pack](https://github.com/drexel-ue)
 * [Paul Kilwoung Choi](https://github.com/paulkwchoi92)
 
+### Technologies
+
+* MongoDB
+* Express
+* React.js
+* Node.js
+* Web-scraping
+
 ### The Gist
 
 Pinergy will be a MERN stack clone of [Pinterest](https://pinterest.com). This site will follow along the same operation as Pinterest. Users will be able to discover insteresting articles/pages online and save them to boards with custom categories. Users may also follow the profiles of other users to gain inspiration and new ideas.
@@ -57,34 +65,5 @@ Users can find all the Pins they saves, boards they creates, along with who’s 
 * Bonus: private boards
 * Bonus: likes
 
-#### Group Members and Work Breakdown
-August 12 - August 13
-* Build skeleton React site - IKesh
-* User Auth - Ikesh/Paul/Clayton/Anshu
-* Add styling to Auth modals - Clayton
 
-August 14
-* Scrape unsplash for images - IKesh
-* Build the basic homepage with styling - Clayton
-
-August 15
-* Populate pins for Home Feed - IKesh
-* Show Pins Page - Paul
-* Style Pins Page - Clayton
-* Navban - Anshu
-
-August 16
-* Add Faker and seed db - IKesh
-* Create Pin Page - Paul
-
-August 19 - 20
-* Add Boards - Clayton/Anshu
-* Add Followers logic - IKesh
-* Add uploading capability to create pins - Paul
-
-
-
-Background and Overview
-Functionality and MVP
-Technologies and Technical Challenges
 
