@@ -222,9 +222,8 @@
 .message_and_follow_buttons {
   margin-bottom: 10px;
 }
-.message_button {
+.message_button, .follow_button {
   margin-right: 13px;
-  background-color: #333;
   color: white;
   padding: 10px 14px;
   border-radius: 8px;
@@ -232,5 +231,26 @@
   outline: none;
   font-weight: 500;
   font-size: 16px;
+  height: 40px;
+  width: 100px;
 }
 
+.message_button {
+  background-color: #333;
+}
+
+.follow_button {
+  background-color: red;
+}
+
+.follow_button:hover, .message_button {
+  cursor: pointer;
+}
+
+.message_follow_image {
+  width: 250px;
+}
+
+.message-follow-buttons {
+  display: flex;
+}

@@ -85,16 +85,26 @@ class ProfileHead extends React.Component {
       : user.username;
   }
 
-  showMessageFollow() {
+  showMessage() {
     return this.props.user._id != this.props.id ? (
       <div className="message_and_follow_buttons">
         <button className="message_button">Message</button>
-        <button className="follow_button redbtn">Following</button>
       </div>
     ) : (
       <div />
     );
   }
+
+  showFollow() {
+    return this.props.currentUser.following.includes(this.props.user._id) ? (
+      <div className="message_and_follow_buttons">
+        <button className="follow_button">Following</button>
+      </div>
+    ) : (
+        <button className="follow_button">Follow</button>
+      );
+  }
+
 
   render() {
     const user = this.props.user;
@@ -127,7 +137,10 @@ class ProfileHead extends React.Component {
                 </div>
               </div>
               <div className="message_follow_image">
-                {this.showMessageFollow()}
+                <div className="message-follow-buttons">
+                  {this.showMessage()}
+                  {this.showFollow()}
+                </div>
                 <img src={user.profilePhotoUrl} className="prfprfpho" />
               </div>
             </div>
