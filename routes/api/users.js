@@ -212,7 +212,6 @@ router.post("/follow", async (req, res) => {
   followee = await followee.save().catch(err => errors.push(err.toString()));
   follower = await follower.save().catch(err => errors.push(err.toString()));
 
-  // [].filter()
   if (errors.length > 0) {
     return res.status(400).json(errors);
   } else {
