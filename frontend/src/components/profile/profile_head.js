@@ -101,27 +101,28 @@ class ProfileHead extends React.Component {
   handleFollow(e) {
     e.preventDefault();
     this.props.followUser(this.props.currentUser._id, this.props.user._id)
-      .then(this.props.fetchUserByUserName(this.props.match.params.username))
   }
 
 
   showFollow() {
     if (this.props.user._id != this.props.id) {
-    return this.props.currentUser.following.includes(this.props.user._id) ? (
-      <div className="message_and_follow_buttons">
-        <button 
+      // debugger
+      console.log(this.props.currentUser)
+      if (this.props.currentUser.following.includes(this.props.user._id)) {
+        return <div className="message_and_follow_buttons">
+            <button
+              onClick={this.handleFollow}
+              className="follow_button is-following">
+              Following
+          </button>
+        </div>
+      } else {
+      return <button
           onClick={this.handleFollow}
-          className="follow_button is-following">
-          Following
-        </button>
-      </div>
-    ) : (
-        <button
-          onClick={this.handleFollow}
-          className="follow_button not-following">  
+          className="follow_button not-following">
           Follow
         </button>
-      );
+      }
   }}
 
 
