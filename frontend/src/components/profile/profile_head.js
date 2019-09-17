@@ -13,8 +13,8 @@ class ProfileHead extends React.Component {
       showShareDropdown: false
     };
 
-    this.handleFollow = this.handleFollow.bind(this)
-    this.handleUnfollow = this.handleUnfollow.bind(this)
+    // this.handleFollow = this.handleFollow.bind(this)
+    // this.handleUnfollow = this.handleUnfollow.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
     this.myScrollFunc = this.myScrollFunc.bind(this)
@@ -88,18 +88,18 @@ class ProfileHead extends React.Component {
       : user.username;
   }
 
-  handleFollow(e) {
-    e.preventDefault();
-    this.props.createFollow({ followed_user_id: this.props.user._id })
-      .then(() => this.props.fetchUserByUserName(this.props.match.params.username))
-  }
+  // handleFollow(e) {
+  //   e.preventDefault();
+  //   this.props.createFollow({ followed_user_id: this.props.user._id })
+  //     .then(() => this.props.fetchUserByUserName(this.props.match.params.username))
+  // }
 
-  handleUnfollow(e) {
-    e.preventDefault();
-    this.props.deleteFollow(this.props.user._id).then(() => {
-      .then(() => this.props.fetchUserByUserName(this.props.match.params.username))
-    })
-  } 
+  // handleUnfollow(e) {
+  //   e.preventDefault();
+  //   this.props.deleteFollow(this.props.profileUser.id).then(() => {
+  //     this.props.fetchUserByUserName(this.props.match.params.username)
+  //   })
+  // } 
 
   showMessage() {
     return this.props.user._id != this.props.id ? (
@@ -114,10 +114,20 @@ class ProfileHead extends React.Component {
   showFollow() {
     return this.props.currentUser.following.includes(this.props.user._id) ? (
       <div className="message_and_follow_buttons">
-        <button className="follow_button is-following">Following</button>
+        <button 
+          className="follow_button is-following">
+          Following
+        </button>
       </div>
     ) : (
-        <button className="follow_button not-following">Follow</button>
+        <button
+          onClick={this.props.followUser(this.props.id, this.props.user._id)}
+          className="follow_button not-following">  
+          {console.log(this.props.id)}
+          {console.log(this.props.user._id)}
+          {console.log(this.props.followUser)}
+          Follow
+        </button>
       );
   }
 
