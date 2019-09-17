@@ -201,8 +201,13 @@ router.post("/follow", async (req, res) => {
   let followee = await User.findById(followeeId);
   let follower = await User.findById(followerId);
 
-  followee.followers.push(followerId);
-  follower.following.push(followeeId);
+  if (!followee.followers.includes(follower._id)) {
+    followee.followers.push(followerId);
+    follower.following.push(followeeId);
+  } else {
+    followee.followers = followee.followers.filter(followerID => followerID !== followerId)
+    follower.following = follower.following.filter(followeeID => followeeID !== followeeId)
+  }
 
   followee = await followee.save().catch(err => errors.push(err.toString()));
   follower = await follower.save().catch(err => errors.push(err.toString()));

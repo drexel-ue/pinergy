@@ -110,6 +110,7 @@ class ProfileHead extends React.Component {
     return this.props.currentUser.following.includes(this.props.user._id) ? (
       <div className="message_and_follow_buttons">
         <button 
+          onClick={this.handleFollow}
           className="follow_button is-following">
           Following
         </button>
