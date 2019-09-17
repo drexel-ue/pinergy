@@ -88,19 +88,6 @@ class ProfileHead extends React.Component {
       : user.username;
   }
 
-  // handleFollow(e) {
-  //   e.preventDefault();
-  //   this.props.createFollow({ followed_user_id: this.props.user._id })
-  //     .then(() => this.props.fetchUserByUserName(this.props.match.params.username))
-  // }
-
-  // handleUnfollow(e) {
-  //   e.preventDefault();
-  //   this.props.deleteFollow(this.props.profileUser.id).then(() => {
-  //     this.props.fetchUserByUserName(this.props.match.params.username)
-  //   })
-  // } 
-
   showMessage() {
     return this.props.user._id != this.props.id ? (
       <div className="message_and_follow_buttons">
@@ -112,6 +99,7 @@ class ProfileHead extends React.Component {
   }
 
   showFollow() {
+    if (this.props.user._id != this.props.id) {
     return this.props.currentUser.following.includes(this.props.user._id) ? (
       <div className="message_and_follow_buttons">
         <button 
@@ -123,13 +111,10 @@ class ProfileHead extends React.Component {
         <button
           onClick={this.props.followUser(this.props.id, this.props.user._id)}
           className="follow_button not-following">  
-          {console.log(this.props.id)}
-          {console.log(this.props.user._id)}
-          {console.log(this.props.followUser)}
           Follow
         </button>
       );
-  }
+  }}
 
 
   render() {
