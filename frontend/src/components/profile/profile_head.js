@@ -13,7 +13,7 @@ class ProfileHead extends React.Component {
       showShareDropdown: false
     };
 
-    // this.handleFollow = this.handleFollow.bind(this)
+    this.handleFollow = this.handleFollow.bind(this)
     // this.handleUnfollow = this.handleUnfollow.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
@@ -98,6 +98,13 @@ class ProfileHead extends React.Component {
     );
   }
 
+  handleFollow(e) {
+    e.preventDefault();
+    this.props.followUser(this.props.currentUser._id, this.props.user._id)
+      .then(this.props.fetchUserByUserName(this.props.match.params.username))
+  }
+
+
   showFollow() {
     if (this.props.user._id != this.props.id) {
     return this.props.currentUser.following.includes(this.props.user._id) ? (
@@ -109,7 +116,7 @@ class ProfileHead extends React.Component {
       </div>
     ) : (
         <button
-          onClick={this.props.followUser(this.props.id, this.props.user._id)}
+          onClick={this.handleFollow}
           className="follow_button not-following">  
           Follow
         </button>

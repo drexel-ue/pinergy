@@ -198,15 +198,16 @@ router.post("/follow", async (req, res) => {
   const followeeId = req.body.followeeId;
   const followerId = req.body.followerId;
 
-  const followee = await User.findById(followeeId);
-  const follower = await User.findById(followerId);
+  let followee = await User.findById(followeeId);
+  let follower = await User.findById(followerId);
 
   followee.followers.push(followerId);
   follower.following.push(followeeId);
 
-  await followee.save().catch(err => errors.push(err.toString()));
-  await follower.save().catch(err => errors.push(err.toString()));
+  followee = await followee.save().catch(err => errors.push(err.toString()));
+  follower = await follower.save().catch(err => errors.push(err.toString()));
 
+  // [].filter()
   if (errors.length > 0) {
     return res.status(400).json(errors);
   } else {
