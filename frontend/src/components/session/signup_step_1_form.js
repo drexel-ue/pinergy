@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this)
     this.clearedErrors = false;
     this.gotoLogIn = this.gotoLogIn.bind(this);
   }
@@ -27,6 +28,19 @@ class SignupForm extends React.Component {
       this.setState({
         [field]: e.currentTarget.value
       });
+  }
+
+  handleDemoLogin(e) {
+    // debugger
+    e.preventDefault();
+
+    let user = {
+      email: "DemoUser@Pinergy.com",
+      password: "test123"
+    };
+
+    this.props.login(user)
+      .then(this.props.history.push('/home'));
   }
 
   handleSubmit(e) {
@@ -98,6 +112,8 @@ class SignupForm extends React.Component {
                 placeholder="Age"
               />
               <button className="redbtn signup-btn" onClick={this.handleSubmit}>Continue</button>
+              <div className="log-or-dem">OR</div>
+              <button className='redbtn demolog' onClick={this.handleDemoLogin}>Demo Login</button>
               <div className="login-terms">By continuing, you agree to Pinergy's</div>
               <div className="login-terms bold">Terms of Service, Privacy Policy</div>
               <div className="login-to-signin" onClick={this.gotoLogIn}>Already a member? Log in</div>
