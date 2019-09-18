@@ -16,4 +16,4 @@ export const peopleSearch = queryString =>
   Axios.get(`/api/users/search/${queryString}`);
 
 export const followUser = (followerId, followeeId) =>
-  Axios.post("/api/follow", { followerId, followeeId });
+  Axios.post("/api/users/follow", { followerId, followeeId });
