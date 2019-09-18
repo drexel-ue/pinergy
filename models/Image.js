@@ -8,6 +8,12 @@ const ImageSchema = new Schema({
     type: String,
     required: true
   },
+  pins: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "pins"
+    }
+  ],
   date: {
     type: Date,
     default: Date.now
