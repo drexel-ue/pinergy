@@ -48,18 +48,24 @@ const UserSchema = new Schema({
     type: String,
     required: false
   },
-  followers: {
-    type: Array,
-    default: []
-  },
-  following: {
-    type: Array,
-    default: []
-  },
-  boards: {
-    type: Array,
-    default: []
-  },
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ],
+  boards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "boards"
+    }
+  ],
   profilePhotoUrl: {
     type: String,
     default: "https://i.imgur.com/AItCxSs.jpg"
