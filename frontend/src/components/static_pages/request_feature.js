@@ -6,21 +6,24 @@ export default class RequestFeature extends React.Component {
         super(props);
 
         this.state = {
-            submit: 1
+            submit: false
         };
 
-        this.handleSumbit = this.handleSumbit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.submitForm = this.submitForm.bind(this)
     }
 
-    handleSumbit(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        this.setState({submit: 2})
+        this.setState({submit: true})
     }
 
     submitForm() {
-        return this.state.submit === 1 ? (
+        return this.state.submit === false ? (
             <div>
+                <div className="req-sub">
+                    Have a new idea for us?
+                </div>
                 <div className="req-input-cont">
                     <textarea className="req-text"></textarea>
                 </div>
@@ -33,7 +36,9 @@ export default class RequestFeature extends React.Component {
                 </div>
             </div>
         ) : (
-            <div></div>
+            <div className="req-sub">
+                Thank you for your feedback! Your request has been sent.
+            </div>
         )
     }
 
@@ -43,10 +48,8 @@ export default class RequestFeature extends React.Component {
                 <div className="req-title">
                     Request a new Pinergy feature
                 </div>
-                <div className="req-sub">
-                    Have a new idea for us?
-                </div>
-                {this.submitForm}
+
+                {this.submitForm()}
             </div>
         )
     }

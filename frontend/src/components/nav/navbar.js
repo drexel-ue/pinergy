@@ -136,6 +136,9 @@ class NavBar extends React.Component {
             <div className="UserTasks hide">
               {user_tasks.map(task => (
                 <div key={task} className="UserTasksItems">
+                  {/* <Link to={"/request-feature"}>
+                    Request a feature
+                  </Link> */}
                   {task}{" "}
                 </div>
               ))}
@@ -164,8 +167,10 @@ const user_tasks = [
   "Tune your home feed",
   "Edit settings",
   "Ads support",
-  "Request a feature",
   "Get help",
+  <Link to={"/request-feature"} className="nav-drop-link">
+    Request a feature
+  </Link>,
   "See terms and privacy",
   "Add account"
 ];
