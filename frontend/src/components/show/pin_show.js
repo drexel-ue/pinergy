@@ -32,6 +32,7 @@ export default class PinShow extends React.Component {
             <i class="fas fa-ellipsis-h"></i>
           </div>
         </div>
+        <div className="pin-show-bottom">
         <div className="pin-show-left">
           <a href={this.props.pin.url} target="_blank" className="pin-atag">
             <img
@@ -54,6 +55,7 @@ export default class PinShow extends React.Component {
             <div className="pin-show-title">{this.props.pin.title}</div>
             <div className="pin-show-desc">{this.props.pin.description}</div>
           </div>
+        </div>
         </div>
       </div>
     ) : (
