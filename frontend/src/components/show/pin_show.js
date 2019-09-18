@@ -31,6 +31,10 @@ export default class PinShow extends React.Component {
           <div className="pin_menu">
             <i class="fas fa-ellipsis-h"></i>
           </div>
+          <div className="pin-show-save">
+            <i class="fas fa-thumbtack"></i>
+            &nbsp;&nbsp;Save
+          </div>
         </div>
         <div className="pin-show-bottom">
         <div className="pin-show-left">
@@ -47,10 +51,6 @@ export default class PinShow extends React.Component {
           </a>
         </div>
         <div className="pin-show-right">
-          <div className="pin-show-save">
-            <i class="fas fa-thumbtack"></i>
-            &nbsp;&nbsp;Save
-          </div>
           <div className="pin-show-info">
             <div className="pin-show-title">{this.props.pin.title}</div>
             <div className="pin-show-desc">{this.props.pin.description}</div>

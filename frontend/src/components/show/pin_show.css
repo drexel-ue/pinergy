@@ -23,9 +23,11 @@
 }
 
 .pin-show-right {
-  width: 40%;
-  border-radius: 0 12px 12px 0;
+  /* width: 40%; */
+  border-radius: 0 0 12px 0;
   padding: 40px 40px 40px 0;
+  width: 450px;
+  height: 750px;
 }
 
 .pin-show-image {
@@ -33,8 +35,10 @@
 }
 
 .pin-show-left {
-  border-radius: 12px 0 0 12px;
+  border-radius: 0 0 0 12px;
   padding: 40px 0 40px 40px;
+  width: 450px;
+  height: 750px;
 }
 
 .pin-show-link {
