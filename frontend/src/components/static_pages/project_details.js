@@ -7,7 +7,12 @@ export default class RequestFeature extends React.Component {
         return (
             <div className="project-details-page">
                 <div className="pd-left">
-                    Thank you for using Pingery!
+                    <div>
+                        Thank you for using Pingery!
+                    </div>
+                    <div className="pd-logo">
+                        P
+                    </div>
                 </div>
                 <div className="pd-right">
                     <div className="pd-desc">

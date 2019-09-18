@@ -54,7 +54,6 @@
 .project-details-page {
     display: flex;
     margin-top: 120px;
-    height: 400px;
     width: 100%;
 }
 
@@ -66,6 +65,9 @@
     letter-spacing: -0.8px;
     font-size: 3rem;
     line-height: 1.083333333em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .pd-right {
@@ -93,4 +95,19 @@
 .team-member {
     text-decoration: none;
     color: #555555;
+    margin-top: 5px;
+}
+
+.pd-logo {
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    background: rgb(240, 9, 9);
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 114px;
+    justify-content: center;
+    font-family: 'Lobster Two', cursive;
+    margin: 5% 0 0 20%;
 }
