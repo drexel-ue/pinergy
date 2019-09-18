@@ -22,6 +22,7 @@ const validateUpdate = require("../../validation/update_user");
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
+const Board = require("../../models/Board");
 
 const scraper = require("../../util/scrape");
 
@@ -95,6 +96,28 @@ router.post("/fetch", async (req, res) => {
     res.json(pin);
   } else {
     res.json({ error: "no pin found" }).status(404);
+  }
+});
+
+router.post("/repin", async (req, res) => {
+  try {
+    const boardId = req.body.boardId;
+    const pin = req.body.pin;
+    const image = await Image.findById(pin.image._id);
+    const board = await Board.findById(boardId);
+    const rePin = new Pin(pin);
+    image.pins.push(rePin);
+    board.pins.push(rePin);
+    await Promise.all([image.save(), rePin.save(), board.save()]);
+
+    res.json({
+      pin,
+      image,
+      rePin,
+      board
+    });
+  } catch (e) {
+    res.json({ error: "could not repin" });
   }
 });
 
