@@ -1,5 +1,5 @@
 const faker = require("faker");
-// Used to sign source of truth tokens for session and protected routes.
+//// Used to sign source of truth tokens for session and protected routes.
 const jwt = require("jsonwebtoken");
 // Provides access to secret.
 const keys = require("../../config/keys");
@@ -142,7 +142,8 @@ router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findById(req.params.id).then(user => res.json(user)).catch(err => {debugger });
+    return User.findById(req.params.id).then(user =>
+      res.json(user)).catch(err => { debugger });
   }
 );
 

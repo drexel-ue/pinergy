@@ -1,4 +1,3 @@
-// Used to sign source of truth tokens for session and protected routes.
 const jwt = require("jsonwebtoken");
 // Provides access to secret.
 const keys = require("../../config/keys");
@@ -19,9 +18,9 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Validates updates.
 const validateUpdate = require("../../validation/update_user");
-const upload = require('../../util/aws-upload');
-const singleUpload = upload.single('image');
-const Image = require('../../models/Image')
+const upload = require("../../util/aws-upload");
+const singleUpload = upload.single("image");
+const Image = require("../../models/Image");
 
 const scraper = require("../../util/scrape");
 
@@ -31,50 +30,56 @@ router.post("/query", async (req, res) => {
   let data = {};
 
   for (let index = 0; index < keyWords.length; index++) {
-    data[keyWords[index]] = (await scraper.scrape(keyWords[index])) || "hmm";
+    // data[keyWords[index]] = (await scraper.scrape(keyWords[index])) || "hmm";
   }
 
   return res.json(data);
 });
 
-router.post("/createpin", async function (req, res) {
-  // debugger
+router.post("/scrape", async (req, res) => {
+  const urls = await scraper(req.body.url);
+});
+
+router.post("/createpin", (req, res) => {
+  // debugger;
   let imageUrl;
-  if (req.params.type === 'image') {
-   imagUrl = await singleUpload(req, res, function (err) {
+  debugger;
+  if (req.body.type === "image") {
+    imagUrl = singleUpload(req, res, err => {
       if (err) {
-        return res.status(422).send({ errors: [{ title: "File type error", detail: err.message }] })
+        return res.status(422).send({
+          errors: [{ title: "File type error", detail: err.message }]
+        });
       }
-        debugger
-     return req.file.location
+      const image = new Image({
+        url: req.file.location
+      });
+
+      image.save().then(res2 => {
+
+        const pin = new Pin({
+          user: req.body.id,
+          board: req.body.board,
+          // image: req.image,
+          url: res2.url,
+          title: req.body.title,
+          description: req.body.description,
+          destinationLink: req.body.destinationLink,
+          // tags: [board.title]
+        });
+        pin.save().then(pin => {
+          debugger;
+          res.json(pin);
+        });
+
+        // return res.json({ imageUrl: res2.url, id: res2.id });
+      });
       // debugger
-    // res.json(imageUrl)
+      // res.json(imageUrl)
     });
-  } else {
-    // debugger
-    imageUrl = req.body.inputUrl
   }
-  const img = new Image({
-    url: imageUrl
-  })
-  debugger
-  img.save().then(img => {
-    debugger
-    const pin = new Pin({
-      user: req.body.id,
-      board: req.body.board,
-      image: img.id,
-      url: img.url,
-      title: req.body.title,
-      description: req.body.description,
-      destinationLink: req.body.destinationLink
-      // tags: [board.title]
-    })
-    pin.save().then(pin => {
-      debugger
-      res.json(pin)
-    })
-  });
+  
+
 });
 
 router.post("/get", async (req, res) => {
@@ -86,4 +91,4 @@ router.post("/get", async (req, res) => {
   }
 });
 
-  module.exports = router
+module.exports = router;

@@ -43,6 +43,7 @@ export const updateUser = (userData, id) => dispatch =>
 export const fetchUser = id => dispatch =>
   ApiUtil.fetchUser(id)
     .then(res => {
+      // debugger
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
@@ -53,6 +54,7 @@ export const fetchUser = id => dispatch =>
 export const fetchUserByUserName = username => dispatch =>
   ApiUtil.fetchUserByUserName(username)
     .then(res => {
+      
       dispatch(receiveUser(res.data));
     })
     .catch(err => {

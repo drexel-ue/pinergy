@@ -30,3 +30,10 @@ export const fetchPins = tags => dispatch =>
     .catch(error => {
       dispatch(receivePinError());
     });
+
+
+export const createPins = data => dispatch =>
+  ApiUtil.createPins(data)
+    .then(res => {
+      debugger
+})

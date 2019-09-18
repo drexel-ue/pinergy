@@ -7,13 +7,13 @@ const receiveInterests = interests => ({
   interests
 });
 
-export const scrapeInterests = () => dispatch => {
-  console.time("scrape request");
-  return ScrapeUtil.scrapeInterests()
-    .then(({ data }) => {
-      console.timeEnd("scrape request");
-      dispatch(receiveInterests(data));
-    })
-    .catch(res => {
-    });
-};
+// export const scrapeInterests = () => dispatch => {
+//   console.time("scrape request");
+//   return ScrapeUtil.scrapeInterests()
+//     .then(({ data }) => {
+//       console.timeEnd("scrape re\quest");
+//       dispatch(receiveInterests(data));
+//     })
+//     .catch(res => {
+//     });
+// };

@@ -11,43 +11,68 @@ export default class PinCreator extends React.Component {
       id: this.props.id,
       title: "",
       description: "",
-      board: "",
+      boardName: "",
+      boardId: "",
       destination_link: "",
+      imgSrc: null,
       showDropDown: false,
       inputUrl: false,
       image: undefined,
-      url: "",
-      imgSrc: null
     };
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.removeAllLoadedFile = this.removeAllLoadedFile.bind(this);
     this.toggleInputUrl = this.toggleInputUrl.bind(this);
     this.toggleOffUrlInput = this.toggleOffUrlInput.bind(this);
     this.toggleOffDropDown = this.toggleOffDropDown.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleBoard = this.handleBoard.bind(this);
+    // this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
+    // this is for toggling off by clicking any where on the windwo
     this.props.fetchCurrentUser(this.props.id);
-    window.addEventListener("click", this.toggleOffUrlInput)
-    window.addEventListener("click", this.toggleOffDropDown)
+
+    this.props.fetchUserBoards(this.props.id);
+    // debugger
+    window.addEventListener("click", this.toggleOffUrlInput);
+    window.addEventListener("click", this.toggleOffDropDown);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("click", this.toggleOffUrlInput)
-    window.removeEventListener("click", this.toggleOffDropDown)
+    // for not carrying over the window click function
+    window.removeEventListener("click", this.toggleOffUrlInput);
+    window.removeEventListener("click", this.toggleOffDropDown);
   }
-
+  ///// ------- toggles
   toggleInputUrl(e) {
     e.preventDefault();
     e.stopPropagation(); // stops bubbling up, something trigger in the child will bubble up to top which is window in this case
     this.setState({ inputUrl: !this.state.inputUrl });
   }
+  toggleOffUrlInput(e) {
+    e.preventDefault();
+    if (this.state.inputUrl) {
+      this.setState({ inputUrl: false });
+    }
+  }
+
+  toggleOffDropDown(e) {
+    e.preventDefault();
+    if (this.state.showDropDown) {
+      this.setState({ showDropDown: false });
+    }
+  }
 
   toggleDropDown(e) {
     e.preventDefault();
-    e.stopPropagation(); 
+    e.stopPropagation();
     this.setState({ showDropDown: !this.state.showDropDown });
   }
+
+  //// -------------- misc func
+
   verifyFile(file) {
+    //filters file input
     const maxImgSize = 10000000;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
@@ -69,7 +94,14 @@ export default class PinCreator extends React.Component {
     }
     return true;
   }
+  removeAllLoadedFile() {
+    //logic for remove button
+    this.setState({ imgSrc: null });
+  }
+
+  //------------- handle funcs
   handleOnDrop = (files, rejectedFiles) => {
+    //handles image drop
     if (rejectedFiles && rejectedFiles.length > 0) {
       this.verifyFile(rejectedFiles);
     }
@@ -89,10 +121,35 @@ export default class PinCreator extends React.Component {
     }
   };
 
-  removeAllLoadedFile() {
-    this.setState({ imgSrc: null });
+  handleSubmit(e) {
+    e.preventDefault();
+    let reqData = {
+      id: this.state.id,
+      title: this.state.title,
+      description: this.state.description,
+      boardId: this.state.boardId,
+      destination_link: this.state.destination_link,
+      imgSrc: this.state.imgSrc
+    };
+    this.props.createPins(reqData);
   }
 
+  handleBoard(e) {
+    e.preventDefault();
+    this.setState({
+      boardName: e.target.textContent,
+      boardId: e.target.attributes.value.value
+    });
+  }
+
+  handleChange(field) {
+    return e => 
+      this.setState({
+        [field]: e.currentTarget.value
+      })
+  }
+
+  // -------------- ALL RENDERS
   renderRemovebtn() {
     return this.state.imgSrc !== null ? (
       <Icon
@@ -105,12 +162,22 @@ export default class PinCreator extends React.Component {
     );
   }
 
+  renderSaveBtn() {
+    return this.state.showDropDown ? (
+      <div className="hide-div" />
+    ) : (
+      <div className="board-save-btn" onClick={this.handleSubmit}>
+        Save
+      </div>
+    );
+  }
+
   renderInput() {
     return this.state.inputUrl ? (
       <div className="url-selected">
-        <input 
-          type="text" 
-          className="url-selected-input" 
+        <input
+          type="text"
+          className="url-selected-input"
           placeholder="Enter website"
         />
         <div className="url-selected-btn">
@@ -123,95 +190,70 @@ export default class PinCreator extends React.Component {
       </div>
     );
   }
-
-  toggleOffUrlInput(e) {
-    e.preventDefault();
-    if (this.state.inputUrl) {
-      this.setState({ inputUrl: false })
-    }
-  }
-
-  toggleOffDropDown(e) {
-    e.preventDefault();
-    if (this.state.showDropDown) {
-      this.setState({ showDropDown: false })
-    }
-  }
-
-  renderSaveBtn() {
-    return this.state.showDropDown ? (
-      <div className="hide-div" />
-    ) : (
-      <div className="board-save-btn">Save</div>
-    );
-  }
   renderBoardMenu() {
+    // debugger
     return this.state.showDropDown ? (
       <div className="board-drop-down">
-        <div className="board-drop-item">
-          <div className="board-item-image" />
-          &nbsp;&nbsp;Example User Board1
-        </div>
-        <div className="board-drop-item">
-          <div className="board-item-image" />
-          &nbsp;&nbsp;Example User Board2
-        </div>
-        <div className="board-drop-item">
-          <div className="board-item-image" />
-          &nbsp;&nbsp;Example User Board3
-        </div>
-        <div className="board-drop-item">
-          <div className="board-item-image" />
-          &nbsp;&nbsp;Example User Board4
-        </div>
+        {this.props.boards.map(ele => {
+          // debugger
+          return (
+            <div
+              className="board-drop-item"
+              onClick={this.handleBoard}
+              value={ele._id}
+              name={ele.title}
+            >
+              <div className="board-item-image">{ele.title}</div>
+            </div>
+          );
+        })}
       </div>
     ) : (
+      //
       <div className="hide-div" />
     );
   }
-
   render() {
     const maxImgSize = 10000000;
-    const { image } = this.state;
+    const { image, boardName } = this.state;
     const user = this.props.currentUser;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
     const { imgSrc } = this.state;
     return this.props.currentUser ? (
-      <div className="pin-create-container"  >
+      <div className="pin-create-container">
         <form className="pin-create-inner">
           <div className="pin-create-right">
-
-                  {imgSrc !== null ? (
-                    <img src={imgSrc} className="imgprvw" />
-                  ) : (
-                    <div className="file-border-wrap">
-                      <div className="file-border">
-                      <div className="file-label">
-                        <Dropzone
-                          onDrop={this.handleOnDrop}
-                          maxSize={maxImgSize}
-                          multiple={false}
-                        >
-                          {({ getRootProps, getInputProps }) => (
-                            <section>
-                              <div {...getRootProps()}>
-                                <input {...getInputProps()} />
-                                <div className="dropzone">
-                                <i className="fas fa-arrow-circle-up" />
-                                <br />
-                                  Click Here or Drop Images Here
-                                </div>
-                              </div>
-                            </section>
-                          )}
-                        </Dropzone>
-                      </div>
-                      </div>
-                    </div>
-                  )}
-              {this.renderRemovebtn()}
-              {this.renderInput()}
+            {imgSrc !== null ? (
+              <img src={imgSrc} className="imgprvw" />
+            ) : (
+              <div className="file-border-wrap">
+                <div className="file-border">
+                  <div className="file-label">
+                    <Dropzone
+                      onDrop={this.handleOnDrop}
+                      maxSize={maxImgSize}
+                      multiple={false}
+                    >
+                      {({ getRootProps, getInputProps }) => (
+                        <section>
+                          <div {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            <div className="dropzone">
+                              <i className="fas fa-arrow-circle-up" />
+                              <br />
+                              Click Here or Drop Images Here
+                            </div>
+                          </div>
+                        </section>
+                      )}
+                    </Dropzone>
+                  </div>
+                </div>
+              </div>
+            )}
+            {this.renderRemovebtn()}
+            {this.renderInput()}
           </div>
 
           <div className="pin-create-left">
@@ -220,7 +262,9 @@ export default class PinCreator extends React.Component {
                 className="pin-create-board-dropdown"
                 onClick={this.toggleDropDown}
               >
-                <div className="board-select-text">Select</div>
+                <div className="board-select-text">
+                  {boardName ? boardName : <p>Select</p>}
+                </div>
                 <div>
                   <i className="fas fa-chevron-down board-down" />
                 </div>
@@ -232,6 +276,8 @@ export default class PinCreator extends React.Component {
               type="text"
               className="pin-title-input"
               placeholder="Add your title"
+              value={this.state.title}
+              onChange={this.handleChange("title")}
             />
             <div className="create-pin-user-info">
               <img src={user.profilePhotoUrl} className="create-prof-img" />
@@ -241,12 +287,16 @@ export default class PinCreator extends React.Component {
               type="text"
               className="pin-desc-input"
               placeholder="Tell everyone what your Pin is about"
+              value={this.state.description}
+              onChange={this.handleChange("description")}
             />
             <div className="create-right-break" />
             <input
               type="text"
               className="pin-link-input"
               placeholder="Add a destination link"
+              value={this.state.destination_link}
+              onChange={this.handleChange("destination_link")}
             />
           </div>
         </form>
