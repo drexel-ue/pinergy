@@ -14,10 +14,11 @@ export default class PinCreator extends React.Component {
       boardName: "",
       boardId: "",
       destination_link: "",
-      imgSrc: null,
+      scrapeUrl: "",
+      image: null,
       showDropDown: false,
       inputUrl: false,
-      image: undefined,
+      renderScrape: false
     };
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.removeAllLoadedFile = this.removeAllLoadedFile.bind(this);
@@ -26,6 +27,7 @@ export default class PinCreator extends React.Component {
     this.toggleOffDropDown = this.toggleOffDropDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
+    this.handleScrape = this.handleScrape.bind(this)
     // this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
@@ -35,6 +37,7 @@ export default class PinCreator extends React.Component {
     this.props.fetchUserBoards(this.props.id);
     // debugger
     window.addEventListener("click", this.toggleOffUrlInput);
+    // document.addEventListener("click", this.toggleOffUrlInput)
     window.addEventListener("click", this.toggleOffDropDown);
   }
 
@@ -51,13 +54,15 @@ export default class PinCreator extends React.Component {
   }
   toggleOffUrlInput(e) {
     e.preventDefault();
-    if (this.state.inputUrl) {
+    // debugger
+    if (this.state.inputUrl && e.target.className !== "url-selected-input") {
       this.setState({ inputUrl: false });
     }
   }
 
   toggleOffDropDown(e) {
     e.preventDefault();
+    e.stopPropagation();
     if (this.state.showDropDown) {
       this.setState({ showDropDown: false });
     }
@@ -73,7 +78,7 @@ export default class PinCreator extends React.Component {
 
   verifyFile(file) {
     //filters file input
-    const maxImgSize = 10000000;
+    const maxImgSize = 10000000000;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
     const acceptedFileTypesArr = acceptedFileTypes.split(",").map(item => {
@@ -96,7 +101,7 @@ export default class PinCreator extends React.Component {
   }
   removeAllLoadedFile() {
     //logic for remove button
-    this.setState({ imgSrc: null });
+    this.setState({ image: null });
   }
 
   //------------- handle funcs
@@ -112,7 +117,7 @@ export default class PinCreator extends React.Component {
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
           this.setState({
-            imgSrc: myFileItemReader.result
+            image: myFileItemReader.result
           });
         };
 
@@ -129,7 +134,7 @@ export default class PinCreator extends React.Component {
       description: this.state.description,
       boardId: this.state.boardId,
       destination_link: this.state.destination_link,
-      imgSrc: this.state.imgSrc
+      image: this.state.image
     };
     this.props.createPins(reqData);
   }
@@ -143,15 +148,21 @@ export default class PinCreator extends React.Component {
   }
 
   handleChange(field) {
-    return e => 
+    return e =>
       this.setState({
         [field]: e.currentTarget.value
-      })
+      });
   }
 
+  handleScrape(e) {
+    e.preventDefault()
+    this.setState({
+      renderScrape: !this.state.renderScrape
+    })
+  }
   // -------------- ALL RENDERS
   renderRemovebtn() {
-    return this.state.imgSrc !== null ? (
+    return this.state.image !== null ? (
       <Icon
         icon={remove}
         className="rmvicon"
@@ -179,8 +190,10 @@ export default class PinCreator extends React.Component {
           type="text"
           className="url-selected-input"
           placeholder="Enter website"
+          value={this.state.scrapeUrl}
+          onChange={this.handleChange("scrapeUrl")}
         />
-        <div className="url-selected-btn">
+        <div className="url-selected-btn" onClick={this.handleScrape}>
           <i class="fa fa-angle-right"></i>
         </div>
       </div>
@@ -219,90 +232,96 @@ export default class PinCreator extends React.Component {
     const user = this.props.currentUser;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
-    const { imgSrc } = this.state;
-    return this.props.currentUser ? (
-      <div className="pin-create-container">
-        <form className="pin-create-inner">
-          <div className="pin-create-right">
-            {imgSrc !== null ? (
-              <img src={imgSrc} className="imgprvw" />
-            ) : (
-              <div className="file-border-wrap">
-                <div className="file-border">
-                  <div className="file-label">
-                    <Dropzone
-                      onDrop={this.handleOnDrop}
-                      maxSize={maxImgSize}
-                      multiple={false}
-                    >
-                      {({ getRootProps, getInputProps }) => (
-                        <section>
-                          <div {...getRootProps()}>
-                            <input {...getInputProps()} />
-                            <div className="dropzone">
-                              <i className="fas fa-arrow-circle-up" />
-                              <br />
-                              Click Here or Drop Images Here
+    if (this.state.renderScrape === false) {
+      return this.props.currentUser ? (
+        <div className="pin-create-container">
+          <form className="pin-create-inner">
+            <div className="pin-create-right">
+              {image !== null ? (
+                <img src={image} className="imgprvw" />
+              ) : (
+                  <div className="file-border-wrap">
+                    <div className="file-border">
+                      <div className="file-label">
+                        <Dropzone
+                          onDrop={this.handleOnDrop}
+                          maxSize={maxImgSize}
+                          multiple={false}
+                        >
+                          {({ getRootProps, getInputProps }) => (
+                            <section>
+                              <div {...getRootProps()}>
+                                <input {...getInputProps()} />
+                                <div className="dropzone">
+                                  <i className="fas fa-arrow-circle-up" />
+                                  <br />
+                                  Click Here or Drop Images Here
                             </div>
-                          </div>
-                        </section>
-                      )}
-                    </Dropzone>
+                              </div>
+                            </section>
+                          )}
+                        </Dropzone>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            )}
-            {this.renderRemovebtn()}
-            {this.renderInput()}
-          </div>
+                )}
+              {this.renderRemovebtn()}
+              {this.renderInput()}
+            </div>
 
-          <div className="pin-create-left">
-            <div className="create-right-top">
-              <div
-                className="pin-create-board-dropdown"
-                onClick={this.toggleDropDown}
-              >
-                <div className="board-select-text">
-                  {boardName ? boardName : <p>Select</p>}
+            <div className="pin-create-left">
+              <div className="create-right-top">
+                <div className="pin-create-board-dropdown">
+                  <div
+                    className="board-select-text"
+                    onClick={this.toggleDropDown}
+                  >
+                    {boardName ? boardName : <p>Select</p>}
+                  </div>
+                  <div>
+                    <i className="fas fa-chevron-down board-down" />
+                  </div>
+                  {this.renderSaveBtn()}
                 </div>
-                <div>
-                  <i className="fas fa-chevron-down board-down" />
-                </div>
-                {this.renderSaveBtn()}
+                {this.renderBoardMenu()}
               </div>
-              {this.renderBoardMenu()}
+              <input
+                type="text"
+                className="pin-title-input"
+                placeholder="Add your title"
+                value={this.state.title}
+                onChange={this.handleChange("title")}
+              />
+              <div className="create-pin-user-info">
+                <img src={user.profilePhotoUrl} className="create-prof-img" />
+                <div className="create-prof-name">{user.username}</div>
+              </div>
+              <textarea
+                type="text"
+                className="pin-desc-input"
+                placeholder="Tell everyone what your Pin is about"
+                value={this.state.description}
+                onChange={this.handleChange("description")}
+              />
+              <div className="create-right-break" />
+              <input
+                type="text"
+                className="pin-link-input"
+                placeholder="Add a destination link"
+                value={this.state.destination_link}
+                onChange={this.handleChange("destination_link")}
+              />
             </div>
-            <input
-              type="text"
-              className="pin-title-input"
-              placeholder="Add your title"
-              value={this.state.title}
-              onChange={this.handleChange("title")}
-            />
-            <div className="create-pin-user-info">
-              <img src={user.profilePhotoUrl} className="create-prof-img" />
-              <div className="create-prof-name">{user.username}</div>
-            </div>
-            <textarea
-              type="text"
-              className="pin-desc-input"
-              placeholder="Tell everyone what your Pin is about"
-              value={this.state.description}
-              onChange={this.handleChange("description")}
-            />
-            <div className="create-right-break" />
-            <input
-              type="text"
-              className="pin-link-input"
-              placeholder="Add a destination link"
-              value={this.state.destination_link}
-              onChange={this.handleChange("destination_link")}
-            />
-          </div>
-        </form>
+          </form>
+        </div>
+      ) : (
+          <div />
+        );
+    } else {
+      return (
+        <div>
+          
       </div>
-    ) : (
-      <div />
-    );
+    )}
   }
 }

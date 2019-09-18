@@ -32,8 +32,10 @@ export const fetchPins = tags => dispatch =>
     });
 
 
-export const createPins = data => dispatch =>
+export const createPins = data => dispatch => {
+  debugger
   ApiUtil.createPins(data)
     .then(res => {
       debugger
-})
+    })
+}

@@ -41,16 +41,14 @@ router.post("/scrape", async (req, res) => {
 });
 
 router.post("/createpin", (req, res) => {
-  // debugger;
-  let imageUrl;
   debugger;
-  if (req.body.type === "image") {
-    imagUrl = singleUpload(req, res, err => {
+  singleUpload(req.body, res, err => {
       if (err) {
         return res.status(422).send({
           errors: [{ title: "File type error", detail: err.message }]
         });
       }
+      debugger;
       const image = new Image({
         url: req.file.location
       });
@@ -77,7 +75,7 @@ router.post("/createpin", (req, res) => {
       // debugger
       // res.json(imageUrl)
     });
-  }
+  
   
 
 });
