@@ -1,5 +1,10 @@
-
+.pin_show_wrapper_wrapper {
+  margin-top: 150px;
+}
 .pin_show_image_wrapper {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +12,8 @@
   background-color: #efefef;
 }
 
-.pin-show-left, .pin-show-right {
+.pin-show-left,
+.pin-show-right {
   width: 50%;
   background-color: white;
   display: flex;
@@ -41,7 +47,7 @@
   position: relative;
 }
 
-.pin-atag:hover .pin-show-link{
+.pin-atag:hover .pin-show-link {
   position: absolute;
   top: 50%;
   display: flex;
@@ -52,14 +58,14 @@
   font-weight: bold;
 }
 
-.pin-atag:hover .pin-show-image{
+.pin-atag:hover .pin-show-image {
   filter: brightness(0.6);
 }
 
 .pin-show-save:hover {
-    filter: brightness(0.6);
-    cursor: pointer;  
-    z-index: 100;
+  filter: brightness(0.6);
+  cursor: pointer;
+  z-index: 100;
 }
 
 .pin-show-save {

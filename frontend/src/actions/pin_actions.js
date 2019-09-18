@@ -30,3 +30,12 @@ export const fetchPins = tags => dispatch =>
     .catch(error => {
       dispatch(receivePinError());
     });
+
+export const fetchPin = id => dispatch =>
+  ApiUtil.fetchPin(id)
+    .then(({ data }) => {
+      dispatch(receivePin(data));
+    })
+    .catch(error => {
+      dispatch(receivePinError());
+    });
