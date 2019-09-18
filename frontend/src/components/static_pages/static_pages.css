@@ -1,0 +1,52 @@
+.request-feat {
+    margin-top: 120px;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.req-title {
+    font-weight: 900;
+    color: #555555;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: -1.2px;
+    font-size: 6rem;
+    line-height: 1em;
+    margin-bottom: 40px;
+}
+
+
+.req-sub {
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: -0.1px;
+    font-size: 1.25rem;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+}
+
+.req-text {
+    height: 250px;
+    width: 550px;
+    resize: none;
+    border-radius: 6px;
+    background: #efefef;
+    outline: none;
+    font-size: 20px;
+}
+
+.submit-req {
+    width: 558px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
