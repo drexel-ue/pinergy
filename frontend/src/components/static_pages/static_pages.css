@@ -51,3 +51,46 @@
     outline: none;
 }
 
+.project-details-page {
+    display: flex;
+    margin-top: 120px;
+    height: 400px;
+    width: 100%;
+}
+
+.pd-left {
+    color: #555555;
+    width: 500px;
+    margin: 150px 75px 0 150px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    font-size: 3rem;
+    line-height: 1.083333333em;
+}
+
+.pd-right {
+    margin-top: 180px;
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.pin-a-link {
+    color: #555555;
+    text-decoration: none;
+    font-weight: 900;
+}
+.contributors{
+    font-size: 24px;
+    font-weight: bold;
+}
+.team-members{
+    display: flex;
+    flex-direction: column;
+}
+.team-member {
+    text-decoration: none;
+    color: #555555;
+}

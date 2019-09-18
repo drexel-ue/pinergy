@@ -8,6 +8,7 @@ import ModalContainer from "./modal/modal";
 import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
 import RequestFeature from "./static_pages/request_feature";
+import ProjectDetails from "./static_pages/project_details";
 import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
@@ -32,6 +33,7 @@ class App extends React.Component {
         </Switch>
         <Route path="/home" component={HomeContainer} />
         <Route exact path="/request-feature" component={RequestFeature} />
+        <Route exact path="/project-details" component={ProjectDetails} />
         <ProtectedRoute path="/pins/:id" component={PinShowContainer} />
       </div>
     );

@@ -136,9 +136,6 @@ class NavBar extends React.Component {
             <div className="UserTasks hide">
               {user_tasks.map(task => (
                 <div key={task} className="UserTasksItems">
-                  {/* <Link to={"/request-feature"}>
-                    Request a feature
-                  </Link> */}
                   {task}{" "}
                 </div>
               ))}
@@ -166,13 +163,18 @@ class NavBar extends React.Component {
 const user_tasks = [
   "Tune your home feed",
   "Edit settings",
-  "Ads support",
-  "Get help",
+  <Link to={"/project-details"} className="nav-drop-link">
+    Project Details
+  </Link>,
+  <a 
+    href="https://github.com/drexel-ue/pinergy" 
+    className="nav-drop-link"
+    target="_blank">
+    Github Repo
+  </a>,
   <Link to={"/request-feature"} className="nav-drop-link">
     Request a feature
   </Link>,
-  "See terms and privacy",
-  "Add account"
 ];
 
 export default withRouter(NavBar);
