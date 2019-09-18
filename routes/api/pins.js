@@ -90,7 +90,7 @@ router.post("/get", async (req, res) => {
 
 router.post("/fetch", async (req, res) => {
   const id = req.body.id;
-  const pin = await Pin.findById(id);
+  const pin = await Pin.findById(id).populate("image");
   if (pin) {
     res.json(pin);
   } else {
