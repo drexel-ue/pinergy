@@ -30,7 +30,8 @@ mongoose
 
     if (!demoUser) {
       demoUser = new User(demoUserData);
-      demoUser.password = await bcrypt.hash(demoUserData.password, 10);
+      const salt = await bcrypt.genSalt();
+      demoUser.password = await bcrypt.hash("test123", salt);
       users.push(demoUser);
       for (let boardIndex = 0; boardIndex < 12; boardIndex++) {
         const board = new Board({
@@ -70,6 +71,7 @@ mongoose
           image.pins.push(pin);
         }
       }
+      console.log("demo user generated");
     }
 
     for (let userIndex = 0; userIndex < 100; userIndex++) {
@@ -78,58 +80,53 @@ mongoose
         lastName: faker.name.lastName(),
         username: faker.internet.userName(),
         password: "test123",
+        password2: "test123",
         email: faker.internet.email(),
         age: Math.round(Math.random() * 999999999999),
         profilePhotoUrl: faker.internet.avatar()
       });
       users.push(user);
-      bcrypt.genSalt(10, (error, salt) => {
-        if (error) throw error;
-        bcrypt.hash(user.password, salt, (error, hash) => {
-          if (error) throw error;
-          user.password = hash;
-          for (let boardIndex = 0; boardIndex < 12; boardIndex++) {
-            const board = new Board({
-              user: user.id,
-              title:
-                boardTitles[
-                  Math.round(Math.random() * (boardTitles.length - 1))
-                ]
-            });
-            boards.push(board);
-
-            let usedHeights = [];
-            determineHeight = () => {
-              let height = Math.round(Math.random() * 400 + 100);
-              if (usedHeights.includes(height)) {
-                height = determineHeight();
-              }
-              usedHeights.push(height);
-              return height;
-            };
-            for (let pinImageIndex = 0; pinImageIndex < 30; pinImageIndex++) {
-              const height = determineHeight();
-              const image = new Image({
-                url: `https://picsum.photos/240/${height}?random=1`
-              });
-              images.push(image);
-              const pin = new Pin({
-                user: user.id,
-                board: board.id,
-                image: image.id,
-                url: image.url,
-                title: faker.lorem.words(3),
-                description: faker.lorem.paragraph(3),
-                destinationLink: image.url,
-                tags: [board.title]
-              });
-              pins.push(pin);
-              board.pins.push(pin);
-              image.pins.push(pin);
-            }
-          }
+      const salt = await bcrypt.genSalt();
+      user.password = await bcrypt.hash("test123", salt);
+      for (let boardIndex = 0; boardIndex < 12; boardIndex++) {
+        const board = new Board({
+          user: user.id,
+          title:
+            boardTitles[Math.round(Math.random() * (boardTitles.length - 1))]
         });
-      });
+        boards.push(board);
+
+        let usedHeights = [];
+        determineHeight = () => {
+          let height = Math.round(Math.random() * 400 + 100);
+          if (usedHeights.includes(height)) {
+            height = determineHeight();
+          }
+          usedHeights.push(height);
+          return height;
+        };
+        for (let pinImageIndex = 0; pinImageIndex < 30; pinImageIndex++) {
+          const height = determineHeight();
+          const image = new Image({
+            url: `https://picsum.photos/240/${height}?random=1`
+          });
+          images.push(image);
+          const pin = new Pin({
+            user: user.id,
+            board: board.id,
+            image: image.id,
+            url: image.url,
+            title: faker.lorem.words(3),
+            description: faker.lorem.paragraph(3),
+            destinationLink: image.url,
+            tags: [board.title]
+          });
+          pins.push(pin);
+          board.pins.push(pin);
+          image.pins.push(pin);
+        }
+      }
+      console.log("user", userIndex + 1);
     }
 
     console.log("commencing user inserts");
