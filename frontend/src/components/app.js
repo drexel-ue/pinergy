@@ -10,6 +10,7 @@ import HomeContainer from "./home/home_container";
 import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
+import EditProfile from "./nav/edit_profile";
 
 class App extends React.Component {
   render() {
@@ -31,6 +32,11 @@ class App extends React.Component {
         </Switch>
         <Route path="/home" component={HomeContainer} />
         <ProtectedRoute path="/pins/:id" component={PinShowContainer} />
+        <ProtectedRoute
+          exact={false}
+          path="/settings/edit-profile"
+          component={EditProfile}
+        />
       </div>
     );
   }
