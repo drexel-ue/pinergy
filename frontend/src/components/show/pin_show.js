@@ -29,7 +29,7 @@ export default class PinShow extends React.Component {
       <div className="pin_show_image_wrapper">
         <div className="pin_stick_bar">
           <div className="pin_menu">
-            <i class="fas fa-ellipsis-h"></i>
+            <i className="fas fa-ellipsis-h"></i>
           </div>
           <div className="pin-show-save">
             <i class="fas fa-thumbtack"></i>
