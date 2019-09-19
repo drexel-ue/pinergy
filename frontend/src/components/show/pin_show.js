@@ -9,16 +9,17 @@ export default class PinShow extends React.Component {
     };
 
     this.togglePinDrop = this.togglePinDrop.bind(this);
+    this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPin(this.props.match.params.id);
-    window.addEventListener("click", this.togglePinDrop)
+    window.addEventListener("click", this.toggleOffPinDrop)
   }
 
   componentWillUnmount() {
-    window.removeEventListener("click", this.togglePinDrop)
+    window.removeEventListener("click", this.toggleOffPinDrop)
   }
 
   parseDestinationLink() {
@@ -40,9 +41,15 @@ export default class PinShow extends React.Component {
     this.setState({ showDropDown: !this.state.showDropDown });
   }
 
+  toggleOffPinDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.state.showDropDown) {
+      this.setState({ showDropDown: false });
+    }
+  }
 
   pinDropDown() {
-    if (this.state.showDropDown) console.log("im")
     return this.state.showDropDown ? (
       <div className="">
         <div>
