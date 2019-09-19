@@ -38,9 +38,9 @@ app.get("/", (req, res) => res.send("Coco Puffs"));
 app.use(passport.initialize());
 
 // Parse application/x-www-form-urlencoded.
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: false, parameterLimit: 100000 }));
 // Parse application/json.
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb', extended: false, parameterLimit: 100000 }));
 
 // We must tell Express to use imported routes.
 app.use("/api/users", users);

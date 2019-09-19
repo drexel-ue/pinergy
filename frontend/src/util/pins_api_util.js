@@ -6,3 +6,8 @@ export const fetchPin = id => Axios.post("/api/pins/fetch", { id });
 
 export const repin = (pin, boardId) =>
   Axios.post("/api/pins/repin", { pin, boardId });
+
+export const createPins = data =>
+  Axios.post("/api/pins/createpin", {
+    data
+  });

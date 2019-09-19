@@ -43,9 +43,21 @@ export const fetchPin = id => dispatch =>
 export const repin = (pin, boardId) => dispatch =>
   ApiUtil.repin(pin, boardId)
     .then(({ data }) => {
-      debugger;
+      debugger
       dispatch(receivePin(data));
     })
     .catch(error => {
       dispatch(receivePinError());
     });
+
+export const createPins = data => dispatch => {
+  // TODO: returned value underneath inorder to push to new location
+  return ApiUtil.createPins(data)
+    .then(({ data }) => {
+      dispatch(receivePin(data));
+      return data;
+    })
+    .catch(error => {
+      dispatch(receivePinError());
+    });
+};
