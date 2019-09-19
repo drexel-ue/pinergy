@@ -75,12 +75,12 @@
 }
 
 .pin-show-save {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
-  right: 25px;
+  /* top: 20px; */
+  /* right: 25px; */
   color: white;
   height: 40px;
   width: 80px;
@@ -113,6 +113,8 @@
 }
 
 .pin_stick_bar {
+  display: flex;
+  justify-content: center;
   position: sticky;
   top: 65px;
   z-index: 3;
