@@ -4,11 +4,21 @@ import "./pin_show.css";
 export default class PinShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showDropDown: false,
+    };
+
+    this.togglePinDrop = this.togglePinDrop.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPin(this.props.match.params.id);
+    window.addEventListener("click", this.togglePinDrop)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("click", this.togglePinDrop)
   }
 
   parseDestinationLink() {
@@ -24,21 +34,45 @@ export default class PinShow extends React.Component {
     return hostDomain;
   }
 
+  togglePinDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ showDropDown: !this.state.showDropDown });
+  }
+
+
+  pinDropDown() {
+    if (this.state.showDropDown) console.log("im")
+    return this.state.showDropDown ? (
+      <div className="">
+        <div>
+          <h1>MENU GOES HERE</h1>
+        </div>
+      </div>
+    ) : (
+        <div className="" />
+      );
+  }
+
   render() {
     return this.props.pin ? (
       <div className="pin-show-outer">
         <div className="pin_show_image_wrapper">
           <div className="pin_stick_bar">
-            <div className="pin_menu">
+            <div className="pin_menu"
+              onClick={this.togglePinDrop}>
               <i className="fas fa-ellipsis-h ell-show"></i>
+              {this.pinDropDown()}
             </div>
-            <div className="pin-show-share">
-              <i class='fas fa-share-alt'></i>
-              &nbsp;&nbsp;Share
-            </div>
-            <div className="pin-show-save">
-              <i class="fas fa-thumbtack"></i>
-              &nbsp;&nbsp;Save
+            <div className="stick-bar-right">
+              <div className="pin-show-share">
+                <i class='fas fa-share-alt'></i>
+                &nbsp;&nbsp;Share
+              </div>
+              <div className="pin-show-save">
+                <i class="fas fa-thumbtack"></i>
+                &nbsp;&nbsp;Save
+              </div>
             </div>
           </div>
           <div className="pin-show-bottom">
