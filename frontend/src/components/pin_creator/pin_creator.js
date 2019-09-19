@@ -155,8 +155,12 @@ class PinCreator extends React.Component {
       image: res.data.id
     };
     // debugger
-    this.props.createPins(reqData);
-      this.props.history.push(`/pins/${this.props.pinId}`);
+    this.props.createPins(reqData).then(res => {
+      this.props.history.push(`/pins/${res._id}`);
+    });
+    // debugger 
+
+      // this.props.history.push(`/pins/${this.props.pinId}`);
  
     // debugger;
   }

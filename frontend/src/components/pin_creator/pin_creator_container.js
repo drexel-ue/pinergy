@@ -9,6 +9,7 @@ const mapStateToProps = ({ session, entities }) => {
   let boards;
   let pinId;
   if (entities.pins) {
+    // debugger 
     pinId = Object.keys(entities.pins)[0]
   }
   if (entities.boards.user) {
