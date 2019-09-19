@@ -41,42 +41,22 @@ router.post("/scrape", async (req, res) => {
 });
 
 router.post("/createpin", (req, res) => {
-  debugger;
-  singleUpload(req, res, err => {
-      if (err) {
-        return res.status(422).send({
-          errors: [{ title: "File type error", detail: err.message }]
-        });
-      }
-      debugger;
-      const image = new Image({
-        url: req.file.location
-      });
-
-      image.save().then(res2 => {
-
-        const pin = new Pin({
-          user: req.body.id,
-          board: req.body.board,
-          // image: req.image,
-          url: res2.url,
-          title: req.body.title,
-          description: req.body.description,
-          destinationLink: req.body.destinationLink,
-          // tags: [board.title]
-        });
-        pin.save().then(pin => {
-          debugger;
-          res.json(pin);
-        });
-
-        // return res.json({ imageUrl: res2.url, id: res2.id });
-      });
-      // debugger
-      // res.json(imageUrl)
-    });
-  
-  
+  // debugger;
+  const pin = new Pin({
+    user: req.body.data.id,
+    board: req.body.data.boardId,
+    image: req.body.data.image,
+    url: req.body.data.url,
+    title: req.body.data.title,
+    description: req.body.data.description,
+    destinationLink: req.body.data.destinationLink,
+    // tags: [board.title]
+  });
+  pin.save().then(pin => {
+    // debugger;
+    res.json(pin);
+  })
+ 
 
 });
 

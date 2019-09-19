@@ -5,14 +5,14 @@ const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
 const scrape = require("../../util/scrape").scrape;
 router.post("/image-upload", function(req, res) {
-  debugger
+  // debugger
   singleUpload(req, res, function(err) {
     if (err) {
       return res
         .status(422)
         .send({ errors: [{ title: "File type error", detail: err.message }] });
     }
-    debugger
+    // debugger
     const image = new Image({
       url: req.file.location
     });

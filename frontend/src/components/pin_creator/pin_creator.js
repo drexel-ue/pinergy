@@ -3,9 +3,10 @@ import { Icon } from "react-icons-kit";
 import { remove } from "react-icons-kit/fa/remove";
 import "./pin_creator.css";
 import Dropzone from "react-dropzone";
-import Scrape from "./scrape_container"
-const ImageApi = require("../../util/image_util")
-export default class PinCreator extends React.Component {
+import Scrape from "./scrape_container";
+import { withRouter } from "react-router-dom";
+const ImageApi = require("../../util/image_util");
+class PinCreator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +29,7 @@ export default class PinCreator extends React.Component {
     this.toggleOffDropDown = this.toggleOffDropDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
-    this.handleScrape = this.handleScrape.bind(this)
+    this.handleScrape = this.handleScrape.bind(this);
     // this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
@@ -130,53 +131,34 @@ export default class PinCreator extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    // let reqData = {
-    //   id: this.state.id,
-    //   title: this.state.title,
-    //   description: this.state.description,
-    //   boardId: this.state.boardId,
-    //   destination_link: this.state.destination_link,
-    //   image: this.state.image
-    // };
+
     const formData = new FormData();
-    const image = this.state.image
+    const image = this.state.image;
     const byteCharacters = atob(image.slice(23));
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
       byteNumbers[i] = byteCharacters.charCodeAt(i);
     }
     const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: 'image/jpeg' });
-    // const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
-    //   const byteCharacters = atob(b64Data);
-    //   const byteArrays = [];
+    const blob = new Blob([byteArray], { type: "image/jpeg" });
 
-    //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    //     const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-    //     const byteNumbers = new Array(slice.length);
-    //     for (let i = 0; i < slice.length; i++) {
-    //       byteNumbers[i] = slice.charCodeAt(i);
-    //     }
-
-    //     const byteArray = new Uint8Array(byteNumbers);
-    //     byteArrays.push(byteArray);
-    //   }
-
-      // const blob = new Blob(byteArrays, { type: contentType });
-      // return blob;
-    // }
-    // const blob = b64toBlob(b64Data, contentType);
-    // const blobUrl = URL.createObjectURL(blob);
-    debugger
-    formData.set("image", blob)
-    window.formData = formData
-    console.log(formData.get("image"))
-    const res = await ImageApi.getAwsUrl(formData)
+    formData.set("image", blob);
+    window.formData = formData;
+    const res = await ImageApi.getAwsUrl(formData);
+    let reqData = {
+      id: this.state.id,
+      title: this.state.title,
+      description: this.state.description,
+      url: res.data.imageUrl,
+      boardId: this.state.boardId,
+      destination_link: this.state.destination_link,
+      image: res.data.id
+    };
     // debugger
-    console.log(res)
-    
-    // this.props.createPins(formData);
+    this.props.createPins(reqData);
+      this.props.history.push(`/pins/${this.props.pinId}`);
+ 
+    // debugger;
   }
 
   handleBoard(e) {
@@ -195,10 +177,10 @@ export default class PinCreator extends React.Component {
   }
 
   handleScrape(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({
       renderScrape: !this.state.renderScrape
-    })
+    });
   }
   // -------------- ALL RENDERS
   renderRemovebtn() {
@@ -280,31 +262,31 @@ export default class PinCreator extends React.Component {
               {image !== null ? (
                 <img src={image} className="imgprvw" />
               ) : (
-                  <div className="file-border-wrap">
-                    <div className="file-border">
-                      <div className="file-label">
-                        <Dropzone
-                          onDrop={this.handleOnDrop}
-                          maxSize={maxImgSize}
-                          multiple={false}
-                        >
-                          {({ getRootProps, getInputProps }) => (
-                            <section>
-                              <div {...getRootProps()}>
-                                <input {...getInputProps()} />
-                                <div className="dropzone">
-                                  <i className="fas fa-arrow-circle-up" />
-                                  <br />
-                                  Click Here or Drop Images Here
-                            </div>
+                <div className="file-border-wrap">
+                  <div className="file-border">
+                    <div className="file-label">
+                      <Dropzone
+                        onDrop={this.handleOnDrop}
+                        maxSize={maxImgSize}
+                        multiple={false}
+                      >
+                        {({ getRootProps, getInputProps }) => (
+                          <section>
+                            <div {...getRootProps()}>
+                              <input {...getInputProps()} />
+                              <div className="dropzone">
+                                <i className="fas fa-arrow-circle-up" />
+                                <br />
+                                Click Here or Drop Images Here
                               </div>
-                            </section>
-                          )}
-                        </Dropzone>
-                      </div>
+                            </div>
+                          </section>
+                        )}
+                      </Dropzone>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
               {this.renderRemovebtn()}
               {this.renderInput()}
             </div>
@@ -355,13 +337,16 @@ export default class PinCreator extends React.Component {
           </form>
         </div>
       ) : (
-          <div />
-        );
+        <div />
+      );
     } else {
       return (
         <div>
-          <Scrape scrapeUrl={this.state.scrapeUrl}/>
-      </div>
-    )}
+          <Scrape scrapeUrl={this.state.scrapeUrl} />
+        </div>
+      );
+    }
   }
 }
+
+export default withRouter(PinCreator);
