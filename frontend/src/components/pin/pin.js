@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../home/home.css";
 
 export default class Pin extends React.Component {
@@ -29,10 +30,10 @@ export default class Pin extends React.Component {
 
   render() {
     return (
-      <div className="home-pin-wrap" >
-        <img className="home-pin-img" 
-          onClick={this.showPin} 
-          src={this.props.pin.url} />
+      <div className="home-pin-wrap">
+        <Link to={`/pins/${this.props.pin._id}`}>
+          <img className="home-pin-img" src={this.props.pin.url} />
+        </Link>
         <div className="pin-button home-save">
           <i className="fas fa-thumbtack" />
           &nbsp;&nbsp;Save

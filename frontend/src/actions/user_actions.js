@@ -40,6 +40,7 @@ export const updateUser = (userData, id) => dispatch =>
     .catch(err => {
       dispatch(receiveUserUpdateErrors(err.response.data));
     });
+
 export const fetchUser = id => dispatch =>
   ApiUtil.fetchUser(id)
     .then(res => {
@@ -47,7 +48,6 @@ export const fetchUser = id => dispatch =>
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
-      //  ;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 
@@ -57,29 +57,10 @@ export const fetchUserByUserName = username => dispatch =>
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
-      //  ;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 
 export const peopleSearch = (users, queryString) => dispatch => {
-  // const matches = users
-  //   .filter(user => {
-  //      ;
-  //     new RegExp("^" + queryString.toLowerCase()).test(
-  //       user.firstName.toLowerCase()
-  //     ) ||
-  //       new RegExp("^" + queryString.toLowerCase()).test(
-  //         user.lastName.toLowerCase()
-  //       ) ||
-  //       new RegExp("^" + queryString.toLowerCase()).test(
-  //         user.username.toLowerCase()
-  //       );
-  //   })
-  //   .slice(0, 3);
-
-  // return matches.length > 0
-  //   ? matches
-  //   :
   return ApiUtil.peopleSearch(queryString)
     .then(({ data }) => {
       return dispatch(receiveUsers(data));
@@ -91,7 +72,8 @@ export const peopleSearch = (users, queryString) => dispatch => {
 export const followUser = (followerId, followeeId) => dispatch =>
   ApiUtil.followUser(followerId, followeeId)
     .then(({ data }) => {
-      dispatch(updateUser(data));
+      dispatch(receiveUser(data.follower));
+      dispatch(receiveUser(data.followee));
     })
     .catch(err => {
       dispatch(receiveUserFollowErrors(err.response.data));

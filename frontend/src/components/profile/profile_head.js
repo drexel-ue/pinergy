@@ -12,6 +12,9 @@ class ProfileHead extends React.Component {
       showDropdown: false,
       showShareDropdown: false
     };
+
+    this.handleFollow = this.handleFollow.bind(this)
+    // this.handleUnfollow = this.handleUnfollow.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
     this.myScrollFunc = this.myScrollFunc.bind(this)
@@ -85,16 +88,43 @@ class ProfileHead extends React.Component {
       : user.username;
   }
 
-  showMessageFollow() {
+  showMessage() {
     return this.props.user._id != this.props.id ? (
       <div className="message_and_follow_buttons">
         <button className="message_button">Message</button>
-        <button className="follow_button redbtn">Following</button>
       </div>
     ) : (
       <div />
     );
   }
+
+  handleFollow(e) {
+    e.preventDefault();
+    this.props.followUser(this.props.currentUser._id, this.props.user._id)
+  }
+
+
+  showFollow() {
+    if (this.props.user._id != this.props.id) {
+      // debugger
+      console.log(this.props.currentUser)
+      if (this.props.currentUser.following.includes(this.props.user._id)) {
+        return <div className="message_and_follow_buttons">
+            <button
+              onClick={this.handleFollow}
+              className="follow_button is-following">
+              Following
+          </button>
+        </div>
+      } else {
+      return <button
+          onClick={this.handleFollow}
+          className="follow_button not-following">
+          Follow
+        </button>
+      }
+  }}
+
 
   render() {
     const user = this.props.user;
@@ -127,7 +157,10 @@ class ProfileHead extends React.Component {
                 </div>
               </div>
               <div className="message_follow_image">
-                {this.showMessageFollow()}
+                <div className="message-follow-buttons">
+                  {this.showMessage()}
+                  {this.showFollow()}
+                </div>
                 <img src={user.profilePhotoUrl} className="prfprfpho" />
               </div>
             </div>
