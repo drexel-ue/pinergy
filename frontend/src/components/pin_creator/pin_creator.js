@@ -37,7 +37,7 @@ class PinCreator extends React.Component {
     this.props.fetchCurrentUser(this.props.id);
 
     this.props.fetchUserBoards(this.props.id);
-    // debugger
+    //
     window.addEventListener("click", this.toggleOffUrlInput);
     // document.addEventListener("click", this.toggleOffUrlInput)
     window.addEventListener("click", this.toggleOffDropDown);
@@ -56,7 +56,7 @@ class PinCreator extends React.Component {
   }
   toggleOffUrlInput(e) {
     e.preventDefault();
-    // debugger
+    //
     if (this.state.inputUrl && e.target.className !== "url-selected-input") {
       this.setState({ inputUrl: false });
     }
@@ -108,7 +108,7 @@ class PinCreator extends React.Component {
 
   //------------- handle funcs
   handleOnDrop = (files, rejectedFiles) => {
-    // debugger
+    //
     //handles image drop
     if (rejectedFiles && rejectedFiles.length > 0) {
       this.verifyFile(rejectedFiles);
@@ -119,7 +119,7 @@ class PinCreator extends React.Component {
         const currentFile = files[0];
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
-          // debugger
+          //
           this.setState({
             image: myFileItemReader.result
           });
@@ -154,15 +154,15 @@ class PinCreator extends React.Component {
       destination_link: this.state.destination_link,
       image: res.data.id
     };
-    // debugger
+    //
     this.props.createPins(reqData).then(res => {
       this.props.history.push(`/pins/${res._id}`);
     });
-    // debugger 
+    //
 
-      // this.props.history.push(`/pins/${this.props.pinId}`);
- 
-    // debugger;
+    // this.props.history.push(`/pins/${this.props.pinId}`);
+
+    //  ;
   }
 
   handleBoard(e) {
@@ -230,11 +230,10 @@ class PinCreator extends React.Component {
     );
   }
   renderBoardMenu() {
-    // debugger
+    //
     return this.state.showDropDown ? (
       <div className="board-drop-down">
         {this.props.boards.map(ele => {
-          // debugger
           return (
             <div
               className="board-drop-item"

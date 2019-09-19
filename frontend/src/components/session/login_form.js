@@ -53,7 +53,6 @@ class LoginForm extends React.Component {
   }
 
   handleDemoLogin(e) {
-    // debugger
     e.preventDefault();
 
     let user = {

@@ -43,29 +43,28 @@ export const updateUser = (userData, id) => dispatch =>
 export const fetchUser = id => dispatch =>
   ApiUtil.fetchUser(id)
     .then(res => {
-      // debugger
+      //
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
-      // debugger;
+      //  ;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 
 export const fetchUserByUserName = username => dispatch =>
   ApiUtil.fetchUserByUserName(username)
     .then(res => {
-      
       dispatch(receiveUser(res.data));
     })
     .catch(err => {
-      // debugger;
+      //  ;
       dispatch(receiveUserSearchErrors(err.response.data));
     });
 
 export const peopleSearch = (users, queryString) => dispatch => {
   // const matches = users
   //   .filter(user => {
-  //     debugger;
+  //      ;
   //     new RegExp("^" + queryString.toLowerCase()).test(
   //       user.firstName.toLowerCase()
   //     ) ||

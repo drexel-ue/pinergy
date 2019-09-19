@@ -31,17 +31,17 @@ export const fetchPins = tags => dispatch =>
       dispatch(receivePinError());
     });
 
-
 export const createPins = data => dispatch => {
-  // debugger
+  //
 
   // TODO: returned value underneath inorder to push to new location
   return ApiUtil.createPins(data)
     .then(({ data }) => {
-      // debugger
-      dispatch(receivePin(data))
-      return data
-    }).catch(error => {
-      dispatch(receivePinError())
+      //
+      dispatch(receivePin(data));
+      return data;
     })
-}
+    .catch(error => {
+      dispatch(receivePinError());
+    });
+};

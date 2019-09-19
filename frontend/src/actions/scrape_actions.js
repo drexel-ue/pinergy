@@ -1,7 +1,7 @@
 import * as ScrapeUtil from "../util/scrape_util";
 
 export const RECEIVE_INTERESTS = "RECEIVE_INTERESTS";
-export const RECEIVE_URLS = "RECEIVE_URLS"
+export const RECEIVE_URLS = "RECEIVE_URLS";
 const receiveInterests = interests => ({
   type: RECEIVE_INTERESTS,
   interests
@@ -10,7 +10,7 @@ const receiveInterests = interests => ({
 const receiveUrls = urls => ({
   type: RECEIVE_URLS,
   urls
-})
+});
 
 // export const scrapeInterests = () => dispatch => {
 //   console.time("scrape request");
@@ -23,15 +23,12 @@ const receiveUrls = urls => ({
 //     });
 // };
 
-export const scrapeUrls = (url) => dispatch => {
-  debugger
+export const scrapeUrls = url => dispatch => {
   console.time("scrape request");
-   ScrapeUtil.scrape(url)
-    .then(( data ) => {
-      debugger
+  ScrapeUtil.scrape(url)
+    .then(data => {
       console.timeEnd("scrape request");
       dispatch(receiveUrls(data));
     })
-    .catch(res => {
-    });
+    .catch(res => {});
 };

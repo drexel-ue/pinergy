@@ -142,8 +142,9 @@ router.get(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findById(req.params.id).then(user =>
-      res.json(user)).catch(err => { debugger });
+    return User.findById(req.params.id)
+      .then(user => res.json(user))
+      .catch(err => {});
   }
 );
 
@@ -151,7 +152,9 @@ router.get(
   "/profile/:username",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    return User.findOne({ username: req.params.username }).then(user => res.json(user)).catch(err => { debugger });
+    return User.findOne({ username: req.params.username })
+      .then(user => res.json(user))
+      .catch(err => {});
   }
 );
 

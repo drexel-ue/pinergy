@@ -41,7 +41,6 @@ router.post("/scrape", async (req, res) => {
 });
 
 router.post("/createpin", (req, res) => {
-  // debugger;
   const pin = new Pin({
     user: req.body.data.id,
     board: req.body.data.boardId,
@@ -53,7 +52,6 @@ router.post("/createpin", (req, res) => {
     // tags: [board.title]
   });
   pin.save().then(pin => {
-    // debugger;
     res.json(pin);
   })
  

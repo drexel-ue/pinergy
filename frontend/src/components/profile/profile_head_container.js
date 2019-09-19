@@ -4,7 +4,6 @@ import ProfileHead from "./profile_head";
 import { fetchUser, fetchUserByUserName } from "../../actions/user_actions";
 
 const mapStateToProps = ({ session, entities }, ownProps) => {
-  // debugger
   return {
     currentUser: entities.users[session.user.id],
     user: Object.values(entities.users).find(
