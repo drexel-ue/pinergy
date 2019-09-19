@@ -105,7 +105,7 @@
 .pin_stick_bar {
   position: sticky;
   top: 65px;
-  z-index: 20;
+  z-index: 3;
   width: 900px;
   background-color: white;
   border-radius: 8px 8px 0 0;
