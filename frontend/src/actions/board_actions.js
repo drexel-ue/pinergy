@@ -15,10 +15,10 @@ const receiveBoardError = () => ({
 export const fetchUserBoards = user_id => dispatch =>
   ApiUtil.getUserBoards(user_id)
     .then(boards => {
-    //   debugger;
+      //    ;
       dispatch(receiveUserBoards(boards));
     })
     .catch(error => {
-    //   debugger;
+      //    ;
       dispatch(receiveBoardError());
     });
