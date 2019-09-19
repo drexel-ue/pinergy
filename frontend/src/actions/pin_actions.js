@@ -30,3 +30,18 @@ export const fetchPins = tags => dispatch =>
     .catch(error => {
       dispatch(receivePinError());
     });
+
+export const createPins = data => dispatch => {
+  //
+
+  // TODO: returned value underneath inorder to push to new location
+  return ApiUtil.createPins(data)
+    .then(({ data }) => {
+      //
+      dispatch(receivePin(data));
+      return data;
+    })
+    .catch(error => {
+      dispatch(receivePinError());
+    });
+};

@@ -11,7 +11,6 @@ aws.config.update({
 var s3 = new aws.S3()
 
 const fileFilter = (req, file, cb) => { 
-  // debugger
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true)
   } else {

@@ -9,7 +9,6 @@ const boardsReducer = (
   let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_USER_BOARDS:
-      // debugger;
       newState.user = action.boards.data;
       return newState;
     default:
