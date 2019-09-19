@@ -52,7 +52,7 @@
   position: absolute;
   top: 50%;
   display: flex;
-  z-index: 20;
+  z-index: 3;
   justify-content: center;
   width: 100%;
   color: white;
