@@ -97,6 +97,11 @@
   flex-direction: column;
 }
 
+.ell-show:hover {
+  background-color: #efefef;
+  cursor: pointer;
+}
+
 .pin-show-title {
   font-size: 24px;
   font-weight: bolder;
