@@ -1,4 +1,3 @@
-// Used to sign source of truth tokens for session and protected routes.
 const jwt = require("jsonwebtoken");
 // Provides access to secret.
 const keys = require("../../config/keys");
@@ -23,7 +22,6 @@ const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
 const Board = require("../../models/Board");
-
 const scraper = require("../../util/scrape");
 
 router.post("/query", async (req, res) => {
@@ -32,14 +30,13 @@ router.post("/query", async (req, res) => {
   let data = {};
 
   for (let index = 0; index < keyWords.length; index++) {
-    data[keyWords[index]] = (await scraper.scrape(keyWords[index])) || "hmm";
+    // data[keyWords[index]] = (await scraper.scrape(keyWords[index])) || "hmm";
   }
 
   return res.json(data);
 });
 
 router.post("/createpin", async function(req, res) {
-  // debugger
   let imageUrl;
   if (req.params.type === "image") {
     imagUrl = await singleUpload(req, res, function(err) {
@@ -48,21 +45,15 @@ router.post("/createpin", async function(req, res) {
           errors: [{ title: "File type error", detail: err.message }]
         });
       }
-      debugger;
       return req.file.location;
-      // debugger
-      // res.json(imageUrl)
     });
   } else {
-    // debugger
     imageUrl = req.body.inputUrl;
   }
   const img = new Image({
     url: imageUrl
   });
-  debugger;
   img.save().then(img => {
-    debugger;
     const pin = new Pin({
       user: req.body.id,
       board: req.body.board,
@@ -71,12 +62,29 @@ router.post("/createpin", async function(req, res) {
       title: req.body.title,
       description: req.body.description,
       destinationLink: req.body.destinationLink
-      // tags: [board.title]
     });
     pin.save().then(pin => {
-      debugger;
       res.json(pin);
     });
+  });
+});
+
+router.post("/scrape", async (req, res) => {
+  const urls = await scraper(req.body.url);
+});
+
+router.post("/createpin", (req, res) => {
+  const pin = new Pin({
+    user: req.body.data.id,
+    board: req.body.data.boardId,
+    image: req.body.data.image,
+    url: req.body.data.url,
+    title: req.body.data.title,
+    description: req.body.data.description,
+    destinationLink: req.body.data.destinationLink
+  });
+  pin.save().then(pin => {
+    res.json(pin);
   });
 });
 

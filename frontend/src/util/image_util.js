@@ -1,3 +1,7 @@
-import Axios from 'axios';
+import axios from "axios";
 
-export const getAwsUrl = img => Axios.post("/api/images/image-upload", { img });
+
+export const getAwsUrl = image => axios.post("/api/images/image-upload", image);
+
+export const scrape = (url) =>
+  axios.post("/api/images/scrape", { url });
