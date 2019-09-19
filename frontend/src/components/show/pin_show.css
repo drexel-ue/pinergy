@@ -68,30 +68,35 @@
   filter: brightness(0.6);
 }
 
-.pin-show-save:hover {
+.pin-show-save:hover, .pin-show-share:hover {
   filter: brightness(0.6);
   cursor: pointer;
   z-index: 100;
 }
 
-.pin-show-save {
-  /* position: absolute; */
+.pin-show-save, .pin-show-share {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* top: 20px; */
-  /* right: 25px; */
-  color: white;
   height: 40px;
-  width: 80px;
+  width: 90px;
   padding: 10px 14px;
-  background-color: #e60023;
   font-size: 16px;
   font-weight: bold;
   box-sizing: border-box;
   border-radius: 8px;
+  font-weight: 900;
 }
 
+.pin-show-save {
+  background-color: #e60023;
+  color: white;
+}
+
+.pin-show-share {
+  background-color: #efefef;
+  color: black;
+}
 .pin-show-info {
   display: flex;
   flex-direction: column;
@@ -100,6 +105,10 @@
 .ell-show:hover {
   background-color: #efefef;
   cursor: pointer;
+}
+
+.ell-show {
+  margin: 0;
 }
 
 .pin-show-title {
@@ -114,7 +123,10 @@
 
 .pin_stick_bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
   position: sticky;
   top: 65px;
   z-index: 3;

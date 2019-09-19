@@ -32,6 +32,10 @@ export default class PinShow extends React.Component {
             <div className="pin_menu">
               <i className="fas fa-ellipsis-h ell-show"></i>
             </div>
+            <div className="pin-show-share">
+              <i class='fas fa-share-alt'></i>
+              &nbsp;&nbsp;Share
+            </div>
             <div className="pin-show-save">
               <i class="fas fa-thumbtack"></i>
               &nbsp;&nbsp;Save
