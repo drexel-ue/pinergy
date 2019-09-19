@@ -154,7 +154,7 @@
 
 .UserTasks {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   height: 300px;
   width: 322px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
@@ -246,7 +246,7 @@
   width: 45px;
 }
 
-.fa-ellipsis-h:hover {
+/* .fa-ellipsis-h:hover {
   background-color: lightgrey;
   cursor: pointer;
-}
+} */
