@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 
 exports.scrape = async url => {
+  // debugger
   const browser = await puppeteer.launch();
 
   try {
@@ -22,6 +23,7 @@ exports.scrape = async url => {
 
     return data;
   } catch (e) {
+    debugger
     browser.close();
     return e.toString();
   }

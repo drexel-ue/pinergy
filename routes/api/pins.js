@@ -42,7 +42,7 @@ router.post("/scrape", async (req, res) => {
 
 router.post("/createpin", (req, res) => {
   debugger;
-  singleUpload(req.body, res, err => {
+  singleUpload(req, res, err => {
       if (err) {
         return res.status(422).send({
           errors: [{ title: "File type error", detail: err.message }]

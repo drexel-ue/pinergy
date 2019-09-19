@@ -3,7 +3,8 @@ import { Icon } from "react-icons-kit";
 import { remove } from "react-icons-kit/fa/remove";
 import "./pin_creator.css";
 import Dropzone from "react-dropzone";
-
+import Scrape from "./scrape_container"
+const ImageApi = require("../../util/image_util")
 export default class PinCreator extends React.Component {
   constructor(props) {
     super(props);
@@ -106,6 +107,7 @@ export default class PinCreator extends React.Component {
 
   //------------- handle funcs
   handleOnDrop = (files, rejectedFiles) => {
+    // debugger
     //handles image drop
     if (rejectedFiles && rejectedFiles.length > 0) {
       this.verifyFile(rejectedFiles);
@@ -116,27 +118,65 @@ export default class PinCreator extends React.Component {
         const currentFile = files[0];
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
+          // debugger
           this.setState({
             image: myFileItemReader.result
           });
         };
-
         myFileItemReader.readAsDataURL(currentFile);
       }
     }
   };
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
-    let reqData = {
-      id: this.state.id,
-      title: this.state.title,
-      description: this.state.description,
-      boardId: this.state.boardId,
-      destination_link: this.state.destination_link,
-      image: this.state.image
-    };
-    this.props.createPins(reqData);
+    // let reqData = {
+    //   id: this.state.id,
+    //   title: this.state.title,
+    //   description: this.state.description,
+    //   boardId: this.state.boardId,
+    //   destination_link: this.state.destination_link,
+    //   image: this.state.image
+    // };
+    const formData = new FormData();
+    const image = this.state.image
+    const byteCharacters = atob(image.slice(23));
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'image/jpeg' });
+    // const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
+    //   const byteCharacters = atob(b64Data);
+    //   const byteArrays = [];
+
+    //   for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    //     const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    //     const byteNumbers = new Array(slice.length);
+    //     for (let i = 0; i < slice.length; i++) {
+    //       byteNumbers[i] = slice.charCodeAt(i);
+    //     }
+
+    //     const byteArray = new Uint8Array(byteNumbers);
+    //     byteArrays.push(byteArray);
+    //   }
+
+      // const blob = new Blob(byteArrays, { type: contentType });
+      // return blob;
+    // }
+    // const blob = b64toBlob(b64Data, contentType);
+    // const blobUrl = URL.createObjectURL(blob);
+    debugger
+    formData.set("image", blob)
+    window.formData = formData
+    console.log(formData.get("image"))
+    const res = await ImageApi.getAwsUrl(formData)
+    // debugger
+    console.log(res)
+    
+    // this.props.createPins(formData);
   }
 
   handleBoard(e) {
@@ -320,7 +360,7 @@ export default class PinCreator extends React.Component {
     } else {
       return (
         <div>
-          
+          <Scrape scrapeUrl={this.state.scrapeUrl}/>
       </div>
     )}
   }

@@ -1,16 +1,15 @@
 import { connect } from "react-redux";
-import { fetchUser } from "../../actions/user_actions";
-import { createPins } from "../../actions/pin_actions";
-import { fetchUserBoards } from "../../actions/board_actions";
+import { scrapeUrls } from "../../actions/scrape_actions"
 
 import Scrape from "./scrape";
 
-
+// const mapStateToProps = (state) => {
+//   debugger 
+  
+//   }
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCurrentUser: id => dispatch(fetchUser(id)),
-    createPins: data => dispatch(createPins(data)),
-    fetchUserBoards: id => dispatch(fetchUserBoards(id))
+    scrapeUrls: url => dispatch(scrapeUrls(url))
   };
 };
 

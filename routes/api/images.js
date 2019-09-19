@@ -3,8 +3,7 @@ const router = express.Router();
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
-const scraper = require("../../util/scrape");
-
+const scrape = require("../../util/scrape").scrape;
 router.post("/image-upload", function(req, res) {
   debugger
   singleUpload(req, res, function(err) {
@@ -17,7 +16,7 @@ router.post("/image-upload", function(req, res) {
     const image = new Image({
       url: req.file.location
     });
-    debugger
+    // debugger
     image.save().then(res2 => {
       return res.json({ imageUrl: res2.url, id: res2.id})
     });
@@ -26,6 +25,11 @@ router.post("/image-upload", function(req, res) {
   });
 });
 
-router.get("")
+router.post("/scrape", async (req, res) => {
+  // debugger
+  const urls = await scrape(req.body.url);
+//  debugger
+  return urls
+});
 
 module.exports = router;
