@@ -1,11 +1,17 @@
+.pin-show-outer {
+  display: flex;
+  justify-content: center;
+  height: 800px;
+  background-color: #efefef;
+}
+
 .pin_show_image_wrapper {
   position: relative;
-  padding-top: 100px;
   display: flex;
+  padding-top: 50px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
   background-color: #efefef;
 }
 
@@ -23,11 +29,10 @@
 }
 
 .pin-show-right {
-  /* width: 40%; */
   border-radius: 0 0 12px 0;
   padding: 40px 40px 40px 0;
   width: 450px;
-  height: 750px;
+  height: 600px;
 }
 
 .pin-show-image {
@@ -38,7 +43,7 @@
   border-radius: 0 0 0 12px;
   padding: 40px 0 40px 40px;
   width: 450px;
-  height: 750px;
+  height: 600px;
 }
 
 .pin-show-link {
