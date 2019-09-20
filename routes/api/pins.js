@@ -40,22 +40,50 @@ router.post("/scrape", async (req, res) => {
   const urls = await scraper(req.body.url);
 });
 
-router.post("/createpin", (req, res) => {
-  const pin = new Pin({
-    user: req.body.data.id,
-    board: req.body.data.boardId,
-    image: req.body.data.image,
-    url: req.body.data.url,
-    title: req.body.data.title,
-    description: req.body.data.description,
-    destinationLink: req.body.data.destinationLink,
-    // tags: [board.title]
-  });
-  pin.save().then(pin => {
-    res.json(pin);
-  })
- 
-
+router.post("/createpin", async (req, res) => {
+  // debugger
+  let pin;
+  if (req.body.data.scrapedImageUrl) {
+    const image = await new Image({
+      url: req.body.data.scrapedImageUrl
+    });
+    image.save().then(res2 => {
+      // debugger
+      pin = new Pin({
+        user: req.body.data.id,
+        board: req.body.data.boardId,
+        image: res2.id,
+        url: res2.url,
+        title: req.body.data.title,
+        description: req.body.data.description,
+        destinationLink: req.body.data.destinationLink
+        // tags: [board.title]
+      });
+      pin.save().then(pin => {
+        // debugger
+        res.json(pin);
+      });
+    });
+  } else {
+    // debugger
+    pin = new Pin({
+      user: req.body.data.id,
+      board: req.body.data.boardId,
+      image: req.body.data.image,
+      url: req.body.data.url,
+      title: req.body.data.title,
+      description: req.body.data.description,
+      destinationLink: req.body.data.destinationLink
+      // tags: [board.title]
+    });
+    pin.save().then(pin => {
+      res.json(pin);
+    });
+  }
+  // debugger;
+  // pin.save().then(pin => {
+  //   res.json(pin);
+  // });
 });
 
 router.post("/get", async (req, res) => {
