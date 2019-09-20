@@ -400,4 +400,17 @@
     width: 300px;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.remove-btn-cont {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rmvicon:hover {
+    cursor: pointer;
 }

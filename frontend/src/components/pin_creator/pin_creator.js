@@ -280,11 +280,19 @@ class PinCreator extends React.Component {
     const { image, scrapedImage } = this.state;
     return image !== null ? (
       <div className="prev-image-cont">
+        <div className="remove-btn-cont">
+          {this.renderRemovebtn()}
+        </div>
         <img src={image} className="imgprvw" />
+
       </div>
     ) : (
       <div className="prev-image-cont">
+            <div className="remove-btn-cont">
+            {this.renderRemovebtn()}
+          </div>
         <img src={scrapedImage} className="imgprvw" />
+
       </div>
     );
   }
@@ -327,7 +335,7 @@ class PinCreator extends React.Component {
                   </div>
                 </div>
               )}
-              {this.renderRemovebtn()}
+              {/* {this.renderRemovebtn()} */}
               {image === null && scrapedImage === null ? (
                 this.renderInput()
               ) : (
