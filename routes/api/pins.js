@@ -21,7 +21,7 @@ const validateUpdate = require("../../validation/update_user");
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
-
+//
 const scraper = require("../../util/scrape");
 
 router.post("/query", async (req, res) => {
@@ -95,4 +95,8 @@ router.post("/get", async (req, res) => {
   }
 });
 
+
+router.post("/getpins", async (req, res) => {
+  debugger
+})
 module.exports = router;

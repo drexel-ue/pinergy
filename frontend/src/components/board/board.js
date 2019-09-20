@@ -35,7 +35,7 @@ class Board extends React.Component {
       return (
         <div className="profile-boards-cover">
             {this.props.boards.map(b => (
-              <BoardItemContainer key={b._id} board={b} />
+              <BoardItemContainer key={b._id} board={b} boardId={b._id} />
             ))}
         </div>
       );

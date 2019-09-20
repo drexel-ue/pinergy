@@ -6,3 +6,5 @@ export const createPins = data =>
   Axios.post("/api/pins/createpin", {
     data
   });
+
+export const findBoardPins = boardId => Axios.post("/api/pins/getpins", boardId)
