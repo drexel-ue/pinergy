@@ -294,3 +294,16 @@
     outline: none;
     border-bottom: 1px solid #858585;
 }
+
+.scrape-image {
+    width: 270px;
+    /* height: auto; */
+    object-fit: cover;
+    margin: 25px;
+    border-radius: 30px;
+}
+
+.scrape-masonry {
+    margin: 0 auto;
+    width: 80% !important;
+}

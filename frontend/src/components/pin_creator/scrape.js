@@ -1,5 +1,14 @@
 import React, { Component } from "react";
+import Masonry from "react-masonry-component";
 import "./pin_creator.css";
+
+const masonryOptions = {
+  transitionDuration: 650,
+  itemSelector: ".home-pin-wrap",
+  columnWidth: 270,
+  fitWidth: true
+};
+
 
 export default class Scrape extends Component {
   constructor(props) {
@@ -55,16 +64,22 @@ export default class Scrape extends Component {
             )}
           </div>
         </div>
-        <div>
-          {this.props.scrapedUrls.map((url, idx) => (
-            <img
-              key={idx}
-              id={`pic${idx}`}
-              src={url}
-              onClick={this.selectImage}
-            />
-          ))}
-        </div>
+          <Masonry
+            className="scrape-masonry"
+            elementType="div"
+            updateOnEachImageLoad={true}
+            options={masonryOptions}
+          >
+            {this.props.scrapedUrls.map((url, idx) => (
+              <img
+                key={idx}
+                className="scrape-image"
+                id={`pic${idx}`}
+                src={url}
+                onClick={this.selectImage}
+              />
+            ))}
+          </Masonry>
       </div>
     );
   }
