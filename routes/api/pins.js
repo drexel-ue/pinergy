@@ -21,6 +21,7 @@ const validateUpdate = require("../../validation/update_user");
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
+const Board = require("../../models/Board")
 //
 const scraper = require("../../util/scrape");
 
@@ -60,7 +61,9 @@ router.post("/createpin", async (req, res) => {
         // tags: [board.title]
       });
       pin.save().then(pin => {
-        // debugger
+        const board = Board.findById(req.body.data.boardId)
+        board.pins.push(pin.id)
+        board.save()
         res.json(pin);
       });
     });
@@ -77,6 +80,9 @@ router.post("/createpin", async (req, res) => {
       // tags: [board.title]
     });
     pin.save().then(pin => {
+      const board = Board.findById(req.body.data.boardId)
+      board.pins.push(pin.id)
+      board.save()
       res.json(pin);
     });
   }
@@ -97,6 +103,8 @@ router.post("/get", async (req, res) => {
 
 
 router.post("/getpins", async (req, res) => {
-  debugger
+  // debugger
+  const pins = await Pin.find({ board: req.body.boardId })
+  res.json(pins)
 })
 module.exports = router;
