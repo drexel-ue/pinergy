@@ -20,7 +20,7 @@ exports.scrape = async url => {
 
     browser.close();
 
-    return data;
+    return data.slice(1);
   } catch (e) {
     browser.close();
     return e.toString();

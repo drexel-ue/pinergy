@@ -20,10 +20,17 @@ router.post("/image-upload", function(req, res) {
     // return res.json({ imageUrl: req.file.location });
   });
 });
-
+// TODO: code underneat prior to fix wasnt returning anything
+// when writtne line 29 as "return url"
+// fixed by res.json-ing return value
 router.post("/scrape", async (req, res) => {
+  // debugger
+  try {
   const urls = await scrape(req.body.url);
-  return urls
+    return res.json({ urls: urls })
+  } catch (err) {
+    res.json({ err: err })
+  }
 });
 
 module.exports = router;

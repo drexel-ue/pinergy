@@ -17,6 +17,7 @@ class PinCreator extends React.Component {
       boardId: "",
       destination_link: "",
       scrapeUrl: "",
+      scrapedPhotos: [],
       image: null,
       showDropDown: false,
       inputUrl: false,
@@ -30,6 +31,7 @@ class PinCreator extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
     this.handleScrape = this.handleScrape.bind(this);
+    this.toggleOffScrapedImages = this.toggleOffScrapedImages.bind(this)
     // this.handleChange = this.handleChange.bind(this)
   }
   componentDidMount() {
@@ -74,6 +76,10 @@ class PinCreator extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     this.setState({ showDropDown: !this.state.showDropDown });
+  }
+
+  toggleOffScrapedImages() {
+    this.setState({renderScrape: false, scrapeUrl: ""})
   }
 
   //// -------------- misc func
@@ -129,6 +135,7 @@ class PinCreator extends React.Component {
     }
   };
 
+
   async handleSubmit(e) {
     e.preventDefault();
 
@@ -180,9 +187,13 @@ class PinCreator extends React.Component {
       });
   }
 
-  handleScrape(e) {
+  async handleScrape(e) {
     e.preventDefault();
+    // debugger 
+    const urlList = await ImageApi.scrape(this.state.scrapeUrl)
+    // debugger 
     this.setState({
+      scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
     });
   }
@@ -345,7 +356,8 @@ class PinCreator extends React.Component {
     } else {
       return (
         <div>
-          <Scrape scrapeUrl={this.state.scrapeUrl} />
+          <Scrape scrapedUrls={this.state.scrapedPhotos}
+            cancel={this.toggleOffScrapedImages}/>
         </div>
       );
     }
