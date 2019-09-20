@@ -50,8 +50,9 @@ export default class Scrape extends Component {
     const { selectedImageUrl } = this.state;
     // debugger;
     return (
-      <div className="pin-create-container">
-        <div>
+      <div className="scrape-page">
+        <div className="scrape-contatiner">
+        <div className="scrape-top">
           <div>
             <div>Upload from the web</div>
           </div>
@@ -80,6 +81,7 @@ export default class Scrape extends Component {
               />
             ))}
           </Masonry>
+      </div>
       </div>
     );
   }

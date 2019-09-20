@@ -296,14 +296,33 @@
 }
 
 .scrape-image {
-    width: 270px;
-    /* height: auto; */
+    width: 236px;
     object-fit: cover;
-    margin: 25px;
+    margin: 15px;
     border-radius: 30px;
 }
 
 .scrape-masonry {
     margin: 0 auto;
-    width: 80% !important;
+    width: 90% !important;
+    height: 80% !important;
+    padding: 40px;
+    /* margin: 115px 50px 0 50px;
+     */
+}
+
+.scrape-page {
+    height: 800px;
+    width: 100%;
+    display: flex;
+    background-color: #efefef;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+}
+
+.scrape-contatiner {
+    background-color: white;
+    width: 80%;
 }
