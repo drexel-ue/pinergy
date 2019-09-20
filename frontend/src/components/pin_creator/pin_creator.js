@@ -112,7 +112,7 @@ class PinCreator extends React.Component {
   }
   removeAllLoadedFile() {
     //logic for remove button
-    this.setState({ image: null });
+    this.setState({ image: null, scrapedImage: null });
   }
 
   //------------- handle funcs
@@ -199,7 +199,7 @@ class PinCreator extends React.Component {
   }
   // -------------- ALL RENDERS
   renderRemovebtn() {
-    return this.state.image !== null ? (
+    return this.state.image !== null || this.state.scrapedImage !== null? (
       <Icon
         icon={remove}
         className="rmvicon"
@@ -312,7 +312,7 @@ class PinCreator extends React.Component {
                 </div>
               )}
               {this.renderRemovebtn()}
-              {image === null ? this.renderInput() : <div />}
+              {image === null && scrapedImage === null ? this.renderInput() : <div />}
             </div>
 
             <div className="pin-create-left">
