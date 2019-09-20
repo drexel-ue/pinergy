@@ -18,6 +18,7 @@ class PinCreator extends React.Component {
       destination_link: "",
       scrapeUrl: "",
       scrapedPhotos: [],
+      scrapedImage: "",
       image: null,
       showDropDown: false,
       inputUrl: false,
@@ -31,8 +32,9 @@ class PinCreator extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
     this.handleScrape = this.handleScrape.bind(this);
-    this.toggleOffScrapedImages = this.toggleOffScrapedImages.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
+    this.toggleOffScrapedImages = this.toggleOffScrapedImages.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAddPin = this.handleAddPin.bind(this);
   }
   componentDidMount() {
     // this is for toggling off by clicking any where on the windwo
@@ -79,7 +81,7 @@ class PinCreator extends React.Component {
   }
 
   toggleOffScrapedImages() {
-    this.setState({renderScrape: false, scrapeUrl: ""})
+    this.setState({ renderScrape: false, scrapeUrl: "" });
   }
 
   //// -------------- misc func
@@ -113,6 +115,10 @@ class PinCreator extends React.Component {
   }
 
   //------------- handle funcs
+
+  handleAddPin(imgUrl) {
+    this.setState({ image: imgUrl });
+  }
   handleOnDrop = (files, rejectedFiles) => {
     //
     //handles image drop
@@ -134,7 +140,6 @@ class PinCreator extends React.Component {
       }
     }
   };
-
 
   async handleSubmit(e) {
     e.preventDefault();
@@ -161,15 +166,9 @@ class PinCreator extends React.Component {
       destination_link: this.state.destination_link,
       image: res.data.id
     };
-    //
     this.props.createPins(reqData).then(res => {
       this.props.history.push(`/pins/${res._id}`);
     });
-    //
-
-    // this.props.history.push(`/pins/${this.props.pinId}`);
-
-    //  ;
   }
 
   handleBoard(e) {
@@ -189,9 +188,9 @@ class PinCreator extends React.Component {
 
   async handleScrape(e) {
     e.preventDefault();
-    // debugger 
-    const urlList = await ImageApi.scrape(this.state.scrapeUrl)
-    // debugger 
+    // debugger
+    const urlList = await ImageApi.scrape(this.state.scrapeUrl);
+    // debugger
     this.setState({
       scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
@@ -264,7 +263,7 @@ class PinCreator extends React.Component {
   }
   render() {
     const maxImgSize = 10000000;
-    const { image, boardName } = this.state;
+    const { image, boardName, scrapedImage } = this.state;
     const user = this.props.currentUser;
     const acceptedFileTypes =
       "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
@@ -302,7 +301,8 @@ class PinCreator extends React.Component {
                 </div>
               )}
               {this.renderRemovebtn()}
-              {this.renderInput()}
+              {image === null ? this.renderInput() :
+                <div />}
             </div>
 
             <div className="pin-create-left">
@@ -356,8 +356,11 @@ class PinCreator extends React.Component {
     } else {
       return (
         <div>
-          <Scrape scrapedUrls={this.state.scrapedPhotos}
-            cancel={this.toggleOffScrapedImages}/>
+          <Scrape
+            scrapedUrls={this.state.scrapedPhotos}
+            cancel={this.toggleOffScrapedImages}
+            addpin={this.handleAddPin}
+          />
         </div>
       );
     }

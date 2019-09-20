@@ -11,17 +11,23 @@ export default class Scrape extends Component {
     };
     this.cancelScrape = this.cancelScrape.bind(this);
     this.selectImage = this.selectImage.bind(this);
+    this.addPin = this.addPin.bind(this)
   }
+  addPin(e) {
+    e.preventDefault();
+    this.props.addpin(this.state.selectedImageUrl)
 
+    this.props.cancel();
+  }
   selectImage(e) {
     e.preventDefault();
     // debugger
-    if (this.state.preveSelectedImageId.length !== 0) {
+    if (this.state.prevSelectedImageId.length !== 0) {
       document.getElementById(this.state.prevSelectedImageId);
     }
     this.setState({
       selectedImageUrl: e.target.currentSrc,
-      prevSelectedImageId: e.targe.id
+      prevSelectedImageId: e.target.id
     });
   }
 
