@@ -279,9 +279,13 @@ class PinCreator extends React.Component {
   renderPreview() {
     const { image, scrapedImage } = this.state;
     return image !== null ? (
-      <img src={image} className="imgprvw" />
+      <div className="prev-image-cont">
+        <img src={image} className="imgprvw" />
+      </div>
     ) : (
-      <img src={scrapedImage} className="imgprvw" />
+      <div className="prev-image-cont">
+        <img src={scrapedImage} className="imgprvw" />
+      </div>
     );
   }
   render() {
@@ -298,7 +302,6 @@ class PinCreator extends React.Component {
               {image !== null || scrapedImage !== null ? (
                 this.renderPreview()
               ) : (
-                // <img src={image} className="imgprvw" />
                 <div className="file-border-wrap">
                   <div className="file-border">
                     <div className="file-label">

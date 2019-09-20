@@ -133,8 +133,8 @@
     justify-content: center;
 }
 .imgprvw{
-    width:90%;
-    height:90%;
+    width:300px;
+    object-fit: cover;
 }
 .filebrserip {
     display:none;
@@ -393,4 +393,11 @@
 
 .select-image {
     border: 5px solid red;
+}
+
+.prev-image-cont {
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
 }
