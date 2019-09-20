@@ -16,14 +16,16 @@ const receivePinError = () => ({
   type: RECEIVE_PIN_ERROR
 });
 //
-export const fetchBoardPins = boardId => dispatch => 
+export const fetchBoardPins = boardId => dispatch => {
   // debugger
-  ApiUtil.findBoardPins(boardId).then(res =>{
+  return ApiUtil.findBoardPins(boardId).then(res => {
     // debugger
     dispatch(receivePins(res.data))
+    return res.data
   }).catch(error => {
     dispatch(receivePinError())
   })
+}
 
 
 export const fetchPins = tags => dispatch =>
