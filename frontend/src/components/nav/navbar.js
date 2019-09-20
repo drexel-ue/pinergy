@@ -161,13 +161,21 @@ class NavBar extends React.Component {
 }
 
 const user_tasks = [
-  "Tune your home feed",
-  "Edit settings",
-  "Ads support",
-  "Request a feature",
-  "Get help",
-  "See terms and privacy",
-  "Add account"
+  <Link className="nav-drop-link" to={"/settings/edit-profile"}>
+    Edit settings
+  </Link>,
+  <Link to={"/project-details"} className="nav-drop-link">
+    Project Details
+  </Link>,
+  <a 
+    href="https://github.com/drexel-ue/pinergy" 
+    className="nav-drop-link"
+    target="_blank">
+    Github Repo
+  </a>,
+  <Link to={"/request-feature"} className="nav-drop-link">
+    Request a feature
+  </Link>,
 ];
 
 export default withRouter(NavBar);
