@@ -92,7 +92,6 @@ router.post("/get", async (req, res) => {
   const tags = req.body.tags;
   if (tags.length === 0) {
     const pins = await Pin.find().limit(20);
-
     res.json(pins);
   }
 });
