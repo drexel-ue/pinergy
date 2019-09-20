@@ -5,22 +5,14 @@ import { fetchUserBoards } from "../../actions/board_actions";
 
 import PinCreator from "./pin_creator";
 const mapStateToProps = ({ session, entities }) => {
-  //
   let boards;
-  let pinId;
-  if (entities.pins) {
-    //
-    pinId = Object.keys(entities.pins)[0];
-  }
   if (entities.boards.user) {
     boards = Object.values(entities.boards.user);
-    //
   }
   return {
     currentUser: entities.users[session.user.id],
     id: session.user.id,
-    boards: boards,
-    pinId: pinId
+    boards: boards
   };
 };
 
