@@ -383,8 +383,13 @@
 
 .scrape-add-en {
     background-color: #e60023;
+    color: white;
 }
 
 .scrape-add-dis {
     color: #8e8e8e;
+}
+
+.select-image {
+    border: 2px solid red;
 }

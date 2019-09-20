@@ -30,25 +30,37 @@ export default class Scrape extends Component {
   }
   selectImage(e) {
     e.preventDefault();
-    // debugger
+    e.currentTarget.classList.add("select-image")
     if (this.state.prevSelectedImageId.length !== 0) {
-      document.getElementById(this.state.prevSelectedImageId);
+      const ele = document.getElementById(this.state.prevSelectedImageId);
+      ele.classList.remove("select-image")
     }
+
     this.setState({
-      selectedImageUrl: e.target.currentSrc,
-      prevSelectedImageId: e.target.id
+      selectedImageUrl: e.currentTarget.currentSrc,
+      prevSelectedImageId: e.currentTarget.id
     });
+
+    // const ele2 = document.getElementById(e.);
+    // debugger;
+    //   ele2.classList.add("select-image")
+
   }
 
   cancelScrape(e) {
     e.preventDefault();
-
     this.props.cancel();
   }
 
+  // highlightImage(url) {
+  //   // ele = document.getElementById(id)
+  //   return {
+  //     border: url = this.state.selectedImageUrl ? "1px solid red" : "none;"
+  //   };
+  // }
+
   render() {
     const { selectedImageUrl } = this.state;
-    // debugger;
     return (
       <div className="scrape-page">
         <div className="scrape-contatiner">
@@ -78,8 +90,9 @@ export default class Scrape extends Component {
             {this.props.scrapedUrls.map((url, idx) => (
               <img
                 key={idx}
+                // style={this.highlightImage(url)}
                 className="scrape-image"
-                id={`pic${idx}`}
+                id={url}
                 src={url}
                 onClick={this.selectImage}
               />
