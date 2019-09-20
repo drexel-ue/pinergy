@@ -11,9 +11,12 @@ import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
 import EditProfile from "./nav/edit_profile";
+import Loader from "./loader/loader";
 
 class App extends React.Component {
+  
   render() {
+   
     return (
       <div>
         <ModalContainer />

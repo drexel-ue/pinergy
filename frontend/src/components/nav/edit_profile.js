@@ -47,7 +47,7 @@ class EditProfile extends React.Component {
           <div className="PhotoTag">About your profile</div>
           <textarea className="AboutInput"></textarea>
           <div className="PhotoTag">Location</div>
-          <input type="text" placeholder="location" />
+          <input type="text" placeholder="location" className="Input1" />
           <div className="PhotoTag">Featured Boards</div>
           <div>
             {" "}
