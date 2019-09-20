@@ -41,6 +41,15 @@ router.post("/scrape", async (req, res) => {
 });
 
 router.post("/createpin", (req, res) => {
+  // debugger
+  if (req.body.scrapedImageUrl) {
+    const image = new Image({
+      url: req.body.scrapedImageUrl
+    })
+    image.save().then(res => {
+      debugger
+    })
+  }
   const pin = new Pin({
     user: req.body.data.id,
     board: req.body.data.boardId,

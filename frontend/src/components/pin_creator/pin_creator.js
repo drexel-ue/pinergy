@@ -35,7 +35,7 @@ class PinCreator extends React.Component {
     this.toggleOffScrapedImages = this.toggleOffScrapedImages.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleAddPin = this.handleAddPin.bind(this);
-    this.renderPreview = this.renderPreview.bind(this)
+    this.renderPreview = this.renderPreview.bind(this);
   }
   componentDidMount() {
     // this is for toggling off by clicking any where on the windwo
@@ -144,29 +144,42 @@ class PinCreator extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    let reqData;
+    if (this.state.image !== null) {
+      const formData = new FormData();
+      const image = this.state.image;
+      const byteCharacters = atob(image.slice(23));
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: "image/jpeg" });
 
-    const formData = new FormData();
-    const image = this.state.image;
-    const byteCharacters = atob(image.slice(23));
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
+      formData.set("image", blob);
+      window.formData = formData;
+      const res = await ImageApi.getAwsUrl(formData);
+      reqData = {
+        id: this.state.id,
+        title: this.state.title,
+        description: this.state.description,
+        url: res.data.imageUrl,
+        boardId: this.state.boardId,
+        destination_link: this.state.destination_link,
+        image: res.data.id
+      };
+    } else if (this.state.scrapedImage !== null) {
+      reqData = {
+        id: this.state.id,
+        title: this.state.title,
+        description: this.state.description,
+        scrapedImageUrl: this.state.scrapedImage,
+        boardId: this.state.boardId,
+        destination_link: this.state.destination_link,
+        // image: res.data.id
+      };
     }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: "image/jpeg" });
 
-    formData.set("image", blob);
-    window.formData = formData;
-    const res = await ImageApi.getAwsUrl(formData);
-    let reqData = {
-      id: this.state.id,
-      title: this.state.title,
-      description: this.state.description,
-      url: res.data.imageUrl,
-      boardId: this.state.boardId,
-      destination_link: this.state.destination_link,
-      image: res.data.id
-    };
     this.props.createPins(reqData).then(res => {
       this.props.history.push(`/pins/${res._id}`);
     });
@@ -199,7 +212,7 @@ class PinCreator extends React.Component {
   }
   // -------------- ALL RENDERS
   renderRemovebtn() {
-    return this.state.image !== null || this.state.scrapedImage !== null? (
+    return this.state.image !== null || this.state.scrapedImage !== null ? (
       <Icon
         icon={remove}
         className="rmvicon"
@@ -264,7 +277,7 @@ class PinCreator extends React.Component {
   }
 
   renderPreview() {
-    const {image, scrapedImage} = this.state
+    const { image, scrapedImage } = this.state;
     return image !== null ? (
       <img src={image} className="imgprvw" />
     ) : (
@@ -282,10 +295,10 @@ class PinCreator extends React.Component {
         <div className="pin-create-container">
           <form className="pin-create-inner">
             <div className="pin-create-right">
-              {(image !== null || scrapedImage !== null )? (
+              {image !== null || scrapedImage !== null ? (
                 this.renderPreview()
-                // <img src={image} className="imgprvw" />
               ) : (
+                // <img src={image} className="imgprvw" />
                 <div className="file-border-wrap">
                   <div className="file-border">
                     <div className="file-label">
@@ -312,7 +325,11 @@ class PinCreator extends React.Component {
                 </div>
               )}
               {this.renderRemovebtn()}
-              {image === null && scrapedImage === null ? this.renderInput() : <div />}
+              {image === null && scrapedImage === null ? (
+                this.renderInput()
+              ) : (
+                <div />
+              )}
             </div>
 
             <div className="pin-create-left">
