@@ -158,18 +158,13 @@ class PinCreator extends React.Component {
     this.props.createPins(reqData).then(res => {
       this.props.history.push(`/pins/${res._id}`);
     });
-    //
-
-    // this.props.history.push(`/pins/${this.props.pinId}`);
-
-    //  ;
   }
 
   handleBoard(e) {
     e.preventDefault();
     this.setState({
-      boardName: e.target.textContent,
-      boardId: e.target.attributes.value.value
+      boardName: e.currentTarget.textContent,
+      boardId: e.currentTarget.attributes.value.value
     });
   }
 
@@ -241,7 +236,7 @@ class PinCreator extends React.Component {
               value={ele._id}
               name={ele.title}
             >
-              <div className="board-item-image">{ele.title}</div>
+              <div>{ele.title}</div>
             </div>
           );
         })}
