@@ -300,6 +300,7 @@
     object-fit: cover;
     margin: 15px;
     border-radius: 30px;
+    box-sizing: border-box;
 }
 
 .scrape-masonry {
@@ -391,5 +392,5 @@
 }
 
 .select-image {
-    border: 2px solid red;
+    border: 5px solid red;
 }
