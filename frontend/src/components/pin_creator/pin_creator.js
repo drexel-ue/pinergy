@@ -15,7 +15,7 @@ class PinCreator extends React.Component {
       description: "",
       boardName: "",
       boardId: "",
-      destination_link: "",
+      destinationLink: "",
       scrapeUrl: "",
       scrapedPhotos: [],
       scrapedImage: null,
@@ -165,7 +165,7 @@ class PinCreator extends React.Component {
         description: this.state.description,
         url: res.data.imageUrl,
         boardId: this.state.boardId,
-        destination_link: this.state.destination_link,
+        destinationLink: this.state.destinationLink,
         image: res.data.id
       };
     } else if (this.state.scrapedImage !== null) {
@@ -175,7 +175,7 @@ class PinCreator extends React.Component {
         description: this.state.description,
         scrapedImageUrl: this.state.scrapedImage,
         boardId: this.state.boardId,
-        destination_link: this.state.destination_link,
+        destinationLink: this.state.destinationLink,
         // image: res.data.id
       };
     }
@@ -371,8 +371,8 @@ class PinCreator extends React.Component {
                 type="text"
                 className="pin-link-input"
                 placeholder="Add a destination link"
-                value={this.state.destination_link}
-                onChange={this.handleChange("destination_link")}
+                value={this.state.destinationLink}
+                onChange={this.handleChange("destinationLink")}
               />
             </div>
           </form>

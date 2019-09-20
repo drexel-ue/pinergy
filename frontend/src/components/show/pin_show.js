@@ -7,7 +7,8 @@ export default class PinShow extends React.Component {
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   parseDestinationLink() {
     let hostDomain;
@@ -23,6 +24,7 @@ export default class PinShow extends React.Component {
   }
 
   render() {
+    // debugger
     return (
       <div className="pin_show_image_wrapper">
         <div className="pin-show-left">
