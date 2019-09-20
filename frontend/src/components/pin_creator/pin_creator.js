@@ -18,7 +18,7 @@ class PinCreator extends React.Component {
       destination_link: "",
       scrapeUrl: "",
       scrapedPhotos: [],
-      scrapedImage: "",
+      scrapedImage: null,
       image: null,
       showDropDown: false,
       inputUrl: false,
@@ -35,6 +35,7 @@ class PinCreator extends React.Component {
     this.toggleOffScrapedImages = this.toggleOffScrapedImages.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleAddPin = this.handleAddPin.bind(this);
+    this.renderPreview = this.renderPreview.bind(this)
   }
   componentDidMount() {
     // this is for toggling off by clicking any where on the windwo
@@ -117,7 +118,7 @@ class PinCreator extends React.Component {
   //------------- handle funcs
 
   handleAddPin(imgUrl) {
-    this.setState({ image: imgUrl });
+    this.setState({ scrapedImage: imgUrl });
   }
   handleOnDrop = (files, rejectedFiles) => {
     //
@@ -261,6 +262,15 @@ class PinCreator extends React.Component {
       <div className="hide-div" />
     );
   }
+
+  renderPreview() {
+    const {image, scrapedImage} = this.state
+    return image !== null ? (
+      <img src={image} className="imgprvw" />
+    ) : (
+      <img src={scrapedImage} className="imgprvw" />
+    );
+  }
   render() {
     const maxImgSize = 10000000;
     const { image, boardName, scrapedImage } = this.state;
@@ -272,8 +282,9 @@ class PinCreator extends React.Component {
         <div className="pin-create-container">
           <form className="pin-create-inner">
             <div className="pin-create-right">
-              {image !== null ? (
-                <img src={image} className="imgprvw" />
+              {(image !== null || scrapedImage !== null )? (
+                this.renderPreview()
+                // <img src={image} className="imgprvw" />
               ) : (
                 <div className="file-border-wrap">
                   <div className="file-border">
@@ -301,8 +312,7 @@ class PinCreator extends React.Component {
                 </div>
               )}
               {this.renderRemovebtn()}
-              {image === null ? this.renderInput() :
-                <div />}
+              {image === null ? this.renderInput() : <div />}
             </div>
 
             <div className="pin-create-left">
