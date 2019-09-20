@@ -60,8 +60,8 @@ router.post("/createpin", async (req, res) => {
         destinationLink: req.body.data.destinationLink
         // tags: [board.title]
       });
-      pin.save().then(pin => {
-        const board = Board.findById(req.body.data.boardId)
+      pin.save().then(async pin => {
+        const board = await Board.findById(req.body.data.boardId)
         board.pins.push(pin.id)
         board.save()
         res.json(pin);
@@ -79,9 +79,10 @@ router.post("/createpin", async (req, res) => {
       destinationLink: req.body.data.destinationLink
       // tags: [board.title]
     });
-    pin.save().then(pin => {
-      const board = Board.findById(req.body.data.boardId)
+    pin.save().then(async pin => {
+      const board = await Board.findById(req.body.data.boardId)
       board.pins.push(pin.id)
+      
       board.save()
       res.json(pin);
     });

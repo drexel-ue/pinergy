@@ -20,9 +20,9 @@ export const fetchBoardPins = boardId => dispatch =>
   // debugger
   ApiUtil.findBoardPins(boardId).then(res =>{
     // debugger
-    dispatch(receivePins(res.data)).catch(error => {
-      dispatch(receivePinError())
-    })
+    dispatch(receivePins(res.data))
+  }).catch(error => {
+    dispatch(receivePinError())
   })
 
 
