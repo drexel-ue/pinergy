@@ -145,13 +145,16 @@ class PinCreator extends React.Component {
     if (this.state.image !== null) {
       const formData = new FormData();
       const image = this.state.image;
+      // debugger
       let typeName = image.slice(5, 15);
-      if (typeName.includes("png")) {
+      if (typeName.includes("png") || typeName.includes("jpg")) {
+        // debugger
         typeName = typeName.slice(0, typeName.length - 1);
       }
-      const slicedData = image.includes("png")
+      const slicedData = (typeName.includes("png") || typeName.includes("jpg"))
         ? image.slice(22)
         : image.slice(23);
+      // debugger
       const byteCharacters = atob(slicedData);
       const byteNumbers = new Array(byteCharacters.length);
 
