@@ -16,7 +16,7 @@ export default class RequestFeature extends React.Component {
                 </div>
                 <div className="pd-right">
                     <div className="pd-desc">
-                        Pinergy web-application modeled after the popular social media website <a className="pin-a-link" target="_blank" href="https://www.pinterest.com/"> Pinterest. </a> Pinergy was built using the MERN stack over the course of 2 weeks. 
+                        Pinergy is a web-application modeled after the popular social media website, <a className="pin-a-link" target="_blank" href="https://www.pinterest.com/"> Pinterest. </a> Pinergy was built using the MERN stack over the course of 2 weeks. This application utilized web-scraping and AWS S3 to obtain and store links from URLs. Try creating a new Pin with your own image, or enter a URL and selected from a list of images found on that page.
                     </div>
                     <div className="pd-cont">
                         <div className="contributors">
