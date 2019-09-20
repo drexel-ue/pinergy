@@ -1,6 +1,9 @@
 import React from "react";
 import ProfileHeaderContainer from "./profile_head_container";
 import BoardsContainer from "../board/board_container";
+import BoardPins from "../board/board_pins"
+import { withRouter } from "react-router-dom";
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -15,10 +18,12 @@ class Profile extends React.Component {
   }
 
   render() {
+    // debugger
     return this.props.user ? (
       <div >
         <ProfileHeaderContainer />
-        <BoardsContainer user={this.props.user}/>
+        {this.props.location.pathname.includes("pins") ? <BoardPins /> :
+          <BoardsContainer user={this.props.user} />}
       </div>
     ) : (
     <div />
@@ -26,4 +31,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);
