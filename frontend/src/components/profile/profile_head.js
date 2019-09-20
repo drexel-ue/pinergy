@@ -12,7 +12,7 @@ class ProfileHead extends React.Component {
       showDropdown: false,
       showShareDropdown: false
     };
-
+    // debugger
     this.handleFollow = this.handleFollow.bind(this)
     // this.handleUnfollow = this.handleUnfollow.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -128,6 +128,7 @@ class ProfileHead extends React.Component {
 
   render() {
     const user = this.props.user;
+    const basePath = `/profile/${this.props.currentUser.username}`
     return this.props.user ? (
       <div>
         <div className="prfnav">
@@ -166,18 +167,18 @@ class ProfileHead extends React.Component {
             </div>
             <div className="prfnavv2">
               <div className="prfnavv2lft">
-                <Link className="links" to="/profile/boards">
+                <Link className="links" to={`${basePath}/boards`}>
                   Boards
                 </Link>
-                <Link className="links" to="/profile/pins">
+                <Link className="links" to={`${basePath}/pins`}>
                   Pins
                 </Link>
-                <Link className="links" to="/profile/tries">
+                {/* <Link className="links" to="`${basePath}/tries">
                   Tries
                 </Link>
-                <Link className="links" to="/profile/topics">
+                <Link className="links" to="`${basePath}/topics">
                   Topics
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
