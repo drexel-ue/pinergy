@@ -304,11 +304,9 @@
 
 .scrape-masonry {
     margin: 0 auto;
-    width: 90% !important;
+    width: 100% !important;
     height: 80% !important;
-    padding: 40px;
-    /* margin: 115px 50px 0 50px;
-     */
+    padding: 20px;
 }
 
 .scrape-page {
@@ -316,13 +314,77 @@
     width: 100%;
     display: flex;
     background-color: #efefef;
-    border-radius: 30px;
     justify-content: center;
     align-items: center;
-    padding: 80px;
+    padding: 80px 0;
 }
 
 .scrape-contatiner {
     background-color: white;
+    border-radius: 30px;
     width: 80%;
+}
+
+.scrape-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.scrape-top-right {
+    padding-left: 25px;
+    font-size: 21px;
+    color: #333;
+    letter-spacing: -.4px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bolder;
+}
+
+.scrape-top-left {
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.scrape-cancel, .scrape-add-en, .scrape-add-dis {
+    color: #333;
+    background-color: #efefef;
+    outline: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    height: 45px;
+    font-weight: bolder;
+    letter-spacing: -.4px;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+}
+
+.scrape-cancel:hover, .scrape-add-en:hover {
+    filter: brightness(0.8);
+    cursor: pointer;
+    border: none;
+}
+
+.scrape-cancel {
+    width: 80px;
+}
+
+.scrape-add-en, .scrape-add-dis {
+    width: 110px;
+}
+
+.scrape-add-en {
+    background-color: #e60023;
+}
+
+.scrape-add-dis {
+    color: #8e8e8e;
 }

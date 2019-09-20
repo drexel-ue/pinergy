@@ -53,15 +53,19 @@ export default class Scrape extends Component {
       <div className="scrape-page">
         <div className="scrape-contatiner">
         <div className="scrape-top">
-          <div>
+          <div className="scrape-top-right">
             <div>Upload from the web</div>
           </div>
-          <div>
-            <button onClick={this.cancelScrape}>Cancel</button>
+          <div className="scrape-top-left">
+            <button onClick={this.cancelScrape}
+            className="scrape-cancel">Cancel</button>
             {selectedImageUrl.length > 0 ? (
-              <button onClick={this.addPin}>Add to pin</button>
+              <button 
+              className="scrape-add-en"
+              onClick={this.addPin}>Add to Pin</button>
             ) : (
-              <div>Add to pin</div>
+              <div
+              className="scrape-add-dis">Add to Pin</div>
             )}
           </div>
         </div>
