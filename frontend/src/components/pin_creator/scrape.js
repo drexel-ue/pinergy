@@ -42,6 +42,7 @@ export default class Scrape extends Component {
     // debugger;
     return (
       <div className="pin-create-container">
+        <div className="pin-create-inner">
         <div>
           <div>
             <div>Upload from the web</div>
@@ -64,6 +65,7 @@ export default class Scrape extends Component {
               onClick={this.selectImage}
             />
           ))}
+          </div>
         </div>
       </div>
     );

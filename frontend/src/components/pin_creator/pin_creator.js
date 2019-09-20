@@ -61,7 +61,6 @@ class PinCreator extends React.Component {
   }
   toggleOffUrlInput(e) {
     e.preventDefault();
-    //
     if (this.state.inputUrl && e.target.className !== "url-selected-input") {
       this.setState({ inputUrl: false });
     }
@@ -111,7 +110,6 @@ class PinCreator extends React.Component {
     return true;
   }
   removeAllLoadedFile() {
-    //logic for remove button
     this.setState({ image: null, scrapedImage: null });
   }
 
@@ -121,7 +119,6 @@ class PinCreator extends React.Component {
     this.setState({ scrapedImage: imgUrl });
   }
   handleOnDrop = (files, rejectedFiles) => {
-    //
     //handles image drop
     if (rejectedFiles && rejectedFiles.length > 0) {
       this.verifyFile(rejectedFiles);
@@ -148,13 +145,21 @@ class PinCreator extends React.Component {
     if (this.state.image !== null) {
       const formData = new FormData();
       const image = this.state.image;
-      const byteCharacters = atob(image.slice(23));
+      let typeName = image.slice(5, 15);
+      if (typeName.includes("png")) {
+        typeName = typeName.slice(0, typeName.length - 1);
+      }
+      const slicedData = image.includes("png")
+        ? image.slice(22)
+        : image.slice(23);
+      const byteCharacters = atob(slicedData);
       const byteNumbers = new Array(byteCharacters.length);
+
       for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
       }
       const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray], { type: "image/jpeg" });
+      const blob = new Blob([byteArray], { type: `${typeName}` });
 
       formData.set("image", blob);
       window.formData = formData;
@@ -175,7 +180,7 @@ class PinCreator extends React.Component {
         description: this.state.description,
         scrapedImageUrl: this.state.scrapedImage,
         boardId: this.state.boardId,
-        destinationLink: this.state.destinationLink,
+        destinationLink: this.state.destinationLink
         // image: res.data.id
       };
     }
@@ -202,9 +207,7 @@ class PinCreator extends React.Component {
 
   async handleScrape(e) {
     e.preventDefault();
-    // debugger
     const urlList = await ImageApi.scrape(this.state.scrapeUrl);
-    // debugger
     this.setState({
       scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
