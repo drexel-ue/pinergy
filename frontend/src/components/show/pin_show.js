@@ -10,7 +10,7 @@ export default class PinShow extends React.Component {
   componentDidMount() {
   }
 
-  parseDestinationLink() {
+  parseDestinationLink() { 
     let hostDomain;
     let { destinationLink } = this.props.pin;
     if (destinationLink.indexOf("//") > -1) {

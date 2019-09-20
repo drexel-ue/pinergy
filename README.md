@@ -1,4 +1,4 @@
-# [Pinergy](https://pinergy.herokuapp.com/)
+# [Pinergy](https://pinergy.herokuapp.com/#/login)
 
 
 ### Members
