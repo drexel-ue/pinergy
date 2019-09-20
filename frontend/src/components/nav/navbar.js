@@ -162,7 +162,7 @@ class NavBar extends React.Component {
 
 const user_tasks = [
   "Tune your home feed",
-  "Edit settings",
+  <Link to={"/settings/edit-profile"}>Edit settings</Link>,
   "Ads support",
   "Request a feature",
   "Get help",
