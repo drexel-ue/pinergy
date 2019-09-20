@@ -28,10 +28,12 @@ const BoardSchema = new Schema({
     type: String,
     required: false
   },
-  pins: {
-    type: Array,
-    default: []
-  },
+  pins: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "pins"
+    }
+  ],
   collaborators: {
     type: Array,
     default: []

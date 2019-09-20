@@ -12,9 +12,13 @@ import ProjectDetails from "./static_pages/project_details";
 import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
+import EditProfile from "./nav/edit_profile";
+import Loader from "./loader/loader";
 
 class App extends React.Component {
+  
   render() {
+   
     return (
       <div>
         <ModalContainer />
@@ -35,6 +39,11 @@ class App extends React.Component {
         <Route exact path="/request-feature" component={RequestFeature} />
         <Route exact path="/project-details" component={ProjectDetails} />
         <ProtectedRoute path="/pins/:id" component={PinShowContainer} />
+        <ProtectedRoute
+          exact={false}
+          path="/settings/edit-profile"
+          component={EditProfile}
+        />
       </div>
     );
   }

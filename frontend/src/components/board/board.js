@@ -13,7 +13,7 @@ class Board extends React.Component {
     };
   }
 
-  //
+  /////
   componentDidMount() {
     if (this.props.user) {
       this.props.fetchUserBoards(this.props.user._id);

@@ -1,7 +1,8 @@
 import React from "react";
 import PinContainer from "../pin/pin_container";
-import Masonry from 'react-masonry-component';
-import './home.css'
+import Masonry from "react-masonry-component";
+import Loader from "../loader/loader";
+import "./home.css";
 
 const masonryOptions = {
   transitionDuration: 650,
@@ -30,7 +31,7 @@ export default class Home extends React.Component {
         </Masonry>
       </div>
     ) : (
-        <div>Loading...</div>
-      );
+      <Loader />
+    );
   }
 }
