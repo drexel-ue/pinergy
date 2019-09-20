@@ -161,7 +161,9 @@ class NavBar extends React.Component {
 }
 
 const user_tasks = [
- <Link to={"/settings/edit-profile"}>Edit settings</Link>,
+  <Link className="nav-drop-link" to={"/settings/edit-profile"}>
+    Edit settings
+  </Link>,
   <Link to={"/project-details"} className="nav-drop-link">
     Project Details
   </Link>,
