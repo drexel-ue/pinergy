@@ -188,8 +188,8 @@ class PinCreator extends React.Component {
   handleBoard(e) {
     e.preventDefault();
     this.setState({
-      boardName: e.target.textContent,
-      boardId: e.target.attributes.value.value
+      boardName: e.currentTarget.textContent,
+      boardId: e.currentTarget.attributes.value.value
     });
   }
 
