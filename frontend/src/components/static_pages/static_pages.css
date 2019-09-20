@@ -1,0 +1,114 @@
+.request-feat {
+    margin-top: 120px;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.req-title {
+    font-weight: 900;
+    color: #555555;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: -1.2px;
+    font-size: 6rem;
+    line-height: 1em;
+    margin-bottom: 40px;
+}
+
+
+.req-sub {
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: -0.1px;
+    font-size: 1.25rem;
+    line-height: 1.4em;
+    margin-bottom: 10px;
+}
+
+.req-text {
+    height: 250px;
+    width: 550px;
+    resize: none;
+    border-radius: 6px;
+    background: #efefef;
+    outline: none;
+    font-size: 20px;
+}
+
+.submit-req {
+    width: 558px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    outline: none;
+}
+
+.project-details-page {
+    display: flex;
+    margin-top: 120px;
+    width: 100%;
+}
+
+.pd-left {
+    color: #555555;
+    width: 500px;
+    margin: 150px 75px 0 150px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    font-size: 3rem;
+    line-height: 1.083333333em;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.pd-right {
+    margin-top: 180px;
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.pin-a-link {
+    color: #555555;
+    text-decoration: none;
+    font-weight: 900;
+}
+.contributors{
+    font-size: 24px;
+    font-weight: bold;
+}
+.team-members{
+    display: flex;
+    flex-direction: column;
+}
+.team-member {
+    text-decoration: none;
+    color: #555555;
+    margin-top: 5px;
+    width: 150px;
+}
+
+.pd-logo {
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    background: rgb(240, 9, 9);
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 114px;
+    justify-content: center;
+    font-family: 'Lobster Two', cursive;
+    margin: 5% 0 0 20%;
+}

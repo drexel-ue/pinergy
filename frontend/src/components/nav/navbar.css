@@ -155,14 +155,13 @@
 .UserTasks {
   position: absolute;
   z-index: 1;
-  height: 300px;
   width: 322px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   border-radius: 8px;
   outline: none;
   background: white;
   overflow-y: auto;
-  top: 65px;
+  top: 70px;
   right: 40px;
 }
 
@@ -237,4 +236,12 @@
 .fa-ellipsis-h {
   font-size: 24px;
   align-items: center;
+}
+
+.nav-drop-link:visited {
+  color: black
+}
+
+.nav-drop-link {
+  text-decoration: none;
 }
