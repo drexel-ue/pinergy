@@ -104,12 +104,14 @@ router.post("/get", async (req, res) => {
 
 router.post("/getpreviews", async (req, res) => {
   const foundthumbPins = await Pin.find({ board: req.body.boardId }).limit(4)
+  // debugger
   res.json(foundthumbPins)
 })
 
 router.post("/getpins", async (req, res) => {
   // debugger
   const pins = await Pin.find({ board: req.body.boardId })
+  // debugger 
   res.json(pins)
 })
 module.exports = router;

@@ -17,10 +17,9 @@ class BoardItem extends React.Component {
   //   }
 
   componentDidMount() {
-    this.props.fetchBoardPreviews(this.props.boardId);
-    //       .then(res => {
-    //   this.setState({ pins: res });
-    // });
+    this.props.fetchBoardPreviews(this.props.boardId).then(res => {
+      this.setState({ pins: res });
+    });
   }
 
   render() {
@@ -29,12 +28,18 @@ class BoardItem extends React.Component {
     // debugger
     return (
       <div className="board-item-wrap">
-            <div className="board-item-top">
-                {pins.map((ele, idx) => {
-                    const classIndicator = pins.length
-                    <img src=
-                })}
-            </div>
+        <div className="board-item-top">
+          {pins.map((ele, idx) => {
+            const classIndicator = pins.length;
+            return (
+              <img
+                src={ele.url}
+                key={idx}
+                className={`divby${classIndicator}`}
+              />
+            );
+          })}
+        </div>
         <div className="board-item-bottom">
           <div className="board-item-title">{this.props.board.title} </div>
           <div className="board-item-stats"> {numOfPins}</div>
