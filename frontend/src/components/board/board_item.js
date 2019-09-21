@@ -28,7 +28,7 @@ class BoardItem extends React.Component {
         return (
             <div className="board-item-wrap">
                 <div className="board-item-top">
-                    { pins.length >= 4 ? (<div/>):(<div/>) }
+                    {/* {pins.length >= 4 ? (pins.map((pin, idx) => <img src={pin.url} key={idx}/>)):(<div/>) } */}
                 </div>
                 <div className="board-item-bottom">
                     <div className="board-item-title">{this.props.board.title} </div>
