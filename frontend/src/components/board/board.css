@@ -39,6 +39,8 @@
     height: 200px;
     background-color: #efefef;
     border-radius: 12px;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
 }
 
 .board-item-bottom {
@@ -55,4 +57,14 @@
 .board-item-stats {
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
+}
+
+.divby4{
+    width: auto;
+    height: auto;
+    max-height: 25%;
+    max-width: 25%;
+    display: flex;
+    /* flex-direction: column; */
+    
 }
