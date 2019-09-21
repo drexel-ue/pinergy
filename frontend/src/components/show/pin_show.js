@@ -9,11 +9,14 @@ export default class PinShow extends React.Component {
     };
 
     this.togglePinDrop = this.togglePinDrop.bind(this);
+    this.toggleDropDown = this.toggleDropDown.bind(this);
     this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
   componentDidMount() {
+    this.props.fetchCurrentUser(this.props.id);
+    this.props.fetchUserBoards(this.props.id);
     this.props.fetchPin(this.props.match.params.id);
     window.addEventListener("click", this.toggleOffPinDrop);
   }
@@ -101,6 +104,12 @@ export default class PinShow extends React.Component {
     });
   }
 
+  toggleDropDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ showDropDown: !this.state.showDropDown });
+  }
+
   render() {
     const { boardName } = this.state;
     return this.props.pin ? (
@@ -113,7 +122,7 @@ export default class PinShow extends React.Component {
             </div>
             <div className="stick-bar-right">
               <div className="pin-show-share">
-                <i class="fas fa-share-alt"></i>
+                <i className="fas fa-share-alt"></i>
                 &nbsp;&nbsp;Share
               </div>
               <div className="pin-create-board-dropdown">

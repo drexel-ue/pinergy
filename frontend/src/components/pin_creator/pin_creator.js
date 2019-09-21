@@ -244,7 +244,7 @@ class PinCreator extends React.Component {
           onChange={this.handleChange("scrapeUrl")}
         />
         <div className="url-selected-btn" onClick={this.handleScrape}>
-          <i class="fa fa-angle-right"></i>
+          <i className="fa fa-angle-right"></i>
         </div>
       </div>
     ) : (
