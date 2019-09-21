@@ -10,6 +10,7 @@ import HomeContainer from "./home/home_container";
 import RequestFeature from "./static_pages/request_feature";
 import ProjectDetails from "./static_pages/project_details";
 import PinCreatorContainer from "./pin_creator/pin_creator_container";
+import BoardPinContainer from "./board/board_pins_container"
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
 import EditProfile from "./nav/edit_profile";
@@ -38,6 +39,7 @@ class App extends React.Component {
         <Route path="/home" component={HomeContainer} />
         <Route exact path="/request-feature" component={RequestFeature} />
         <Route exact path="/project-details" component={ProjectDetails} />
+        <ProtectedRoute path="/board/:id" component={BoardPinContainer} />
         <ProtectedRoute path="/pins/:id" component={PinShowContainer} />
         <ProtectedRoute
           exact={false}
