@@ -1,6 +1,6 @@
 import React from "react";
 import "../home/home.css";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "./board.css"
 import BoardItemContainer from "./board_item_container"
 
@@ -34,8 +34,10 @@ class Board extends React.Component {
     if (this.props.boards.length > 0) {
       return (
         <div className="profile-boards-cover">
-            {this.props.boards.map(b => (
+          {this.props.boards.map(b => (
+            <Link to={`/board/${b._id}`}>
               <BoardItemContainer key={b._id} board={b} boardId={b._id} />
+            </Link>
             ))}
         </div>
       );
