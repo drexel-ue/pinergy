@@ -39,7 +39,17 @@ class NavBar extends React.Component {
     return event => {
       event.preventDefault();
       event.stopPropagation();
-      document.getElementsByClassName(className)[0].classList.toggle("hide");
+      const userTasks = document.getElementsByClassName(className)[0];
+      userTasks.classList.remove("hide");
+      let timeOut;
+      userTasks.addEventListener("mouseleave", () => {
+        timeOut = setTimeout(() => {
+          userTasks.classList.add("hide");
+        }, 500);
+      });
+      userTasks.addEventListener("mouseenter", () => {
+        clearTimeout(timeOut);
+      });
     };
   }
 
@@ -167,15 +177,16 @@ const user_tasks = [
   <Link to={"/project-details"} className="nav-drop-link">
     Project Details
   </Link>,
-  <a 
-    href="https://github.com/drexel-ue/pinergy" 
+  <a
+    href="https://github.com/drexel-ue/pinergy"
     className="nav-drop-link"
-    target="_blank">
+    target="_blank"
+  >
     Github Repo
   </a>,
   <Link to={"/request-feature"} className="nav-drop-link">
     Request a feature
-  </Link>,
+  </Link>
 ];
 
 export default withRouter(NavBar);
