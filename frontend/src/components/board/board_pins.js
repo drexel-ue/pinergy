@@ -3,6 +3,7 @@ import PinContainer from "../pin/pin_container";
 import Masonry from "react-masonry-component";
 import Loader from "../loader/loader";
 import "../home/home.css";
+import "./board.css"
 
 const masonryOptions = {
   transitionDuration: 650,

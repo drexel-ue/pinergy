@@ -96,7 +96,7 @@ router.post("/createpin", async (req, res) => {
 router.post("/get", async (req, res) => {
   const tags = req.body.tags;
   if (tags.length === 0) {
-    const pins = await Pin.find();
+    const pins = await Pin.find().limit(50);
 
     res.json(pins);
   }
