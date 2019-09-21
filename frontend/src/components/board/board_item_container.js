@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import BoardItem from "./board_item";
 // import { fetchUserBoards } from "../../actions/board_actions";
-import { fetchBoardPins} from "../../actions/pin_actions"
+import { fetchBoardPreviews} from "../../actions/pin_actions"
 
 const msp = ({ session, entities }, ownProps) => {
     let pins = "";
@@ -19,7 +19,7 @@ const msp = ({ session, entities }, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchBoardPins: board_id => dispatch(fetchBoardPins(board_id))
+        fetchBoardPreviews: board_id => dispatch(fetchBoardPreviews(board_id))
     };
 };
 
