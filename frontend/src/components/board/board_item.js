@@ -2,6 +2,7 @@ import React from "react";
 import "../home/home.css";
 import { withRouter } from "react-router-dom";
 import "./board.css"
+import { Link } from "react-router-dom";
 
 
 
@@ -25,7 +26,7 @@ class BoardItem extends React.Component {
         const { numOfPins, pins } = this.state 
         return (
             <div className="board-item-wrap">
-                <a href={`/board/${this.props.board._id}`} >
+                <Link to={`/board/${this.props.board._id}`} >
                     <div className="board-item-top">
                         { pins.length >= 4 ? (<div/>):(<div/>) }
                     </div>
@@ -33,7 +34,7 @@ class BoardItem extends React.Component {
                         <div className="board-item-title">{this.props.board.title} </div>
                         <div className="board-item-stats"> {numOfPins}</div>
                     </div>
-                </a>
+                </Link>
             </div>
         )
 

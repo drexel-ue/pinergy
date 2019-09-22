@@ -39,7 +39,7 @@ class App extends React.Component {
         <Route path="/home" component={HomeContainer} />
         <Route exact path="/request-feature" component={RequestFeature} />
         <Route exact path="/project-details" component={ProjectDetails} />
-        <ProtectedRoute path="/board/:id" component={BoardPinContainer} />
+        <ProtectedRoute path="/board/:boardId" component={BoardPinContainer} />
         <ProtectedRoute path="/pins/:id" component={PinShowContainer} />
         <ProtectedRoute
           exact={false}
