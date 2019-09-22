@@ -8,10 +8,11 @@ export default class PinShow extends React.Component {
       showDropDown: false
     };
 
+    this.repin = this.repin.bind(this);
+    this.handleBoard = this.handleBoard.bind(this);
     this.togglePinDrop = this.togglePinDrop.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
-    this.handleBoard = this.handleBoard.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
@@ -65,11 +66,17 @@ export default class PinShow extends React.Component {
     );
   }
 
+  repin(event) {
+    event.preventDefault();
+    if (this.state.boardId)
+      this.props.repin(this.props.pin, this.state.boardId, this.props.id);
+  }
+
   renderSaveBtn() {
     return this.state.showDropDown ? (
       <div className="hide-div" />
     ) : (
-      <div className="board-save-btn" onClick={this.handleSubmit}>
+      <div className="board-save-btn" onClick={this.repin}>
         Save
       </div>
     );
@@ -78,9 +85,10 @@ export default class PinShow extends React.Component {
   renderBoardMenu() {
     return this.state.showDropDown ? (
       <div className="board-drop-down">
-        {this.props.boards.map(ele => {
+        {this.props.boards.map((ele, index) => {
           return (
             <div
+              key={index}
               className="board-drop-item"
               onClick={this.handleBoard}
               value={ele._id}

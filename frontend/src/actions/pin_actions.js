@@ -40,13 +40,14 @@ export const fetchPin = id => dispatch =>
       dispatch(receivePinError());
     });
 
-export const repin = (pin, boardId) => dispatch =>
-  ApiUtil.repin(pin, boardId)
+export const repin = (pin, boardId, userId) => dispatch =>
+  ApiUtil.repin(pin, boardId, userId)
     .then(({ data }) => {
       debugger;
       dispatch(receivePin(data));
     })
     .catch(error => {
+      debugger;
       dispatch(receivePinError());
     });
 

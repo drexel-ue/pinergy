@@ -74,14 +74,12 @@ router.post("/scrape", async (req, res) => {
 });
 
 router.post("/createpin", async (req, res) => {
-  // debugger
   let pin;
   if (req.body.data.scrapedImageUrl) {
     const image = await new Image({
       url: req.body.data.scrapedImageUrl
     });
     image.save().then(res2 => {
-      // debugger
       pin = new Pin({
         user: req.body.data.id,
         board: req.body.data.boardId,
@@ -90,15 +88,12 @@ router.post("/createpin", async (req, res) => {
         title: req.body.data.title,
         description: req.body.data.description,
         destinationLink: req.body.data.destinationLink
-        // tags: [board.title]
       });
       pin.save().then(pin => {
-        // debugger
         res.json(pin);
       });
     });
   } else {
-    // debugger
     pin = new Pin({
       user: req.body.data.id,
       board: req.body.data.boardId,
@@ -107,16 +102,11 @@ router.post("/createpin", async (req, res) => {
       title: req.body.data.title,
       description: req.body.data.description,
       destinationLink: req.body.data.destinationLink
-      // tags: [board.title]
     });
     pin.save().then(pin => {
       res.json(pin);
     });
   }
-  // debugger;
-  // pin.save().then(pin => {
-  //   res.json(pin);
-  // });
 });
 
 router.post("/get", async (req, res) => {
@@ -139,10 +129,17 @@ router.post("/fetch", async (req, res) => {
 
 router.post("/repin", async (req, res) => {
   try {
+    const userId = req.body.userId;
     const boardId = req.body.boardId;
     const pin = req.body.pin;
+    delete pin._id;
+    delete pin.user;
+    pin.date = Date.now();
+    const user = await User.findById(userId);
+    pin.user = user;
     const image = await Image.findById(pin.image._id);
     const board = await Board.findById(boardId);
+    pin.board = board;
     const repin = new Pin(pin);
     image.pins.push(repin);
     board.pins.push(repin);
@@ -154,8 +151,8 @@ router.post("/repin", async (req, res) => {
       repin,
       board
     });
-  } catch (e) {
-    res.json({ error: "could not repin" });
+  } catch (error) {
+    res.status(400).json({ error });
   }
 });
 
