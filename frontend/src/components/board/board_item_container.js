@@ -7,8 +7,8 @@ import { fetchBoardPins} from "../../actions/pin_actions"
 const msp = ({ session, entities }, ownProps) => {
     let pins = "";
     if (entities.pins) {
-        pins = Object.values(entities.pins).find(
-            pin => pin.board === ownProps.board.id
+        pins = Object.values(entities.pins).filter(
+            pin => pin.board === ownProps.boardId
         )
     }
     

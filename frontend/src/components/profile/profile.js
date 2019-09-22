@@ -17,9 +17,6 @@ class Profile extends React.Component {
     this.props.fetchUserByUserName(this.props.match.params.username);
   }
 
-  componentDidUpdate() {
-    this.props.fetchUserByUserName(this.props.match.params.username);
-  }
 
   render() {
     // debugger

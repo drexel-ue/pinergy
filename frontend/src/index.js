@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (decodedUser.exp < currentTime) {
       // Logout the user and redirect to the login page.
       store.dispatch(logout());
+
+      // TODO: think this is cause router issue
       window.location.href = "/login";
     }
   } else {

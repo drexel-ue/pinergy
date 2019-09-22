@@ -13,32 +13,46 @@ class BoardItem extends React.Component {
             pins: [],
             numOfPins: this.props.board.pins.length
         };
+
+        this.firstPins = this.firstPins.bind(this);
         
     }
 
     componentDidMount() {
-        this.props.fetchBoardPins(this.props.boardId).then(res => {
-            this.setState({pins: res})
-        })
+        this.props.fetchBoardPins(this.props.boardId)
+    }
+
+    firstPins() {
+        // debugger;
+        return (
+            <div>
+                {/* <img src={this.props.pins[0].url}></img>
+                <img src={this.props.pins[0]}></img>
+                <img src={this.props.pins[0]}></img>
+                <img src={this.props.pins[0]}></img> */}
+            </div>
+        )
     }
 
     render() {
-        const { numOfPins, pins } = this.state 
+        if (this.props.pins) {
         return (
             <div className="board-item-wrap">
                 <Link to={`/board/${this.props.board._id}`} >
                     <div className="board-item-top">
-                        { pins.length >= 4 ? (<div/>):(<div/>) }
+                        {this.props.board.pins.length >= 4 ? this.firstPins() : (<div/>) }
                     </div>
                     <div className="board-item-bottom">
                         <div className="board-item-title">{this.props.board.title} </div>
-                        <div className="board-item-stats"> {numOfPins}</div>
+                        <div className="board-item-stats"> {this.props.board.pins.length}</div>
                     </div>
                 </Link>
             </div>
         )
 
-    }
+    } else {
+        return <div></div>
+    }}
 }
 
 

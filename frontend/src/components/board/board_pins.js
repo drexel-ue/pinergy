@@ -19,10 +19,6 @@ export default class BoardPins extends React.Component {
     this.props.fetchBoardPins(this.props.match.params.boardId);
   }
 
-  componentDidUpdate() {
-    this.props.fetchBoardPins(this.props.match.params.boardId);
-  }
-
   render() {
     return Object.values(this.props.pins).length > 0 ? (
       <div className="home-grid">
