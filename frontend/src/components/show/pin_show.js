@@ -11,6 +11,7 @@ export default class PinShow extends React.Component {
     this.togglePinDrop = this.togglePinDrop.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
+    this.handleBoard = this.handleBoard.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
   }
 
@@ -91,7 +92,6 @@ export default class PinShow extends React.Component {
         })}
       </div>
     ) : (
-      //
       <div className="hide-div" />
     );
   }

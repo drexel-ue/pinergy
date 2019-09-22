@@ -92,8 +92,8 @@ class NavBar extends React.Component {
               />
               <div id="search_bar_results" className={show}>
                 <div className="people_label">People</div>
-                {this.state.users.map(user => (
-                  <div key={user._id}>
+                {this.state.users.map((user, index) => (
+                  <div key={index}>
                     <UserSearchResultContainer
                       user={user}
                       queryString={this.state.queryString}

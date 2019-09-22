@@ -5,15 +5,15 @@ import { fetchPin } from "../../actions/pin_actions";
 import { fetchUserBoards } from "../../actions/board_actions";
 import { fetchUser } from "../../actions/user_actions";
 
-const msp = ({ entities }, { match }) => {
+const msp = ({ entities, session }, { match }) => {
   let boards;
   if (entities.boards.user) {
     boards = Object.values(entities.boards.user);
-    //
   }
   return {
     pin: entities.pins[match.params.id],
-    boards
+    boards,
+    id: session.user.id
   };
 };
 const mdp = dispatch => ({
