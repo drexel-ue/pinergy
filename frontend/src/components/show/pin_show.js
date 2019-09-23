@@ -70,8 +70,10 @@ export default class PinShow extends React.Component {
 
   repin(event) {
     event.preventDefault();
-    if (this.state.boardId)
+    if (this.state.boardId) {
       this.props.repin(this.props.pin, this.state.boardId, this.props.id);
+      this.setState({ pinned: true });
+    }
   }
 
   renderSaveBtn() {
@@ -125,10 +127,10 @@ export default class PinShow extends React.Component {
     const board = this.props.boards.find(board =>
       board.pins.some(pin => pin.image._id === this.props.pin.image._id)
     );
-    if (board) {
+    if (board || this.state.pinned) {
       return (
         <div className="already_pinned">
-          <Link to={""}>{`Saved to ${board.title}`}</Link>
+          <Link to={""}>{`Saved to ${board ? board.title : boardName}`}</Link>
         </div>
       );
     } else {
