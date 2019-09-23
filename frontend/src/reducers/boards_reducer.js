@@ -1,4 +1,7 @@
-import { RECEIVE_USER_BOARDS, RECEIVE_BOARD } from "../actions/board_actions";
+import {
+  RECEIVE_USER_BOARDS,
+  RECEIVE_USER_BOARD
+} from "../actions/board_actions";
 import { merge } from "lodash";
 
 const boardsReducer = (
@@ -11,12 +14,12 @@ const boardsReducer = (
     case RECEIVE_USER_BOARDS:
       newState.user = action.boards.data;
       return newState;
-    case RECEIVE_BOARD:
-      if (newState.all) {
-        newState.all[action.board._id] = action.board;
+    case RECEIVE_USER_BOARD:
+      if (newState.user) {
+        newState.user.push(action.board);
       } else {
-        newState["all"] = {};
-        newState.all[action.board._id] = action.board;
+        newState["user"] = [];
+        newState.user.push(action.board);
       }
       return newState;
     default:

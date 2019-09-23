@@ -142,7 +142,7 @@ router.post("/repin", async (req, res) => {
     const user = await User.findById(userId);
     pin.user = user;
     const image = await Image.findById(pin.image._id);
-    const board = await Board.findById(boardId);
+    const board = await Board.findById(boardId).populate("pins");
     pin.board = board;
     const repin = new Pin(pin);
     image.pins.push(repin);

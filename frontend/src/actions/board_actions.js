@@ -2,11 +2,17 @@ import * as ApiUtil from "../util/board_api_util";
 
 export const RECEIVE_USER_BOARDS = "RECEIVE_USER_BOARDS";
 export const RECEIVE_BOARD_ERROR = "RECEIVE_BOARD_ERROR";
+export const RECEIVE_USER_BOARD = "RECEIVE_USER_BOARD";
 export const RECEIVE_BOARD = "RECEIVE_BOARD";
 
 const receiveUserBoards = boards => ({
   type: RECEIVE_USER_BOARDS,
   boards
+});
+
+export const receiveUserBoard = board => ({
+  type: RECEIVE_USER_BOARD,
+  board
 });
 
 export const receiveBoard = board => ({

@@ -121,12 +121,10 @@ export default class PinShow extends React.Component {
   }
 
   renderDropdown(boardName) {
-    if (
-      this.props.boards.some(board => board.pins.includes(this.props.pin._id))
-    ) {
-      const board = this.props.boards.find(board =>
-        board.pins.includes(this.props.pin._id)
-      );
+    const board = this.props.boards.find(board =>
+      board.pins.some(pin => (pin.image._id = this.props))
+    );
+    if (board) {
       return (
         <div className="already_pinned">
           <Link to={""}>{`Saved to ${board.title}`}</Link>
