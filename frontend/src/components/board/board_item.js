@@ -12,33 +12,27 @@ class BoardItem extends React.Component {
     };
   }
 
-  //     renderMax(array) {
-  //       for()
-  //   }
-
-  componentDidMount() {
-    this.props.fetchBoardPreviews(this.props.boardId).then(res => {
-      this.setState({ pins: res });
+    componentDidMount() {
+        this.props.fetchBoardPreviews(this.props.boardId).then(res => {
+        this.setState({ pins: res });
     });
   }
 
   render() {
     const { numOfPins, pins } = this.state;
-    // debugger
-    // debugger
     return (
       <div className="board-item-wrap">
         <div className="board-item-top">
-          {pins.map((ele, idx) => {
-            const classIndicator = pins.length;
-            return (
-              <img
-                src={ele.url}
-                key={idx}
-                className={`divby${classIndicator}`}
-              />
-            );
-          })}
+            {pins.map((ele, idx) => {
+              const classIndicator = pins.length;
+              return (
+                <img
+                  src={ele.url}
+                  key={idx}
+                  className={`board-pin-section`}
+                />
+              );
+            })}
         </div>
         <div className="board-item-bottom">
           <div className="board-item-title">{this.props.board.title} </div>
@@ -49,15 +43,5 @@ class BoardItem extends React.Component {
   }
 }
 
-// let boardPins = this.props.pins.map(pin => (
-//     <div className="board-item-wrap">
-//         <div className="board-item-top">
-//         </div>
-//         <div className="board-item-bottom">
-//             <div className="board-item-title">{this.props.board.title} </div>
-//             <div className="board-item-stats"> 10 Pins</div>
-//         </div>
-//     </div>
-// ))
 
 export default withRouter(BoardItem);
