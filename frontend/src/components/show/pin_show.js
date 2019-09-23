@@ -122,7 +122,7 @@ export default class PinShow extends React.Component {
 
   renderDropdown(boardName) {
     const board = this.props.boards.find(board =>
-      board.pins.some(pin => (pin.image._id = this.props))
+      board.pins.some(pin => (pin.image._id = this.props.pin.image._id))
     );
     if (board) {
       return (
