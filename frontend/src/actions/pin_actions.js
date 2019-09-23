@@ -1,4 +1,6 @@
 import * as ApiUtil from "../util/pins_api_util";
+import { receiveImage } from "./image_actions";
+import { receiveBoard } from "./board_actions";
 
 export const RECEIVE_PINS = "RECEIVE_PINS";
 export const RECEIVE_PIN = "RECEIVE_PIN";
@@ -43,11 +45,12 @@ export const fetchPin = id => dispatch =>
 export const repin = (pin, boardId, userId) => dispatch =>
   ApiUtil.repin(pin, boardId, userId)
     .then(({ data }) => {
-      debugger;
-      dispatch(receivePin(data));
+      let { repin, image, board } = data;
+      dispatch(receivePin(repin));
+      dispatch(receiveImage(image));
+      dispatch(receiveBoard(board));
     })
     .catch(error => {
-      debugger;
       dispatch(receivePinError());
     });
 

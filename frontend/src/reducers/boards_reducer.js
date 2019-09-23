@@ -6,13 +6,18 @@ const boardsReducer = (
   action
 ) => {
   Object.freeze(state);
-  let newState = Object.assign({}, state);
+  let newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_USER_BOARDS:
       newState.user = action.boards.data;
       return newState;
     case RECEIVE_BOARD:
-      newState.all[action.board._id] = action.board;
+      if (newState.all) {
+        newState.all[action.board._id] = action.board;
+      } else {
+        newState["all"] = {};
+        newState.all[action.board._id] = action.board;
+      }
       return newState;
     default:
       return state;
