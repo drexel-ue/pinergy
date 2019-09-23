@@ -27,6 +27,14 @@ export const fetchBoardPins = boardId => dispatch => {
   })
 }
 
+export const fetchBoardPreviews = boardId => dispatch => {
+  return ApiUtil.findBoardPreview(boardId).then(res => {
+    dispatch(receivePins(res.data))
+    return res.data
+  }).catch(error => {
+    dispatch(receivePinError())
+  })
+}
 
 export const fetchPins = tags => dispatch =>
   ApiUtil.getPins(tags)
