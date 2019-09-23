@@ -114,7 +114,7 @@ router.post("/get", async (req, res) => {
   if (tags.length === 0) {
     const pins = await Pin.aggregate([
       {
-        $sample: { size: 80 }
+        $sample: { size: 300 }
       }
     ]);
     res.json(pins);

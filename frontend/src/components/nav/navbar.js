@@ -144,8 +144,8 @@ class NavBar extends React.Component {
               />
             </div>
             <div className="UserTasks hide">
-              {user_tasks.map(task => (
-                <div key={task} className="UserTasksItems">
+              {user_tasks.map((task, index) => (
+                <div key={index} className="UserTasksItems">
                   {task}{" "}
                 </div>
               ))}

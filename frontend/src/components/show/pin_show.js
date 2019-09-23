@@ -120,9 +120,10 @@ export default class PinShow extends React.Component {
     this.setState({ showDropDown: !this.state.showDropDown });
   }
 
-  renderDropdown(boardName) {
+  renderDropdown() {
+    const { boardName } = this.state;
     const board = this.props.boards.find(board =>
-      board.pins.some(pin => (pin.image._id = this.props.pin.image._id))
+      board.pins.some(pin => pin.image._id === this.props.pin.image._id)
     );
     if (board) {
       return (
@@ -146,7 +147,6 @@ export default class PinShow extends React.Component {
   }
 
   render() {
-    const { boardName } = this.state;
     return this.props.pin ? (
       <div className="pin-show-outer">
         <div className="pin_show_image_wrapper">
@@ -160,7 +160,7 @@ export default class PinShow extends React.Component {
                 <i className="fas fa-share-alt"></i>
                 &nbsp;&nbsp;Share
               </div>
-              {this.renderDropdown(boardName)}
+              {this.renderDropdown()}
               {this.renderBoardMenu()}
             </div>
           </div>
