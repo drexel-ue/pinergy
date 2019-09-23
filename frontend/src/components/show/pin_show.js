@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./pin_show.css";
 
 export default class PinShow extends React.Component {
@@ -119,6 +120,33 @@ export default class PinShow extends React.Component {
     this.setState({ showDropDown: !this.state.showDropDown });
   }
 
+  renderDropdown(boardName) {
+    if (
+      this.props.boards.some(board => board.pins.includes(this.props.pin._id))
+    ) {
+      const board = this.props.boards.find(board =>
+        board.pins.includes(this.props.pin._id)
+      );
+      return (
+        <div className="already_pinned">
+          <Link to={""}>{`Saved to ${board.title}`}</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="pin-create-board-dropdown">
+          <div className="board-select-text" onClick={this.toggleDropDown}>
+            {boardName ? boardName : <p>Select</p>}
+          </div>
+          <div>
+            <i className="fas fa-chevron-down board-down" />
+          </div>
+          {this.renderSaveBtn()}
+        </div>
+      );
+    }
+  }
+
   render() {
     const { boardName } = this.state;
     return this.props.pin ? (
@@ -134,18 +162,7 @@ export default class PinShow extends React.Component {
                 <i className="fas fa-share-alt"></i>
                 &nbsp;&nbsp;Share
               </div>
-              <div className="pin-create-board-dropdown">
-                <div
-                  className="board-select-text"
-                  onClick={this.toggleDropDown}
-                >
-                  {boardName ? boardName : <p>Select</p>}
-                </div>
-                <div>
-                  <i className="fas fa-chevron-down board-down" />
-                </div>
-                {this.renderSaveBtn()}
-              </div>
+              {this.renderDropdown(boardName)}
               {this.renderBoardMenu()}
             </div>
           </div>

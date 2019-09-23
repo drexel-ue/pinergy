@@ -6,7 +6,7 @@ import { fetchUserBoards } from "../../actions/board_actions";
 import { fetchUser } from "../../actions/user_actions";
 
 const msp = ({ entities, session }, { match }) => {
-  let boards;
+  let boards = [];
   if (entities.boards.user) {
     boards = Object.values(entities.boards.user);
   }

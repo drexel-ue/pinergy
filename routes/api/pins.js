@@ -112,9 +112,11 @@ router.post("/createpin", async (req, res) => {
 router.post("/get", async (req, res) => {
   const tags = req.body.tags;
   if (tags.length === 0) {
-    const pins = await Pin.find()
-      .populate("image")
-      .limit(20);
+    const pins = await Pin.aggregate([
+      {
+        $sample: { size: 80 }
+      }
+    ]);
     res.json(pins);
   }
 });
