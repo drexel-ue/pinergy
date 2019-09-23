@@ -5,12 +5,13 @@ export default class PinShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDropDown: false
+      showDropDown: false,
+      showPinMenu: false
     };
 
     this.repin = this.repin.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
-    this.togglePinDrop = this.togglePinDrop.bind(this);
+    this.togglePinMenu = this.togglePinMenu.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
     this.parseDestinationLink = this.parseDestinationLink.bind(this);
@@ -40,10 +41,10 @@ export default class PinShow extends React.Component {
     return hostDomain;
   }
 
-  togglePinDrop(e) {
+  togglePinMenu(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.setState({ showDropDown: !this.state.showDropDown });
+    this.setState({ showPinMenu: !this.state.showPinMenu });
   }
 
   toggleOffPinDrop(e) {
@@ -54,8 +55,8 @@ export default class PinShow extends React.Component {
     }
   }
 
-  pinDropDown() {
-    return this.state.showDropDown ? (
+  pinMenu() {
+    return this.state.showPinMenu ? (
       <div className="">
         <div>
           <h1>MENU GOES HERE</h1>
@@ -124,9 +125,9 @@ export default class PinShow extends React.Component {
       <div className="pin-show-outer">
         <div className="pin_show_image_wrapper">
           <div className="pin_stick_bar">
-            <div className="pin_menu" onClick={this.togglePinDrop}>
+            <div className="pin_menu" onClick={this.togglePinMenu}>
               <i className="fas fa-ellipsis-h ell-show"></i>
-              {this.pinDropDown()}
+              {this.pinMenu()}
             </div>
             <div className="stick-bar-right">
               <div className="pin-show-share">
