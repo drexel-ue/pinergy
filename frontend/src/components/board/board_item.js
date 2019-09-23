@@ -23,11 +23,12 @@ class BoardItem extends React.Component {
     }
 
     firstPins() {
-        // debugger;
+        debugger
+        let firstImg = this.props.pins.find(pin => pin._id === this.props.board.pins[0])
         return (
             <div>
-                {/* <img src={this.props.pins[0].url}></img>
-                <img src={this.props.pins[0]}></img>
+                <img src={firstImg.url}></img>
+                {/* <img src={this.props.pins[0]}></img>
                 <img src={this.props.pins[0]}></img>
                 <img src={this.props.pins[0]}></img> */}
             </div>
