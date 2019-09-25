@@ -1,13 +1,5 @@
 # [Pinergy](https://pinergy.herokuapp.com/#/login)
 
-
-### Members
-
-* [Anshu Jain](https://github.com/Anshuj11)
-* [Clayton Jones](https://github.com/ClaytonJones839)
-* [IKesh Pack](https://github.com/drexel-ue)
-* [Paul Kilwoung Choi](https://github.com/paulkwchoi92)
-
 ### Technologies
 
 * MongoDB
@@ -46,24 +38,6 @@ Pins are ideas that people on Pinergy find and save from around the web. Each Pi
 #### * Boards
 The Pins users save live on your boards. Users can name boards and arrange them on their profile however they want. They can invite other people on Pinterest to collaborate on their boards to find even more ideas.
 ![Board Page](https://github.com/drexel-ue/pinergy/blob/master/boards.png)
-
-#### * Sections
-To organize the Pins within boards, users can create board sections. 
-
-#### * Secret Boards
-If the user prefers to keep their Pins private or their camping trip is actually a sneaky surprise, they can make their board secret. Only user and anyone they invite can see their secret boards.
-
-
-#### * Profile
-Users can find all the Pins they saves, boards they creates, along with who’s following them and everyone they’re following, including boards and topics, in their profile. Anyone can see their profile, but their secret boards will stay hidden.  
-
-#### * Follows
-
-
-* Bonus: notifications
-* Bonus: Geo-location component
-* Bonus: private boards
-* Bonus: likes
 
 
 
