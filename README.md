@@ -39,5 +39,34 @@ Pins are ideas that people on Pinergy find and save from around the web. Each Pi
 The Pins users save live on your boards. Users can name boards and arrange them on their profile however they want. They can invite other people on Pinterest to collaborate on their boards to find even more ideas.
 ![Board Page](https://github.com/drexel-ue/pinergy/blob/master/boards.png)
 
+#### Simple web scraper
+```javascript
+const puppeteer = require("puppeteer");
 
+exports.scrape = async url => {
+  const browser = await puppeteer.launch(); // Opens a lightweight Chromium instance.
+
+  try {
+    const page = await browser.newPage(); // Opens a new tab in that instance.
+
+    await page.goto(url); // Navigates to the provided url.
+
+    await page.waitForSelector("img", { visible: true }); // Waits for an <img> tag to be available.
+
+    const data = await page.evaluate(() => {
+      const images = document.querySelectorAll("img"); // Selects all <img> elements.
+      let urls = [...images].map(image => image.src); // Map the src attributes to an array.
+      if (urls.length > 10) urls = urls.slice(0, 10); // Limit array length to 10.
+      return urls;
+    });
+
+    browser.close();
+
+    return data.slice(1);
+  } catch (e) {
+    browser.close();
+    return e.toString();
+  }
+};
+```
 
