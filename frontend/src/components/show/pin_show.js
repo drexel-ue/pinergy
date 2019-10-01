@@ -172,7 +172,7 @@ export default class PinShow extends React.Component {
                   ref={tip => (this.tip = tip)}
                 >
                   {this.state.copied
-                    ? window.location.href
+                    ? "Url copied to clipboard"
                     : "Copy to clipboard"}
                 </div>
               </div>
