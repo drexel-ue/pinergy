@@ -7,11 +7,14 @@ export default class PinShow extends React.Component {
     super(props);
     this.state = {
       showDropDown: false,
-      showPinMenu: false
+      showPinMenu: false,
+      copied: false
     };
 
+    this.copy = this.copy.bind(this);
     this.repin = this.repin.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
+    this.toggleTooltip = this.toggleTooltip.bind(this);
     this.togglePinMenu = this.togglePinMenu.bind(this);
     this.toggleDropDown = this.toggleDropDown.bind(this);
     this.toggleOffPinDrop = this.toggleOffPinDrop.bind(this);
@@ -138,15 +141,40 @@ export default class PinShow extends React.Component {
     }
   }
 
+  toggleTooltip(event) {
+    event.preventDefault();
+    this.tip.classList.toggle("hide");
+    if (this.state.copied) this.setState({ copied: false });
+  }
+
+  copy(event) {
+    event.preventDefault();
+    navigator.clipboard.writeText(window.location.href);
+    this.setState({ copied: true });
+  }
+
   render() {
     return this.props.pin ? (
       <div className="pin-show-outer">
         <div className="pin_show_image_wrapper">
           <div className="pin_stick_bar">
             <div className="stick-bar-right">
-              <div className="pin-show-share">
+              <div
+                className="pin-show-share"
+                onClick={this.copy}
+                onMouseEnter={this.toggleTooltip}
+                onMouseLeave={this.toggleTooltip}
+              >
                 <i className="fas fa-share-alt"></i>
                 &nbsp;&nbsp;Share
+                <div
+                  className="clipboard_tooltip hide"
+                  ref={tip => (this.tip = tip)}
+                >
+                  {this.state.copied
+                    ? window.location.href
+                    : "Copy to clipboard"}
+                </div>
               </div>
               {this.renderDropdown()}
               {this.renderBoardMenu()}
