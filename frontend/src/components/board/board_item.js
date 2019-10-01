@@ -12,25 +12,14 @@ class BoardItem extends React.Component {
     };
   }
 
-  //     renderMax(array) {
-  //       for()
-  //   }
-
   componentDidMount() {
     this.props.fetchBoardPreviews(this.props.boardId).then(res => {
       this.setState({ pins: res });
     });
   }
 
-  // componentWillUnmount() {
-  //   debugger
-  //   this.props.fetchSingleBoard(this.props.board_id)
-  // }
-
   render() {
     const { numOfPins, pins } = this.state;
-    // debugger
-    // debugger
     return (
       <div className="board-item-wrap">
         <div className="board-item-top">
@@ -40,7 +29,7 @@ class BoardItem extends React.Component {
               <img
                 src={ele.url}
                 key={idx}
-                className={`divby${classIndicator}`}
+                className="prof-board-image"
               />
             );
           })}

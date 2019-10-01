@@ -38,13 +38,27 @@
     font-size: 18px;
 }
 
+.profile-boards-cover a {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-boards-cover a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-boards-cover a:hover {
+    cursor: pointer;
+}
 .board-item-top {
     width: 100%;
     height: 200px;
     background-color: #efefef;
     border-radius: 12px;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .board-item-bottom {
@@ -71,4 +85,10 @@
     display: flex;
     /* flex-direction: column; */
     
+}
+
+.prof-board-image {
+    height: 100px;
+    width: 150px;
+    object-fit: cover;
 }
