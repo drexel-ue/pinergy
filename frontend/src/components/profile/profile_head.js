@@ -54,7 +54,7 @@ class ProfileHead extends React.Component {
   renderDropdown() {
     return this.state.showDropdown ? (
       <div className="drpdwnenc create-dropdown">
-        <div className="create-btn">Create Board</div>
+        {/* <div className="create-btn">Create Board</div> */}
         <div className="create-btn">
           <Link className="profile-head-link" to="/pin_creator">
             Create Pin
@@ -122,9 +122,9 @@ class ProfileHead extends React.Component {
           <Link className="links" to={`${basePath}/boards`}>
             Boards
           </Link>
-          <Link className="links" to={`${basePath}/pins`}>
+          {/* <Link className="links" to={`${basePath}/pins`}>
             Pins
-          </Link>
+          </Link> */}
           {/* <Link className="links" to="`${basePath}/tries">
                   Tries
                 </Link>
