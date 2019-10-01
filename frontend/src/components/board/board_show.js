@@ -29,9 +29,11 @@ class BoardShow extends Component {
     return this.state.board ? (
       <div>
         <BoardPinHeader boardTitle={this.state.board.title} board={this.state.board} photoUrl={this.props.photoUrl} />
+        <div>
         {this.state.pins.map(ele => {
           return <BoardShowItemContainer pin={ele}/>
         })}
+        </div>
       </div>
     ) : <div/>;
   }
