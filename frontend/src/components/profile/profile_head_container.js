@@ -9,7 +9,8 @@ const mapStateToProps = ({ session, entities }, ownProps) => {
     user: Object.values(entities.users).find(
       user => user.username == ownProps.match.params.username
     ),
-    id: session.user.id
+    id: session.user.id,
+    type:"profile"
   };
 };
 

@@ -8,6 +8,7 @@ const receiveUserBoards = boards => ({
   boards
 });
 
+const receiveOneBoard = boards -
 const receiveBoardError = () => ({
   type: RECEIVE_BOARD_ERROR
 });
@@ -22,3 +23,9 @@ export const fetchUserBoards = user_id => dispatch =>
       //    ;
       dispatch(receiveBoardError());
     });
+
+export const fetchSingleBoard = boardId => dispatch => {
+  return ApiUtil.findBoardInfo(boardId).then(boards => {
+    dispatch
+  })
+}

@@ -30,5 +30,10 @@ router.get("/:user_id", (req, res) => {
     .then(boards => res.json(boards))
     .catch(err => res.status(404).json({ noBoardsFound: "No Boards Found" }));
 });
-router.post("/new", (req, res) => {});
+router.post("/new", (req, res) => { });
+
+router.post("/getboard", async (req, res) => {
+  const board = await Board.findById(req.body.boardId)
+  res.json(board)
+})
 module.exports = router;
