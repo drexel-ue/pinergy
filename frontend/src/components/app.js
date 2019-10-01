@@ -14,6 +14,7 @@ import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
 import EditProfile from "./nav/edit_profile";
 import Loader from "./loader/loader";
+import BoardShowContainer from "./board/board_show_container";
 
 class App extends React.Component {
   
@@ -33,6 +34,11 @@ class App extends React.Component {
             exact
             path="/pin_creator"
             component={PinCreatorContainer}
+          />
+          <ProtectedRoute
+            exact
+            path="/board/:boardid"
+            component={BoardShowContainer}
           />
         </Switch>
         <Route path="/home" component={HomeContainer} />

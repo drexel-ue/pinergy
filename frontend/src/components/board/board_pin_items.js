@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-export default class board_pins extends Component {
+export default class BoardPinItems extends Component {
   render() {
-    // debugger
     return (
       <div>
         

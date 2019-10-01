@@ -6,3 +6,4 @@ export const getUserBoards = user_id => {
 
 
 
+export const findBoardInfo = boardId => Axios.post("/api/boards/getboard", { boardId })

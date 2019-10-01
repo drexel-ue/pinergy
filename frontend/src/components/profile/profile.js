@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileHeaderContainer from "./profile_head_container";
 import BoardsContainer from "../board/board_container";
-import BoardPins from "../board/board_pins"
+import BoardPins from "../board/board_show"
 import { withRouter } from "react-router-dom";
 
 class Profile extends React.Component {

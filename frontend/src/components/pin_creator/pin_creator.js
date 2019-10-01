@@ -211,6 +211,7 @@ class PinCreator extends React.Component {
   async handleScrape(e) {
     e.preventDefault();
     const urlList = await ImageApi.scrape(this.state.scrapeUrl);
+    debugger
     this.setState({
       scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
