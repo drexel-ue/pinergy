@@ -56,18 +56,6 @@ export default class PinShow extends React.Component {
     }
   }
 
-  pinMenu() {
-    return this.state.showPinMenu ? (
-      <div className="">
-        <div>
-          <h1>MENU GOES HERE</h1>
-        </div>
-      </div>
-    ) : (
-      <div className="" />
-    );
-  }
-
   repin(event) {
     event.preventDefault();
     if (this.state.boardId) {
@@ -155,10 +143,6 @@ export default class PinShow extends React.Component {
       <div className="pin-show-outer">
         <div className="pin_show_image_wrapper">
           <div className="pin_stick_bar">
-            <div className="pin_menu" onClick={this.togglePinMenu}>
-              <i className="fas fa-ellipsis-h ell-show"></i>
-              {this.pinMenu()}
-            </div>
             <div className="stick-bar-right">
               <div className="pin-show-share">
                 <i className="fas fa-share-alt"></i>

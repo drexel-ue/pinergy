@@ -125,7 +125,7 @@
 
 .pin_stick_bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 20px;
   box-sizing: border-box;
   align-items: center;
