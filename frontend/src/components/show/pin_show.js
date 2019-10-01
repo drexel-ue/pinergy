@@ -129,8 +129,10 @@ export default class PinShow extends React.Component {
     );
     if (board || this.state.pinned) {
       return (
-        <div className="already_pinned">
-          <Link to={""}>{`Saved to ${board ? board.title : boardName}`}</Link>
+        <div>
+          <Link to={""} className="already_pinned">
+            {`Saved to ${board ? board.title : boardName}`}
+          </Link>
         </div>
       );
     } else {

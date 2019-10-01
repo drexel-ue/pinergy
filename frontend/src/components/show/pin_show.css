@@ -68,13 +68,15 @@
   filter: brightness(0.6);
 }
 
-.pin-show-save:hover, .pin-show-share:hover {
+.pin-show-save:hover,
+.pin-show-share:hover {
   filter: brightness(0.6);
   cursor: pointer;
   z-index: 100;
 }
 
-.pin-show-save, .pin-show-share {
+.pin-show-save,
+.pin-show-share {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,4 +147,16 @@
 .pin-show-bottom {
   display: flex;
   width: 900px;
+}
+
+.already_pinned {
+  border-radius: 8px;
+  background-color: #efefef;
+  padding: 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  height: 40px;
+  color: black;
 }
