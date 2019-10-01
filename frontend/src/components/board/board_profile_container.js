@@ -7,7 +7,7 @@ const mapStateToProps = ({entities, session}) => {
   return {
     type: "boardshow",
     // profilePhotoUrl: entities.users[session.user.id].profilePhotoUrl
-    profilePhotoUrl: session.user.id
+    // profilePhotoUrl: session.user.id
 
   }
 }

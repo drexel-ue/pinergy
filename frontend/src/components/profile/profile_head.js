@@ -85,10 +85,14 @@ class ProfileHead extends React.Component {
   }
 
   findDisplayName() {
+    if(this.props.type === "profile") {
     const user = this.props.user;
     return user.firstName
       ? `${user.firstName} ${user.lastName} `
       : user.username;
+    } else {
+      return this.props.boardTitle
+    }
   }
 
   showMessage() {
@@ -169,6 +173,7 @@ class ProfileHead extends React.Component {
     let ele = (this.props.type === "profile"
       ? this.props.user
       : this.props.board);
+    // debugger
 
     return (this.props.type === "profile" ? (
       <div className="follownums">
@@ -180,8 +185,9 @@ class ProfileHead extends React.Component {
   }
 
   render() {
-    const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : null
-    return this.props.user ? (
+    // debugger
+    const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : this.props.photoUrl
+    return (this.props.user || this.props.boardTitle) ? (
       <div>
         <div className="prfnav">
           <div className="prftopnav">
@@ -206,7 +212,7 @@ class ProfileHead extends React.Component {
               </div>
               <div className="message_follow_image">
                 <div className="message-follow-buttons">
-                  {this.showMessage()}
+                  {this.props.type === "profile" ? this.showMessage() : <div/>}
                   {this.props.type === "profile" ? this.showFollow() : <div/>}
                 </div>
                 <img src={url} className="prfprfpho" />

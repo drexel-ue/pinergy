@@ -10,24 +10,27 @@ class BoardShow extends Component {
       board: ""
     };
   }
-  async componentWillMount() {
-    await this.props
-      .fetchBoardPins(this.props.match.params.boardid)
-      .then(res => {
-        return this.props.fetchSingleBoard(this.props.match.params.boardid);
+   componentWillMount() {
+     this.props
+       .fetchBoardPins(this.props.match.params.boardid)
+       .then(res => {
+         this.setState({pins: res})
+         this.props.fetchSingleBoard(this.props.match.params.boardid).then(res2 => {
+          this.setState({board: res2.board})
+        })
       });
   }
 
   render() {
-    debugger;
+    // debugger;
     // debugger
 
-    return (
+    return this.state.board ? (
       <div>
-        <BoardPinHeader boardId={this.props.board} />
+        <BoardPinHeader boardTitle={this.state.board.title} board={this.state.board} photoUrl={this.props.photoUrl} />
         {/* <BoardPinItems pins={}/> */}
       </div>
-    );
+    ) : <div/>;
   }
 }
 export default withRouter(BoardShow);

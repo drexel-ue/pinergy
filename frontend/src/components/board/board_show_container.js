@@ -10,7 +10,9 @@ const msp = ({ session, entities }, ownProps) => {
 
   return {
     userId: session.user.id,
-    board: entities.boards.board
+    board: entities.boards.board,
+    photoUrl: entities.users[session.user.id].profilePhotoUrl
+
   };
 };
 

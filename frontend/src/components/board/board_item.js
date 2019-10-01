@@ -22,6 +22,11 @@ class BoardItem extends React.Component {
     });
   }
 
+  // componentWillUnmount() {
+  //   debugger
+  //   this.props.fetchSingleBoard(this.props.board_id)
+  // }
+
   render() {
     const { numOfPins, pins } = this.state;
     // debugger
