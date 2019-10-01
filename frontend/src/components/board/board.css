@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+.board-masonry {
+    margin-top: 100px;
+}
+
 .profile-boards-cover {
     width: 100%;
     height: 100%;
