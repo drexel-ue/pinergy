@@ -118,7 +118,7 @@ export default class PinShow extends React.Component {
     if (board || this.state.pinned) {
       return (
         <div>
-          <Link to={""} className="already_pinned">
+          <Link to="#" className="already_pinned">
             {`Saved to ${board ? board.title : boardName}`}
           </Link>
         </div>
