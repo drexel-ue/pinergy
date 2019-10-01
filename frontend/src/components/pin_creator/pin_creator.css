@@ -191,6 +191,7 @@
   cursor: pointer;
   width: 230px;
   display: flex;
+  margin-left: 10px;
   justify-content: space-between;
   background-color: #efefef;
   align-items: center;
