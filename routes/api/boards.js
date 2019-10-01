@@ -33,7 +33,9 @@ router.get("/:user_id", (req, res) => {
 router.post("/new", (req, res) => { });
 
 router.post("/getboard", async (req, res) => {
+  // console.log(req)
   const board = await Board.findById(req.body.boardId)
-  res.json(board)
+  // console.log(board)
+  res.json({ board: board })
 })
 module.exports = router;

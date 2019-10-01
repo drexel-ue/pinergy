@@ -5,12 +5,12 @@ import BoardShow from "./board_show";
 import { fetchBoardPins } from "../../actions/pin_actions"
 import { fetchSingleBoard } from "../../actions/board_actions"
 
-const msp = ({ session }, ownProps) => {
+const msp = ({ session, entities }, ownProps) => {
   // debugger
 
   return {
-    userId: session.user.id
-
+    userId: session.user.id,
+    board: entities.boards.board
   };
 };
 

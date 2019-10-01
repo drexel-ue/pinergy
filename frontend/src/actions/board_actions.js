@@ -28,6 +28,7 @@ export const fetchUserBoards = user_id => dispatch =>
     });
 
 export const fetchSingleBoard = boardId => dispatch => {
+  // debugger
   return ApiUtil.findBoardInfo(boardId).then(boards => {
     dispatch(receiveOneBoard(boards))
   }).catch(error => {

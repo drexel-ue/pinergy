@@ -10,17 +10,16 @@ class BoardShow extends Component {
       board: ""
     };
   }
-  componentDidMount() {
-    this.props.fetchBoardPins(this.props.match.params.boardid).then(res => {
-      return this.props.fetchSingleBoard(this.props.match.params.boardid).then(res2 => {
-        return this.setState({ pins: res, board: res2 })
-      })
-      
-    })
-    
+  async componentWillMount() {
+    await this.props
+      .fetchBoardPins(this.props.match.params.boardid)
+      .then(res => {
+        return this.props.fetchSingleBoard(this.props.match.params.boardid);
+      });
   }
 
   render() {
+    debugger;
     // debugger
 
     return (
