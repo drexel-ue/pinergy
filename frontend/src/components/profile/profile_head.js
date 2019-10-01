@@ -10,7 +10,7 @@ class ProfileHead extends React.Component {
       showDropdown: false,
       showShareDropdown: false
     };
-    // debugger
+    debugger
     // debugger
     this.handleFollow = this.handleFollow.bind(this);
     // this.handleUnfollow = this.handleUnfollow.bind(this)

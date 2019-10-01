@@ -7,12 +7,17 @@ class BoardShow extends Component {
     super(props);
     this.state = {
       pins: [],
+      board: ""
     };
   }
   componentDidMount() {
     this.props.fetchBoardPins(this.props.match.params.boardid).then(res => {
-      return this.setState({pins: res})
+      return this.props.fetchSingleBoard(this.props.match.params.boardid).then(res2 => {
+        return this.setState({ pins: res, board: res2 })
+      })
+      
     })
+    
   }
 
   render() {
@@ -20,7 +25,7 @@ class BoardShow extends Component {
 
     return (
       <div>
-        <BoardPinHeader boardId={this.props.match.params.boardid} />
+        <BoardPinHeader boardId={this.props.board} />
         {/* <BoardPinItems pins={}/> */}
       </div>
     );
