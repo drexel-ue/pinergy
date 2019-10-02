@@ -1,14 +1,9 @@
-.SuperLoader {
-  margin: 110px auto;
-}
-
-.loader .center {
-  color: rgb(240, 9, 9);
+.fa-spin {
+  color: red;
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
   display: flex;
-  margin: 110px auto;
   justify-content: center;
-}
-
-.fa-cog {
-  color: rgb(240, 9, 9);
+  align-items: center;
 }
