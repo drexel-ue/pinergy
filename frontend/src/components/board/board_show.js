@@ -37,7 +37,7 @@ class BoardShow extends Component {
     // debugger
 
     return this.state.board ? (
-      <div>
+      <div className="board-show-cont">
       <BoardPinHeader boardTitle={this.state.board.title} board={this.state.board} photoUrl={this.props.photoUrl} />
       <Masonry
         className="board-masonry"
