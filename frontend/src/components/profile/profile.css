@@ -6,6 +6,7 @@
   top: 65px;
   justify-content: center;
   position: fixed;
+  z-index: 100;
 }
 
 .profile-head-link:visited {
@@ -13,7 +14,7 @@
 }
 
 .create-dropdown {
-  height: 86px;
+  height: 46px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -28,6 +29,11 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   outline: none;
 }
+
+.create-dropdown:hover {
+  background-color: #efefef;
+}
+
 .create-btn:hover {
   background-color: #efefef;
   color: black;
