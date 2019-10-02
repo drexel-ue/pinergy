@@ -32,7 +32,7 @@ class Board extends React.Component {
     if (this.props.boards.length > 0) {
       return (
         <div className="profile-boards-cover">
-          {this.props.boards.map((b, index) => {
+          {this.props.boards.map(b => {
             return (
               <Link to={`/board/${b._id}`}>
                 <BoardItemContainer key={b._id} board={b} boardId={b._id} />
