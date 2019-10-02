@@ -3,6 +3,16 @@ import BoardPinHeader from "./board_profile_container";
 import BoardPinItems from "./board_pin_items";
 import { withRouter } from "react-router-dom";
 import BoardShowItemContainer from "./board_show_item_container"
+import Masonry from "react-masonry-component";
+import Loader from "../loader/loader";
+
+const masonryOptions = {
+  transitionDuration: 650,
+  itemSelector: ".home-pin-wrap",
+  columnWidth: 270,
+  fitWidth: true
+};
+
 class BoardShow extends Component {
   constructor(props) {
     super(props);
@@ -28,14 +38,23 @@ class BoardShow extends Component {
 
     return this.state.board ? (
       <div>
-        <BoardPinHeader boardTitle={this.state.board.title} board={this.state.board} photoUrl={this.props.photoUrl} />
+      <BoardPinHeader boardTitle={this.state.board.title} board={this.state.board} photoUrl={this.props.photoUrl} />
+      <Masonry
+        className="board-masonry"
+        elementType="div"
+        updateOnEachImageLoad={true}
+        options={masonryOptions}
+      >
         <div>
         {this.state.pins.map(ele => {
           return <BoardShowItemContainer pin={ele}/>
         })}
         </div>
-      </div>
+      </Masonry>
+    </div>
     ) : <div/>;
   }
 }
 export default withRouter(BoardShow);
+
+
