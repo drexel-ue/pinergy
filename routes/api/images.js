@@ -15,7 +15,7 @@ router.post("/image-upload", function(req, res) {
       url: req.file.location
     });
     image.save().then(res2 => {
-      return res.json({ imageUrl: res2.url, id: res2.id})
+      return res.json({ imageUrl: res2.url, id: res2.id });
     });
     // return res.json({ imageUrl: req.file.location });
   });
@@ -24,12 +24,12 @@ router.post("/image-upload", function(req, res) {
 // when writtne line 29 as "return url"
 // fixed by res.json-ing return value
 router.post("/scrape", async (req, res) => {
-  // debugger
   try {
-  const urls = await scrape(req.body.url);
-    return res.json({ urls: urls })
+    const urls = await scrape(req.body.url);
+
+    return res.json({ urls: urls });
   } catch (err) {
-    res.json({ err: err })
+    res.json({ err: err });
   }
 });
 
