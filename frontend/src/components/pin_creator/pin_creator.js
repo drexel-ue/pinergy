@@ -5,6 +5,7 @@ import "./pin_creator.css";
 import Dropzone from "react-dropzone";
 import Scrape from "./scrape_container";
 import { withRouter } from "react-router-dom";
+import Loader from "../loader/loader";
 const ImageApi = require("../../util/image_util");
 class PinCreator extends React.Component {
   constructor(props) {
@@ -129,7 +130,7 @@ class PinCreator extends React.Component {
         const currentFile = files[0];
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
-          //
+          
           this.setState({
             image: myFileItemReader.result
           });
@@ -145,16 +146,14 @@ class PinCreator extends React.Component {
     if (this.state.image !== null) {
       const formData = new FormData();
       const image = this.state.image;
-      // debugger
       let typeName = image.slice(5, 15);
       if (typeName.includes("png") || typeName.includes("jpg")) {
-        // debugger
         typeName = typeName.slice(0, typeName.length - 1);
       }
-      const slicedData = (typeName.includes("png") || typeName.includes("jpg"))
-        ? image.slice(22)
-        : image.slice(23);
-      // debugger
+      const slicedData =
+        typeName.includes("png") || typeName.includes("jpg")
+          ? image.slice(22)
+          : image.slice(23);
       const byteCharacters = atob(slicedData);
       const byteNumbers = new Array(byteCharacters.length);
 
@@ -184,7 +183,6 @@ class PinCreator extends React.Component {
         scrapedImageUrl: this.state.scrapedImage,
         boardId: this.state.boardId,
         destinationLink: this.state.destinationLink
-        // image: res.data.id
       };
     }
 
@@ -210,8 +208,8 @@ class PinCreator extends React.Component {
 
   async handleScrape(e) {
     e.preventDefault();
+    this.setState({ loading: true });
     const urlList = await ImageApi.scrape(this.state.scrapeUrl);
-    debugger
     this.setState({
       scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
@@ -261,7 +259,6 @@ class PinCreator extends React.Component {
     );
   }
   renderBoardMenu() {
-    //
     return this.state.showDropDown ? (
       <div className="board-drop-down">
         {this.props.boards.map(ele => {
@@ -278,7 +275,6 @@ class PinCreator extends React.Component {
         })}
       </div>
     ) : (
-      //
       <div className="hide-div" />
     );
   }
@@ -287,19 +283,13 @@ class PinCreator extends React.Component {
     const { image, scrapedImage } = this.state;
     return image !== null ? (
       <div className="prev-image-cont">
-        <div className="remove-btn-cont">
-          {this.renderRemovebtn()}
-        </div>
+        <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
         <img src={image} className="imgprvw" />
-
       </div>
     ) : (
       <div className="prev-image-cont">
-            <div className="remove-btn-cont">
-            {this.renderRemovebtn()}
-          </div>
+        <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
         <img src={scrapedImage} className="imgprvw" />
-
       </div>
     );
   }
@@ -307,9 +297,10 @@ class PinCreator extends React.Component {
     const maxImgSize = 10000000;
     const { image, boardName, scrapedImage } = this.state;
     const user = this.props.currentUser;
-    const acceptedFileTypes =
-      "image/x-png, image/png, image/jpg, image/jpeg, image/gif";
-    if (this.state.renderScrape === false) {
+
+    if (this.state.loading) {
+      return <Loader />;
+    } else if (this.state.renderScrape === false) {
       return this.props.currentUser ? (
         <div className="pin-create-container">
           <form className="pin-create-inner">
