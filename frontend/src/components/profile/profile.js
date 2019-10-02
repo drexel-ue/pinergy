@@ -1,7 +1,7 @@
 import React from "react";
 import ProfileHeaderContainer from "./profile_head_container";
 import BoardsContainer from "../board/board_container";
-import BoardPins from "../board/board_show"
+import BoardPins from "../board/board_show";
 import { withRouter } from "react-router-dom";
 
 class Profile extends React.Component {
@@ -18,15 +18,17 @@ class Profile extends React.Component {
   }
 
   render() {
-    // debugger
     return this.props.user ? (
-      <div >
+      <div>
         <ProfileHeaderContainer />
-        {this.props.location.pathname.includes("pins") ? <BoardPins /> :
-          <BoardsContainer user={this.props.user} />}
+        {this.props.location.pathname.includes("pins") ? (
+          <BoardPins />
+        ) : (
+          <BoardsContainer user={this.props.user} />
+        )}
       </div>
     ) : (
-    <div />
+      <div />
     );
   }
 }

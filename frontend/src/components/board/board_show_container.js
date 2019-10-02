@@ -1,20 +1,13 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import BoardShow from "./board_show";
-// import { fetchUserBoards } from "../../actions/board_actions";
-import { fetchBoardPins } from "../../actions/pin_actions"
-import { fetchSingleBoard } from "../../actions/board_actions"
+import { fetchBoardPins } from "../../actions/pin_actions";
+import { fetchSingleBoard } from "../../actions/board_actions";
 
-const msp = ({ session, entities }, ownProps) => {
-  // debugger
-
-  return {
-    userId: session.user.id,
-    board: entities.boards.board,
-    photoUrl: entities.users[session.user.id].profilePhotoUrl
-
-  };
-};
+const msp = ({ session, entities }) => ({
+  userId: session.user.id,
+  board: entities.boards.board
+});
 
 const mdp = dispatch => {
   return {
