@@ -21,12 +21,7 @@ const validateUpdate = require("../../validation/update_user");
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
-<<<<<<< HEAD
-const Board = require("../../models/Board")
-//
-=======
 const Board = require("../../models/Board");
->>>>>>> 5e26586e062344d2f8b372479c721372746930d5
 const scraper = require("../../util/scrape");
 
 router.post("/query", async (req, res) => {

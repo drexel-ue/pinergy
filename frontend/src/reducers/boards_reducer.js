@@ -1,7 +1,8 @@
-import { RECEIVE_USER_BOARDS, RECEIVE_ONE_BOARD } from "../actions/board_actions";
+
 import {
   RECEIVE_USER_BOARDS,
-  RECEIVE_USER_BOARD
+  RECEIVE_USER_BOARD,
+  RECEIVE_ONE_BOARD
 } from "../actions/board_actions";
 import { merge } from "lodash";
 
