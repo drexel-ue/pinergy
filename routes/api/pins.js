@@ -21,8 +21,12 @@ const validateUpdate = require("../../validation/update_user");
 const upload = require("../../util/aws-upload");
 const singleUpload = upload.single("image");
 const Image = require("../../models/Image");
+<<<<<<< HEAD
 const Board = require("../../models/Board")
 //
+=======
+const Board = require("../../models/Board");
+>>>>>>> 5e26586e062344d2f8b372479c721372746930d5
 const scraper = require("../../util/scrape");
 
 router.post("/query", async (req, res) => {
@@ -37,19 +41,50 @@ router.post("/query", async (req, res) => {
   return res.json(data);
 });
 
+router.post("/createpin", async function(req, res) {
+  let imageUrl;
+  if (req.params.type === "image") {
+    imagUrl = await singleUpload(req, res, function(err) {
+      if (err) {
+        return res.status(422).send({
+          errors: [{ title: "File type error", detail: err.message }]
+        });
+      }
+      return req.file.location;
+    });
+  } else {
+    imageUrl = req.body.inputUrl;
+  }
+  const img = new Image({
+    url: imageUrl
+  });
+  img.save().then(img => {
+    const pin = new Pin({
+      user: req.body.id,
+      board: req.body.board,
+      image: img.id,
+      url: img.url,
+      title: req.body.title,
+      description: req.body.description,
+      destinationLink: req.body.destinationLink
+    });
+    pin.save().then(pin => {
+      res.json(pin);
+    });
+  });
+});
+
 router.post("/scrape", async (req, res) => {
   const urls = await scraper(req.body.url);
 });
 
 router.post("/createpin", async (req, res) => {
-  // debugger
   let pin;
   if (req.body.data.scrapedImageUrl) {
     const image = await new Image({
       url: req.body.data.scrapedImageUrl
     });
     image.save().then(res2 => {
-      // debugger
       pin = new Pin({
         user: req.body.data.id,
         board: req.body.data.boardId,
@@ -58,7 +93,6 @@ router.post("/createpin", async (req, res) => {
         title: req.body.data.title,
         description: req.body.data.description,
         destinationLink: req.body.data.destinationLink
-        // tags: [board.title]
       });
       pin.save().then(async pin => {
         const board = await Board.findById(req.body.data.boardId)
@@ -68,7 +102,6 @@ router.post("/createpin", async (req, res) => {
       });
     });
   } else {
-    // debugger
     pin = new Pin({
       user: req.body.data.id,
       board: req.body.data.boardId,
@@ -77,7 +110,6 @@ router.post("/createpin", async (req, res) => {
       title: req.body.data.title,
       description: req.body.data.description,
       destinationLink: req.body.data.destinationLink
-      // tags: [board.title]
     });
     pin.save().then(async pin => {
       const board = await Board.findById(req.body.data.boardId)
@@ -87,16 +119,16 @@ router.post("/createpin", async (req, res) => {
       res.json(pin);
     });
   }
-  // debugger;
-  // pin.save().then(pin => {
-  //   res.json(pin);
-  // });
 });
 
 router.post("/get", async (req, res) => {
   const tags = req.body.tags;
   if (tags.length === 0) {
-    const pins = await Pin.find.limit(25);
+    const pins = await Pin.aggregate([
+      {
+        $sample: { size: 200 }
+      }
+    ]);
     res.json(pins);
   }
 });
@@ -113,5 +145,44 @@ router.post("/getpins", async (req, res) => {
   // debugger 
   res.json(pins)
 })
+router.post("/fetch", async (req, res) => {
+  const id = req.body.id;
+  const pin = await Pin.findById(id).populate("image");
+  if (pin) {
+    res.json(pin);
+  } else {
+    res.json({ error: "no pin found" }).status(404);
+  }
+});
+
+router.post("/repin", async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const boardId = req.body.boardId;
+    const pin = req.body.pin;
+    delete pin._id;
+    delete pin.user;
+    pin.date = Date.now();
+    const user = await User.findById(userId);
+    pin.user = user;
+    const image = await Image.findById(pin.image._id);
+    const board = await Board.findById(boardId).populate("pins");
+    pin.board = board;
+    const repin = new Pin(pin);
+    image.pins.push(repin);
+    board.pins.push(repin);
+    await Promise.all([image.save(), repin.save(), board.save()]);
+
+    res.json({
+      pin,
+      image,
+      repin,
+      board
+    });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
+
 module.exports = router;
 

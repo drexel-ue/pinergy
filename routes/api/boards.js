@@ -27,15 +27,14 @@ router.get("/test", (req, res) => res.json({ msg: "boards route" }));
 
 router.get("/:user_id", (req, res) => {
   Board.find({ user: req.params.user_id })
+    .populate({ path: "pins", populate: { path: "image", model: "images" } })
     .then(boards => res.json(boards))
     .catch(err => res.status(404).json({ noBoardsFound: "No Boards Found" }));
 });
 router.post("/new", (req, res) => { });
 
 router.post("/getboard", async (req, res) => {
-  // console.log(req)
   const board = await Board.findById(req.body.boardId)
-  // console.log(board)
   res.json({ board: board })
 })
 module.exports = router;

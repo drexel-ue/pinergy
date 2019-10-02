@@ -251,7 +251,7 @@ class PinCreator extends React.Component {
           onChange={this.handleChange("scrapeUrl")}
         />
         <div className="url-selected-btn" onClick={this.handleScrape}>
-          <i class="fa fa-angle-right"></i>
+          <i className="fa fa-angle-right"></i>
         </div>
       </div>
     ) : (
@@ -272,7 +272,7 @@ class PinCreator extends React.Component {
               value={ele._id}
               name={ele.title}
             >
-              <div className="board-item-image">{ele.title}</div>
+              <div>{ele.title}</div>
             </div>
           );
         })}

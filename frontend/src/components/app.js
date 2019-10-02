@@ -17,9 +17,7 @@ import Loader from "./loader/loader";
 import BoardShowContainer from "./board/board_show_container";
 
 class App extends React.Component {
-  
   render() {
-   
     return (
       <div>
         <ModalContainer />
