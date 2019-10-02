@@ -130,7 +130,6 @@ class PinCreator extends React.Component {
         const currentFile = files[0];
         const myFileItemReader = new FileReader();
         myFileItemReader.onloadend = () => {
-          
           this.setState({
             image: myFileItemReader.result
           });
@@ -211,6 +210,7 @@ class PinCreator extends React.Component {
     this.setState({ loading: true });
     const urlList = await ImageApi.scrape(this.state.scrapeUrl);
     this.setState({
+      loading: false,
       scrapedPhotos: urlList.data.urls,
       renderScrape: !this.state.renderScrape
     });
