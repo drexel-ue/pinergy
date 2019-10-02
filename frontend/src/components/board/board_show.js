@@ -47,9 +47,11 @@ class BoardShow extends Component {
           options={masonryOptions}
         >
           <div>
-            {this.state.pins.map(ele => {
-              return <BoardShowItemContainer pin={ele} />;
-            })}
+            {this.state.pins.map((ele, index) => (
+              <div key={index}>
+                <BoardShowItemContainer pin={ele} />
+              </div>
+            ))}
           </div>
         </Masonry>
       </div>
