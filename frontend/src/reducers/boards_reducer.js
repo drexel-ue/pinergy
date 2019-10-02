@@ -1,4 +1,3 @@
-
 import {
   RECEIVE_USER_BOARDS,
   RECEIVE_USER_BOARD,
@@ -7,7 +6,7 @@ import {
 import { merge } from "lodash";
 
 const boardsReducer = (
-  state = { all: {}, user: {}, board: {}, new: undefined },
+  state = { all: {}, user: [], board: {}, new: undefined },
   action
 ) => {
   Object.freeze(state);
@@ -17,7 +16,8 @@ const boardsReducer = (
       newState.user = action.boards.data;
       return newState;
     case RECEIVE_ONE_BOARD:
-      newState.board = action.boards.data
+      newState.board = action.boards.data.board;
+      return newState;
     case RECEIVE_USER_BOARD:
       if (newState.user) {
         newState.user.push(action.board);

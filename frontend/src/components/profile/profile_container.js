@@ -5,8 +5,6 @@ import { fetchUserByUserName } from "../../actions/user_actions";
 
 const mapStateToProps = ({ entities, session }, ownProps) => {
   return {
-    // boards: Object.values(entities.boards),
-    // sections: Object.values(entities.sections),
     user: Object.values(entities.users).find(
       user => user.username == ownProps.match.params.username
     ),
