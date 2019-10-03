@@ -17,12 +17,9 @@ router.post("/image-upload", function(req, res) {
     image.save().then(res2 => {
       return res.json({ imageUrl: res2.url, id: res2.id });
     });
-    // return res.json({ imageUrl: req.file.location });
   });
 });
-// TODO: code underneat prior to fix wasnt returning anything
-// when writtne line 29 as "return url"
-// fixed by res.json-ing return value
+
 router.post("/scrape", async (req, res) => {
   try {
     const urls = await scrape(req.body.url);

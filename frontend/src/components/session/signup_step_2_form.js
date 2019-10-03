@@ -83,7 +83,7 @@ class SignupForm extends React.Component {
             <div className="black-circle" />
           </div>
         </div>
-        <img className="pfimg" src={this.props.user.profilePhotoUrl} />
+        <img alt="" className="pfimg" src={this.props.user.profilePhotoUrl} />
 
         <div className="sup2email">{this.props.user.email}</div>
 

@@ -166,7 +166,6 @@ class PinCreator extends React.Component {
       formData.set("image", blob);
       window.formData = formData;
       const res = await ImageApi.getAwsUrl(formData);
-      // debugger
       reqData = {
         id: this.state.id,
         title: this.state.title,
@@ -188,7 +187,6 @@ class PinCreator extends React.Component {
         destinationLink: this.state.destinationLink
       };
     }
-    // debugger
     if (reqData)
       this.props.createPins(reqData).then(res => {
         this.props.history.push(`/pins/${res._id}`);

@@ -182,7 +182,11 @@ export default class PinShow extends React.Component {
           </div>
           <div className="pin-show-bottom">
             <div className="pin-show-left">
-              <a href={this.props.pin.url} target="_blank" className="pin-atag">
+              <a 
+                rel="noopener noreferrer" 
+                href={this.props.pin.url} 
+                target="_blank" 
+                className="pin-atag">
                 <img
                   className="pin-show-image"
                   src={this.props.pin.url}

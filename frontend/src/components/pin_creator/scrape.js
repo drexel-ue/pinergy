@@ -41,23 +41,12 @@ export default class Scrape extends Component {
       prevSelectedImageId: e.currentTarget.id
     });
 
-    // const ele2 = document.getElementById(e.);
-    // debugger;
-    //   ele2.classList.add("select-image")
-
   }
 
   cancelScrape(e) {
     e.preventDefault();
     this.props.cancel();
   }
-
-  // highlightImage(url) {
-  //   // ele = document.getElementById(id)
-  //   return {
-  //     border: url = this.state.selectedImageUrl ? "1px solid red" : "none;"
-  //   };
-  // }
 
   render() {
     const { selectedImageUrl } = this.state;
@@ -89,8 +78,8 @@ export default class Scrape extends Component {
           >
             {this.props.scrapedUrls.map((url, idx) => (
               <img
+                alt=""
                 key={idx}
-                // style={this.highlightImage(url)}
                 className="scrape-image"
                 id={url}
                 src={url}

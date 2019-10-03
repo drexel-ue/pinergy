@@ -19,6 +19,7 @@ class BoardShow extends Component {
       board: ""
     };
   }
+  
   componentWillMount() {
     this.props.fetchBoardPins(this.props.match.params.boardid).then(res => {
       this.setState({ pins: res });
