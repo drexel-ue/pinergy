@@ -289,12 +289,12 @@ class PinCreator extends React.Component {
     return image !== null ? (
       <div className="prev-image-cont">
         <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
-        <img src={image} className="imgprvw" />
+        <img alt="" src={image} className="imgprvw" />
       </div>
     ) : (
       <div className="prev-image-cont">
         <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
-        <img src={scrapedImage} className="imgprvw" />
+          <img alt="" src={scrapedImage} className="imgprvw" />
       </div>
     );
   }

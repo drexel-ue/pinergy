@@ -1,5 +1,4 @@
 import React from "react";
-import { scrape } from "../../util/scrape_util";
 
 export default class Interest extends React.Component {
 

@@ -22,9 +22,6 @@ import LoginFormContainer from "../session/login_form_container";
 import SessionButtonContainer from "../session/session_button_container";
 import PinShowContainer from "../show/pin_show_container";
 class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     if (this.props.currentUser.interests || this.props.currentUser.id) {
