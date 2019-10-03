@@ -58,7 +58,6 @@ class ProfileHead extends React.Component {
   renderDropdown() {
     return this.state.showDropdown ? (
       <div className="drpdwnenc create-dropdown">
-        {/* <div className="create-btn">Create Board</div> */}
         <div className="create-btn">
           <Link className="profile-head-link" to="/pin-creator">
             Create Pin
@@ -130,16 +129,6 @@ class ProfileHead extends React.Component {
     }
   }
 
-  showMessage() {
-    return this.props.user._id != this.props.id ? (
-      <div className="message_and_follow_buttons">
-        <button className="message_button">Message</button>
-      </div>
-    ) : (
-      <div />
-    );
-  }
-
   handleFollow(e) {
     e.preventDefault();
     this.props.followUser(this.props.currentUser._id, this.props.user._id);
@@ -160,9 +149,7 @@ class ProfileHead extends React.Component {
       </div>
     ) : (
       <div className="prfnavv2">
-        <div className="prfnavv2lft">
-          {/* <div className="links">Pins</div> */}
-        </div>
+        <div className="prfnavv2lft"></div>
       </div>
     );
   }
@@ -238,7 +225,6 @@ class ProfileHead extends React.Component {
               </div>
               <div className="message_follow_image">
                 <div className="message-follow-buttons">
-                  {this.props.type === "profile" ? this.showMessage() : <div />}
                   {this.props.type === "profile" ? this.showFollow() : <div />}
                 </div>
                 <img src={url} className="prfprfpho" />
