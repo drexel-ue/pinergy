@@ -54,7 +54,7 @@ class ProfileHead extends React.Component {
       <div className="drpdwnenc create-dropdown">
         {/* <div className="create-btn">Create Board</div> */}
         <div className="create-btn">
-          <Link className="profile-head-link" to="/pin_creator">
+          <Link className="profile-head-link" to="/pin-creator">
             Create Pin
           </Link>
         </div>

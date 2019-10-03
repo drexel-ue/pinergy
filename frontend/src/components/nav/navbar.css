@@ -106,7 +106,7 @@
   display: flex;
   align-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
   position: relative;
 }
 .PlusSign {
@@ -129,16 +129,16 @@
 
 .RightIcons {
   display: flex;
-  width: 220px;
+  width: 200px;
   height: 56px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   text-decoration: none;
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 4px;
   padding-top: 4px;
-  margin-right: 8px;
+  margin-right: 25px;
   align-items: center;
 }
 
@@ -217,9 +217,9 @@
 
 .LeftLinks {
   display: flex;
-  width: 80%;
+  width: 60%;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 #search_bar_results {
@@ -265,4 +265,8 @@
   text-decoration: none;
   color: black;
   width: 100%;
+}
+
+.ProfileIcon {
+  margin-left: 10px;
 }

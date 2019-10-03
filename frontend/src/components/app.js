@@ -30,7 +30,7 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-            path="/pin_creator"
+            path="/pin-creator"
             component={PinCreatorContainer}
           />
           <ProtectedRoute

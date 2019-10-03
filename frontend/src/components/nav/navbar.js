@@ -104,34 +104,21 @@ class NavBar extends React.Component {
                 </div>
               </div>
             </div>
-            <Link to={"/"} className="Links1 Home">
-              Home
-            </Link>
+
+          </div>
+          <div className="RightIcons">
             <Link
               to={`/profile/${this.props.user ? this.props.user.username : ""}`}
               className="Links1"
             >
               <div className="Profile">
+                {this.props.user ? this.props.user.username : ""}
                 <img
                   className="ProfileIcon"
                   src={this.props.user ? this.props.user.profilePhotoUrl : ""}
                 />
-                {this.props.user ? this.props.user.username : ""}
               </div>
             </Link>
-          </div>
-          <div className="RightIcons">
-            {/* <div className="Navbar-icon-halo">
-              <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
-            </div>
-            <div className="Navbar-icon-halo">
-              <Link to={"/"} className="fas fa-bell fa-2x Links2" />
-            </div> */}
-            <div className="Navbar-icon-halo">
-              <Link to={"/pin_creator"} className="Links2 PlusSign">
-                +{" "}
-              </Link>
-            </div>
             <div className="Navbar-icon-halo">
               <Link
                 to={"/"}
@@ -170,6 +157,10 @@ const user_tasks = [
   // <Link className="nav-drop-link" to={"/settings/edit-profile"}>
   //   Edit settings
   // </Link>,
+
+  <Link to={"/pin-creator"} className="nav-drop-link">
+    Create Pin
+  </Link>,
   <Link to={"/project-details"} className="nav-drop-link">
     Project Details
   </Link>,
