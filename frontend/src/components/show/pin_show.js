@@ -32,7 +32,7 @@ export default class PinShow extends React.Component {
     window.removeEventListener("click", this.toggleOffPinDrop);
   }
 
-  parseDestinationLink() { 
+  parseDestinationLink() {
     let hostDomain;
     let { destinationLink } = this.props.pin;
     if (destinationLink.indexOf("//") > -1) {
@@ -62,7 +62,11 @@ export default class PinShow extends React.Component {
   repin(event) {
     event.preventDefault();
     if (this.state.boardId) {
-      this.props.repin(this.props.pin, this.state.boardId, this.props.id);
+      this.props
+        .repin(this.props.pin, this.state.boardId, this.props.id)
+        .then(_ => {
+          this.setState({});
+        });
       this.setState({ pinned: true });
     }
   }
@@ -121,9 +125,15 @@ export default class PinShow extends React.Component {
     if (board || this.state.pinned) {
       return (
         <div>
-          <Link to="#" className="already_pinned">
-            {`Saved to ${board ? board.title : boardName}`}
-          </Link>
+          {board ? (
+            <Link to={`/board/${board._id}`} className="already_pinned">
+              {`Saved to ${board ? board.title : boardName}`}
+            </Link>
+          ) : (
+            <div className="already_pinned">
+              {`Saved to ${board ? board.title : boardName}`}
+            </div>
+          )}
         </div>
       );
     } else {
