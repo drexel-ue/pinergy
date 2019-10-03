@@ -191,7 +191,7 @@ class ProfileHead extends React.Component {
 
   render() {
     const displayName = this.findDisplayName()
-    const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : this.props.photoUrl
+    const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : this.props.profilePhotoUrl
     return (this.props.user || this.props.boardTitle) ? (
       <div>
         <div className="prfnav">
