@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom';
 import ProfileHead from '../profile/profile_head'
 
 const mapStateToProps = ({entities, session}) => {
-  // debugger
+  debugger
   return {
     type: "boardshow",
-    // profilePhotoUrl: entities.users[session.user.id].profilePhotoUrl
+    profilePhotoUrl: entities.users[session.user.id].profilePhotoUrl
     // profilePhotoUrl: session.user.id
 
   }
