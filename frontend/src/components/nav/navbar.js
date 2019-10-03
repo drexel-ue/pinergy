@@ -69,7 +69,6 @@ class NavBar extends React.Component {
     }
   }
 
-  // Selectively render links dependent on whether the user is logged in
   getLinks() {
     const show = this.state.queryString.length > 0 ? "" : "hide";
 
@@ -108,9 +107,6 @@ class NavBar extends React.Component {
             <Link to={"/"} className="Links1 Home">
               Home
             </Link>
-            {/* <Link to={"/home"} className="Links1">
-              Following
-            </Link> */}
             <Link
               to={`/profile/${this.props.user ? this.props.user.username : ""}`}
               className="Links1"
@@ -125,12 +121,12 @@ class NavBar extends React.Component {
             </Link>
           </div>
           <div className="RightIcons">
-            <div className="Navbar-icon-halo">
+            {/* <div className="Navbar-icon-halo">
               <Link to={"/"} className="far fa-comment-dots Links2 fa-2x" />
             </div>
             <div className="Navbar-icon-halo">
               <Link to={"/"} className="fas fa-bell fa-2x Links2" />
-            </div>
+            </div> */}
             <div className="Navbar-icon-halo">
               <Link to={"/pin_creator"} className="Links2 PlusSign">
                 +{" "}
