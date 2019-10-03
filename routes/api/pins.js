@@ -36,39 +36,6 @@ router.post("/query", async (req, res) => {
   return res.json(data);
 });
 
-router.post("/createpin", async function(req, res) {
-  let imageUrl;
-  if (req.params.type === "image") {
-    imagUrl = await singleUpload(req, res, function(err) {
-      if (err) {
-        return res.status(422).send({
-          errors: [{ title: "File type error", detail: err.message }]
-        });
-      }
-      return req.file.location;
-    });
-  } else {
-    imageUrl = req.body.inputUrl;
-  }
-  const img = new Image({
-    url: imageUrl
-  });
-  img.save().then(img => {
-    const pin = new Pin({
-      user: req.body.id,
-      board: req.body.board,
-      image: img.id,
-      url: img.url,
-      title: req.body.title,
-      description: req.body.description,
-      destinationLink: req.body.destinationLink
-    });
-    pin.save().then(pin => {
-      res.json(pin);
-    });
-  });
-});
-
 router.post("/scrape", async (req, res) => {
   const urls = await scraper(req.body.url);
 });
@@ -80,37 +47,64 @@ router.post("/createpin", async (req, res) => {
       url: req.body.data.scrapedImageUrl
     });
     image.save().then(res2 => {
-      pin = new Pin({
-        user: req.body.data.id,
-        board: req.body.data.boardId,
-        image: res2.id,
-        url: res2.url,
-        title: req.body.data.title,
-        description: req.body.data.description,
-        destinationLink: req.body.data.destinationLink
-      });
+      if (req.body.data.boardId) {
+        pin = new Pin({
+          user: req.body.data.id,
+          board: req.body.data.boardId,
+          image: res2.id,
+          url: res2.url,
+          title: req.body.data.title,
+          description: req.body.data.description,
+          destinationLink: req.body.data.destinationLink
+        });
+      } else {
+        pin = new Pin({
+          user: req.body.data.id,
+          image: res2.id,
+          url: res2.url,
+          title: req.body.data.title,
+          description: req.body.data.description,
+          destinationLink: req.body.data.destinationLink
+        })
+      }
+      
       pin.save().then(async pin => {
-        const board = await Board.findById(req.body.data.boardId)
-        board.pins.push(pin.id)
-        board.save()
+        if (req.body.data.boardId) {
+          const board = await Board.findById(req.body.data.boardId);
+          board.pins.push(pin.id);
+          board.save();
+        }
         res.json(pin);
       });
     });
   } else {
-    pin = new Pin({
-      user: req.body.data.id,
-      board: req.body.data.boardId,
-      image: req.body.data.image,
-      url: req.body.data.url,
-      title: req.body.data.title,
-      description: req.body.data.description,
-      destinationLink: req.body.data.destinationLink
-    });
+    if (req.body.data.boardId) {
+      pin = new Pin({
+        user: req.body.data.id,
+        board: req.body.data.boardId,
+        image: req.body.data.image,
+        url: req.body.data.url,
+        title: req.body.data.title,
+        description: req.body.data.description,
+        destinationLink: req.body.data.destinationLink
+      });
+    } else {
+      pin = new Pin({
+        user: req.body.data.id,
+        image: req.body.data.image,
+        url: req.body.data.url,
+        title: req.body.data.title,
+        description: req.body.data.description,
+        destinationLink: req.body.data.destinationLink
+      });
+      }
+    
     pin.save().then(async pin => {
-      const board = await Board.findById(req.body.data.boardId)
-      board.pins.push(pin.id)
-      
-      board.save()
+      if (req.body.data.boardId) {
+        const board = await Board.findById(req.body.data.boardId);
+        board.pins.push(pin.id);
+        board.save();
+      }
       res.json(pin);
     });
   }
@@ -129,17 +123,14 @@ router.post("/get", async (req, res) => {
 });
 
 router.post("/getpreviews", async (req, res) => {
-  const foundthumbPins = await Pin.find({ board: req.body.boardId }).limit(4)
-  // debugger
-  res.json(foundthumbPins)
-})
+  const foundthumbPins = await Pin.find({ board: req.body.boardId }).limit(4);
+  res.json(foundthumbPins);
+});
 
 router.post("/getpins", async (req, res) => {
-  // debugger
-  const pins = await Pin.find({ board: req.body.boardId })
-  // debugger 
-  res.json(pins)
-})
+  const pins = await Pin.find({ board: req.body.boardId });
+  res.json(pins);
+});
 router.post("/fetch", async (req, res) => {
   const id = req.body.id;
   const pin = await Pin.findById(id).populate("image");
@@ -180,4 +171,3 @@ router.post("/repin", async (req, res) => {
 });
 
 module.exports = router;
-
