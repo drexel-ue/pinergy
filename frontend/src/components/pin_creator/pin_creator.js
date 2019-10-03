@@ -141,8 +141,9 @@ class PinCreator extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    let reqData;
+    let reqData = undefined;
     if (this.state.image !== null) {
+      this.setState({ loading: true });
       const formData = new FormData();
       const image = this.state.image;
       let typeName = image.slice(5, 15);
@@ -175,6 +176,8 @@ class PinCreator extends React.Component {
         image: res.data.id
       };
     } else if (this.state.scrapedImage !== null) {
+      this.setState({ loading: true });
+
       reqData = {
         id: this.state.id,
         title: this.state.title,
@@ -185,9 +188,10 @@ class PinCreator extends React.Component {
       };
     }
 
-    this.props.createPins(reqData).then(res => {
-      this.props.history.push(`/pins/${res._id}`);
-    });
+    if (reqData)
+      this.props.createPins(reqData).then(res => {
+        this.props.history.push(`/pins/${res._id}`);
+      });
   }
 
   handleBoard(e) {

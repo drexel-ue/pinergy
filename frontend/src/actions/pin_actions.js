@@ -20,23 +20,27 @@ const receivePinError = () => ({
 //
 export const fetchBoardPins = boardId => dispatch => {
   // debugger
-  return ApiUtil.findBoardPins(boardId).then(res => {
-    // debugger
-    dispatch(receivePins(res.data))
-    return res.data
-  }).catch(error => {
-    dispatch(receivePinError())
-  })
-}
+  return ApiUtil.findBoardPins(boardId)
+    .then(res => {
+      // debugger
+      dispatch(receivePins(res.data));
+      return res.data;
+    })
+    .catch(error => {
+      dispatch(receivePinError());
+    });
+};
 
 export const fetchBoardPreviews = boardId => dispatch => {
-  return ApiUtil.findBoardPreview(boardId).then(res => {
-    dispatch(receivePins(res.data))
-    return res.data
-  }).catch(error => {
-    dispatch(receivePinError())
-  })
-}
+  return ApiUtil.findBoardPreview(boardId)
+    .then(res => {
+      dispatch(receivePins(res.data));
+      return res.data;
+    })
+    .catch(error => {
+      dispatch(receivePinError());
+    });
+};
 
 export const fetchPins = tags => dispatch =>
   ApiUtil.getPins(tags)
