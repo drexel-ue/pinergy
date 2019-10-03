@@ -10,10 +10,8 @@ class ProfileHead extends React.Component {
       showDropdown: false,
       showShareDropdown: false
     };
-    // debugger
-    // debugger
+    this.copy = this.copy.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
-    // this.handleUnfollow = this.handleUnfollow.bind(this)
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
     this.myScrollFunc = this.myScrollFunc.bind(this);
@@ -56,7 +54,7 @@ class ProfileHead extends React.Component {
       <div className="drpdwnenc create-dropdown">
         {/* <div className="create-btn">Create Board</div> */}
         <div className="create-btn">
-          <Link className="profile-head-link" to="/pin_creator">
+          <Link className="profile-head-link" to="/pin-creator">
             Create Pin
           </Link>
         </div>
@@ -73,9 +71,24 @@ class ProfileHead extends React.Component {
             <p className="sharedrpdwnenchdr">Share this profile </p>
           </div>
           <div className="social-icons">
-            <i className="fab fa-whatsapp des" />
-            <i className="fab fa-facebook des" />
-            <i className="fab fa-twitter des" />
+            <a 
+              onClick={this.copy}
+              target="_blank" 
+              href="https://www.whatsapp.com/">
+                <i className="fab fa-whatsapp des" />
+            </a>
+            <a 
+              onClick={this.copy}
+              target="_blank" 
+              href="https://www.facebook.com/">
+                <i className="fab fa-facebook des" />
+              </a>
+            <a 
+              onClick={this.copy}
+              target="_blank" 
+              href="https://twitter.com">
+                <i className="fab fa-twitter des" />
+            </a>
           </div>
         </div>
       </div>
@@ -111,7 +124,6 @@ class ProfileHead extends React.Component {
   }
 
   renderNav() {
-    // debugger
     let basePath = "";
     if (this.props.type === "profile")
       basePath = `/profile/${this.props.currentUser.username}`;
@@ -122,21 +134,12 @@ class ProfileHead extends React.Component {
           <Link className="links" to={`${basePath}/boards`}>
             Boards
           </Link>
-          {/* <Link className="links" to={`${basePath}/pins`}>
-            Pins
-          </Link> */}
-          {/* <Link className="links" to="`${basePath}/tries">
-                  Tries
-                </Link>
-                <Link className="links" to="`${basePath}/topics">
-                  Topics
-                </Link> */}
         </div>
       </div>
     ) : (
       <div className="prfnavv2">
         <div className="prfnavv2lft">
-          <div className="links">Pins</div>
+          {/* <div className="links">Pins</div> */}
         </div>
       </div>
     );
@@ -144,8 +147,6 @@ class ProfileHead extends React.Component {
 
   showFollow() {
     if (this.props.user._id != this.props.id) {
-      // debugger
-      console.log(this.props.currentUser);
       if (this.props.currentUser.following.includes(this.props.user._id)) {
         return (
           <div className="message_and_follow_buttons">
@@ -173,7 +174,6 @@ class ProfileHead extends React.Component {
     let ele = (this.props.type === "profile"
       ? this.props.user
       : this.props.board);
-    // debugger
 
     return (this.props.type === "profile" ? (
       <div className="follownums">
@@ -184,8 +184,13 @@ class ProfileHead extends React.Component {
     ));
   }
 
+  copy(event) {
+    navigator.clipboard.writeText(window.location.href);
+    window.alert("URL copied to clipboard")
+  }
+
   render() {
-    // debugger
+    const displayName = this.findDisplayName()
     const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : this.props.photoUrl
     return (this.props.user || this.props.boardTitle) ? (
       <div>
@@ -193,13 +198,10 @@ class ProfileHead extends React.Component {
           <div className="prftopnav">
             <i className="fas fa-plus" onClick={this.toggleDropdown} />
             {this.renderDropdown()}
-            <Link className="profile-head-link" to="/profile/settings">
-              <i className="fas fa-pencil-alt prficon" />
-            </Link>
             <i className="fas fa-upload" onClick={this.toggleShareDropdown} />
             {this.renderShareDropdown()}
             <div id="username-scroll" className="username-animate hide">
-              {/* {this.props.user.username} */}
+              {displayName}
             </div>
           </div>
         </div>
@@ -207,7 +209,7 @@ class ProfileHead extends React.Component {
           <div className="prfinnerbox">
             <div className="prfsmlbox">
               <div className="nnfbox">
-                <div className="dispname">{this.findDisplayName()}</div>
+                <div className="dispname">{displayName}</div>
                 {this.renderFollows()}
               </div>
               <div className="message_follow_image">

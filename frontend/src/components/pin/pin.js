@@ -29,7 +29,6 @@ export default class Pin extends React.Component {
   }
 
   render() {
-    // debugger
     return (
       <div className="home-pin-wrap">
         <Link to={`/pins/${this.props.pin._id}`}>

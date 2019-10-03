@@ -15,6 +15,7 @@
   z-index: 9;
   background: white;
   top: 0;
+  z-index: 150;
 }
 
 .NavBar button {
@@ -31,7 +32,6 @@
   font-size: 25px;
   justify-content: center;
   font-family: "Lobster Two", cursive;
-  margin: 0px 0px;
   text-decoration: none;
   z-index: 1;
 }
@@ -102,10 +102,11 @@
   outline: none;
 }
 .SearchGrp {
+  margin-left: 10px;
   display: flex;
   align-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
   position: relative;
 }
 .PlusSign {
@@ -128,16 +129,16 @@
 
 .RightIcons {
   display: flex;
-  width: 220px;
+  width: 200px;
   height: 56px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   text-decoration: none;
   padding-left: 12px;
   padding-right: 12px;
   padding-bottom: 4px;
   padding-top: 4px;
-  margin-right: 8px;
+  margin-right: 25px;
   align-items: center;
 }
 
@@ -154,7 +155,7 @@
 
 .UserTasks {
   position: absolute;
-  z-index: 25;
+  z-index: 1000;
   width: 322px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
   border-radius: 8px;
@@ -166,7 +167,7 @@
 }
 
 .UserTasksItems {
-  /* padding: 8px 16px; */
+  z-index: 1000;
   padding-left: 15px;
   display: flex;
   align-items: center;
@@ -216,9 +217,9 @@
 
 .LeftLinks {
   display: flex;
-  width: 80%;
+  width: 60%;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 #search_bar_results {
@@ -264,4 +265,8 @@
   text-decoration: none;
   color: black;
   width: 100%;
+}
+
+.ProfileIcon {
+  margin-left: 10px;
 }

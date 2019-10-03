@@ -6,7 +6,7 @@
   top: 65px;
   justify-content: center;
   position: fixed;
-  z-index: 100;
+  z-index: 50;
 }
 
 .profile-head-link:visited {
