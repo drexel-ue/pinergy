@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
 import "./edit_profile.css";
 
 class EditProfile extends React.Component {

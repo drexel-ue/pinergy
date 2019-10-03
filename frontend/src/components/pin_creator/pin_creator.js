@@ -370,7 +370,7 @@ class PinCreator extends React.Component {
                 onChange={this.handleChange("title")}
               />
               <div className="create-pin-user-info">
-                <img src={user.profilePhotoUrl} className="create-prof-img" />
+                <img alt="" src={user.profilePhotoUrl} className="create-prof-img" />
                 <div className="create-prof-name">{user.username}</div>
               </div>
               <textarea

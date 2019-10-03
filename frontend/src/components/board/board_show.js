@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import BoardPinHeader from "./board_profile_container";
-import BoardPinItems from "./board_pin_items";
 import { withRouter } from "react-router-dom";
 import BoardShowItemContainer from "./board_show_item_container";
 import Masonry from "react-masonry-component";
-import Loader from "../loader/loader";
 
 const masonryOptions = {
   transitionDuration: 650,
