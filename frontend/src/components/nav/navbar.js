@@ -108,9 +108,9 @@ class NavBar extends React.Component {
             <Link to={"/"} className="Links1 Home">
               Home
             </Link>
-            <Link to={"/home"} className="Links1">
+            {/* <Link to={"/home"} className="Links1">
               Following
-            </Link>
+            </Link> */}
             <Link
               to={`/profile/${this.props.user ? this.props.user.username : ""}`}
               className="Links1"
@@ -171,9 +171,9 @@ class NavBar extends React.Component {
 }
 
 const user_tasks = [
-  <Link className="nav-drop-link" to={"/settings/edit-profile"}>
-    Edit settings
-  </Link>,
+  // <Link className="nav-drop-link" to={"/settings/edit-profile"}>
+  //   Edit settings
+  // </Link>,
   <Link to={"/project-details"} className="nav-drop-link">
     Project Details
   </Link>,
