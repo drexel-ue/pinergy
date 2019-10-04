@@ -55,6 +55,10 @@
   position: relative;
 }
 
+.pin-atag:hover {
+  cursor: pointer;
+}
+
 .pin-atag:hover .pin-show-link {
   position: absolute;
   top: 50%;
