@@ -194,7 +194,7 @@ export default class PinShow extends React.Component {
             <div className="pin-show-left">
               <a 
                 rel="noopener noreferrer" 
-                href={this.props.pin.url} 
+                href={this.props.pin.destinationLink}
                 target="_blank" 
                 className="pin-atag">
                 <img
@@ -202,7 +202,7 @@ export default class PinShow extends React.Component {
                   src={this.props.pin.url}
                   alt={this.props.pin.title}
                 />
-                <div className="pin-show-link" onClick={this.openLink}>
+                <div className="pin-show-link">
                   <i className="fas fa-arrow-right"></i>
                   &nbsp;{this.parseDestinationLink()}
                 </div>
