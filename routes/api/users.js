@@ -210,10 +210,10 @@ router.post("/follow", async (req, res) => {
     follower.following.push(followeeId);
   } else {
     followee.followers = followee.followers.filter(
-      followerID => followerID == follower._id
+      followerID => followerID.toString() !== follower._id.toString()
     );
     follower.following = follower.following.filter(
-      followeeID => followeeID == followee._id
+      followeeID => followeeID.toString() !== followee._id.toString()
     );
   }
 
