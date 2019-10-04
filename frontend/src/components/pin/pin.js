@@ -36,7 +36,7 @@ export default class Pin extends React.Component {
         </Link>
         <a
           rel="noopener noreferrer"
-          href={this.props.pin.url}
+          href={this.props.pin.destinationLink}
           target="_blank"
           className="pin-button home-link"
         >

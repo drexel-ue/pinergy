@@ -11,6 +11,7 @@ export default class PinShow extends React.Component {
       copied: false
     };
 
+    this.openLink = this.openLink.bind(this)
     this.copy = this.copy.bind(this);
     this.repin = this.repin.bind(this);
     this.handleBoard = this.handleBoard.bind(this);
@@ -163,6 +164,11 @@ export default class PinShow extends React.Component {
     this.setState({ copied: true });
   }
 
+  openLink() {
+  var win = window.open(this.props.pin.destinationLink, '_blank');
+  win.focus();
+  }
+
   render() {
     return this.props.pin ? (
       <div className="pin-show-outer">
@@ -192,21 +198,19 @@ export default class PinShow extends React.Component {
           </div>
           <div className="pin-show-bottom">
             <div className="pin-show-left">
-              <a 
-                rel="noopener noreferrer" 
-                href={this.props.pin.url} 
-                target="_blank" 
+              <div 
+                onClick={this.openLink} 
                 className="pin-atag">
                 <img
                   className="pin-show-image"
                   src={this.props.pin.url}
                   alt={this.props.pin.title}
                 />
-                <div className="pin-show-link" onClick={this.openLink}>
+                <div className="pin-show-link">
                   <i className="fas fa-arrow-right"></i>
                   &nbsp;{this.parseDestinationLink()}
                 </div>
-              </a>
+              </div>
             </div>
             <div className="pin-show-right">
               <div className="pin-show-info">
