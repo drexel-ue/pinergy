@@ -34,10 +34,6 @@ export default class Pin extends React.Component {
         <Link to={`/pins/${this.props.pin._id}`}>
           <img alt="" className="home-pin-img" src={this.props.pin.url} />
         </Link>
-        <div className="pin-button home-save">
-          <i className="fas fa-thumbtack" />
-          &nbsp;&nbsp;Save
-        </div>
         <a
           rel="noopener noreferrer"
           href={this.props.pin.url}

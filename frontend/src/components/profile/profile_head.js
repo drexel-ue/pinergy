@@ -6,15 +6,21 @@ import "./profile.css";
 class ProfileHead extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showDropdown: false,
       showShareDropdown: false
     };
+
+    this.timer = undefined;
+
     this.copy = this.copy.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
     this.myScrollFunc = this.myScrollFunc.bind(this);
+    this.timeout = this.timeout.bind(this);
+    this.cancelTimeout = this.cancelTimeout.bind(this);
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -62,9 +68,26 @@ class ProfileHead extends React.Component {
       <div />
     );
   }
+
+  timeout(event) {
+    event.preventDefault();
+    this.timer = setTimeout(
+      () => this.setState({ showShareDropdown: false }),
+      1000
+    );
+  }
+  cancelTimeout(event) {
+    event.preventDefault();
+    clearTimeout(this.timer);
+  }
+
   renderShareDropdown() {
     return this.state.showShareDropdown ? (
-      <div className="sharedrpdwnenc">
+      <div
+        className="sharedrpdwnenc"
+        onMouseLeave={this.timeout}
+        onMouseEnter={this.cancelTimeout}
+      >
         <div className="social-icon-wrap">
           <div className="social-icon-text">
             <p className="sharedrpdwnenchdr">Share this profile </p>
@@ -73,9 +96,10 @@ class ProfileHead extends React.Component {
             <a 
               rel="noopener noreferrer"
               onClick={this.copy}
-              target="_blank" 
-              href="https://www.whatsapp.com/">
-                <i className="fab fa-whatsapp des" />
+              target="_blank"
+              href="https://www.whatsapp.com/"
+            >
+              <i className="fab fa-whatsapp des" />
             </a>
             <a 
               rel="noopener noreferrer"
@@ -100,13 +124,13 @@ class ProfileHead extends React.Component {
   }
 
   findDisplayName() {
-    if(this.props.type === "profile") {
-    const user = this.props.user;
-    return user.firstName
-      ? `${user.firstName} ${user.lastName} `
-      : user.username;
+    if (this.props.type === "profile") {
+      const user = this.props.user;
+      return user.firstName
+        ? `${user.firstName} ${user.lastName} `
+        : user.username;
     } else {
-      return this.props.boardTitle
+      return this.props.boardTitle;
     }
   }
 
@@ -140,8 +164,7 @@ class ProfileHead extends React.Component {
       </div>
     ) : (
       <div className="prfnavv2">
-        <div className="prfnavv2lft">
-        </div>
+        <div className="prfnavv2lft"></div>
       </div>
     );
   }
@@ -172,28 +195,30 @@ class ProfileHead extends React.Component {
     }
   }
   renderFollows() {
-    let ele = (this.props.type === "profile"
-      ? this.props.user
-      : this.props.board);
+    let ele =
+      this.props.type === "profile" ? this.props.user : this.props.board;
 
-    return (this.props.type === "profile" ? (
+    return this.props.type === "profile" ? (
       <div className="follownums">
         {ele.followers.length} followers {ele.following.length} following
       </div>
     ) : (
       <div className="follownums">{ele.pins.length} pins</div>
-    ));
+    );
   }
 
   copy(event) {
     navigator.clipboard.writeText(window.location.href);
-    window.alert("URL copied to clipboard")
+    window.alert("URL copied to clipboard");
   }
 
   render() {
-    const displayName = this.findDisplayName()
-    const url = this.props.type === "profile" ? this.props.user.profilePhotoUrl : this.props.photoUrl
-    return (this.props.user || this.props.boardTitle) ? (
+    const displayName = this.findDisplayName();
+    const url =
+      this.props.type === "profile"
+        ? this.props.user.profilePhotoUrl
+        : this.props.profilePhotoUrl;
+    return this.props.user || this.props.boardTitle ? (
       <div>
         <div className="prfnav">
           <div className="prftopnav">
@@ -215,8 +240,7 @@ class ProfileHead extends React.Component {
               </div>
               <div className="message_follow_image">
                 <div className="message-follow-buttons">
-                  {this.props.type === "profile" ? this.showMessage() : <div/>}
-                  {this.props.type === "profile" ? this.showFollow() : <div/>}
+                  {this.props.type === "profile" ? this.showFollow() : <div />}
                 </div>
                 <img alt="" src={url} className="prfprfpho" />
               </div>
