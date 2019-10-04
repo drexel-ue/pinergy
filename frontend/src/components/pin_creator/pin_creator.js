@@ -166,7 +166,6 @@ class PinCreator extends React.Component {
       formData.set("image", blob);
       window.formData = formData;
       const res = await ImageApi.getAwsUrl(formData);
-      // debugger
       reqData = {
         id: this.state.id,
         title: this.state.title,
@@ -188,7 +187,6 @@ class PinCreator extends React.Component {
         destinationLink: this.state.destinationLink
       };
     }
-    // debugger
     if (reqData)
       this.props.createPins(reqData).then(res => {
         this.props.history.push(`/pins/${res._id}`);
@@ -289,12 +287,12 @@ class PinCreator extends React.Component {
     return image !== null ? (
       <div className="prev-image-cont">
         <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
-        <img src={image} className="imgprvw" />
+        <img alt="" src={image} className="imgprvw" />
       </div>
     ) : (
       <div className="prev-image-cont">
         <div className="remove-btn-cont">{this.renderRemovebtn()}</div>
-        <img src={scrapedImage} className="imgprvw" />
+          <img alt="" src={scrapedImage} className="imgprvw" />
       </div>
     );
   }
@@ -370,7 +368,7 @@ class PinCreator extends React.Component {
                 onChange={this.handleChange("title")}
               />
               <div className="create-pin-user-info">
-                <img src={user.profilePhotoUrl} className="create-prof-img" />
+                <img alt="" src={user.profilePhotoUrl} className="create-prof-img" />
                 <div className="create-prof-name">{user.username}</div>
               </div>
               <textarea

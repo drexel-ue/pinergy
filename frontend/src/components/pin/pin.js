@@ -32,9 +32,10 @@ export default class Pin extends React.Component {
     return (
       <div className="home-pin-wrap">
         <Link to={`/pins/${this.props.pin._id}`}>
-          <img className="home-pin-img" src={this.props.pin.url} />
+          <img alt="" className="home-pin-img" src={this.props.pin.url} />
         </Link>
         <a
+          rel="noopener noreferrer"
           href={this.props.pin.url}
           target="_blank"
           className="pin-button home-link"

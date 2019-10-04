@@ -19,10 +19,9 @@ const receivePinError = () => ({
 });
 //
 export const fetchBoardPins = boardId => dispatch => {
-  // debugger
   return ApiUtil.findBoardPins(boardId)
     .then(res => {
-      // debugger
+      // 
       dispatch(receivePins(res.data));
       return res.data;
     })
@@ -79,7 +78,6 @@ export const repin = (pin, boardId, userId) => dispatch =>
     });
 
 export const createPins = data => dispatch =>
-  /* TODO: returned value underneath inorder to push to new location*/
   ApiUtil.createPins(data)
     .then(({ data }) => {
       dispatch(receivePin(data));

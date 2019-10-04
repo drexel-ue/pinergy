@@ -31,7 +31,6 @@ class SignupForm extends React.Component {
   }
 
   handleDemoLogin(e) {
-    // debugger
     e.preventDefault();
 
     let user = {

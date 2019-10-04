@@ -24,9 +24,9 @@ class BoardItem extends React.Component {
       <div className="board-item-wrap">
         <div className="board-item-top">
           {pins.map((ele, idx) => {
-            const classIndicator = pins.length;
             return (
               <img
+                alt=""
                 src={ele.url}
                 key={idx}
                 className="prof-board-image"

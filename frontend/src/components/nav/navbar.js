@@ -114,6 +114,7 @@ class NavBar extends React.Component {
               <div className="Profile">
                 {this.props.user ? this.props.user.username : ""}
                 <img
+                  alt=""
                   className="ProfileIcon"
                   src={this.props.user ? this.props.user.profilePhotoUrl : ""}
                 />
@@ -154,10 +155,6 @@ class NavBar extends React.Component {
 }
 
 const user_tasks = [
-  // <Link className="nav-drop-link" to={"/settings/edit-profile"}>
-  //   Edit settings
-  // </Link>,
-
   <Link to={"/pin-creator"} className="nav-drop-link">
     Create Pin
   </Link>,
@@ -165,6 +162,7 @@ const user_tasks = [
     Project Details
   </Link>,
   <a
+    rel="noopener noreferrer"
     href="https://github.com/drexel-ue/pinergy"
     className="nav-drop-link"
     target="_blank"

@@ -93,22 +93,27 @@ class ProfileHead extends React.Component {
             <p className="sharedrpdwnenchdr">Share this profile </p>
           </div>
           <div className="social-icons">
-            <a
+            <a 
+              rel="noopener noreferrer"
               onClick={this.copy}
               target="_blank"
               href="https://www.whatsapp.com/"
             >
               <i className="fab fa-whatsapp des" />
             </a>
-            <a
+            <a 
+              rel="noopener noreferrer"
               onClick={this.copy}
-              target="_blank"
-              href="https://www.facebook.com/"
-            >
-              <i className="fab fa-facebook des" />
-            </a>
-            <a onClick={this.copy} target="_blank" href="https://twitter.com">
-              <i className="fab fa-twitter des" />
+              target="_blank" 
+              href="https://www.facebook.com/">
+                <i className="fab fa-facebook des" />
+              </a>
+            <a 
+              rel="noopener noreferrer"
+              onClick={this.copy}
+              target="_blank" 
+              href="https://twitter.com">
+                <i className="fab fa-twitter des" />
             </a>
           </div>
         </div>
@@ -127,6 +132,16 @@ class ProfileHead extends React.Component {
     } else {
       return this.props.boardTitle;
     }
+  }
+
+  showMessage() {
+    return this.props.user._id !== this.props.id ? (
+      <div className="message_and_follow_buttons">
+        <button className="message_button">Message</button>
+      </div>
+    ) : (
+      <div />
+    );
   }
 
   handleFollow(e) {
@@ -155,7 +170,7 @@ class ProfileHead extends React.Component {
   }
 
   showFollow() {
-    if (this.props.user._id != this.props.id) {
+    if (this.props.user._id !== this.props.id) {
       if (this.props.currentUser.following.includes(this.props.user._id)) {
         return (
           <div className="message_and_follow_buttons">
@@ -227,7 +242,7 @@ class ProfileHead extends React.Component {
                 <div className="message-follow-buttons">
                   {this.props.type === "profile" ? this.showFollow() : <div />}
                 </div>
-                <img src={url} className="prfprfpho" />
+                <img alt="" src={url} className="prfprfpho" />
               </div>
             </div>
             {this.renderNav()}

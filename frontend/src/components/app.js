@@ -5,7 +5,6 @@ import NavBarContainer from "./nav/navbar_container";
 
 import MainPage from "./main/main_page";
 import ModalContainer from "./modal/modal";
-import ProfileHeadContainer from "./profile/profile_head_container";
 import HomeContainer from "./home/home_container";
 import RequestFeature from "./static_pages/request_feature";
 import ProjectDetails from "./static_pages/project_details";
@@ -13,7 +12,6 @@ import PinCreatorContainer from "./pin_creator/pin_creator_container";
 import PinShowContainer from "./show/pin_show_container";
 import ProfileContainer from "./profile/profile_container";
 import EditProfile from "./nav/edit_profile";
-import Loader from "./loader/loader";
 import BoardShowContainer from "./board/board_show_container";
 
 class App extends React.Component {

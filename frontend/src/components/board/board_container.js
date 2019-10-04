@@ -14,7 +14,7 @@ const msp = ({ session, entities }, ownProps) => {
   return {
     currentUser: session.isAuthenticated ? entities.users[session.user.id] : {},
     user: Object.values(entities.users).find(
-      user => user.username == ownProps.match.params.username
+      user => user.username === ownProps.match.params.username
     ),
     boards: boards
   };
