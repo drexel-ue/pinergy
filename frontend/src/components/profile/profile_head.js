@@ -12,15 +12,18 @@ class ProfileHead extends React.Component {
       showShareDropdown: false
     };
 
-    this.timer = undefined;
+    this.shareTimer = undefined;
+    this.createTimer = undefined;
 
     this.copy = this.copy.bind(this);
     this.handleFollow = this.handleFollow.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.toggleShareDropdown = this.toggleShareDropdown.bind(this);
     this.myScrollFunc = this.myScrollFunc.bind(this);
-    this.timeout = this.timeout.bind(this);
-    this.cancelTimeout = this.cancelTimeout.bind(this);
+    this.shareTimeout = this.shareTimeout.bind(this);
+    this.cancelShareTimeout = this.cancelShareTimeout.bind(this);
+    this.createTimeout = this.createTimeout.bind(this);
+    this.cancelCreateTimeout = this.cancelCreateTimeout.bind(this);
   }
   toggleDropdown(e) {
     e.preventDefault();
@@ -57,7 +60,11 @@ class ProfileHead extends React.Component {
 
   renderDropdown() {
     return this.state.showDropdown ? (
-      <div className="drpdwnenc create-dropdown">
+      <div
+        className="drpdwnenc create-dropdown"
+        onMouseEnter={this.cancelCreateTimeout}
+        onMouseLeave={this.createTimeout}
+      >
         <div className="create-btn">
           <Link className="profile-head-link" to="/pin-creator">
             Create Pin
@@ -69,31 +76,42 @@ class ProfileHead extends React.Component {
     );
   }
 
-  timeout(event) {
+  shareTimeout(event) {
     event.preventDefault();
-    this.timer = setTimeout(
+    this.shareTimer = setTimeout(
       () => this.setState({ showShareDropdown: false }),
       1000
     );
   }
-  cancelTimeout(event) {
+  cancelShareTimeout(event) {
     event.preventDefault();
-    clearTimeout(this.timer);
+    clearTimeout(this.shareTimer);
+  }
+  createTimeout(event) {
+    event.preventDefault();
+    this.createTimer = setTimeout(
+      () => this.setState({ showDropdown: false }),
+      1000
+    );
+  }
+  cancelCreateTimeout(event) {
+    event.preventDefault();
+    clearTimeout(this.createTimer);
   }
 
   renderShareDropdown() {
     return this.state.showShareDropdown ? (
       <div
         className="sharedrpdwnenc"
-        onMouseLeave={this.timeout}
-        onMouseEnter={this.cancelTimeout}
+        onMouseLeave={this.shareTimeout}
+        onMouseEnter={this.cancelShareTimeout}
       >
         <div className="social-icon-wrap">
           <div className="social-icon-text">
             <p className="sharedrpdwnenchdr">Share this profile </p>
           </div>
           <div className="social-icons">
-            <a 
+            <a
               rel="noopener noreferrer"
               onClick={this.copy}
               target="_blank"
@@ -101,19 +119,21 @@ class ProfileHead extends React.Component {
             >
               <i className="fab fa-whatsapp des" />
             </a>
-            <a 
+            <a
               rel="noopener noreferrer"
               onClick={this.copy}
-              target="_blank" 
-              href="https://www.facebook.com/">
-                <i className="fab fa-facebook des" />
-              </a>
-            <a 
+              target="_blank"
+              href="https://www.facebook.com/"
+            >
+              <i className="fab fa-facebook des" />
+            </a>
+            <a
               rel="noopener noreferrer"
               onClick={this.copy}
-              target="_blank" 
-              href="https://twitter.com">
-                <i className="fab fa-twitter des" />
+              target="_blank"
+              href="https://twitter.com"
+            >
+              <i className="fab fa-twitter des" />
             </a>
           </div>
         </div>
