@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
       entities: {
         users: {},
         boards: {},
-        sections: {},
         pins: {}
       },
       session: { isAuthenticated: true, user: decodedUser },
