@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import "./navbar.css";
 import UserSearchResultContainer from "../search/user_search_result_container";
+import ScrollToTop from "./scroll_to_top";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -142,6 +143,7 @@ class NavBar extends React.Component {
               </div>
             </div>
           </div>
+          <ScrollToTop/>
         </div>
       );
     } else {

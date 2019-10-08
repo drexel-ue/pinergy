@@ -8,7 +8,6 @@ exports.scrape = async url => {
 
     await page.goto(url);
 
-
     await page.waitForSelector("img", { visible: true });
 
     const data = await page.evaluate(() => {
@@ -26,5 +25,3 @@ exports.scrape = async url => {
     return e.toString();
   }
 };
-
-
