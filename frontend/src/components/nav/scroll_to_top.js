@@ -43,7 +43,7 @@ export default class ScrollToTop extends Component {
     return (
       <div className="scroll_to_top" style={style}>
         {this.state.show ? (
-          <i onClick={this.scrollToTop} class="fas fa-sort-up"></i>
+          <i onClick={this.scrollToTop} className="fas fa-sort-up"></i>
         ) : (
           <div />
         )}
