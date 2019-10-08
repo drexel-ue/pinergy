@@ -10,6 +10,7 @@ export default class ScrollToTop extends Component {
     };
 
     this.showOrNah = this.showOrNah.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
   }
 
   componentDidMount() {
@@ -28,11 +29,24 @@ export default class ScrollToTop extends Component {
     }
   }
 
+  scrollToTop(event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
+
   render() {
     const style = { top: `${window.innerHeight - 80}px`, right: "30px" };
     return (
       <div className="scroll_to_top" style={style}>
-        {this.state.show ? <i class="fas fa-sort-up"></i> : <div />}
+        {this.state.show ? (
+          <i onClick={this.scrollToTop} class="fas fa-sort-up"></i>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
