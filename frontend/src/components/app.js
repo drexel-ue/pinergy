@@ -17,7 +17,7 @@ import BoardShowContainer from "./board/board_show_container";
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <ModalContainer />
         <NavBarContainer />
         <Switch>
