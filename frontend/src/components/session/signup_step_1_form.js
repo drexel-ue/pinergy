@@ -19,7 +19,7 @@ class SignupForm extends React.Component {
     this.gotoLogIn = this.gotoLogIn.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.setState({ errors: nextProps.errors });
   }
 
