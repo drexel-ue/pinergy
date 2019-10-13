@@ -177,7 +177,6 @@ export default withRouter(
     }
 
     render() {
-      console.log(this.props);
       return this.props.pin ? (
         <div className="pin-show-outer">
           <div className="pin_show_image_wrapper">
