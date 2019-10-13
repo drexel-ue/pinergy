@@ -27,6 +27,15 @@ mongoose
     let images = [];
     let users = [];
     let pins = [];
+    const fakeTitles = [
+      faker.commerce.productAdjective(),
+      faker.company.bsNoun(),
+      faker.hacker.adjective()
+    ];
+    const fakeDescriptions = [
+      faker.company.catchPhrase(),
+      faker.hacker.phrase()
+    ];
 
     if (!demoUser) {
       demoUser = new User(demoUserData);
@@ -61,8 +70,17 @@ mongoose
             board: board,
             image: image,
             url: image.url,
-            title: faker.lorem.words(3),
-            description: faker.lorem.paragraph(1),
+            title:
+              fakeTitles[
+                faker.random.number({ min: 0, max: fakeTitles.length - 1 })
+              ],
+            description:
+              fakeDescriptions[
+                faker.random.number({
+                  min: 0,
+                  max: fakeDescriptions.length - 1
+                })
+              ],
             destinationLink: image.url,
             tags: [board.title]
           });
@@ -116,8 +134,17 @@ mongoose
             board: board.id,
             image: image.id,
             url: image.url,
-            title: faker.lorem.words(3),
-            description: faker.lorem.paragraph(3),
+            title:
+              fakeTitles[
+                faker.random.number({ min: 0, max: fakeTitles.length - 1 })
+              ],
+            description:
+              fakeDescriptions[
+                faker.random.number({
+                  min: 0,
+                  max: fakeDescriptions.length - 1
+                })
+              ],
             destinationLink: image.url,
             tags: [board.title]
           });
