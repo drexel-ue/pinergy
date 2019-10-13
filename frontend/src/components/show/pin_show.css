@@ -145,7 +145,7 @@
 
 .pin_stick_bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 20px;
   box-sizing: border-box;
   align-items: center;
@@ -156,6 +156,16 @@
   background-color: white;
   border-radius: 8px 8px 0 0;
   height: 70px;
+}
+
+.fa-caret-square-left {
+  font-size: 30px;
+  color: #757575;
+  cursor: pointer;
+}
+
+.fa-caret-square-left:hover {
+  color: black;
 }
 
 .stick-bar-right {
