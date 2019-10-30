@@ -36,7 +36,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "lodash.debounce": "^4.0.8",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.7.5",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
     "passport": "^0.4.0",
