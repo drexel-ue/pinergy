@@ -15,9 +15,9 @@ const masonryOptions = {
 
 export default class Home extends React.Component {
   constructor(props) {
-    super(props)
-    
-    this.inifiniteScroller = this.infiniteScroler.bind(this)
+    super(props);
+
+    this.inifiniteScroller = this.infiniteScroler.bind(this);
   }
   componentDidMount() {
     this.props.getAll();
@@ -25,24 +25,14 @@ export default class Home extends React.Component {
 
   infiniteScroler() {
     window.onscroll = debounce(() => {
-      
-
-      // Bails early if:
-      // * there's an error
-      // * it's already loading
-      // * there's nothing left to load
-      // if (error || isLoading || !hasMore) return;
-
-      // Checks that the page has scrolled to the bottom
       if (
-        window.innerHeight + document.documentElement.scrollTop
-        === document.documentElement.offsetHeight
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
       ) {
         this.props.getAll();
       }
     }, 100);
   }
-
 
   render() {
     return Object.values(this.props.pins).length > 0 ? (
