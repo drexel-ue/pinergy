@@ -35,6 +35,7 @@
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
+    "lodash.debounce": "^4.0.8",
     "mongoose": "^5.6.9",
     "multer": "^1.4.2",
     "multer-s3": "^2.9.0",
@@ -43,6 +44,7 @@
     "puppeteer": "^1.19.0",
     "react-dropzone": "^10.1.7",
     "react-masonry-component": "^6.2.1",
+    "superagent": "^5.1.0",
     "validator": "^11.1.0",
     "webpack-dev-server": "3.2.1"
   },

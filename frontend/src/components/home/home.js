@@ -2,6 +2,8 @@ import React from "react";
 import PinContainer from "../pin/pin_container";
 import Masonry from "react-masonry-component";
 import Loader from "../loader/loader";
+import request from "superagent";
+import debounce from "lodash.debounce";
 import "./home.css";
 
 const masonryOptions = {
@@ -12,9 +14,35 @@ const masonryOptions = {
 };
 
 export default class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    
+    this.inifiniteScroller = this.infiniteScroler.bind(this)
+  }
   componentDidMount() {
     this.props.getAll();
   }
+
+  infiniteScroler() {
+    window.onscroll = debounce(() => {
+      
+
+      // Bails early if:
+      // * there's an error
+      // * it's already loading
+      // * there's nothing left to load
+      // if (error || isLoading || !hasMore) return;
+
+      // Checks that the page has scrolled to the bottom
+      if (
+        window.innerHeight + document.documentElement.scrollTop
+        === document.documentElement.offsetHeight
+      ) {
+        this.props.getAll();
+      }
+    }, 100);
+  }
+
 
   render() {
     return Object.values(this.props.pins).length > 0 ? (
@@ -29,6 +57,7 @@ export default class Home extends React.Component {
             <PinContainer key={pin._id} pin={pin} />
           ))}
         </Masonry>
+        {this.infiniteScroler()}
       </div>
     ) : (
       <Loader />
