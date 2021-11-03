@@ -45,7 +45,7 @@
     "react-dropzone": "^10.1.7",
     "react-masonry-component": "^6.2.1",
     "superagent": "^5.1.0",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "webpack-dev-server": "3.2.1"
   },
   "devDependencies": {
