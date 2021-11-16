@@ -27,7 +27,7 @@
     "@blueprintjs/icons": "^3.10.0",
     "@types/faker": "^4.1.5",
     "@types/puppeteer": "^1.19.1",
-    "aws-sdk": "^2.513.0",
+    "aws-sdk": "^2.814.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.1",
